@@ -1,0 +1,63 @@
+{
+  "name": "mrengy/wordpress-starter",
+  "description": "WordPress Starter Repository",
+
+  "require": {
+    "johnpbloch/wordpress": "5.8.*",
+    "wpackagist-plugin/akismet": "*",
+    "wpackagist-plugin/ewww-image-optimizer": "*",
+    "wpackagist-plugin/fix-image-rotation": "*",
+    "wpackagist-plugin/show-current-template": "*",
+    "wpackagist-plugin/wp-retina-2x": "*",
+    "wpackagist-plugin/broken-link-checker": "*",
+    "wpackagist-plugin/jetpack": "*"
+  },
+  "require-dev": {
+    "wpackagist-plugin/debug-bar": "*",
+    "wpackagist-plugin/debug-bar-console": "*",
+    "wpackagist-plugin/wordpress-importer": "*"
+  },
+  "repositories":[
+      {
+          "type":"composer",
+          "url":"https://wpackagist.org"
+      },
+      {
+        "type"    : "package",
+        "package" : {
+          "name"    : "wordpress",
+          "type"    : "webroot",
+          "version" : "5.8.2",
+          "dist"    : {
+            "url"  : "https://github.com/WordPress/WordPress/archive/5.8.2.zip",
+            "type" : "zip"
+          },
+          "source" : {
+            "url"       : "https://github.com/WordPress/WordPress",
+            "type"      : "git",
+            "reference" : "5.8.2"
+          },
+          "require" : {
+            "fancyguy/webroot-installer" : "1.0.0"
+          }
+        }
+      }
+  ],
+  "autoload": {
+      "psr-0": {
+          "Acme": "src/"
+      }
+  },
+  "config"      : {
+      "vendor-dir": "content/vendor"
+  },
+  "extra" : {
+    "installer-paths": {
+      "content/plugins/{$name}/": ["type:wordpress-plugin"],
+      "content/themes/{$name}/": ["type:wordpress-theme"]
+    },
+    "webroot-dir"     : "wp",
+    "webroot-package" : "wordpress",
+    "wordpress-install-dir": "wp"
+  }
+}
