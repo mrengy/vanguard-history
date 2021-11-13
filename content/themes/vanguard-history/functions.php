@@ -183,7 +183,7 @@ if ( defined( 'JETPACK__VERSION' ) ) {
  */
 function register_taxonomy_ensemble() {
      $labels = array(
-         'name'              => _x( 'Ensembles', 'taxonomy general name' ),
+         'name'              => _x( 'Ensemble', 'taxonomy general name' ),
          'singular_name'     => _x( 'Ensemble', 'taxonomy singular name' ),
          'search_items'      => __( 'Search Ensembles' ),
          'all_items'         => __( 'All Ensembles' ),
@@ -207,7 +207,7 @@ function register_taxonomy_ensemble() {
 }
 function register_taxonomy_vhs_year() {
      $labels = array(
-         'name'              => _x( 'Years', 'taxonomy general name' ),
+         'name'              => _x( 'Year', 'taxonomy general name' ),
          'singular_name'     => _x( 'Year', 'taxonomy singular name' ),
          'search_items'      => __( 'Search Years' ),
          'all_items'         => __( 'All Years' ),
