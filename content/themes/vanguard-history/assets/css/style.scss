@@ -1,3 +1,6 @@
 // base
+// Import of the math.div function for slash as division change
+@use "sass:math";
 @import './base/var';
 @import './base/base';
+@import './base/typography';
