@@ -13,7 +13,10 @@
     "wpackagist-plugin/jetpack": "*",
     "wpackagist-plugin/members": "*",
     "wpackagist-plugin/media-library-assistant": "*",
-    "wpackagist-plugin/restrict-media-library-access": "*"
+    "wpackagist-plugin/restrict-media-library-access": "*",
+    "wpackagist-plugin/user-role-editor": "*",
+    "wpackagist-plugin/wp-file-upload": "*",
+    "wpackagist-plugin/gravityforms": "*"
   },
   "require-dev": {
     "wpackagist-plugin/debug-bar": "*",
