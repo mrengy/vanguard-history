@@ -177,3 +177,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     }
   }
 })();
+"use strict";
+
+//testing to see if error blocks other js
+console.log('test');
