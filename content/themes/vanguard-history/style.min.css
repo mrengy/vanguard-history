@@ -56,24 +56,6 @@ template{display:none}
 [hidden]{display:none}
 *,*::before,*::after{-webkit-box-sizing:inherit;box-sizing:inherit}
 html{-webkit-box-sizing:border-box;box-sizing:border-box}
-/*! Typebase.scss v0.1.0 | MIT License */html{font-family:serif;font-size:100%;-webkit-font-smoothing:antialiased}
-p{line-height:1.5rem;margin-top:1.5rem;margin-bottom:0}
-ul,ol{margin-top:1.5rem;margin-bottom:1.5rem}
-ul li,ol li{line-height:1.5rem}
-ul ul,ul ol,ol ul,ol ol{margin-top:0;margin-bottom:0}
-blockquote{line-height:1.5rem;margin-top:1.5rem;margin-bottom:1.5rem}
-h1,h2,h3,h4,h5,h6{font-family:sans-serif;margin-top:1.5rem;margin-bottom:0;line-height:1.5rem}
-h1{font-size:4.242rem;line-height:4.5rem;margin-top:3rem}
-h2{font-size:2.828rem;line-height:3rem;margin-top:3rem}
-h3{font-size:1.414rem}
-h4{font-size:.707rem}
-h5{font-size:.4713333333rem}
-h6{font-size:.3535rem}
-table{margin-top:1.5rem;border-spacing:0;border-collapse:collapse}
-td,th{padding:0;line-height:24px}
-code{vertical-align:bottom}
-.lead{font-size:1.414rem}
-.hug{margin-top:0}
 body{background:#fff}
 hr{background-color:#ccc;border:0;height:1px;margin-bottom:1.5em}
 ul,ol{margin:0 0 1.5em 3em}
@@ -146,6 +128,24 @@ textarea{width:100%}
 .alignleft{float:left;margin-right:1.5em;margin-bottom:1.5em}
 .alignright{float:right;margin-left:1.5em;margin-bottom:1.5em}
 .aligncenter{clear:both;display:block;margin-left:auto;margin-right:auto;margin-bottom:1.5em}
+/*! Typebase.scss v0.1.0 | MIT License */html{font-family:serif;font-size:100%;-webkit-font-smoothing:antialiased}
+p{line-height:1.5rem;margin-top:1.5rem;margin-bottom:0}
+ul,ol{margin-top:1.5rem;margin-bottom:1.5rem}
+ul li,ol li{line-height:1.5rem}
+ul ul,ul ol,ol ul,ol ol{margin-top:0;margin-bottom:0}
+blockquote{line-height:1.5rem;margin-top:1.5rem;margin-bottom:1.5rem}
+h1,h2,h3,h4,h5,h6{font-family:sans-serif;margin-top:1.5rem;margin-bottom:0;line-height:1.5rem}
+h1{font-size:4.242rem;line-height:4.5rem;margin-top:3rem}
+h2{font-size:2.828rem;line-height:3rem;margin-top:3rem}
+h3{font-size:1.414rem}
+h4{font-size:.707rem}
+h5{font-size:.4713333333rem}
+h6{font-size:.3535rem}
+table{margin-top:1.5rem;border-spacing:0;border-collapse:collapse}
+td,th{padding:0;line-height:24px}
+code{vertical-align:bottom}
+.lead{font-size:1.414rem}
+.hug{margin-top:0}
 /*! # Semantic UI 2.4.1 - Container http://github.com/semantic-org/semantic-ui/ Released under the MIT license http://opensource.org/licenses/MIT */.ui.container{display:block;max-width:100% !important}
 .ui.text.container{font-family:'Lato','Helvetica Neue',Arial,Helvetica,sans-serif;max-width:700px !important;line-height:1.5}
 .ui.text.container{font-size:1.14285714rem}
