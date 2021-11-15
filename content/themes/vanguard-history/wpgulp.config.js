@@ -121,15 +121,6 @@ const translationDestination = './languages';
 // Package name.
 const packageName = 'WPGULP';
 
-// Where can users report bugs.
-const bugReport = 'https://AhmadAwais.com/contact/';
-
-// Last translator Email ID.
-const lastTranslator = 'Ahmad Awais <your_email@email.com>';
-
-// Team's Email ID.
-const team = 'AhmadAwais <your_email@email.com>';
-
 // Browsers you care about for auto-prefixing. Browserlist https://github.com/ai/browserslist
 // The following list is set as per WordPress requirements. Though; Feel free to change.
 const BROWSERS_LIST = ['last 2 version', '> 1%'];
