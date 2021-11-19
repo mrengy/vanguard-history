@@ -232,3 +232,21 @@ function register_taxonomy_vhs_year() {
 }
 add_action( 'init', 'register_taxonomy_ensemble' );
 add_action( 'init', 'register_taxonomy_vhs_year' );
+
+/**
+ * Custom post types
+ */
+
+ function vhs_custom_post_type() {
+    register_post_type('year_story',
+        array(
+            'labels'      => array(
+                'name'          => __('Year Stories', 'textdomain'),
+                'singular_name' => __('Year Story', 'textdomain'),
+            ),
+                'public'      => true,
+                'has_archive' => true,
+        )
+    );
+}
+add_action('init', 'vhs_custom_post_type');
