@@ -12,6 +12,8 @@ License URI: LICENSE
 Text Domain: vanguard-history
 Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-comments, translation-ready
 
+Don't edit style.css directly. Instead, run Sass and edit style.scss to use the variables. See [readme on the repository](https://github.com/mrengy/vanguard-history) for details
+
 This theme, like WordPress, is licensed under the GPL.
 Use it to make something cool, have fun, and share what you've learned.
 
