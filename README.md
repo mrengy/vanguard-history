@@ -9,8 +9,8 @@ Clone this repo
 
 Run composer, create database, import contents from a production export, update wp-config.php, go through WordPress install in browser
 
-In Terminal, cd into the THEME directory.
+In command line tool, navigate (cd) into the THEME directory.
 
-# To watch for Sass changes
+# To make edits to CSS
 
-Run "sass --watch ." which will check .scss files and compile them into proper .css
+In command line tool, run "sass --watch ." which will check .scss files and compile them into proper .css
