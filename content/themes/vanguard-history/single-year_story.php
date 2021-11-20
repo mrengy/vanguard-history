@@ -27,11 +27,14 @@ get_header();
 			?>
 			<h2>Media</h2>
 			<?php
-					//console.log('media query start');
+
 					$media_query_args = array(
 						'post_type'   => 'attachment'
 					);
 					$media_query = new WP_Query ($media_query_args);
+
+					//log to query monitor
+					do_action( 'qm/debug', $media_query);
 
 					if ( $media_query->have_posts() ) : while ( $media_query->have_posts() ) : $media_query->the_post();
 

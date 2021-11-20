@@ -15,8 +15,7 @@
     "wpackagist-plugin/media-library-assistant": "*",
     "wpackagist-plugin/restrict-media-library-access": "*",
     "wpackagist-plugin/user-role-editor": "*",
-    "wpackagist-plugin/wp-file-upload": "*",
-    "wpackagist-plugin/gravityforms": "*"
+    "wpackagist-plugin/wp-file-upload": "*"
   },
   "require-dev": {
     "wpackagist-plugin/debug-bar": "*",
