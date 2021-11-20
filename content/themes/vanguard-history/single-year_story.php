@@ -27,6 +27,12 @@ get_header();
 			?>
 			<h2>Media</h2>
 			<?php
+					/*
+					//debug taxonomies
+					$att_taxonomies[] = get_taxonomies_for_attachments( 'objects' );
+					do_action('qm/debug',$att_taxonomies);
+					*/
+
 					// query media
 					$media_query_args = array(
 						'post_type'   => 'attachment',
@@ -40,7 +46,7 @@ get_header();
 									'terms' => array('vanguard-cadets-b-corps'),
 								),
 								array(
-									'taxonomy' => 'year',
+									'taxonomy' => 'vhs_year',
 									'field' => 'slug',
 									'terms' => array('1991'),
 								),
