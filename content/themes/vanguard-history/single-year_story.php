@@ -43,12 +43,17 @@ get_header();
 								array(
 									'taxonomy' => 'ensemble',
 									'field' => 'slug',
-									'terms' => array('vanguard-cadets-b-corps'),
+									'terms' => 'vanguard-cadets-b-corps',
 								),
 								array(
 									'taxonomy' => 'vhs_year',
 									'field' => 'slug',
-									'terms' => array('1991'),
+									'terms' => '1991',
+								),
+								array(
+									'taxonomy' => 'media_visibility',
+									'field' => 'slug',
+									'terms' => 'published',
 								),
 						),
 
