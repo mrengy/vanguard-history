@@ -250,17 +250,17 @@ function register_taxonomy_media_visibility(){
 			'show_ui'           => true,
 			'show_admin_column' => true,
 			'query_var'         => true,
+			'create_posts'      => false,
 			'rewrite'           => [ 'slug' => 'media_visibility' ],
 	);
 	register_taxonomy( 'media_visibility', 'attachment', $args );
 }
 
-
+/*
 function add_custom_meta_box_media_visibility(){
 	add_meta_box( 'taxonomy_box', __('Media Visibility Status'), 'fill_custom_meta_box_content', 'attachment' ,'side');
 }
 
-/*
 // set closed set of options for media Visibility
 function fill_custom_meta_box_content( $post ) {
 	$terms = get_terms( array(
@@ -291,8 +291,8 @@ function save_media_visibility($post_id){
 add_action( 'init', 'register_taxonomy_ensemble' );
 add_action( 'init', 'register_taxonomy_vhs_year' );
 add_action( 'init', 'register_taxonomy_media_visibility' );
-add_action('add_meta_boxes', 'add_custom_meta_box_media_visibility');
-//add_action('add_attachment', 'save_media_visibility'); //originally was on 'save_post'
+//add_action('add_meta_boxes', 'add_custom_meta_box_media_visibility');
+//add_action('add_attachment', 'save_media_visibility'); //originally was add_action('save_post',...)
 
 /**
  * Use radio inputs instead of checkboxes for term checklists in specified taxonomies.
