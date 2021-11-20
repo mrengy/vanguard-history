@@ -27,11 +27,13 @@ get_header();
 			?>
 			<h2>Media</h2>
 			<?php
-					/*
+
+
 					//debug taxonomies
-					$att_taxonomies[] = get_taxonomies_for_attachments( 'objects' );
-					do_action('qm/debug',$att_taxonomies);
-					*/
+					$this_ensemble_obj = wp_get_post_terms(get_the_ID(),'ensemble');
+					$this_ensemble = $this_ensemble_obj[0]->slug;
+					do_action('qm/debug',$this_ensemble_obj);
+					do_action('qm/debug',$this_ensemble);
 
 					// query media
 					$media_query_args = array(
@@ -43,7 +45,7 @@ get_header();
 								array(
 									'taxonomy' => 'ensemble',
 									'field' => 'slug',
-									'terms' => 'vanguard-cadets-b-corps',
+									'terms' => $this_ensemble,
 								),
 								array(
 									'taxonomy' => 'vhs_year',
