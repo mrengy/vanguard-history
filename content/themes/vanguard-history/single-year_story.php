@@ -24,6 +24,24 @@ get_header();
 					'next_text' => '<span class="nav-subtitle">' . esc_html__( 'Next:', 'vanguard-history' ) . '</span> <span class="nav-title">%title</span>',
 				)
 			);
+			?>
+			<h2>Media</h2>
+			<?php
+
+			$media_query_args = array(
+				'post_type'   => 'attachment',
+				'post_status' => 'inherit'
+			);
+			$media_query = new WP_Query ($media_query_args);
+
+			if ( $images_query->have_posts() ) : while ( $images_query->have_posts() ) : $images_query->the_post();
+
+				wp_get_attachment_image( get_the_ID(), 'thumbnail' );
+
+			endwhile; endif;
+
+			// Be kind; rewind
+			wp_reset_postdata();
 
 			// If comments are open or we have at least one comment, load up the comment template.
 			if ( comments_open() || get_comments_number() ) :
