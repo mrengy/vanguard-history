@@ -232,7 +232,7 @@ function register_taxonomy_vhs_year() {
 }
 function register_taxonomy_media_visibility(){
 	$labels = array(
-			'name'              => _x( 'Visibility Statuses', 'taxonomy general name' ),
+			'name'              => _x( 'Visibility Status', 'taxonomy general name' ),
 			'singular_name'     => _x( 'Visibility Status', 'taxonomy singular name' ),
 			'search_items'      => __( 'Search Visibility Statuses' ),
 			'all_items'         => __( 'All Visitbility Statuses' ),
@@ -245,18 +245,22 @@ function register_taxonomy_media_visibility(){
 			'menu_name'         => __( 'Visibility Status' ),
 	);
 	$args   = array(
-			'hierarchical'      => false, // make it hierarchical (like categories)
+			'hierarchical'      => true, // make it hierarchical (like categories)
 			'labels'            => $labels,
-			'show_in_quick_edit' => false,
-			'meta_box_cb' => false,
+			'show_ui'           => true,
+			'show_admin_column' => true,
+			'query_var'         => true,
+			'rewrite'           => [ 'slug' => 'media_visibility' ],
 	);
 	register_taxonomy( 'media_visibility', 'attachment', $args );
 }
+
 
 function add_custom_meta_box_media_visibility(){
 	add_meta_box( 'taxonomy_box', __('Media Visibility Status'), 'fill_custom_meta_box_content', 'attachment' ,'side');
 }
 
+/*
 // set closed set of options for media Visibility
 function fill_custom_meta_box_content( $post ) {
 	$terms = get_terms( array(
@@ -282,12 +286,51 @@ function save_media_visibility($post_id){
 	if ( isset( $_REQUEST['media_visibility'] ) )
 		wp_set_object_terms($post_id, (int)sanitize_text_field( $_POST['media_visibility'] ), 'media_visibility');
 }
+*/
 
 add_action( 'init', 'register_taxonomy_ensemble' );
 add_action( 'init', 'register_taxonomy_vhs_year' );
 add_action( 'init', 'register_taxonomy_media_visibility' );
 add_action('add_meta_boxes', 'add_custom_meta_box_media_visibility');
-add_action('save_post', 'save_media_visibility');
+//add_action('add_attachment', 'save_media_visibility'); //originally was on 'save_post'
+
+/**
+ * Use radio inputs instead of checkboxes for term checklists in specified taxonomies.
+ *
+ * @param   array   $args
+ * @return  array
+ */
+function media_visibility_radio_buttons( $args ) {
+if ( ! empty( $args['taxonomy'] ) && $args['taxonomy'] === 'media_visibility' /* <== Change to your required taxonomy */ ) {
+        if ( empty( $args['walker'] ) || is_a( $args['walker'], 'Walker' ) ) { // Don't override 3rd party walkers.
+            if ( ! class_exists( 'media_visibility_radio_buttons' ) ) {
+                /**
+                 * Custom walker for switching checkbox inputs to radio.
+                 *
+                 * @see Walker_Category_Checklist
+                 */
+                class media_visibility_radio_buttons extends Walker_Category_Checklist {
+                    function walk( $elements, $max_depth, ...$args ) {
+                        $output = parent::walk( $elements, $max_depth, ...$args );
+                        $output = str_replace(
+                            array( 'type="checkbox"', "type='checkbox'" ),
+                            array( 'type="radio"', "type='radio'" ),
+                            $output
+                        );
+
+                        return $output;
+                    }
+                }
+            }
+
+            $args['walker'] = new media_visibility_radio_buttons;
+        }
+    }
+
+    return $args;
+}
+
+add_filter( 'wp_terms_checklist_args', 'media_visibility_radio_buttons' );
 
 /**
  * Custom post types
