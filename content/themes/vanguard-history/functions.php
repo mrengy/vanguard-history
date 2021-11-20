@@ -256,38 +256,11 @@ function register_taxonomy_media_visibility(){
 	register_taxonomy( 'media_visibility', 'attachment', $args );
 }
 
-/*
-function add_custom_meta_box_media_visibility(){
-	add_meta_box( 'taxonomy_box', __('Media Visibility Status'), 'fill_custom_meta_box_content', 'attachment' ,'side');
+function add_tags_to_pages() {
+register_taxonomy_for_object_type( 'post_tag', 'page' );
 }
 
-// set closed set of options for media Visibility
-function fill_custom_meta_box_content( $post ) {
-	$terms = get_terms( array(
-		'taxonomy' => 'media_visibility',
-		'hide_empty' => false // Retrieve all terms
-	));
-
-	// We assume that there is a single category
-	$currentTaxonomyValue = get_the_terms($post->ID, 'media_visibility')[0];
-?>
-	<p>Choose taxonomy value</p>
-	<p>
-		<?php foreach($terms as $term): ?>
-			<input type="radio" name="media_visibility" id="taxonomy_term_<?php echo $term->term_id;?>" value="<?php echo $term->term_id;?>"<?php if($term->term_id==$currentTaxonomyValue->term_id) echo "checked"; ?>>
-			<label for="taxonomy_term_<?php echo $term->term_id;?>"><?php echo $term->name; ?></label>
-			</input><br/>
-		<?php endforeach; ?>
-	</p>
-<?php
-}
-
-function save_media_visibility($post_id){
-	if ( isset( $_REQUEST['media_visibility'] ) )
-		wp_set_object_terms($post_id, (int)sanitize_text_field( $_POST['media_visibility'] ), 'media_visibility');
-}
-*/
-
+add_action( 'init', 'add_tags_to_pages');
 add_action( 'init', 'register_taxonomy_ensemble' );
 add_action( 'init', 'register_taxonomy_vhs_year' );
 add_action( 'init', 'register_taxonomy_media_visibility' );

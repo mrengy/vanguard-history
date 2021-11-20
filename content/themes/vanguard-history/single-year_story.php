@@ -18,9 +18,6 @@ get_header();
 
 			get_template_part( 'template-parts/content', get_post_type() );
 
-			?>
-			<h2>Media</h2>
-			<?php
 					//get taxonomies from the post
 					$this_ensemble = wp_get_post_terms(get_the_ID(),'ensemble')[0]->slug;
 					$this_year = wp_get_post_terms(get_the_ID(),'vhs_year')[0]->slug;
@@ -59,7 +56,10 @@ get_header();
 							// store thumbnails in array
 							$thumbnails[] = wp_get_attachment_link( get_the_ID(), 'thumbnail', true );
 
-					endwhile; endif; // end of media loop
+						endwhile;
+						//only show heading if there are items to show
+						echo('<h2>Media</h2>');
+					endif; // end of media loop
 
 					// Be kind; rewind
 					wp_reset_postdata();
