@@ -31,6 +31,19 @@ get_header();
 					$media_query_args = array(
 						'post_type'   => 'attachment',
 						'post_status' => 'any',
+						'tax_query' => array(
+								'relation' => 'AND',
+								array(
+									'taxonomy' => 'ensemble',
+									'field' => 'slug',
+									'terms' => 'vanguard-cadets-b-corps',
+								),
+								array(
+									'taxonomy' => 'year',
+									'field' => 'slug',
+									'terms' => '1991',
+								),
+						),
 						'posts_per_page' => -1,
 					);
 					$media_query = new WP_Query ($media_query_args);
@@ -42,7 +55,7 @@ get_header();
 
 					if ( $media_query->have_posts() ) : while ( $media_query->have_posts() ) : $media_query->the_post();
 							// store thumbnails in array
-							$thumbnails[] = wp_get_attachment_image( get_the_ID(), 'thumbnail' );
+							$thumbnails[] = wp_get_attachment_link( get_the_ID(), 'thumbnail', true );
 
 					endwhile; endif; // end of media loop
 
