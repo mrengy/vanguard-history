@@ -204,7 +204,7 @@ function register_taxonomy_ensemble() {
          'query_var'         => true,
          'rewrite'           => [ 'slug' => 'ensemble' ],
      );
-     register_taxonomy( 'ensemble', array( 'page','attachment', 'year-story' ), $args );
+     register_taxonomy( 'ensemble', array( 'page','attachment', 'year_story' ), $args );
 }
 function register_taxonomy_vhs_year() {
      $labels = array(
@@ -228,7 +228,7 @@ function register_taxonomy_vhs_year() {
          'query_var'         => true,
          'rewrite'           => [ 'slug' => 'vhs_year' ],
      );
-     register_taxonomy( 'vhs_year', array( 'page','attachment', 'year-story' ), $args );
+     register_taxonomy( 'vhs_year', array( 'page','attachment', 'year_story' ), $args );
 }
 add_action( 'init', 'register_taxonomy_ensemble' );
 add_action( 'init', 'register_taxonomy_vhs_year' );
