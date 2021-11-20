@@ -27,9 +27,11 @@ get_header();
 			?>
 			<h2>Media</h2>
 			<?php
-
+					// query media
 					$media_query_args = array(
-						'post_type'   => 'attachment'
+						'post_type'   => 'attachment',
+						'post_status' => 'any',
+						'posts_per_page' => -1,
 					);
 					$media_query = new WP_Query ($media_query_args);
 
@@ -37,13 +39,20 @@ get_header();
 					do_action( 'qm/debug', $media_query);
 
 					if ( $media_query->have_posts() ) : while ( $media_query->have_posts() ) : $media_query->the_post();
-
-						wp_get_attachment_image( get_the_ID(), 'thumbnail' );
-
+						foreach( $media_query->posts as $media){
+							$thumburls[] = $media->wp_get_attachment_image( get_the_ID(), 'thumbnail' );
+							//echo('<img src="'.$thumburl.'"/>"');
+							//return $thumburls;
+						}
 					endwhile; endif; // end of media loop
 
 					// Be kind; rewind
 					wp_reset_postdata();
+
+					//display media
+					foreach($thumburls as $thumburl){
+						echo('<img src="'.$thumburl.'"/>"');
+					}
 
 			// If comments are open or we have at least one comment, load up the comment template.
 			if ( comments_open() || get_comments_number() ) :
