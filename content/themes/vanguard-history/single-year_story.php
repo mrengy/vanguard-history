@@ -30,9 +30,9 @@ get_header();
 
 
 					//debug taxonomies
-					$this_ensemble_obj = wp_get_post_terms(get_the_ID(),'ensemble');
-					$this_ensemble = $this_ensemble_obj[0]->slug;
-					do_action('qm/debug',$this_ensemble_obj);
+					$this_ensemble = wp_get_post_terms(get_the_ID(),'ensemble')[0]->slug;
+
+					//debug
 					do_action('qm/debug',$this_ensemble);
 
 					// query media
