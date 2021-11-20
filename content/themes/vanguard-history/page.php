@@ -23,6 +23,9 @@ get_header();
 
 			get_template_part( 'template-parts/content', 'page' );
 
+			$post_terms = wp_get_post_terms(get_the_ID(),'post_tag');
+			//do_action('qm/debug', $post_terms);
+
 			// If comments are open or we have at least one comment, load up the comment template.
 			if ( comments_open() || get_comments_number() ) :
 				comments_template();
