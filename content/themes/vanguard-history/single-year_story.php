@@ -38,20 +38,20 @@ get_header();
 					//log to query monitor
 					do_action( 'qm/debug', $media_query);
 
+					$thumbnails = array();
+
 					if ( $media_query->have_posts() ) : while ( $media_query->have_posts() ) : $media_query->the_post();
-						foreach( $media_query->posts as $media){
-							$thumburls[] = $media->wp_get_attachment_image( get_the_ID(), 'thumbnail' );
-							//echo('<img src="'.$thumburl.'"/>"');
-							//return $thumburls;
-						}
+							// store thumbnails in array
+							$thumbnails[] = wp_get_attachment_image( get_the_ID(), 'thumbnail' );
+
 					endwhile; endif; // end of media loop
 
 					// Be kind; rewind
 					wp_reset_postdata();
 
 					//display media
-					foreach($thumburls as $thumburl){
-						echo('<img src="'.$thumburl.'"/>"');
+					foreach($thumbnails as $thumbnail){
+						echo($thumbnail);
 					}
 
 			// If comments are open or we have at least one comment, load up the comment template.
