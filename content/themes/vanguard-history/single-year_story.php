@@ -18,22 +18,12 @@ get_header();
 
 			get_template_part( 'template-parts/content', get_post_type() );
 
-			the_post_navigation(
-				array(
-					'prev_text' => '<span class="nav-subtitle">' . esc_html__( 'Previous:', 'vanguard-history' ) . '</span> <span class="nav-title">%title</span>',
-					'next_text' => '<span class="nav-subtitle">' . esc_html__( 'Next:', 'vanguard-history' ) . '</span> <span class="nav-title">%title</span>',
-				)
-			);
 			?>
 			<h2>Media</h2>
 			<?php
-
-
-					//debug taxonomies
+					//get taxonomies from the post
 					$this_ensemble = wp_get_post_terms(get_the_ID(),'ensemble')[0]->slug;
-
-					//debug
-					do_action('qm/debug',$this_ensemble);
+					$this_year = wp_get_post_terms(get_the_ID(),'vhs_year')[0]->slug;
 
 					// query media
 					$media_query_args = array(
@@ -50,7 +40,7 @@ get_header();
 								array(
 									'taxonomy' => 'vhs_year',
 									'field' => 'slug',
-									'terms' => '1991',
+									'terms' => $this_year,
 								),
 								array(
 									'taxonomy' => 'media_visibility',
@@ -62,9 +52,6 @@ get_header();
 						'posts_per_page' => -1,
 					);
 					$media_query = new WP_Query ($media_query_args);
-
-					//log to query monitor
-					do_action( 'qm/debug', $media_query);
 
 					$thumbnails = array();
 
@@ -81,6 +68,13 @@ get_header();
 					foreach($thumbnails as $thumbnail){
 						echo($thumbnail);
 					}
+
+			the_post_navigation(
+				array(
+					'prev_text' => '<span class="nav-subtitle">' . esc_html__( 'Previous:', 'vanguard-history' ) . '</span> <span class="nav-title">%title</span>',
+					'next_text' => '<span class="nav-subtitle">' . esc_html__( 'Next:', 'vanguard-history' ) . '</span> <span class="nav-title">%title</span>',
+				)
+			);
 
 			// If comments are open or we have at least one comment, load up the comment template.
 			if ( comments_open() || get_comments_number() ) :
