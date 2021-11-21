@@ -15,7 +15,7 @@
     "wpackagist-plugin/media-library-assistant": "*",
     "wpackagist-plugin/restrict-media-library-access": "*",
     "wpackagist-plugin/user-role-editor": "*",
-    "wpackagist-plugin/wp-file-upload": "*"
+    "wpackagist-plugin/restricted-site-access": "*"
   },
   "require-dev": {
     "wpackagist-plugin/debug-bar": "*",
