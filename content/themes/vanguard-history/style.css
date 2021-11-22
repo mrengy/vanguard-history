@@ -890,6 +890,7 @@ ol {
 ul li,
 ol li {
   line-height: 1.5rem;
+  margin-right: 1rem;
 }
 ul ul,
 ul ol,

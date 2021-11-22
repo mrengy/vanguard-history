@@ -65,9 +65,15 @@ get_header();
 					wp_reset_postdata();
 
 					//display media
-					foreach($thumbnails as $thumbnail){
-						echo($thumbnail);
-					}
+					?>
+					<div id="media-container" class= "ui grid">
+					<?php
+						foreach($thumbnails as $thumbnail){
+							echo($thumbnail);
+						}
+					?>
+					</div>
+					<?php
 
 			the_post_navigation(
 				array(
