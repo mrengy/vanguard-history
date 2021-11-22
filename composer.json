@@ -11,10 +11,9 @@
     "wpackagist-plugin/wp-retina-2x": "*",
     "wpackagist-plugin/broken-link-checker": "*",
     "wpackagist-plugin/jetpack": "*",
-    "wpackagist-plugin/members": "*",
+    "wpackagist-plugin/advanced-custom-fields": "*",
     "wpackagist-plugin/media-library-assistant": "*",
     "wpackagist-plugin/restrict-media-library-access": "*",
-    "wpackagist-plugin/user-role-editor": "*",
     "wpackagist-plugin/restricted-site-access": "*"
   },
   "require-dev": {
