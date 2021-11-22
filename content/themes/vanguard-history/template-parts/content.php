@@ -29,7 +29,23 @@
 		<?php endif; ?>
 	</header><!-- .entry-header -->
 
-	<?php vanguard_history_post_thumbnail(); ?>
+	<?php
+
+		vanguard_history_post_thumbnail();
+
+		//only show year story video on single year story pages
+		if(is_single()){
+			$year_story_video = get_field('year_story_video');
+
+			if(isset($year_story_video)){
+				echo(
+					'<div id ="year story video">'.
+					$year_story_video.
+					'</div>'
+				);
+			}
+		}
+	?>
 
 	<div class="entry-content">
 		<?php
