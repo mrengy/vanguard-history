@@ -2,7 +2,7 @@ Documenting the history of the Santa Clara Vanguard through stories
 
 Uses composer for dependency (plugin) management, per [mrengy: WordPress Starter](https://github.com/mrengy/wordpress-starter).
 
-Uses [Sass](https://sass-lang.com) for pre-processing CSS.
+Uses [Composer](https://getcomposer.org/) for managing dependencies (WordPress Core and plugins) and [Sass](https://sass-lang.com) for pre-processing CSS.
 
 # To install locally
 Clone this repo
