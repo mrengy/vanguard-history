@@ -121,6 +121,8 @@ if ( ! function_exists( 'vanguard_history_post_thumbnail' ) ) :
 	 */
 	function vanguard_history_post_thumbnail() {
 		if ( post_password_required() || ! has_post_thumbnail() ) {
+			//debug
+			do_action('qm/debug','skipped out of vanguard_history_post_thumbnail(). has_post_thumbnail() = {conditional_post_thumbnail}', ['conditional_post_thumbnail' => has_post_thumbnail()]);
 			return;
 		}
 

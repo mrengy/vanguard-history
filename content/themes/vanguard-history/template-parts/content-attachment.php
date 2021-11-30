@@ -32,22 +32,21 @@
 	<?php vanguard_history_post_thumbnail(); ?>
 
 	<div class="entry-content">
-		<!-- this is where the_content() is called in content-attachment.php -->
+		<a class="post-thumbnail" href="<?php the_permalink(); ?>" aria-hidden="true" tabindex="-1">
+					<?php
+							the_post_thumbnail(
+									'large',
+									array(
+											'alt' => the_title_attribute(
+													array(
+															'echo' => false,
+													)
+											),
+									)
+							);
+					?>
+			</a>
 		<?php
-		the_content(
-			sprintf(
-				wp_kses(
-					// translators: %s: Name of current post. Only visible to screen readers
-					__( 'Continue reading<span class="screen-reader-text"> "%s"</span>', 'vanguard-history' ),
-					array(
-						'span' => array(
-							'class' => array(),
-						),
-					)
-				),
-				wp_kses_post( get_the_title() )
-			)
-		);
 		//debug
 		$this_content = get_the_content();
 		do_action('qm/debug',$this_content);
