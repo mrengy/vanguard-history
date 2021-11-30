@@ -29,8 +29,6 @@
 		<?php endif; ?>
 	</header><!-- .entry-header -->
 
-	<?php vanguard_history_post_thumbnail(); ?>
-
 	<div class="entry-content">
 		<!-- this is where the_content() is called in content-attachment.php -->
 		<?php
