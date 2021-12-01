@@ -13,7 +13,7 @@
 	<header class="entry-header">
 		<?php
 		if ( is_singular() ) :
-			the_title( '<h1 class="entry-title">', '</h1>' );
+			//the_title( '<h1 class="entry-title">', '</h1>' );
 		else :
 			the_title( '<h2 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
 		endif;
@@ -30,27 +30,30 @@
 	</header><!-- .entry-header -->
 
 	<div class="entry-content">
-		<!-- this is where the_content() is called in content-attachment.php -->
 		<?php
-		the_content(
-			sprintf(
-				wp_kses(
-					// translators: %s: Name of current post. Only visible to screen readers
-					__( 'Continue reading<span class="screen-reader-text"> "%s"</span>', 'vanguard-history' ),
-					array(
-						'span' => array(
-							'class' => array(),
-						),
-					)
-				),
-				wp_kses_post( get_the_title() )
-			)
-		);
+		$attachment_id = get_the_ID();
+		// If this attachment is an Image, show the large size
+		if ( wp_attachment_is_image( $attachment_id ) ) {
+		    $attachment_image = wp_get_attachment_image($attachment_id, '', '', array('class' => 'post-thumbnail', 'size' => 'large', 'alt' => the_title_attribute(array('post'=>$attachment_id,'echo'=>0)) ) );
+		    echo $attachment_image;
+		    echo '<div class="caption">' . get_the_excerpt() . '</div>';
+		} else {
+			the_content(
+				sprintf(
+					wp_kses(
+						// translators: %s: Name of current post. Only visible to screen readers
+						__( 'Continue reading<span class="screen-reader-text"> "%s"</span>', 'vanguard-history' ),
+						array(
+							'span' => array(
+								'class' => array(),
+							),
+						)
+					),
+					wp_kses_post( get_the_title() )
+				)
+			);
+		}
 		
-		//debug
-		$this_content = get_the_content();
-		do_action('qm/debug',$this_content);
-
 		wp_link_pages(
 			array(
 				'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'vanguard-history' ),
