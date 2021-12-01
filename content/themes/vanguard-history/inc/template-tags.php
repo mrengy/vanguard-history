@@ -120,31 +120,11 @@ if ( ! function_exists( 'vanguard_history_post_thumbnail' ) ) :
 	 * element when on single views.
 	 */
 	function vanguard_history_post_thumbnail() {
-		if ( post_password_required() || ! has_post_thumbnail() ) {
-			//debug
-			do_action('qm/debug','skipped out of vanguard_history_post_thumbnail(). has_post_thumbnail() = {conditional_post_thumbnail}', ['conditional_post_thumbnail' => has_post_thumbnail()]);
+		if ( post_password_required() || is_attachment() || ! has_post_thumbnail() ) {
 			return;
 		}
 
-		if ( is_attachment() ):
-			?>
-
-			<a class="post-thumbnail" href="<?php the_permalink(); ?>" aria-hidden="true" tabindex="-1">
-            <?php
-                the_post_thumbnail(
-                    'large',
-                    array(
-                        'alt' => the_title_attribute(
-                            array(
-                                'echo' => false,
-                            )
-                        ),
-                    )
-                );
-            ?>
-        </a>
-
-		<?php elseif ( is_singular() ) :
+		if ( is_singular() ) :
 			?>
 
 			<div class="post-thumbnail">
