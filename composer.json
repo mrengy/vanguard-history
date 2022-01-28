@@ -1,6 +1,6 @@
 {
-  "name": "mrengy/wordpress-starter",
-  "description": "WordPress Starter Repository",
+  "name": "mrengy/vanguard-history",
+  "description": "Vanguard Music & Performing Arts History Site",
 
   "require": {
     "johnpbloch/wordpress": "5.8.*",
