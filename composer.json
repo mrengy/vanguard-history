@@ -5,7 +5,6 @@
   "require": {
     "johnpbloch/wordpress": "5.8.*",
     "wpackagist-plugin/akismet": "*",
-    "wpackagist-plugin/ewww-image-optimizer": "*",
     "wpackagist-plugin/fix-image-rotation": "*",
     "wpackagist-plugin/show-current-template": "*",
     "wpackagist-plugin/wp-retina-2x": "*",
@@ -13,12 +12,10 @@
     "wpackagist-plugin/jetpack": "*",
     "wpackagist-plugin/advanced-custom-fields": "*",
     "wpackagist-plugin/media-library-assistant": "*",
-    "wpackagist-plugin/restrict-media-library-access": "*",
+    "wpackagist-plugin/duplicator": "*",
     "wpackagist-plugin/restricted-site-access": "*"
   },
   "require-dev": {
-    "wpackagist-plugin/debug-bar": "*",
-    "wpackagist-plugin/debug-bar-console": "*",
     "wpackagist-plugin/query-monitor": "*",
     "wpackagist-plugin/wordpress-importer": "*"
   },
