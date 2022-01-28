@@ -1,8 +1,8 @@
 Documenting the history of the Santa Clara Vanguard through stories
 
-Uses composer for dependency (plugin) management, per [mrengy: WordPress Starter](https://github.com/mrengy/wordpress-starter).
+Uses composer for dependency (plugin and WordPress Core) management, per [mrengy: WordPress Starter](https://github.com/mrengy/wordpress-starter).
 
-Uses [Composer](https://getcomposer.org/) for managing dependencies (WordPress Core and plugins) and [Sass](https://sass-lang.com) for pre-processing CSS.
+Uses [Sass](https://sass-lang.com) for pre-processing CSS.
 
 # Working locally
 
@@ -33,7 +33,7 @@ In command line tool, run "sass --watch ." which will check .scss files and comp
 (draft - to be built out)
 
 ## installing plugins
-Trying a new plugin? We want to ensure that team members are using the same plugins and that the live site gets the plugins you are using locally. So instead of installing plugins from WordPress Admin or adding the plugin files manually, add a line for the plugin to composer.json. Then run "composer update" to install it. (Note, this will update all plugins and potentially WordPress Core as well). If you don't need the plugin anymore, remove the line from composer.json and run "composer update" again. 
+Trying a new plugin? We want to ensure that team members are using the same plugins and that the live site gets the plugins you are using locally. So instead of installing plugins from WordPress Admin or adding the plugin files manually, add a line for the plugin to composer.json. Then run "composer update" to install it. (Note, this will update all plugins and potentially WordPress Core as well). If you don't need the plugin anymore, remove the line from composer.json and run "composer update" again.
 
 ## committing and pushing
 **(edits needed)...**
