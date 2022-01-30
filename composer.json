@@ -66,7 +66,7 @@
   },
   "scripts": {
     "post-install-cmd":[
-      "wp plugin activate gravityformscli && wp gf install --key=283af92393f339347c5e7f6aa889e0cc --activate"
+      "wp plugin activate gravityformscli && wp gf install --key=283af92393f339347c5e7f6aa889e0cc"
     ],
     "post-update-cmd": [
       "wp plugin activate gravityformscli && wp gf update --key=283af92393f339347c5e7f6aa889e0cc"
