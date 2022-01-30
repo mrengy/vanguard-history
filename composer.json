@@ -4,6 +4,7 @@
 
   "require": {
     "johnpbloch/wordpress": "5.8.*",
+    "wp-cli/wp-cli-bundle": "*",
     "wpackagist-plugin/akismet": "*",
     "wpackagist-plugin/fix-image-rotation": "*",
     "wpackagist-plugin/show-current-template": "*",
