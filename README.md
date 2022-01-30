@@ -9,7 +9,7 @@ Uses [Sass](https://sass-lang.com) for pre-processing CSS.
 ## Initial local installation
 **(draft - to be built out and tested)**
 
-Install dependencies: Composer, SASS, WP CLI **(edits needed)...**
+Install dependencies: Composer, SASS **(edits needed)...**
 
 Clone this repo to your local machine
 
