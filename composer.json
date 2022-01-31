@@ -14,8 +14,8 @@
     "wpackagist-plugin/advanced-custom-fields": "*",
     "wpackagist-plugin/media-library-assistant": "*",
     "wpackagist-plugin/duplicator": "*",
-    "wpackagist-plugin/gravityformscli": "*",
-    "wpackagist-plugin/restricted-site-access": "*"
+    "wpackagist-plugin/restricted-site-access": "*",
+    "wp-premium/gravityforms": "dev-master"
   },
   "require-dev": {
     "wpackagist-plugin/query-monitor": "*",
@@ -45,6 +45,12 @@
             "fancyguy/webroot-installer" : "1.0.0"
           }
         }
+      },
+      {
+        "type": "vcs",
+        "url": "https://github.com/wp-premium/gravityforms/tree/master",
+        "name": "gravityforms",
+        "type": "wordpress-plugin"
       }
   ],
   "autoload": {
@@ -63,13 +69,5 @@
     "webroot-dir"     : "wp",
     "webroot-package" : "wordpress",
     "wordpress-install-dir": "wp"
-  },
-  "scripts": {
-    "post-install-cmd":[
-      "wp plugin activate gravityformscli && wp gf install --key=283af92393f339347c5e7f6aa889e0cc"
-    ],
-    "post-update-cmd": [
-      "wp plugin activate gravityformscli && wp gf update --key=283af92393f339347c5e7f6aa889e0cc"
-    ]
   }
 }
