@@ -9,7 +9,13 @@ Uses [Sass](https://sass-lang.com) for pre-processing CSS.
 ## Initial local installation
 **(draft - to be built out and tested)**
 
-Install dependencies: Composer, SASS **(edits needed)...**
+### Install dependencies:
+
+For installation, you will need Composer **(edits needed)...**
+
+If you plan to make edits to theme CSS, you will need SASS **(edits needed)...**
+
+### Set up the site
 
 Clone this repo to your local machine
 
