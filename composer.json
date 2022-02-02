@@ -4,6 +4,7 @@
 
   "require": {
     "johnpbloch/wordpress": "5.8.*",
+    "wp-cli/wp-cli-bundle": "*",
     "wpackagist-plugin/akismet": "*",
     "wpackagist-plugin/fix-image-rotation": "*",
     "wpackagist-plugin/show-current-template": "*",
@@ -13,10 +14,8 @@
     "wpackagist-plugin/advanced-custom-fields": "*",
     "wpackagist-plugin/media-library-assistant": "*",
     "wpackagist-plugin/duplicator": "*",
-    "wpackagist-plugin/restricted-site-access": "*",
-    "wp-cli/wp-cli-bundle": "*",
     "wpackagist-plugin/gravityformscli": "*",
-    "wp-premium/gravityforms": "dev-master"
+    "wpackagist-plugin/restricted-site-access": "*"
   },
   "require-dev": {
     "wpackagist-plugin/query-monitor": "*",
@@ -46,10 +45,6 @@
             "fancyguy/webroot-installer" : "1.0.0"
           }
         }
-      },
-      {
-        "type": "vcs",
-        "url": "https://github.com/wp-premium/gravityforms"
       }
   ],
   "autoload": {
@@ -71,10 +66,10 @@
   },
   "scripts": {
     "post-install-cmd":[
-      "wp plugin activate gravityformscli && wp gf tool verify-checksums"
+      "wp plugin activate gravityformscli && wp gf install --key=283af92393f339347c5e7f6aa889e0cc"
     ],
-    "post-update-cmd":[
-      "wp plugin activate gravityformscli && wp gf tool verify-checksums"
+    "post-update-cmd": [
+      "wp plugin activate gravityformscli && wp gf update --key=283af92393f339347c5e7f6aa889e0cc"
     ]
   }
 }

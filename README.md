@@ -11,9 +11,7 @@ Uses [Sass](https://sass-lang.com) for pre-processing CSS.
 
 ### Install dependencies:
 
-For installation, you will need Composer **(edits needed)...**
-
-If you plan to make edits to theme CSS, you will need SASS **(edits needed)...**
+To set up the site, you will need to [install Composer on your local machine](https://getcomposer.org/doc/00-intro.md) **(edits needed)...**
 
 ### Set up the site
 
