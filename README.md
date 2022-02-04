@@ -2,7 +2,7 @@ Documenting the history of the Santa Clara Vanguard through stories
 
 Uses composer for dependency (plugin and WordPress Core) management, per [mrengy: WordPress Starter](https://github.com/mrengy/wordpress-starter).
 
-Uses [Sass](https://sass-lang.com) for pre-processing CSS.
+Uses [Sass](https://sass-lang.com) for pre-processing CSS, making the CSS more manageable and less repetitive.
 
 # Working locally
 
@@ -15,17 +15,17 @@ To set up the site, you will need to [install Composer on your local machine](ht
 
 ### Set up the site
 
-Clone this repo to your local machine
+Clone this repo to your local machine where you'd like to work on it. If you're using [MAMP](https://www.mamp.info), it may require you to install in a particular directory (for Mac OS, placing it under "Sites" is a best practice)
 
-In command line tool, navigate (cd) into the root of where the repo was installed
+In your command line tool, navigate into the root of where the repo was cloned.
 
-Run composer to install WordPress core and the plugins the site uses **(add instructions for installing locally)...**
+Run PHP and MySQL on your local machine using something like [MAMP](https://www.mamp.info). [Installing WordPress on MAMP](https://dvdhunter.trainerup.co/installing-wordpress-on-mamp/) has some guidance on the basics, but some details in that guide may differ **(edits needed)...**
 
-Run PHP and MySQL locally using something like [MAMP](https://www.mamp.info). [Installing WordPress on MAMP](https://dvdhunter.trainerup.co/installing-wordpress-on-mamp/) has some guidance on the basics, but some details below will differ **(edits needed)...**
+Create a local database using MAMP (see above). Note your database name, username, and password.
 
-Create a local database using MAMP (see above)
+[Run composer update](https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies) to install WordPress core and the plugins the site uses. Note that the syntax may vary depending on how you installed Composer - you may need to use either `composer update` or `php composer.phar update`.
 
-Navigate to the homepage of your local install in a web browser, to install WordPress **(edits needed: how to find URL)**
+Navigate to the homepage of your local install in a web browser, to install WordPress. [If using MAMP](https://documentation.mamp.info/en/MAMP-Mac/First-Steps/), the local URL is likely http://localhost:8888/vanguard-history .
 
 Export database and uploads directory from production, and import the exported files and database, correct URLs to point to your local install. **(edits needed: instructions for migrating database and files)**
 
