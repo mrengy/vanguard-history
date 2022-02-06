@@ -41,13 +41,13 @@ In command line tool, navigate into the active theme's directory.
 In command line tool, run "sass --watch ." which will check for any .scss files in the current directory and compile them into proper .css files. More in [SASS basics](https://sass-lang.com/guide#topic-1).
 
 ## installing plugins
-Trying a new plugin? We want to ensure that team members are using the same plugins and that the live site gets the plugins you are using locally. So instead of installing plugins from WordPress Admin or adding the plugin files manually, add a line for the plugin to composer.json. Then <a href="composer-update">run "composer update" to install it.</a> (Note, this will update all plugins and potentially WordPress Core as well). If you don't need the plugin anymore, remove the line from composer.json and run "composer update" again.
+Trying a new plugin? We want to ensure that team members are using the same plugins and that the live site gets the plugins you are using locally. So instead of installing plugins from WordPress Admin or adding the plugin files manually, add a line for the plugin to composer.json. Then <a href="#composer-update">run "composer update" to install it.</a> (Note, this will update all plugins and potentially WordPress Core as well). If you don't need the plugin anymore, remove the line from composer.json and run "composer update" again.
 
 ## To get updates from other team members
 
 Do this when you are coming back to work on the code after any time away. [Run "git pull"](https://docs.gitlab.com/ee/gitlab-basics/start-using-git.html#download-the-latest-changes-in-the-project) to update with the latest code from Github. `name of branch` is `vanguard-history`.
 
-<a href="composer-update">Run "composer update"</a> to update WordPress Core and your plugins to match what is specified in composer.json. This will update plugins that have new versions available, delete plugins removed from composer.json, and install plugins added to composer.json.
+<a href="#composer-update">Run "composer update"</a> to update WordPress Core and your plugins to match what is specified in composer.json. This will update plugins that have new versions available, delete plugins removed from composer.json, and install plugins added to composer.json.
 
 ## branching
 
@@ -59,4 +59,4 @@ After you've made local changes, commit them, one by one. When you've got a bunc
 
 
 # Site administration on servers
-[Connect to the server using SSH](https://wpengine.com/support/ssh-gateway/), and <a href="composer-update">run "composer update"</a> there to update WordPress Core and your plugins to match what is specified in composer.json. Depending on how Composer was installed on the server, you may need to run "php composer.phar update" instead. **(verify once we get host set up)...**
+[Connect to the server using SSH](https://wpengine.com/support/ssh-gateway/), and <a href="#composer-update">run "composer update"</a> there to update WordPress Core and your plugins to match what is specified in composer.json. Depending on how Composer was installed on the server, you may need to run "php composer.phar update" instead. **(verify once we get host set up)...**
