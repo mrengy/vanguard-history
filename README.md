@@ -7,7 +7,6 @@ Uses [Sass](https://sass-lang.com) for pre-processing CSS, making the CSS more m
 # Working locally
 
 ## Initial local installation
-**(draft - to be built out and tested)**
 
 ### Install dependencies:
 
