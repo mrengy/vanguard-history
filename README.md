@@ -17,7 +17,7 @@ To set up the site, you will need to [install Composer on your local machine](ht
 If you plan on making changes to any CSS, you will need to [install SASS on your local machine](https://sass-lang.com/install).
 
 
-### Set up the site
+### Set up the site on your local machine
 
 Clone this git repository to your local machine where you'd like to work on it. If you're using [MAMP](https://www.mamp.info), it may require you to install in a particular directory (for Mac OS, placing it under "Sites" is a best practice)
 
@@ -51,11 +51,10 @@ Do this when you are coming back to work on the code after any time away. [Run "
 
 ## branching
 
-There are many ways to use Git branches. For this, we will use an approach of <a href="https://gist.github.com/vlandham/3b2b79c40bc7353ae95a">feature branches and pull requests</a>. In that tutorial, replace "master" with "main".
+There are many ways to use Git branches. Here, we will use an approach of <a href="https://gist.github.com/vlandham/3b2b79c40bc7353ae95a">feature branches and pull requests</a>. In that tutorial, replace "master" with "main". For the most part, we will not be committing on the "main" branch, but on a branch specific to the feature or issue you are working on.
 
 ## committing and pushing
 After you've made local changes, commit them, one by one. When you've got a bunch to send back to Github , push them. See [these basics](https://docs.gitlab.com/ee/gitlab-basics/start-using-git.html#add-and-commit-local-changes) for details. (where that page says "GitLab", replace that mentally with "Github").
-
 
 
 # Site administration on servers
