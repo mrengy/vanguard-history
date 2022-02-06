@@ -28,7 +28,7 @@ Run PHP and MySQL on your local machine using something like [MAMP](https://www.
 Create a local database using MAMP (see above). Note your database name, username, and password.
 
 <a name="composer-update">
-Run</a> ["composer update"](https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies) to install WordPress core and the plugins the site uses. If you have already installed, this will update WordPress core and all plugins to their specified versions. Note that the syntax may vary depending on how you installed Composer - you may need to use either `composer update` or `php composer.phar update`.
+[Run composer update](https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies) to install WordPress core and the plugins the site uses. If you have already installed, this will update WordPress core and all plugins to their specified versions. Note that the syntax may vary depending on how you installed Composer - you may need to use either `composer update` or `php composer.phar update`.</a>
 
 Navigate to the homepage of your local install in a web browser, to install WordPress. [If using MAMP](https://documentation.mamp.info/en/MAMP-Mac/First-Steps/), the local URL is likely http://localhost:8888/vanguard-history .
 
