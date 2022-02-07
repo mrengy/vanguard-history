@@ -58,4 +58,4 @@ After you've made local changes, commit them, one by one. When you've got a bunc
 
 
 # Site administration on servers
-[Connect to the server using SSH](https://wpengine.com/support/ssh-gateway/), and <a href="#composer-update">run "composer update"</a> there to update WordPress Core and your plugins to match what is specified in composer.json. Depending on how Composer was installed on the server, you may need to run "php composer.phar update" instead. **(verify once we get host set up)...**
+[Connect to the server using SSH](https://wpengine.com/support/ssh-gateway/), and <a href="#composer-update">run "php composer.phar update"</a> there to update WordPress Core and your plugins to match what is specified in composer.json.
