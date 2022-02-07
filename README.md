@@ -1,4 +1,4 @@
-Documenting the history of the Santa Clara Vanguard through stories
+Documenting the history of the Santa Clara Vanguard through stories. Will be launched at [history.scvanguard.org](https://history.scvanguard.org) (not yet live).
 
 Uses composer for dependency (plugin and WordPress Core) management, per [mrengy: WordPress Starter](https://github.com/mrengy/wordpress-starter).
 
