@@ -67,10 +67,10 @@
   },
   "scripts": {
     "post-install-cmd":[
-      "wp plugin activate gravityformscli --path=`wp` && wp gf install --key=283af92393f339347c5e7f6aa889e0cc --path=`wp`"
+      "wp plugin activate gravityformscli --path=wp && wp gf install --key=283af92393f339347c5e7f6aa889e0cc --path=wp"
     ],
     "post-update-cmd": [
-      "wp plugin activate gravityformscli --path=`wp` && wp gf update --key=283af92393f339347c5e7f6aa889e0cc --path=`wp`"
+      "wp plugin activate gravityformscli --path=wp && wp gf update --key=283af92393f339347c5e7f6aa889e0cc --path=wp"
     ]
   }
 }
