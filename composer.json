@@ -30,7 +30,7 @@
       {
         "type"    : "package",
         "package" : {
-          "name"    : "wordpress",
+          "name"    : "wordpress/wordpress",
           "type"    : "webroot",
           "version" : "5.8.2",
           "dist"    : {
