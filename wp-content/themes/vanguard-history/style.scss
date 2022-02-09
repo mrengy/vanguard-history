@@ -1,0 +1,10 @@
+//***** importing other files *****//
+
+// base
+@use 'css/var' as *;
+@use 'css/base' as *;
+@use 'css/typography' as *;
+
+// layouts
+@use 'css/container' as *;
+@use 'css/grid' as *;
