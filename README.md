@@ -19,6 +19,8 @@ If you plan on making changes to any CSS, you will need to [install SASS on your
 
 ### Set up the site on your local machine
 
+install wordpress locally or use Local **(edits needed)**
+
 Clone this git repository to your local machine where you'd like to work on it. If you're using [MAMP](https://www.mamp.info), it may require you to install in a particular directory (for Mac OS, placing it under "Sites" is a best practice)
 
 In your command line tool, navigate into the root of where the repo was cloned.
