@@ -34,8 +34,7 @@
   "config"      : {
       "vendor-dir": "content/vendor",
       "allow-plugins":{
-        "composer/installers": true,
-        "johnpbloch/wordpress-core-installer": true
+        "composer/installers": true
       }
   },
   "scripts": {
