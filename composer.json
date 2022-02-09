@@ -3,8 +3,6 @@
   "description": "Vanguard Music & Performing Arts History Site",
 
   "require": {
-    "johnpbloch/wordpress-core-installer": "^2.0",
-    "johnpbloch/wordpress": "5.8.*",
     "wp-cli/wp-cli-bundle": "*",
     "wpackagist-plugin/akismet": "*",
     "wpackagist-plugin/fix-image-rotation": "*",
@@ -26,26 +24,6 @@
       {
           "type":"composer",
           "url":"https://wpackagist.org"
-      },
-      {
-        "type"    : "package",
-        "package" : {
-          "name"    : "wordpress/wordpress",
-          "type"    : "webroot",
-          "version" : "5.8.2",
-          "dist"    : {
-            "url"  : "https://github.com/WordPress/WordPress/archive/5.8.2.zip",
-            "type" : "zip"
-          },
-          "source" : {
-            "url"       : "https://github.com/WordPress/WordPress",
-            "type"      : "git",
-            "reference" : "5.8.2"
-          },
-          "require" : {
-            "fancyguy/webroot-installer" : "1.0.0"
-          }
-        }
       }
   ],
   "autoload": {
@@ -56,18 +34,8 @@
   "config"      : {
       "vendor-dir": "content/vendor",
       "allow-plugins":{
-        "composer/installers": true,
-        "johnpbloch/wordpress-core-installer": true
+        "composer/installers": true
       }
-  },
-  "extra" : {
-    "installer-paths": {
-      "content/plugins/{$name}/": ["type:wordpress-plugin"],
-      "content/themes/{$name}/": ["type:wordpress-theme"]
-    },
-    "webroot-dir"     : "wp",
-    "webroot-package" : "wordpress",
-    "wordpress-install-dir": "wp"
   },
   "scripts": {
     "post-install-cmd":[

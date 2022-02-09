@@ -7,19 +7,18 @@
 # Modified by Mike Eng
 # -----------------------------------------------------------------
 
-# ignore everything in the root except the "content" directory and starter files.
+# ignore everything in the root except the "wp-content" directory and starter files.
 /*
-!content/
+!wp-content/
 !composer.json
 !wp-config-sample.php
-!index.php
 
 # ignore everything in the "content" directory, except:
 # "mu-plugins" directory
 # "themes" directory
-content/*
-!content/mu-plugins/
-!content/themes/
+wp-content/*
+!wp-content/mu-plugins/
+!wp-content/themes/
 
 # ignore specific themes
 wp-content/themes/twenty*/

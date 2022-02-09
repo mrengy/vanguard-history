@@ -31,19 +31,6 @@ define('WPLANG', '');
  * Custom WordPress Install Path
  */
 
-# Sets the site's admin location and the site's location, respectively
-
-define( 'WP_SITEURL', 'https://www.yourhost.io/wp' );
-define( 'WP_HOME', 'https://www.yourhost.io' );
-
-
-# Sets the content location, related to what's defined on composer.json file
-define( 'WP_CONTENT_DIR', dirname( __FILE__ ) . '/content' );
-define( 'WP_CONTENT_URL', WP_HOME . '/content');
-
-# Sets the plugins location, related to what's defined on composer.json file
-define( 'WP_PLUGIN_URL',  WP_CONTENT_URL . '/plugins' );
-
 # Disables the embebeded editor
 /*
 define( 'DISALLOW_FILE_EDIT', true);
