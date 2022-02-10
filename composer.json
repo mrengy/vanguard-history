@@ -8,17 +8,13 @@
     "wpackagist-plugin/fix-image-rotation": "*",
     "wpackagist-plugin/show-current-template": "*",
     "wpackagist-plugin/wp-retina-2x": "*",
-    "wpackagist-plugin/broken-link-checker": "*",
     "wpackagist-plugin/jetpack": "*",
     "wpackagist-plugin/advanced-custom-fields": "*",
     "wpackagist-plugin/media-library-assistant": "*",
-    "wpackagist-plugin/duplicator": "*",
-    "wpackagist-plugin/gravityformscli": "*",
-    "wpackagist-plugin/restricted-site-access": "*"
+    "wpackagist-plugin/gravityformscli": "*"
   },
   "require-dev": {
-    "wpackagist-plugin/query-monitor": "*",
-    "wpackagist-plugin/wordpress-importer": "*"
+    "wpackagist-plugin/query-monitor": "*"
   },
   "repositories":[
       {
