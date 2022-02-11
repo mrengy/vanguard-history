@@ -19,9 +19,13 @@ If you plan on making changes to any CSS, you will need to [install SASS on your
 
 ### Set up the site on your local machine
 
+#### Preparation
+
+Ensure you've got a working WordPress account for the production site, [history.scvanguard.org](https://history.scvanguard.org). Note in order to access the site, first you may need to enter a separate username / password of "historyscv" / "scv1967". If you don't have a WordPress account there, ask Mike Eng for one. It will make things easier if you use your same username, email address, and password on the local site you'll create next.
+
 #### Install WordPress locally
 
-Install [Local](https://localwp.com/). In Local, create a new site. Name it "Vanguard History". It's recommended to use the same username, email address, and password you have from the production site. In Local, click on "open site". The URL should be http://vanguard-history.local . If it differs, note what it is for the next step.
+Install [Local](https://localwp.com/) on your computer. In Local, create a new site. Name it "Vanguard History". It's recommended to use the same username, email address, and password you have from the production site. In Local, click on "open site". The URL should be http://vanguard-history.local . If it differs, note what it is for the next step.
 
 #### Connect to this Github repository the shared code
 
@@ -46,8 +50,6 @@ Activate all the plugins by [running]((https://developer.wordpress.org/cli/comma
 
 #### Migrate database and uploads from production to local
 
-Ensure you've got a working WordPress account for the production site, [history.scvanguard.org](https://history.scvanguard.org). Note in order to access the site, first you may need to enter a separate username / password of "historyscv" / "scv1967". If you don't have a WordPress account there, ask Mike Eng for one. It will make things easier if you use your same username, email address, and password on the local site you'll create next.
-
 Get a backup of the production site from the [All in One WordPress Migration Export page](https://history.scvanguard.org/wp-admin/admin.php?page=ai1wm_export).Note the following settings:
 
 1. Use: "Find _ replace with _ in the database" to change the url from the production url to your local url. Find: "https://history.scvanguard.org". Replace with: "http://vanguard-history.local".
@@ -60,7 +62,6 @@ Get a backup of the production site from the [All in One WordPress Migration Exp
 1. Export to "file"
 
 Download the file to your computer. it should end in ".wpress".
-
 
 
 
