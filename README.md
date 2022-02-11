@@ -42,9 +42,13 @@ In Local, right-click your site and select “Open Site Shell” in the menu tha
 
 ![screenshot showing "open site shell" option](https://localwp.com/wp-content/uploads/2020/10/local-open-site-shell.png.webp)
 
-A command line prompt should open. [Get the URL to clone this repository, but don't follow all the steps to clone it](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository).
+A command line prompt should open. Rather than cloning this repository like usual, you'll need to do something a little different to track this repository since the Local directory already has files in it. In that command line prompt, enter:
 
-In that command line prompt that opened in the previous step. Rather than cloning like usual, you'll need to do something a little different to track this repository since the Local directory already has files in it. **(edits needed)**
+`git init .
+git remote add origin git@github.com:mrengy/vanguard-history.git
+git fetch origin
+git checkout main
+`
 
 <a name="composer-update" href="https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies">Run `composer update`</a> to install WordPress core and the plugins the site uses. If you have already installed, this will update WordPress core and all plugins to their specified versions. Note that the syntax may vary depending on how you installed Composer - you may need to use either `composer update` or `php composer.phar update`.
 
