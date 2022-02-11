@@ -21,6 +21,10 @@ If you plan on making changes to any CSS, you will need to [install SASS on your
 
 install wordpress locally or use Local **(edits needed)**
 
+Ensure you've got a working WordPress account for [history.scvanguard.org](https://history.scvanguard.org). If you don't, ask Mike Eng. It will make things easier if you use your same username, email address, and password on the local site you'll create next.
+
+Install [Local app](https://localwp.com/). In Local, create a new site. Name it "Vanguard History". 
+
 Clone this git repository to your local machine where you'd like to work on it. If you're using [MAMP](https://www.mamp.info), it may require you to install in a particular directory (for Mac OS, placing it under "Sites" is a best practice)
 
 In your command line tool, navigate into the root of where the repo was cloned.
