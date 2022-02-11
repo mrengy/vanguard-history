@@ -42,7 +42,7 @@ git checkout main
 
 <a name="composer-update" href="https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies">Run `composer install`</a> in the command line to install the plugins the site uses. Note that the syntax may vary depending on how you installed Composer - you may need to use either `composer install` or `php composer.phar install`.
 
-Activate all the plugins by [running `wp plugin activate --all`](https://developer.wordpress.org/cli/commands/plugin/activate/) in the command line or opening WordPress Admin for your local installation, logging in, and navigating to the `plugins` page.
+Activate all the plugins by [running]((https://developer.wordpress.org/cli/commands/plugin/activate/) `wp plugin activate --all` in the command line or opening WordPress Admin for your local installation, logging in, and navigating to the `plugins` page.
 
 #### Migrate database and uploads from production to local
 
