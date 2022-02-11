@@ -29,7 +29,7 @@ Install [Local](https://localwp.com/) on your computer. In Local, create a new s
 
 #### Connect to this Github repository the shared code
 
-In Local, right-click your site and select “Open Site Shell” in the menu that appears.
+<a name="command-line">In Local, right-click your site and select “Open Site Shell” in the menu that appears.</a>
 
 ![screenshot showing "open site shell" option](https://localwp.com/wp-content/uploads/2020/10/local-open-site-shell.png.webp)
 
@@ -63,20 +63,24 @@ Get a backup of the production site from the [All in One WordPress Migration Exp
 
 Download the file to your computer. it should end in ".wpress".
 
+[Open the WordPress Admin from Local](https://localwp.com/help-docs/local-features/using-one-click-admin/) and go to "All in one WP Migration" > "Import". If "All in one WP Migration" does not appear in the Admin menu, you need to activate the "All in one WP Migration" plugin.
 
+Select or drag your .wpress file into the indicated area on the import page and follow the prompts. Note that the prompt to save your permalinks structure after import completes is important for getting the import to work. You just need to follow the link to the permalinks settings page and click "save changes" without changing any other settings.
+
+That's it! View your local site to ensure it matches what's on the production site.
 
 ## To make edits to CSS
 
-In command line tool, navigate into the active theme's directory.
+In the command line prompt (here's <a href="#command-line">how to open it</a>), navigate into the active theme's directory. If using Bash (likely the default), use the command `cd wp-content/themes/vanguard-history`.
 
-In command line tool, run "sass --watch ." which will check for any .scss files in the current directory and compile them into proper .css files. More in [SASS basics](https://sass-lang.com/guide#topic-1).
+Then, run `sass --watch .` which will check for any .scss files in the current directory and compile them into proper .css files. More in [SASS basics](https://sass-lang.com/guide#topic-1).
 
 ## installing plugins
 Trying a new plugin? We want to ensure that team members are using the same plugins and that the live site gets the plugins you are using locally. So instead of installing plugins from WordPress Admin or adding the plugin files manually, add a line for the plugin to composer.json. Then <a href="#composer-update">run "composer update" to install it.</a> (Note, this will update all plugins and potentially WordPress Core as well). If you don't need the plugin anymore, remove the line from composer.json and run "composer update" again.
 
 ## To get updates from other team members
 
-Do this when you are coming back to work on the code after any time away. [Run "git pull"](https://docs.gitlab.com/ee/gitlab-basics/start-using-git.html#download-the-latest-changes-in-the-project) to update with the latest code from Github. `name of branch` is `vanguard-history`.
+Do this when you are coming back to work on the code after any time away. In <a href="#command-line">the command line</a>, [Run "git pull"](https://docs.gitlab.com/ee/gitlab-basics/start-using-git.html#download-the-latest-changes-in-the-project) to update with the latest code from Github. `name of branch` is `vanguard-history`.
 
 <a href="#composer-update">Run "composer update"</a> to update WordPress Core and your plugins to match what is specified in composer.json. This will update plugins that have new versions available, delete plugins removed from composer.json, and install plugins added to composer.json.
 
