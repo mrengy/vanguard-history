@@ -28,21 +28,23 @@ Install [Local app](https://localwp.com/). In Local, create a new site. Name it 
 Get a backup of the production site from the [All in One WordPress Migration Export page](https://history.scvanguard.org/wp-admin/admin.php?page=ai1wm_export).Note the following settings:
 
 1. Use: "Find _ replace with _ in the database" to change the url from the production url to your local url. Find: "https://history.scvanguard.org". Replace with: "http://vanguard-history.local".
-2. Under "advanced options", check only the following:
+1. Under "advanced options", check only the following:
     1. "Do not export spam comments"
     1. "Do not export post revisions"
     1. "Do not export themes (files)"
     1. "Do not export plugins (files)"
     1. "Do not replace email domain (sql)"
+1. Export to "file"
 
+Download the file to your computer. it should end in ".wpress". Note its location for later.
 
-Clone this git repository to your local machine where you'd like to work on it. If you're using [MAMP](https://www.mamp.info), it may require you to install in a particular directory (for Mac OS, placing it under "Sites" is a best practice)
+In Local, right-click your site and select “Open Site Shell” in the menu that appears.
 
-In your command line tool, navigate into the root of where the repo was cloned.
+![screenshot showing "open site shell" option](https://localwp.com/wp-content/uploads/2020/10/local-open-site-shell.png.webp)
 
-Run PHP and MySQL on your local machine using something like [MAMP](https://www.mamp.info). [Installing WordPress on MAMP](https://dvdhunter.trainerup.co/installing-wordpress-on-mamp/) has some guidance on the basics, but some details in that guide may differ **(edits needed)...**
+A command line prompt should open. [Get the URL to clone this repository, but don't follow all the steps to clone it](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository).
 
-Create a local database using MAMP (see above). Note your database name, username, and password.
+In that command line prompt that opened in the previous step. Rather than cloning like usual, you'll need to do something a little different to track this repository since the Local directory already has files in it. **(edits needed)**
 
 <a name="composer-update" href="https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies">Run `composer update`</a> to install WordPress core and the plugins the site uses. If you have already installed, this will update WordPress core and all plugins to their specified versions. Note that the syntax may vary depending on how you installed Composer - you may need to use either `composer update` or `php composer.phar update`.
 
