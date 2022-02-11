@@ -11,6 +11,7 @@
     "wpackagist-plugin/jetpack": "*",
     "wpackagist-plugin/advanced-custom-fields": "*",
     "wpackagist-plugin/media-library-assistant": "*",
+    "wpackagist-plugin/duplicator": "*",
     "wpackagist-plugin/gravityformscli": "*"
   },
   "require-dev": {
