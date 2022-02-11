@@ -19,11 +19,34 @@ If you plan on making changes to any CSS, you will need to [install SASS on your
 
 ### Set up the site on your local machine
 
-install wordpress locally or use Local **(edits needed)**
+#### Install WordPress locally
+
+Install [Local](https://localwp.com/). In Local, create a new site. Name it "Vanguard History". It's recommended to use the same username, email address, and password you have from the production site. In Local, click on "open site". The URL should be http://vanguard-history.local . If it differs, note what it is for the next step.
+
+#### Connect to this Github repository the shared code
+
+In Local, right-click your site and select “Open Site Shell” in the menu that appears.
+
+![screenshot showing "open site shell" option](https://localwp.com/wp-content/uploads/2020/10/local-open-site-shell.png.webp)
+
+A command line prompt should open. Rather than cloning this repository like one usually would, you'll need to do something a little different to track this repository since the Local directory already has files in it. In that command line prompt, enter:
+
+<pre>
+git init .
+git remote add origin git@github.com:mrengy/vanguard-history.git
+git fetch origin
+git checkout main
+</pre>
+
+#### Install plugins
+
+<a name="composer-update" href="https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies">Run `composer install`</a> in the command line to install the plugins the site uses. Note that the syntax may vary depending on how you installed Composer - you may need to use either `composer install` or `php composer.phar install`.
+
+Activate all the plugins by [running `wp plugin activate --all`](https://developer.wordpress.org/cli/commands/plugin/activate/) in the command line or opening WordPress Admin for your local installation, logging in, and navigating to the `plugins` page.
+
+#### Migrate database and uploads from production to local
 
 Ensure you've got a working WordPress account for the production site, [history.scvanguard.org](https://history.scvanguard.org). Note in order to access the site, first you may need to enter a separate username / password of "historyscv" / "scv1967". If you don't have a WordPress account there, ask Mike Eng for one. It will make things easier if you use your same username, email address, and password on the local site you'll create next.
-
-Install [Local app](https://localwp.com/). In Local, create a new site. Name it "Vanguard History". It's recommended to use the same username, email address, and password you have from the production site. In Local, click on "open site". The URL should be http://vanguard-history.local . If it differs, note what it is for the next step.
 
 Get a backup of the production site from the [All in One WordPress Migration Export page](https://history.scvanguard.org/wp-admin/admin.php?page=ai1wm_export).Note the following settings:
 
@@ -36,26 +59,9 @@ Get a backup of the production site from the [All in One WordPress Migration Exp
     1. "Do not replace email domain (sql)"
 1. Export to "file"
 
-Download the file to your computer. it should end in ".wpress". Note its location for later.
+Download the file to your computer. it should end in ".wpress".
 
-In Local, right-click your site and select “Open Site Shell” in the menu that appears.
 
-![screenshot showing "open site shell" option](https://localwp.com/wp-content/uploads/2020/10/local-open-site-shell.png.webp)
-
-A command line prompt should open. Rather than cloning this repository like usual, you'll need to do something a little different to track this repository since the Local directory already has files in it. In that command line prompt, enter:
-
-<pre>
-git init .
-git remote add origin git@github.com:mrengy/vanguard-history.git
-git fetch origin
-git checkout main
-</pre>
-
-<a name="composer-update" href="https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies">Run `composer update`</a> to install the plugins the site uses. If you have already installed, this will update WordPress core and all plugins to their specified versions. Note that the syntax may vary depending on how you installed Composer - you may need to use either `composer update` or `php composer.phar update`.
-
-Navigate to the homepage of your local install in a web browser, to install WordPress. [If using MAMP](https://documentation.mamp.info/en/MAMP-Mac/First-Steps/), the local URL is likely http://localhost:8888/vanguard-history .
-
-Export database and uploads directory from production, and import the exported files and database, correct URLs to point to your local install. **(edits needed: instructions for migrating database and files)**
 
 
 ## To make edits to CSS
