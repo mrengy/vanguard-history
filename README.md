@@ -56,7 +56,7 @@ git checkout main
 
 <a name="composer-update" href="https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies">Run `composer install`</a> in the command line to install the plugins the site uses. Note that the syntax may vary depending on how you installed Composer - you may need to use either `composer install` or `php composer.phar install`.
 
-If in the command line, you see `Could not open input file`, followed by an error, there was likely a problem with the script that installs the GravityForms plugin. You can try to install it by using one of the two following methods:
+If in the command line, you see an error involving `gravityformscli` or `wp gf`, there was likely a problem with the script that installs the GravityForms plugin. You can try to install it by using one of the two following methods:
 
 1. In the command line, run `wp gf install --key=283af92393f339347c5e7f6aa889e0cc`
 1. Upload a .zip file in the WordPress admin
