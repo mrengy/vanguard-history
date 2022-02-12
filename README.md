@@ -1,16 +1,24 @@
 Documenting the history of the Santa Clara Vanguard through stories. Will be launched at [history.scvanguard.org](https://history.scvanguard.org) (not yet live).
 
-Uses composer for dependency (plugin and WordPress Core) management, per [mrengy: WordPress Starter](https://github.com/mrengy/wordpress-starter).
+Uses [Composer](https://getcomposer.org/) for dependency (plugin) management.
 
 Uses [Sass](https://sass-lang.com) for pre-processing CSS, making the CSS more manageable and less repetitive.
+
+# What is the source of truth for which things?
+
+We will work on code (which plugins to use, theme code, and mu-plugin code) **locally first**, then push it to Github, review it, and eventually deploy it to the live website. **Github is the source of truth for code**.
+
+**The production website is the source of truth for content** (database and uploaded files). We can periodically pull database content down from production to local installs to match what is in production. If you make database changes locally that the production site should have, **also make those changes on the production site**.
 
 # Working locally
 
 ## Initial local installation
 
-### Install dependencies:
+### Install dependencies
 
-This may go without saying, but you will need [Git on your local machine](https://docs.gitlab.com/ee/gitlab-basics/start-using-git.html#install-git) to collaborate with others on the code.
+This may go without saying, but in order to collaborate on the code, you will need Git on your local machine. If you plan to use the command line for Git, you can [install it this way](https://docs.gitlab.com/ee/gitlab-basics/start-using-git.html#install-git). If you want a simplified interface, you can use the [Github Desktop app](https://desktop.github.com/).
+
+You will also need [a Github account](https://github.com/join) to contribute code.
 
 To set up the site, you will need to [install Composer on your local machine](https://getcomposer.org/doc/00-intro.md).
 
@@ -24,6 +32,8 @@ If you plan on making changes to any CSS, you will need to [install SASS on your
 Ensure you've got a working WordPress account for the production site, [history.scvanguard.org](https://history.scvanguard.org). Note in order to access the site, first you may need to enter a separate username / password of "historyscv" / "scv1967". If you don't have a WordPress account there, ask Mike Eng for one. It will make things easier if you use your same username, email address, and password on the local site you'll create next.
 
 #### Install WordPress locally
+
+This is written using [Local](https://localwp.com/). There are other ways to install and run WordPress locally, but this is a very simple one. If you use a different approach, you can skip ahead.
 
 Install [Local](https://localwp.com/) on your computer. In Local, create a new site. Name it "Vanguard History". It's recommended to use the same username, email address, and password you have from the production site. In Local, click on "open site". The URL should be http://vanguard-history.local . If it differs, note what it is for the next step.
 
@@ -73,24 +83,27 @@ That's it! View your local site to ensure it matches what's on the production si
 
 In the command line prompt (here's <a href="#command-line">how to open it</a>), navigate into the active theme's directory. If using Bash (likely the default), use the command `cd wp-content/themes/vanguard-history`.
 
-Then, run `sass --watch .` which will check for any .scss files in the current directory and compile them into proper .css files. More in [SASS basics](https://sass-lang.com/guide#topic-1).
+Then, run `sass --watch .` which will check for any .scss files in the current directory and compile them into proper .css files. More in [SASS basics](https://sass-lang.com/guide#topic-1). You'll want to edit only the .scss files when editing the CSS. SASS will do the rest.
 
-## installing plugins
-Trying a new plugin? We want to ensure that team members are using the same plugins and that the live site gets the plugins you are using locally. So instead of installing plugins from WordPress Admin or adding the plugin files manually, add a line for the plugin to composer.json. Then <a href="#composer-update">run "composer update" to install it.</a> (Note, this will update all plugins and potentially WordPress Core as well). If you don't need the plugin anymore, remove the line from composer.json and run "composer update" again.
+## Changing plugins
+
+Trying a new plugin? We want to ensure that team members are using the same plugins and that the live site gets the plugins you are using locally. So instead of installing plugins from WordPress Admin or adding the plugin files manually, add a line for the plugin to composer.json. Then run `composer update` (or `php composer.phar update`, depending on how you installed [Composer](https://getcomposer.org/)) in the command line to install it. (Note, this will update all plugins). If you don't need the plugin anymore and are confident that nothing else depends on it, delete the line from composer.json and run `composer update` again.
 
 ## To get updates from other team members
 
-Do this when you are coming back to work on the code after any time away. In <a href="#command-line">the command line</a>, [Run "git pull"](https://docs.gitlab.com/ee/gitlab-basics/start-using-git.html#download-the-latest-changes-in-the-project) to update with the latest code from Github. `name of branch` is `vanguard-history`.
+Do this when you are coming back to work on the code after any time away. In <a href="#command-line">the command line</a>, [Run "git pull"](https://docs.gitlab.com/ee/gitlab-basics/start-using-git.html#download-the-latest-changes-in-the-project) to update with the latest code from Github.
 
-<a href="#composer-update">Run "composer update"</a> to update WordPress Core and your plugins to match what is specified in composer.json. This will update plugins that have new versions available, delete plugins removed from composer.json, and install plugins added to composer.json.
+<a href="#composer-update">Run `composer update`</a> to update plugins to match what is specified in composer.json. This will update plugins that have new versions available, delete plugins removed from composer.json, and install new plugins added to composer.json.
 
 ## branching
 
-There are many ways to use Git branches. Here, we will use an approach of <a href="https://gist.github.com/vlandham/3b2b79c40bc7353ae95a">feature branches and pull requests</a>. In that tutorial, replace "master" with "main". For the most part, we will not be committing on the "main" branch, but on a branch specific to the feature or issue you are working on.
+There are many ways to use Git branches. Here, we will use an approach of <a href="https://gist.github.com/vlandham/3b2b79c40bc7353ae95a">feature branches and pull requests</a>. In that tutorial, replace "master" with "main". For the most part, we will not be committing directly on the "main" branch, but on a branch specific to the feature or issue you are working on.
 
 ## committing and pushing
-After you've made local changes, commit them, one by one. When you've got a bunch to send back to Github , push them. See [these basics](https://docs.gitlab.com/ee/gitlab-basics/start-using-git.html#add-and-commit-local-changes) for details. (where that page says "GitLab", replace that mentally with "Github").
+After you've made local changes, commit them, one by one. When you've got a bunch to send back to Github, `push` them. See [these basics](https://docs.gitlab.com/ee/gitlab-basics/start-using-git.html#add-and-commit-local-changes) for details. (where that page says "GitLab", replace that mentally with "Github"). Then [create a pull request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request) from your branch when it's ready to be merged back into the main branch.
 
 
 # Site administration on servers
-[Connect to the server using SSH](https://wpengine.com/support/ssh-gateway/), and <a href="#composer-update">run "php composer.phar update"</a> there to update WordPress Core and your plugins to match what is specified in composer.json.
+The site administrator (Mike Eng at the moment) will merge pull requests and deploy changes to the server (production).
+
+After deploying to production, the administrator will [connect to the server using SSH](https://wpengine.com/support/ssh-gateway/), and run `php composer.phar update` there to update plugins to match what is specified in composer.json.
