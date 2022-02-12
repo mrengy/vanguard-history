@@ -6,7 +6,7 @@ Uses [Sass](https://sass-lang.com) for pre-processing CSS, making the CSS more m
 
 # What is the source of truth for which things?
 
-We will work on code (which plugins to use, theme code, and mu-plugin code) **locally first**, then push it to Github, review it, and eventually deploy it to the live website. **Github is the source of truth for code**.
+We will work on code (which plugins to use, theme code, and mu-plugin code) **locally first**, then push it to Github, review it, and eventually deploy it to the production website. **Github is the source of truth for code**.
 
 **The production website is the source of truth for content** (database and uploaded files). We can periodically pull database content down from production to local installs to match what is in production. If you make database changes locally that the production site should have, **also make those changes on the production site**.
 
@@ -56,7 +56,7 @@ git checkout main
 
 <a name="composer-update" href="https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies">Run `composer install`</a> in the command line to install the plugins the site uses. Note that the syntax may vary depending on how you installed Composer - you may need to use either `composer install` or `php composer.phar install`.
 
-Activate all the plugins by [running]((https://developer.wordpress.org/cli/commands/plugin/activate/) `wp plugin activate --all` in the command line or opening WordPress Admin for your local installation, logging in, and navigating to the `plugins` page.
+Activate all the plugins by [running](https://developer.wordpress.org/cli/commands/plugin/activate/) `wp plugin activate --all` in the command line or opening WordPress Admin for your local installation, logging in, and navigating to the `plugins` page.
 
 #### Migrate database and uploads from production to local
 
