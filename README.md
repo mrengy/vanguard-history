@@ -110,6 +110,6 @@ After you've made local changes, commit them, one by one. When you've got a bunc
 
 
 # Site administration on servers
-The site administrator (Mike Eng at the moment) will merge pull requests and deploy changes to the server (production).
+The site administrator (Mike Eng) will merge pull requests and deploy changes to the server (production).
 
 After deploying to production, the administrator will [connect to the server using SSH](https://wpengine.com/support/ssh-gateway/), and run `php composer.phar update` there to update plugins to match what is specified in composer.json.
