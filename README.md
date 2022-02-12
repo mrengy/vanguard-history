@@ -60,7 +60,7 @@ Activate all the plugins by [running](https://developer.wordpress.org/cli/comman
 
 #### Migrate database and uploads from production to local
 
-Get a backup of the production site from the [All in One WordPress Migration Export page](https://history.scvanguard.org/wp-admin/admin.php?page=ai1wm_export).Note the following settings:
+Get a backup of the production site from the [All in One WordPress Migration Export page](https://history.scvanguard.org/wp-admin/admin.php?page=ai1wm_export). Note the following settings:
 
 1. Use: "Find _ replace with _ in the database" to change the url from the production url to your local url. Find: "https://history.scvanguard.org". Replace with: "http://vanguard-history.local".
 1. Under "advanced options", check only the following:
