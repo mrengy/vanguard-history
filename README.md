@@ -93,7 +93,7 @@ Trying a new plugin? We want to ensure that team members are using the same plug
 
 Do this when you are coming back to work on the code after any time away. In <a href="#command-line">the command line</a>, [Run "git pull"](https://docs.gitlab.com/ee/gitlab-basics/start-using-git.html#download-the-latest-changes-in-the-project) to update with the latest code from Github.
 
-<a href="#composer-update">Run `composer update`</a> to update plugins to match what is specified in composer.json. This will update plugins that have new versions available, delete plugins removed from composer.json, and install new plugins added to composer.json.
+Run `composer update` (or `php composer.phar update`) to update plugins to match what is specified in composer.json. This will update plugins that have new versions available, delete plugins removed from composer.json, and install new plugins added to composer.json.
 
 ## branching
 
