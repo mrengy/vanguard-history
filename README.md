@@ -59,7 +59,11 @@ git checkout main
 If in the command line, you see `Could not open input file`, followed by an error, there was likely a problem with the script that installs the GravityForms plugin. You can try to install it by using one of the two following methods:
 
 1. In the command line, run `wp gf install --key=283af92393f339347c5e7f6aa889e0cc`
-1. Download [the .zip file of the GravityForms plugin from Basecamp](https://3.basecamp.com/5067876/buckets/22032865/uploads/4596222685), [Open the WordPress Admin from Local](https://localwp.com/help-docs/local-features/using-one-click-admin/), log in and go to the Plugins page, and [upload the gravityforms.zip file from the WordPress admin](https://www.wonderplugin.com/wordpress-tutorials/how-to-manually-install-a-wordpress-plugin-zip-file/).
+1. Upload a .zip file in the WordPress admin
+    1. Download [the .zip file of the GravityForms plugin from Basecamp](https://3.basecamp.com/5067876/buckets/22032865/uploads/4596222685)
+    1. [Open the WordPress Admin from Local](https://localwp.com/help-docs/local-features/using-one-click-admin/)
+    1. log in and go to the Plugins page
+    1. [upload the gravityforms.zip file from the WordPress admin](https://www.wonderplugin.com/wordpress-tutorials/how-to-manually-install-a-wordpress-plugin-zip-file/).
 
 Activate all the plugins by [running](https://developer.wordpress.org/cli/commands/plugin/activate/) `wp plugin activate --all` in the command line or opening WordPress Admin for your local installation, logging in, and navigating to the `plugins` page.
 
