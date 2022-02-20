@@ -106,7 +106,7 @@ Run `composer update` (or `php composer.phar update`) to update plugins to match
 
 ## branching
 
-There are many ways to use Git branches. Here, we will use an approach of <a href="https://gist.github.com/vlandham/3b2b79c40bc7353ae95a">feature branches and pull requests</a>. In that tutorial, replace "master" with "main". For the most part, we will not be committing directly on the "main" branch, but on a branch specific to the feature or issue you are working on. New branches will be created automatically when a GitHub issue is assigned. You probably won’t need to create your own branches, but you can if you like. 
+There are many ways to use Git branches. Here, we will use an approach of <a href="https://gist.github.com/vlandham/3b2b79c40bc7353ae95a">feature branches and pull requests</a>. In that tutorial, replace "master" with "main". For the most part, we will not be committing directly on the "main" branch, but on a branch specific to the feature or issue you are working on. New branches will be created automatically when a GitHub issue is assigned. You probably won’t need to create your own branches, but you can if you like.
 
 ## committing and pushing
 
@@ -117,3 +117,6 @@ After you've made local changes, commit them, one by one. When you've got a bunc
 The site administrator (Mike Eng) will merge pull requests and deploy changes to the server (production).
 
 After deploying to production, the administrator will [connect to the server using SSH](https://wpengine.com/support/ssh-gateway/), and run `php composer.phar update` there to update plugins to match what is specified in composer.json.
+
+# Core team
+1. [Mike Eng](https://github.com/mrengy)
