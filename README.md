@@ -71,11 +71,12 @@ Activate all the plugins by [running](https://developer.wordpress.org/cli/comman
 
 Get a backup of the production site from the [All in One WordPress Migration Export page](https://history.scvanguard.org/wp-admin/admin.php?page=ai1wm_export). Note the following settings:
 
-1. Use: "Find _ replace with _ in the database" to change the url from the production url to your local url. Find: "https://history.scvanguard.org". Replace with: "http://vanguard-history.local".
+1. Use: "Find _ replace with _ in the database" to change the url from the production url to your local url. Find: "https://history.scvanguard.org". Replace with: "http://vanguard-history.local" (or whatever your local url is).
 1. Under "advanced options", check only the following:
     1. "Do not export spam comments"
     1. "Do not export post revisions"
     1. "Do not export themes (files)"
+    1. "Do not export must-use plugins (files)"
     1. "Do not export plugins (files)"
     1. "Do not replace email domain (sql)"
 1. Export to "file"
@@ -106,7 +107,7 @@ Run `composer update` (or `php composer.phar update`) to update plugins to match
 
 ## branching
 
-There are many ways to use Git branches. Here, we will use an approach of <a href="https://gist.github.com/vlandham/3b2b79c40bc7353ae95a">feature branches and pull requests</a>. In that tutorial, replace "master" with "main". For the most part, we will not be committing directly on the "main" branch, but on a branch specific to the feature or issue you are working on. New branches will be created automatically when a GitHub issue is assigned. You probably won’t need to create your own branches, but you can if you like. 
+There are many ways to use Git branches. Here, we will use an approach of <a href="https://gist.github.com/vlandham/3b2b79c40bc7353ae95a">feature branches and pull requests</a>. In that tutorial, replace "master" with "main". For the most part, we will not be committing directly on the "main" branch, but on a branch specific to the feature or issue you are working on. New branches will be created automatically when a GitHub issue is assigned. You probably won’t need to create your own branches, but you can if you like.
 
 ## committing and pushing
 
