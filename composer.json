@@ -35,7 +35,7 @@
       }
   },
   "scripts": {
-    "post-install-cmd":[
+    "pre-update-cmd":[
       "wp plugin activate --all && wp gf install --key=283af92393f339347c5e7f6aa889e0cc && wp plugin activate gravityforms"
     ],
     "post-update-cmd": [
