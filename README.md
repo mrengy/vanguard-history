@@ -87,6 +87,8 @@ Download the file to your computer. it should end in ".wpress".
 
 Select or drag your .wpress file into the indicated area on the import page and follow the prompts. Note that the prompt to save your permalinks structure after import completes is important for getting the import to work. You just need to follow the link to the permalinks settings page and click "save changes" without changing any other settings.
 
+When prompted to log in to WordPress Admin on your local site after importing the migration file, you will need to use your password from the production site. You might want to change your password on the local site later.
+
 That's it! View your local site to ensure it matches what's on the production site.
 
 ## To make edits to CSS
