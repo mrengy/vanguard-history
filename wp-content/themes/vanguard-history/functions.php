@@ -326,3 +326,14 @@ add_filter( 'wp_terms_checklist_args', 'media_visibility_radio_buttons' );
     );
 }
 add_action('init', 'vhs_custom_post_type');
+
+/**
+ * Upload form submissions to media library
+ */
+function form_to_media_library($entry){
+
+
+	do_action( 'qm/debug', $entry );
+}
+
+add_action( 'gform_after_submission_1', 'form_to_media_library', 10, 2 );
