@@ -333,47 +333,38 @@ add_action('init', 'vhs_custom_post_type');
 function form_to_media_library($entry){
 	// WordPress environment
   /*
-	require( dirname(__FILE__) . '/../../../wp-load.php' );
+	// $filename should be the path to a file in the upload directory.
+$filename = '/path/to/uploads/2013/03/filename.jpg';
 
-	$wordpress_upload_dir = wp_upload_dir();
-	// $wordpress_upload_dir['path'] is the full server path to wp-content/uploads/2017/05, for multisite works good as well
-	// $wordpress_upload_dir['url'] the absolute URL to the same folder, actually we do not need it, just to show the link to file
-	$i = 1; // number of tries when the file with the same name is already exists
+// The ID of the post this attachment is for.
+$parent_post_id = 37;
 
-	$vhs_uploaded_file = $entry[1];
-	$new_file_path = $wordpress_upload_dir['path'] . '/' . $vhs_uploaded_file['name'];
-	$new_file_mime = mime_content_type( $vhs_uploaded_file['tmp_name'] );
+// Check the type of file. We'll use this as the 'post_mime_type'.
+$filetype = wp_check_filetype( basename( $filename ), null );
 
-	if( $vhs_uploaded_file['size'] > wp_max_upload_size() )
-		die( 'It is too large than expected.' );
+// Get the path to the upload directory.
+$wp_upload_dir = wp_upload_dir();
 
-	if( !in_array( $new_file_mime, get_allowed_mime_types() ) )
-		die( 'WordPress doesn\'t allow this type of uploads.' );
+// Prepare an array of post data for the attachment.
+$attachment = array(
+    'guid'           => $wp_upload_dir['url'] . '/' . basename( $filename ),
+    'post_mime_type' => $filetype['type'],
+    'post_title'     => preg_replace( '/\.[^.]+$/', '', basename( $filename ) ),
+    'post_content'   => '',
+    'post_status'    => 'inherit'
+);
 
-	while( file_exists( $new_file_path ) ) {
-		$i++;
-		$new_file_path = $wordpress_upload_dir['path'] . '/' . $i . '_' . $vhs_uploaded_file['name'];
-	}
+// Insert the attachment.
+$attach_id = wp_insert_attachment( $attachment, $filename, $parent_post_id );
 
-	// looks like everything is OK
-	if( move_uploaded_file( $vhs_uploaded_file['tmp_name'], $new_file_path ) ) {
+// Make sure that this file is included, as wp_generate_attachment_metadata() depends on it.
+require_once( ABSPATH . 'wp-admin/includes/image.php' );
 
+// Generate the metadata for the attachment, and update the database record.
+$attach_data = wp_generate_attachment_metadata( $attach_id, $filename );
+wp_update_attachment_metadata( $attach_id, $attach_data );
 
-		$upload_id = wp_insert_attachment( array(
-			'guid'           => $new_file_path,
-			'post_mime_type' => $new_file_mime,
-			'post_title'     => preg_replace( '/\.[^.]+$/', '', $vhs_uploaded_file['name'] ),
-			'post_content'   => '',
-			'post_status'    => 'inherit'
-		), $new_file_path );
-
-		// wp_generate_attachment_metadata() won't work if you do not include this file
-		require_once( ABSPATH . 'wp-admin/includes/image.php' );
-
-		// Generate and save the attachment metas into the database
-		wp_update_attachment_metadata( $upload_id, wp_generate_attachment_metadata( $upload_id, $new_file_path ) );
-
-	}
+set_post_thumbnail( $parent_post_id, $attach_id );
 	*/
 
 	$upload_path = GFFormsModel::get_upload_path( $entry[ 'form_id' ] );
@@ -386,4 +377,5 @@ function form_to_media_library($entry){
 	do_action( 'qm/debug', $upload_url );
 }
 
+// targets the specific form by form ID of 1
 add_action( 'gform_after_submission_1', 'form_to_media_library', 10, 2 );
