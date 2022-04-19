@@ -366,13 +366,39 @@ wp_update_attachment_metadata( $attach_id, $attach_data );
 
 set_post_thumbnail( $parent_post_id, $attach_id );
 	*/
+	// from https://developer.wordpress.org/reference/functions/wp_insert_attachment/#div-comment-948
 
+	// set filename
 	$upload_path = GFFormsModel::get_upload_path( $entry[ 'form_id' ] );
   $upload_url = GFFormsModel::get_upload_url( $entry[ 'form_id' ] );
-
-  $filename = str_replace( $upload_url, $upload_path, $entry[ '1' ] );
-
+  $filename_verbose = str_replace( $upload_url, $upload_path, $entry[ '1' ] );
+	$filename = trim($filename_verbose, ' "[]\ ');
 	do_action( 'qm/debug', $filename );
+
+	// check the type of file. We'll use this as the 'post_mime_type'
+	$filetype = wp_check_filetype( basename( $filename ), null );
+
+	// Get the path to the upload directory.
+	$wp_upload_dir = wp_upload_dir();
+
+	// Prepare an array of post data for the attachment.
+	$attachment = array(
+	    'guid'           => $wp_upload_dir['url'] . '/' . basename( $filename ),
+	    'post_mime_type' => $filetype['type'],
+	    'post_title'     => preg_replace( '/\.[^.]+$/', '', basename( $filename ) ),
+	    'post_content'   => '',
+	    'post_status'    => 'inherit'
+	);
+
+	// Insert the attachment.
+	$attach_id = wp_insert_attachment( $attachment, $filename );
+
+	// Make sure that this file is included, as wp_generate_attachment_metadata() depends on it.
+	require_once( ABSPATH . 'wp-admin/includes/image.php' );
+
+	// Generate the metadata for the attachment, and update the database record.
+	$attach_data = wp_generate_attachment_metadata( $attach_id, $filename );
+	wp_update_attachment_metadata( $attach_id, $attach_data );
 }
 
 // targets the specific form by form ID of 1
