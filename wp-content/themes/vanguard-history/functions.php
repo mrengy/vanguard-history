@@ -373,8 +373,6 @@ set_post_thumbnail( $parent_post_id, $attach_id );
   $filename = str_replace( $upload_url, $upload_path, $entry[ '1' ] );
 
 	do_action( 'qm/debug', $filename );
-	do_action( 'qm/debug', $upload_path );
-	do_action( 'qm/debug', $upload_url );
 }
 
 // targets the specific form by form ID of 1
