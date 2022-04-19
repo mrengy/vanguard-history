@@ -13,7 +13,8 @@
     "wpackagist-plugin/media-library-assistant": "*",
     "wpackagist-plugin/all-in-one-wp-migration": "*",
     "wpackagist-plugin/gravityformscli": "*",
-    "wpackagist-plugin/restricted-site-access": "*"
+    "wpackagist-plugin/restricted-site-access": "*",
+    "wpackagist-plugin/login-with-google": "*"
   },
   "require-dev": {
     "wpackagist-plugin/query-monitor": "*"
