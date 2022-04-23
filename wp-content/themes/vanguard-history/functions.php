@@ -331,14 +331,14 @@ add_action('init', 'vhs_custom_post_type');
  * Upload form submissions to media library
  */
 function form_to_media_library($entry){
-	// from https://developer.wordpress.org/reference/functions/wp_insert_attachment/#div-comment-948
+	// from https://developer.wordpress.org/reference/functions/wp_insert_attachment/#div-comment-948 and https://wordpress.stackexchange.com/a/405055/7313
 
 	// set filename
 	$upload_path = GFFormsModel::get_upload_path( $entry[ 'form_id' ] );
   $upload_url = GFFormsModel::get_upload_url( $entry[ 'form_id' ] );
   $filename_verbose = str_replace( $upload_url, $upload_path, $entry[ '1' ] );
-	$filename = trim($filename_verbose, ' "[]\ ');
-
+	$filename_backslashes = trim( $filename_verbose, ' "[] ');
+	$filename = stripslashes( $filename_backslashes);
 
 	// check the type of file. We'll use this as the 'post_mime_type'
 	$filetype = wp_check_filetype( basename( $filename ), null );
@@ -355,17 +355,19 @@ function form_to_media_library($entry){
 	    'post_status'    => 'inherit'
 	);
 
+	// create a file in the upload folder
+	$upload = wp_upload_bits( basename ( $filename ), null,  file_get_contents( $filename ));
+
 	// Insert the attachment.
-	$attach_id = wp_insert_attachment( $attachment, $filename );
+	$attach_id = wp_insert_attachment( $attachment, $upload['file'] );
 
 	// Make sure that this file is included, as wp_generate_attachment_metadata() depends on it.
 	require_once( ABSPATH . 'wp-admin/includes/image.php' );
 
 	// Generate the metadata for the attachment, and update the database record.
-	$attach_data = wp_generate_attachment_metadata( $attach_id, $filename );
+	$attach_data = wp_generate_attachment_metadata( $attach_id, $upload['file'] );
 	wp_update_attachment_metadata( $attach_id, $attach_data );
 
-	do_action( 'qm/debug', $attach_id );
 }
 
 // targets the specific form by form ID of 1
