@@ -338,7 +338,7 @@ function form_to_media_library($entry){
   $upload_url = GFFormsModel::get_upload_url( $entry[ 'form_id' ] );
   $filename_verbose = str_replace( $upload_url, $upload_path, $entry[ '1' ] );
 	$filename_backslashes = trim( $filename_verbose, ' "[] ');
-	$filename = stripslashes( $filename_backslashes);
+	$filename = stripslashes( $filename_backslashes );
 
 	// check the type of file. We'll use this as the 'post_mime_type'
 	$filetype = wp_check_filetype( basename( $filename ), null );
