@@ -364,10 +364,16 @@ function form_to_media_library($entry){
 	// Make sure that this file is included, as wp_generate_attachment_metadata() depends on it.
 	require_once( ABSPATH . 'wp-admin/includes/image.php' );
 
-	// Generate the metadata for the attachment, and update the database record.
+	// Generate alternate sizes for the attachment, and update the database record.
 	$attach_data = wp_generate_attachment_metadata( $attach_id, $upload['file'] );
 	wp_update_attachment_metadata( $attach_id, $attach_data );
 
+	// set custom field values
+	do_action( 'qm/debug', rgar( $entry, '6') );
+
+	// not updating
+	update_post_meta( $attach_id, 'ensemble', rgar( $entry, '6') );
+	//do_action( 'qm/debug', $attach_id );
 }
 
 // targets the specific form by form ID of 1
