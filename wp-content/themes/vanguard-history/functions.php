@@ -369,11 +369,19 @@ function form_to_media_library($entry){
 	wp_update_attachment_metadata( $attach_id, $attach_data );
 
 	// set custom field values
+	do_action( 'qm/debug', rgar( $entry, '4') );
 	do_action( 'qm/debug', rgar( $entry, '6') );
 
-	// not updating
-	update_post_meta( $attach_id, 'ensemble', rgar( $entry, '6') );
-	//do_action( 'qm/debug', $attach_id );
+	// not updating. seems meta key (year / enasemble) is not correct
+	$this_result = update_post_meta( $attach_id, 'Year', rgar( $entry, '4') );
+	//show the return value of trying to update year
+	do_action( 'qm/debug', $this_result );
+
+	//update ensemble with no debug
+	update_post_meta( $attach_id, 'Ensemble', rgar( $entry, '6') );
+
+	//$this_post_meta = get_post_meta($attach_id);
+	//do_action( 'qm/debug',$this_post_meta);
 }
 
 // targets the specific form by form ID of 1
