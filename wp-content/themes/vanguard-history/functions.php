@@ -338,6 +338,32 @@ function register_taxonomy_creator_name(){
 	register_taxonomy( 'creator_name', 'attachment', $args );
 }
 
+function register_taxonomy_copyright(){
+	$labels = array(
+			'name'              => _x( 'Copyright Status', 'taxonomy general name' ),
+			'singular_name'     => _x( 'Copyright Status', 'taxonomy singular name' ),
+			'search_items'      => __( 'Search Copyright Statuses' ),
+			'all_items'         => __( 'All Copyright Statuses' ),
+			'parent_item'       => __( 'Parent Copyright Status' ),
+			'parent_item_colon' => __( 'Parent Copyright Status:' ),
+			'edit_item'         => __( 'Edit Copyright Status' ),
+			'update_item'       => __( 'Update Copyright Status' ),
+			'add_new_item'      => __( 'Add New Copyright Status' ),
+			'new_item_name'     => __( 'New Copyright Status Name' ),
+			'menu_name'         => __( 'Copyright Status' ),
+	);
+	$args   = array(
+			'hierarchical'      => false, // make it hierarchical (like categories)
+			'labels'            => $labels,
+			'show_ui'           => true,
+			'show_admin_column' => true,
+			'query_var'         => true,
+			'create_posts'      => false,
+			'rewrite'           => [ 'slug' => 'copyright' ],
+	);
+	register_taxonomy( 'copyright', 'attachment', $args );
+}
+
 function add_tags_to_pages() {
 register_taxonomy_for_object_type( 'post_tag', 'page' );
 }
@@ -349,6 +375,7 @@ add_action( 'init', 'register_taxonomy_media_visibility' );
 add_action( 'init', 'register_taxonomy_submitter_name' );
 add_action( 'init', 'register_taxonomy_submitter_email' );
 add_action( 'init', 'register_taxonomy_creator_name' );
+add_action( 'init', 'register_taxonomy_copyright' );
 //add_action('add_meta_boxes', 'add_custom_meta_box_media_visibility');
 //add_action('add_attachment', 'save_media_visibility'); //originally was add_action('save_post',...)
 
@@ -459,7 +486,7 @@ function form_to_media_library($entry){
 		wp_set_object_terms( $attach_id, rgar( $entry, '8'), 'caption' );
 		*/
 		wp_set_object_terms( $attach_id, rgar( $entry, '11'), 'creator_name' );
-		//need to set copyright info
+		wp_set_object_terms( $attach_id, rgar( $entry, '7'), 'copyright' );
 
 }
 
