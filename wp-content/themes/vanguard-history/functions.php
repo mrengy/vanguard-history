@@ -239,7 +239,7 @@ function register_taxonomy_media_visibility(){
 			'name'              => _x( 'Visibility Status', 'taxonomy general name' ),
 			'singular_name'     => _x( 'Visibility Status', 'taxonomy singular name' ),
 			'search_items'      => __( 'Search Visibility Statuses' ),
-			'all_items'         => __( 'All Visitbility Statuses' ),
+			'all_items'         => __( 'All Visibility Statuses' ),
 			'parent_item'       => __( 'Parent Visibility Status' ),
 			'parent_item_colon' => __( 'Parent Visibility Status:' ),
 			'edit_item'         => __( 'Edit Visibility Status' ),
@@ -260,6 +260,84 @@ function register_taxonomy_media_visibility(){
 	register_taxonomy( 'media_visibility', 'attachment', $args );
 }
 
+function register_taxonomy_submitter_name(){
+	$labels = array(
+			'name'              => _x( 'Submitter Name', 'taxonomy general name' ),
+			'singular_name'     => _x( 'Submitter Name', 'taxonomy singular name' ),
+			'search_items'      => __( 'Search Submitter Names' ),
+			'all_items'         => __( 'All Submitter Names' ),
+			'parent_item'       => __( 'Parent Submitter Name' ),
+			'parent_item_colon' => __( 'Parent Submitter Name:' ),
+			'edit_item'         => __( 'Edit Submitter Name' ),
+			'update_item'       => __( 'Update Submitter Name' ),
+			'add_new_item'      => __( 'Add New Submitter Name' ),
+			'new_item_name'     => __( 'New Submitter Name Value' ),
+			'menu_name'         => __( 'Submitter Name' ),
+	);
+	$args   = array(
+			'hierarchical'      => false, // make it hierarchical (like categories)
+			'labels'            => $labels,
+			'show_ui'           => true,
+			'show_admin_column' => true,
+			'query_var'         => true,
+			'create_posts'      => false,
+			'rewrite'           => [ 'slug' => 'submitter_name' ],
+	);
+	register_taxonomy( 'submitter_name', 'attachment', $args );
+}
+
+function register_taxonomy_submitter_email(){
+	$labels = array(
+			'name'              => _x( 'Submitter Email', 'taxonomy general name' ),
+			'singular_name'     => _x( 'Submitter Email', 'taxonomy singular name' ),
+			'search_items'      => __( 'Search Submitter Emails' ),
+			'all_items'         => __( 'All Submitter Emails' ),
+			'parent_item'       => __( 'Parent Submitter Email' ),
+			'parent_item_colon' => __( 'Parent Submitter Email:' ),
+			'edit_item'         => __( 'Edit Submitter Email' ),
+			'update_item'       => __( 'Update Submitter Email' ),
+			'add_new_item'      => __( 'Add New Submitter Email' ),
+			'new_item_name'     => __( 'New Submitter Email Name' ),
+			'menu_name'         => __( 'Submitter Email' ),
+	);
+	$args   = array(
+			'hierarchical'      => false, // make it hierarchical (like categories)
+			'labels'            => $labels,
+			'show_ui'           => true,
+			'show_admin_column' => true,
+			'query_var'         => true,
+			'create_posts'      => false,
+			'rewrite'           => [ 'slug' => 'submitter_email' ],
+	);
+	register_taxonomy( 'submitter_email', 'attachment', $args );
+}
+
+function register_taxonomy_creator_name(){
+	$labels = array(
+			'name'              => _x( 'Creator Name', 'taxonomy general name' ),
+			'singular_name'     => _x( 'Creator Name', 'taxonomy singular name' ),
+			'search_items'      => __( 'Search Creator Names' ),
+			'all_items'         => __( 'All Creator Names' ),
+			'parent_item'       => __( 'Parent Creator Name' ),
+			'parent_item_colon' => __( 'Parent Creator Name:' ),
+			'edit_item'         => __( 'Edit Creator Name' ),
+			'update_item'       => __( 'Update Creator Name' ),
+			'add_new_item'      => __( 'Add New Creator Name' ),
+			'new_item_name'     => __( 'New Creator Name Name' ),
+			'menu_name'         => __( 'Creator Name' ),
+	);
+	$args   = array(
+			'hierarchical'      => false, // make it hierarchical (like categories)
+			'labels'            => $labels,
+			'show_ui'           => true,
+			'show_admin_column' => true,
+			'query_var'         => true,
+			'create_posts'      => false,
+			'rewrite'           => [ 'slug' => 'creator_name' ],
+	);
+	register_taxonomy( 'creator_name', 'attachment', $args );
+}
+
 function add_tags_to_pages() {
 register_taxonomy_for_object_type( 'post_tag', 'page' );
 }
@@ -268,6 +346,9 @@ add_action( 'init', 'add_tags_to_pages');
 add_action( 'init', 'register_taxonomy_ensemble' );
 add_action( 'init', 'register_taxonomy_vhs_year' );
 add_action( 'init', 'register_taxonomy_media_visibility' );
+add_action( 'init', 'register_taxonomy_submitter_name' );
+add_action( 'init', 'register_taxonomy_submitter_email' );
+add_action( 'init', 'register_taxonomy_creator_name' );
 //add_action('add_meta_boxes', 'add_custom_meta_box_media_visibility');
 //add_action('add_attachment', 'save_media_visibility'); //originally was add_action('save_post',...)
 
