@@ -443,11 +443,11 @@ function form_to_media_library($entry){
 
 	// Get the path to the upload directory.
 	$wp_upload_dir = wp_upload_dir();
-  do_action( 'qm/debug', $entry[ '1' ] );
 
+	// build array of uploads
 	$all_files_string = trim ($entry[ '1' ], '[]');
 	$all_files = explode(",", $all_files_string);
-  do_action( 'qm/debug', $all_files);
+  //do_action( 'qm/debug', $all_files);
 	// start loop to process each uploaded file
 
 	foreach ($all_files as $this_file) {
