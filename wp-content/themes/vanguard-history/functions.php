@@ -441,6 +441,12 @@ add_action('init', 'vhs_custom_post_type');
 function form_to_media_library($entry){
 	// from https://developer.wordpress.org/reference/functions/wp_insert_attachment/#div-comment-948 and https://wordpress.stackexchange.com/a/405055/7313
 
+	// Get the path to the upload directory.
+	$wp_upload_dir = wp_upload_dir();
+  do_action( 'qm/debug', $entry[ '1' ] );
+
+// start loop
+
 	// set filename
 	$upload_path = GFFormsModel::get_upload_path( $entry[ 'form_id' ] );
   $upload_url = GFFormsModel::get_upload_url( $entry[ 'form_id' ] );
@@ -451,8 +457,7 @@ function form_to_media_library($entry){
 	// check the type of file. We'll use this as the 'post_mime_type'
 	$filetype = wp_check_filetype( basename( $filename ), null );
 
-	// Get the path to the upload directory.
-	$wp_upload_dir = wp_upload_dir();
+
 
 	// Prepare an array of post data for the attachment.
 	$attachment = array(
@@ -488,6 +493,8 @@ function form_to_media_library($entry){
 		// Note that the copyright info is saved as a "value" separate from the "label" shown to the user. The value is set when editing the form in GravityForms.
 		// do_action( 'qm/debug', rgar( $entry, '7') );
 		wp_set_object_terms( $attach_id, rgar( $entry, '7'), 'copyright' );
+
+// end loop
 
 }
 
