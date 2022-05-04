@@ -445,56 +445,62 @@ function form_to_media_library($entry){
 	$wp_upload_dir = wp_upload_dir();
   do_action( 'qm/debug', $entry[ '1' ] );
 
-// start loop
+	$all_files_string = trim ($entry[ '1' ], '[]');
+	$all_files = explode(",", $all_files_string);
+  do_action( 'qm/debug', $all_files);
+	// start loop to process each uploaded file
 
-	// set filename
-	$upload_path = GFFormsModel::get_upload_path( $entry[ 'form_id' ] );
-  $upload_url = GFFormsModel::get_upload_url( $entry[ 'form_id' ] );
-  $filename_verbose = str_replace( $upload_url, $upload_path, $entry[ '1' ] );
-	$filename_backslashes = trim( $filename_verbose, ' "[] ');
-	$filename = stripslashes( $filename_backslashes );
+	foreach ($all_files as $this_file) {
 
-	// check the type of file. We'll use this as the 'post_mime_type'
-	$filetype = wp_check_filetype( basename( $filename ), null );
+		// set filename
+		$upload_path = GFFormsModel::get_upload_path( $entry[ 'form_id' ] );
+	  $upload_url = GFFormsModel::get_upload_url( $entry[ 'form_id' ] );
+	  $filename_verbose = str_replace( $upload_url, $upload_path, $this_file );
+		$filename_backslashes = trim( $filename_verbose, ' " ');
+		$filename = stripslashes( $filename_backslashes );
+
+		// check the type of file. We'll use this as the 'post_mime_type'
+		$filetype = wp_check_filetype( basename( $filename ), null );
 
 
 
-	// Prepare an array of post data for the attachment.
-	$attachment = array(
-	    'guid'           => $wp_upload_dir['url'] . '/' . basename( $filename ),
-	    'post_mime_type' => $filetype['type'],
-	    'post_title'     => preg_replace( '/\.[^.]+$/', '', basename( $filename ) ),
-			//get caption from upload form field
-	    'post_excerpt'   => rgar( $entry, '8'),
-	    'post_content'   => '',
-	    'post_status'    => 'inherit'
-	);
+		// Prepare an array of post data for the attachment.
+		$attachment = array(
+		    'guid'           => $wp_upload_dir['url'] . '/' . basename( $filename ),
+		    'post_mime_type' => $filetype['type'],
+		    'post_title'     => preg_replace( '/\.[^.]+$/', '', basename( $filename ) ),
+				//get caption from upload form field
+		    'post_excerpt'   => rgar( $entry, '8'),
+		    'post_content'   => '',
+		    'post_status'    => 'inherit'
+		);
 
-	// create a file in the upload folder
-	$upload = wp_upload_bits( basename ( $filename ), null,  file_get_contents( $filename ));
+		// create a file in the upload folder
+		$upload = wp_upload_bits( basename ( $filename ), null,  file_get_contents( $filename ));
 
-	// Insert the attachment.
-	$attach_id = wp_insert_attachment( $attachment, $upload['file'] );
+		// Insert the attachment.
+		$attach_id = wp_insert_attachment( $attachment, $upload['file'] );
 
-	// Make sure that this file is included, as wp_generate_attachment_metadata() depends on it.
-	require_once( ABSPATH . 'wp-admin/includes/image.php' );
+		// Make sure that this file is included, as wp_generate_attachment_metadata() depends on it.
+		require_once( ABSPATH . 'wp-admin/includes/image.php' );
 
-	// Generate alternate sizes for the attachment, and update the database record.
-	$attach_data = wp_generate_attachment_metadata( $attach_id, $upload['file'] );
-	wp_update_attachment_metadata( $attach_id, $attach_data );
+		// Generate alternate sizes for the attachment, and update the database record.
+		$attach_data = wp_generate_attachment_metadata( $attach_id, $upload['file'] );
+		wp_update_attachment_metadata( $attach_id, $attach_data );
 
-	// set custom field values
-		wp_set_object_terms( $attach_id, rgar( $entry, '2'), 'submitter_name' );
-		wp_set_object_terms( $attach_id, rgar( $entry, '3'), 'submitter_email' );
-		wp_set_object_terms( $attach_id, rgar( $entry, '4'), 'vhs_year' );
-		wp_set_object_terms( $attach_id, rgar( $entry, '6'), 'ensemble' );
-		wp_set_object_terms( $attach_id, rgar( $entry, '11'), 'creator_name' );
+		// set custom field values
+			wp_set_object_terms( $attach_id, rgar( $entry, '2'), 'submitter_name' );
+			wp_set_object_terms( $attach_id, rgar( $entry, '3'), 'submitter_email' );
+			wp_set_object_terms( $attach_id, rgar( $entry, '4'), 'vhs_year' );
+			wp_set_object_terms( $attach_id, rgar( $entry, '6'), 'ensemble' );
+			wp_set_object_terms( $attach_id, rgar( $entry, '11'), 'creator_name' );
 
-		// Note that the copyright info is saved as a "value" separate from the "label" shown to the user. The value is set when editing the form in GravityForms.
-		// do_action( 'qm/debug', rgar( $entry, '7') );
-		wp_set_object_terms( $attach_id, rgar( $entry, '7'), 'copyright' );
+			// Note that the copyright info is saved as a "value" separate from the "label" shown to the user. The value is set when editing the form in GravityForms.
+			// do_action( 'qm/debug', rgar( $entry, '7') );
+			wp_set_object_terms( $attach_id, rgar( $entry, '7'), 'copyright' );
 
-// end loop
+	// end loop
+	}
 
 }
 
