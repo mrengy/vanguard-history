@@ -486,6 +486,9 @@ function form_to_media_library($entry){
 		wp_set_object_terms( $attach_id, rgar( $entry, '8'), 'caption' );
 		*/
 		wp_set_object_terms( $attach_id, rgar( $entry, '11'), 'creator_name' );
+
+		// Note that the copyright info is saved as a "value" separate from the "label" shown to the user. The value is set when editing the form in GravityForms.
+		// do_action( 'qm/debug', rgar( $entry, '7') );
 		wp_set_object_terms( $attach_id, rgar( $entry, '7'), 'copyright' );
 
 }
