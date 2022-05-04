@@ -459,6 +459,8 @@ function form_to_media_library($entry){
 	    'guid'           => $wp_upload_dir['url'] . '/' . basename( $filename ),
 	    'post_mime_type' => $filetype['type'],
 	    'post_title'     => preg_replace( '/\.[^.]+$/', '', basename( $filename ) ),
+			//get caption from upload form field
+	    'post_excerpt'   => rgar( $entry, '8'),
 	    'post_content'   => '',
 	    'post_status'    => 'inherit'
 	);
@@ -481,10 +483,6 @@ function form_to_media_library($entry){
 		wp_set_object_terms( $attach_id, rgar( $entry, '3'), 'submitter_email' );
 		wp_set_object_terms( $attach_id, rgar( $entry, '4'), 'vhs_year' );
 		wp_set_object_terms( $attach_id, rgar( $entry, '6'), 'ensemble' );
-		/*
-		// setting caption not working this way
-		wp_set_object_terms( $attach_id, rgar( $entry, '8'), 'caption' );
-		*/
 		wp_set_object_terms( $attach_id, rgar( $entry, '11'), 'creator_name' );
 
 		// Note that the copyright info is saved as a "value" separate from the "label" shown to the user. The value is set when editing the form in GravityForms.
