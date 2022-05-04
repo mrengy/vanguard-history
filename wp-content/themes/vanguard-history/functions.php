@@ -323,7 +323,7 @@ function register_taxonomy_creator_name(){
 			'edit_item'         => __( 'Edit Creator Name' ),
 			'update_item'       => __( 'Update Creator Name' ),
 			'add_new_item'      => __( 'Add New Creator Name' ),
-			'new_item_name'     => __( 'New Creator Name Name' ),
+			'new_item_name'     => __( 'New Creator Name Value' ),
 			'menu_name'         => __( 'Creator Name' ),
 	);
 	$args   = array(
@@ -450,12 +450,16 @@ function form_to_media_library($entry){
 	wp_update_attachment_metadata( $attach_id, $attach_data );
 
 	// set custom field values
-
-		// year
+		wp_set_object_terms( $attach_id, rgar( $entry, '2'), 'submitter_name' );
+		wp_set_object_terms( $attach_id, rgar( $entry, '3'), 'submitter_email' );
 		wp_set_object_terms( $attach_id, rgar( $entry, '4'), 'vhs_year' );
-
-		// ensemble
 		wp_set_object_terms( $attach_id, rgar( $entry, '6'), 'ensemble' );
+		/*
+		// setting caption not working this way
+		wp_set_object_terms( $attach_id, rgar( $entry, '8'), 'caption' );
+		*/
+		wp_set_object_terms( $attach_id, rgar( $entry, '11'), 'creator_name' );
+		//need to set copyright info
 
 }
 
