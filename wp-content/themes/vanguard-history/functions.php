@@ -506,3 +506,26 @@ function form_to_media_library($entry){
 
 // targets the specific form by form ID of 1
 add_action( 'gform_after_submission_1', 'form_to_media_library', 10, 2 );
+
+// show full email address rather than slug in attachment details (in WP Admin)
+add_filter( 'attachment_fields_to_edit', 'my_attachment_fields_to_edit' );
+function my_attachment_fields_to_edit( $form_fields ) {
+    $taxonomy = 'submitter_email';
+
+    // Do nothing if the Submitter Email field is not in the fields list.
+    if ( ! isset( $form_fields[ $taxonomy ] ) ) {
+        return $form_fields;
+    }
+
+    // Get the term by its slug.
+    $field = (array) $form_fields[ $taxonomy ];
+    $term  = empty( $field['taxonomy'] ) ? null :
+        get_term_by( 'slug', $field['value'], $taxonomy );
+
+    // Use the term name.
+    if ( $term instanceof WP_Term ) {
+        $form_fields[ $taxonomy ]['value'] = $term->name;
+    }
+
+    return $form_fields;
+}
