@@ -511,7 +511,7 @@ add_action( 'gform_after_submission_1', 'form_to_media_library', 10, 2 );
 function my_attachment_fields_to_edit( $form_fields ) {
 		// apply to these taxonomies
 		$taxonomies_arr = ['submitter_name', 'submitter_email', 'creator_name'];
-		$form_fields = array() ;
+		do_action( 'qm/debug', $taxonomies_arr);
 
 		foreach ( $taxonomies_arr as $taxonomy ) {
 			//$taxonomy = 'submitter_email';
