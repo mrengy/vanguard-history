@@ -511,11 +511,7 @@ add_action( 'gform_after_submission_1', 'form_to_media_library', 10, 2 );
 function my_attachment_fields_to_edit( $form_fields ) {
 		// apply to these taxonomies
 		$taxonomies_arr = ['submitter_name', 'submitter_email', 'creator_name'];
-		do_action( 'qm/debug', $taxonomies_arr);
-
 		foreach ( $taxonomies_arr as $taxonomy ) {
-			//$taxonomy = 'submitter_email';
-			//do_action( 'qm/debug', $taxonomy);
 
 	    // Do nothing if the Submitter Email field is not in the fields list.
 	    if ( ! isset( $form_fields[ $taxonomy ] ) ) {
@@ -534,7 +530,8 @@ function my_attachment_fields_to_edit( $form_fields ) {
 
 		}
 		// debug not working here
-		do_action( 'qm/debug', $form_fields);
+		// do_action( 'qm/debug', $form_fields);
+
     return $form_fields;
 }
 
