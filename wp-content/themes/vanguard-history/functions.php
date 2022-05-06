@@ -239,7 +239,7 @@ function register_taxonomy_media_visibility(){
 			'name'              => _x( 'Visibility Status', 'taxonomy general name' ),
 			'singular_name'     => _x( 'Visibility Status', 'taxonomy singular name' ),
 			'search_items'      => __( 'Search Visibility Statuses' ),
-			'all_items'         => __( 'All Visitbility Statuses' ),
+			'all_items'         => __( 'All Visibility Statuses' ),
 			'parent_item'       => __( 'Parent Visibility Status' ),
 			'parent_item_colon' => __( 'Parent Visibility Status:' ),
 			'edit_item'         => __( 'Edit Visibility Status' ),
@@ -260,6 +260,110 @@ function register_taxonomy_media_visibility(){
 	register_taxonomy( 'media_visibility', 'attachment', $args );
 }
 
+function register_taxonomy_submitter_name(){
+	$labels = array(
+			'name'              => _x( 'Submitter Name', 'taxonomy general name' ),
+			'singular_name'     => _x( 'Submitter Name', 'taxonomy singular name' ),
+			'search_items'      => __( 'Search Submitter Names' ),
+			'all_items'         => __( 'All Submitter Names' ),
+			'parent_item'       => __( 'Parent Submitter Name' ),
+			'parent_item_colon' => __( 'Parent Submitter Name:' ),
+			'edit_item'         => __( 'Edit Submitter Name' ),
+			'update_item'       => __( 'Update Submitter Name' ),
+			'add_new_item'      => __( 'Add New Submitter Name' ),
+			'new_item_name'     => __( 'New Submitter Name Value' ),
+			'menu_name'         => __( 'Submitter Name' ),
+	);
+	$args   = array(
+			'hierarchical'      => false, // make it hierarchical (like categories)
+			'labels'            => $labels,
+			'show_ui'           => true,
+			'show_admin_column' => true,
+			'query_var'         => true,
+			'create_posts'      => false,
+			'rewrite'           => [ 'slug' => 'submitter_name' ],
+	);
+	register_taxonomy( 'submitter_name', 'attachment', $args );
+}
+
+function register_taxonomy_submitter_email(){
+	$labels = array(
+			'name'              => _x( 'Submitter Email', 'taxonomy general name' ),
+			'singular_name'     => _x( 'Submitter Email', 'taxonomy singular name' ),
+			'search_items'      => __( 'Search Submitter Emails' ),
+			'all_items'         => __( 'All Submitter Emails' ),
+			'parent_item'       => __( 'Parent Submitter Email' ),
+			'parent_item_colon' => __( 'Parent Submitter Email:' ),
+			'edit_item'         => __( 'Edit Submitter Email' ),
+			'update_item'       => __( 'Update Submitter Email' ),
+			'add_new_item'      => __( 'Add New Submitter Email' ),
+			'new_item_name'     => __( 'New Submitter Email Name' ),
+			'menu_name'         => __( 'Submitter Email' ),
+	);
+	$args   = array(
+			'hierarchical'      => false, // make it hierarchical (like categories)
+			'labels'            => $labels,
+			'show_ui'           => true,
+			'show_admin_column' => true,
+			'query_var'         => true,
+			'create_posts'      => false,
+			'rewrite'           => [ 'slug' => 'submitter_email' ],
+	);
+	register_taxonomy( 'submitter_email', 'attachment', $args );
+}
+
+function register_taxonomy_creator_name(){
+	$labels = array(
+			'name'              => _x( 'Creator Name', 'taxonomy general name' ),
+			'singular_name'     => _x( 'Creator Name', 'taxonomy singular name' ),
+			'search_items'      => __( 'Search Creator Names' ),
+			'all_items'         => __( 'All Creator Names' ),
+			'parent_item'       => __( 'Parent Creator Name' ),
+			'parent_item_colon' => __( 'Parent Creator Name:' ),
+			'edit_item'         => __( 'Edit Creator Name' ),
+			'update_item'       => __( 'Update Creator Name' ),
+			'add_new_item'      => __( 'Add New Creator Name' ),
+			'new_item_name'     => __( 'New Creator Name Value' ),
+			'menu_name'         => __( 'Creator Name' ),
+	);
+	$args   = array(
+			'hierarchical'      => false, // make it hierarchical (like categories)
+			'labels'            => $labels,
+			'show_ui'           => true,
+			'show_admin_column' => true,
+			'query_var'         => true,
+			'create_posts'      => false,
+			'rewrite'           => [ 'slug' => 'creator_name' ],
+	);
+	register_taxonomy( 'creator_name', 'attachment', $args );
+}
+
+function register_taxonomy_copyright(){
+	$labels = array(
+			'name'              => _x( 'Copyright Status', 'taxonomy general name' ),
+			'singular_name'     => _x( 'Copyright Status', 'taxonomy singular name' ),
+			'search_items'      => __( 'Search Copyright Statuses' ),
+			'all_items'         => __( 'All Copyright Statuses' ),
+			'parent_item'       => __( 'Parent Copyright Status' ),
+			'parent_item_colon' => __( 'Parent Copyright Status:' ),
+			'edit_item'         => __( 'Edit Copyright Status' ),
+			'update_item'       => __( 'Update Copyright Status' ),
+			'add_new_item'      => __( 'Add New Copyright Status' ),
+			'new_item_name'     => __( 'New Copyright Status Name' ),
+			'menu_name'         => __( 'Copyright Status' ),
+	);
+	$args   = array(
+			'hierarchical'      => false, // make it hierarchical (like categories)
+			'labels'            => $labels,
+			'show_ui'           => true,
+			'show_admin_column' => true,
+			'query_var'         => true,
+			'create_posts'      => false,
+			'rewrite'           => [ 'slug' => 'copyright' ],
+	);
+	register_taxonomy( 'copyright', 'attachment', $args );
+}
+
 function add_tags_to_pages() {
 register_taxonomy_for_object_type( 'post_tag', 'page' );
 }
@@ -268,6 +372,10 @@ add_action( 'init', 'add_tags_to_pages');
 add_action( 'init', 'register_taxonomy_ensemble' );
 add_action( 'init', 'register_taxonomy_vhs_year' );
 add_action( 'init', 'register_taxonomy_media_visibility' );
+add_action( 'init', 'register_taxonomy_submitter_name' );
+add_action( 'init', 'register_taxonomy_submitter_email' );
+add_action( 'init', 'register_taxonomy_creator_name' );
+add_action( 'init', 'register_taxonomy_copyright' );
 //add_action('add_meta_boxes', 'add_custom_meta_box_media_visibility');
 //add_action('add_attachment', 'save_media_visibility'); //originally was add_action('save_post',...)
 
@@ -326,3 +434,105 @@ add_filter( 'wp_terms_checklist_args', 'media_visibility_radio_buttons' );
     );
 }
 add_action('init', 'vhs_custom_post_type');
+
+/**
+ * Upload form submissions to media library
+ */
+function form_to_media_library($entry){
+	// from https://developer.wordpress.org/reference/functions/wp_insert_attachment/#div-comment-948 and https://wordpress.stackexchange.com/a/405055/7313
+
+	// Get the path to the upload directory.
+	$wp_upload_dir = wp_upload_dir();
+
+	// build array of uploads
+	$all_files_string = trim ($entry[ '1' ], '[]');
+	$all_files = explode(",", $all_files_string);
+  //do_action( 'qm/debug', $all_files);
+	// start loop to process each uploaded file
+
+	foreach ($all_files as $this_file) {
+
+		// set filename
+		$upload_path = GFFormsModel::get_upload_path( $entry[ 'form_id' ] );
+	  $upload_url = GFFormsModel::get_upload_url( $entry[ 'form_id' ] );
+	  $filename_verbose = str_replace( $upload_url, $upload_path, $this_file );
+		$filename_backslashes = trim( $filename_verbose, ' " ');
+		$filename = stripslashes( $filename_backslashes );
+
+		// check the type of file. We'll use this as the 'post_mime_type'
+		$filetype = wp_check_filetype( basename( $filename ), null );
+
+
+
+		// Prepare an array of post data for the attachment.
+		$attachment = array(
+		    'guid'           => $wp_upload_dir['url'] . '/' . basename( $filename ),
+		    'post_mime_type' => $filetype['type'],
+		    'post_title'     => preg_replace( '/\.[^.]+$/', '', basename( $filename ) ),
+				//get caption from upload form field
+		    'post_excerpt'   => rgar( $entry, '8'),
+		    'post_content'   => '',
+		    'post_status'    => 'inherit'
+		);
+
+		// create a file in the upload folder
+		$upload = wp_upload_bits( basename ( $filename ), null,  file_get_contents( $filename ));
+
+		// Insert the attachment.
+		$attach_id = wp_insert_attachment( $attachment, $upload['file'] );
+
+		// Make sure that this file is included, as wp_generate_attachment_metadata() depends on it.
+		require_once( ABSPATH . 'wp-admin/includes/image.php' );
+
+		// Generate alternate sizes for the attachment, and update the database record.
+		$attach_data = wp_generate_attachment_metadata( $attach_id, $upload['file'] );
+		wp_update_attachment_metadata( $attach_id, $attach_data );
+
+		// set custom field values
+			wp_set_object_terms( $attach_id, rgar( $entry, '2'), 'submitter_name' );
+			wp_set_object_terms( $attach_id, rgar( $entry, '3'), 'submitter_email' );
+			wp_set_object_terms( $attach_id, rgar( $entry, '4'), 'vhs_year' );
+			wp_set_object_terms( $attach_id, rgar( $entry, '6'), 'ensemble' );
+			wp_set_object_terms( $attach_id, rgar( $entry, '11'), 'creator_name' );
+
+			// Note that the copyright info is saved as a "value" separate from the "label" shown to the user. The value is set when editing the form in GravityForms.
+			// do_action( 'qm/debug', rgar( $entry, '7') );
+			wp_set_object_terms( $attach_id, rgar( $entry, '7'), 'copyright' );
+
+	// end loop
+	}
+
+}
+
+// targets the specific form by form ID of 1
+add_action( 'gform_after_submission_1', 'form_to_media_library', 10, 2 );
+
+// show full term names rather than slug in attachment details (in WP Admin)
+function my_attachment_fields_to_edit( $form_fields ) {
+		// apply to these taxonomies
+		$taxonomies_arr = ['submitter_name', 'submitter_email', 'creator_name'];
+		foreach ( $taxonomies_arr as $taxonomy ) {
+
+	    // Do nothing if the Submitter Email field is not in the fields list.
+	    if ( ! isset( $form_fields[ $taxonomy ] ) ) {
+	       continue;
+	    } else {
+		    // Get the term by its slug.
+		    $field = (array) $form_fields[ $taxonomy ];
+		    $term  = empty( $field['taxonomy'] ) ? null :
+		        get_term_by( 'slug', $field['value'], $taxonomy );
+
+		    // Use the term name.
+		    if ( $term instanceof WP_Term ) {
+		        $form_fields[ $taxonomy ]['value'] = $term->name;
+		    }
+			}
+
+		}
+		// debug not working here
+		// do_action( 'qm/debug', $form_fields);
+
+    return $form_fields;
+}
+
+add_filter( 'attachment_fields_to_edit', 'my_attachment_fields_to_edit' );
