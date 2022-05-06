@@ -507,25 +507,35 @@ function form_to_media_library($entry){
 // targets the specific form by form ID of 1
 add_action( 'gform_after_submission_1', 'form_to_media_library', 10, 2 );
 
-// show full email address rather than slug in attachment details (in WP Admin)
-add_filter( 'attachment_fields_to_edit', 'my_attachment_fields_to_edit' );
+// show full term names rather than slug in attachment details (in WP Admin)
 function my_attachment_fields_to_edit( $form_fields ) {
-    $taxonomy = 'submitter_email';
+		// apply to these taxonomies
+		$taxonomies_arr = ['submitter_name', 'submitter_email', 'creator_name'];
+		$form_fields = array() ;
 
-    // Do nothing if the Submitter Email field is not in the fields list.
-    if ( ! isset( $form_fields[ $taxonomy ] ) ) {
-        return $form_fields;
-    }
+		foreach ( $taxonomies_arr as $taxonomy ) {
+			//$taxonomy = 'submitter_email';
+			//do_action( 'qm/debug', $taxonomy);
 
-    // Get the term by its slug.
-    $field = (array) $form_fields[ $taxonomy ];
-    $term  = empty( $field['taxonomy'] ) ? null :
-        get_term_by( 'slug', $field['value'], $taxonomy );
+	    // Do nothing if the Submitter Email field is not in the fields list.
+	    if ( ! isset( $form_fields[ $taxonomy ] ) ) {
+	       continue;
+	    } else {
+		    // Get the term by its slug.
+		    $field = (array) $form_fields[ $taxonomy ];
+		    $term  = empty( $field['taxonomy'] ) ? null :
+		        get_term_by( 'slug', $field['value'], $taxonomy );
 
-    // Use the term name.
-    if ( $term instanceof WP_Term ) {
-        $form_fields[ $taxonomy ]['value'] = $term->name;
-    }
+		    // Use the term name.
+		    if ( $term instanceof WP_Term ) {
+		        $form_fields[ $taxonomy ]['value'] = $term->name;
+		    }
+			}
 
+		}
+		// debug not working here
+		do_action( 'qm/debug', $form_fields);
     return $form_fields;
 }
+
+add_filter( 'attachment_fields_to_edit', 'my_attachment_fields_to_edit' );
