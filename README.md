@@ -1,4 +1,4 @@
-Documenting the history of the Santa Clara Vanguard through stories. Will be launched at [history.scvanguard.org](https://history.scvanguard.org) (not yet live). Note in order to access the site, first you may need to enter a separate username / password of "historyscv" / "scv1967".
+Documenting the history of the Santa Clara Vanguard through stories. Will be launched at [history.scvanguard.org](https://history.scvanguard.org) (not yet live). Note in order to access the site, first you may need to log into the WordPress site. If you don't have an account and need one, ask Mike Eng. 
 
 Uses [Composer](https://getcomposer.org/) for dependency (plugin) management.
 
