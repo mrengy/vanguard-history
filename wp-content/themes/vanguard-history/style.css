@@ -611,7 +611,7 @@ textarea {
   display: block;
 }
 
-@media screen and (min-width: 37.5em) {
+@media screen and (min-width: 768px) {
   .menu-toggle {
     display: none;
   }
@@ -995,7 +995,7 @@ code {
 }
 
 /* Mobile */
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 768px) {
   .ui.container {
     width: auto !important;
     margin-left: 1em !important;
@@ -2708,7 +2708,7 @@ code {
         Reverse
 -----------------------*/
 /* Mobile */
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 991px) {
   .ui[class*="mobile reversed"].grid,
 .ui[class*="mobile reversed"].grid > .row,
 .ui.grid > [class*="mobile reversed"].row {

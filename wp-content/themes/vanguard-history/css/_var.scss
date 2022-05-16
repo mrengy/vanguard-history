@@ -7,6 +7,8 @@ $leading:$baseLineHeight * 1rem !default;
 $scale:1.414 !default;
 
 // breakpoints// from device width https://semantic-ui.com/elements/container.html
+$bp--xs: 320px;
 $bp--sm: 768px;
 $bp--md: 992px;
 $bp--lg: 1200px;
+$bp--xl: 1920px;
