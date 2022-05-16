@@ -58,11 +58,10 @@ h6 {
     font-family: $MyriadStack;
     margin-top: $leading;
     margin-bottom: 0;
-    line-height: $leading;
+    line-height: $headerLeading;
 }
 h1 {
-    font-size: 2 * $scale * 1rem;
-    line-height: 2 * $leading;
+    font-size: 1.5 * $scale * 1rem;
     margin-top: 2 * $leading;
     font-weight: 600;
 }

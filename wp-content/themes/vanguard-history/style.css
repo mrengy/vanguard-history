@@ -917,12 +917,11 @@ h6 {
   font-family: "Myriad Pro", Myriad, "Liberation Sans", "Nimbus Sans L", "Helvetica Neue", Helvetica, Arial, sans-serif;
   margin-top: 1.5rem;
   margin-bottom: 0;
-  line-height: 1.5rem;
+  line-height: 1em;
 }
 
 h1 {
-  font-size: 4rem;
-  line-height: 3rem;
+  font-size: 3rem;
   margin-top: 3rem;
   font-weight: 600;
 }

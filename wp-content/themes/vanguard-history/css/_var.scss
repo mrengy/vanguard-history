@@ -5,6 +5,7 @@ $MyriadStack: "Myriad Pro", Myriad, "Liberation Sans", "Nimbus Sans L", "Helveti
 $baseFontSize:16 !default; // in pixels.
 $baseLineHeight:1.5 !default; // how large the line height is as a multiple of font size
 $leading:$baseLineHeight * 1rem !default;
+$headerLeading: 1em;
 // Rate of growth for headings
 // I actually like this to be slightly smaller then the leading. Makes for tight headings.
 $scale:2 !default;
