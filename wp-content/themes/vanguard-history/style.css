@@ -870,7 +870,7 @@ textarea {
 /* Setup */
 html {
   /* Change default typefaces here */
-  font-family: serif;
+  font-family: "Myriad Pro", Myriad, "Liberation Sans", "Nimbus Sans L", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 100%;
   -webkit-font-smoothing: antialiased;
 }
@@ -914,38 +914,37 @@ h4,
 h5,
 h6 {
   /* Change heading typefaces here */
-  font-family: sans-serif;
+  font-family: "Myriad Pro", Myriad, "Liberation Sans", "Nimbus Sans L", "Helvetica Neue", Helvetica, Arial, sans-serif;
   margin-top: 1.5rem;
   margin-bottom: 0;
   line-height: 1.5rem;
 }
 
 h1 {
-  font-size: 4.242rem;
-  line-height: 4.5rem;
+  font-size: 4rem;
+  line-height: 3rem;
   margin-top: 3rem;
+  font-weight: 600;
 }
 
 h2 {
-  font-size: 2.828rem;
-  line-height: 3rem;
-  margin-top: 3rem;
+  font-size: 2rem;
 }
 
 h3 {
-  font-size: 1.414rem;
+  font-size: 1rem;
 }
 
 h4 {
-  font-size: 0.707rem;
+  font-size: 0.6666666667rem;
 }
 
 h5 {
-  font-size: 0.4713333333rem;
+  font-size: 0.5rem;
 }
 
 h6 {
-  font-size: 0.3535rem;
+  font-size: 0.4rem;
 }
 
 /* Tables */
@@ -968,7 +967,7 @@ code {
 
 /* Leading paragraph text */
 .lead {
-  font-size: 1.414rem;
+  font-size: 2rem;
 }
 
 /* Hug a the block above you */

@@ -1,10 +1,13 @@
+// font stack
+$MyriadStack: "Myriad Pro", Myriad, "Liberation Sans", "Nimbus Sans L", "Helvetica Neue", Helvetica, Arial, sans-serif;
+
 // Typesetting variables. Edit here or override in main file prior to import of this.
 $baseFontSize:16 !default; // in pixels.
 $baseLineHeight:1.5 !default; // how large the line height is as a multiple of font size
 $leading:$baseLineHeight * 1rem !default;
 // Rate of growth for headings
 // I actually like this to be slightly smaller then the leading. Makes for tight headings.
-$scale:1.414 !default;
+$scale:2 !default;
 
 // breakpoints// from device width https://semantic-ui.com/elements/container.html
 $bp--xs: 320px;
