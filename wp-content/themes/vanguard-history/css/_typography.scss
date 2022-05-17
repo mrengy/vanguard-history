@@ -23,16 +23,16 @@ html {
 /* Copy & Lists */
 
 p {
-    line-height: calc($baseLineHeight * 1em);
-    margin-top: calc($baseLineHeight * 1em);
+    line-height: $leading;
+    margin-top: $leading;
     margin-bottom: 0;
 }
 ul,
 ol {
-    margin-top: calc($baseLineHeight * 1em);
-    margin-bottom: calc($baseLineHeight * 1em);
+    margin-top: $leading;
+    margin-bottom: $leading;
     li {
-        line-height: calc($baseLineHeight * 1em);
+        line-height: $leading;
         margin-right: 1rem;
     }
     ul,
@@ -42,9 +42,9 @@ ol {
     }
 }
 blockquote {
-    line-height: calc($baseLineHeight * 1em);
-    margin-top: calc($baseLineHeight * 1em);
-    margin-bottom: calc($baseLineHeight * 1em);
+    line-height: $leading;
+    margin-top: $leading;
+    margin-bottom: $leading;
 }
 /* Headings */
 
@@ -56,13 +56,13 @@ h5,
 h6 {
     /* Change heading typefaces here */
     font-family: $MyriadStack;
-    margin-top: calc($baseLineHeight * 1em);
+    margin-top: $leading;
     margin-bottom: 0;
     line-height: $headerLeading;
 }
 h1 {
     font-size: 1.5 * $scale * 1rem;
-    margin-top: calc($baseLineHeight * 1em);
+    //margin-top: 2 * $leading;
     font-weight: 600;
 }
 h2 {
@@ -83,7 +83,7 @@ h6 {
 /* Tables */
 
 table {
-    margin-top: calc($baseLineHeight * 1em);
+    margin-top: $leading;
     border-spacing: 0px;
     border-collapse: collapse;
 }
