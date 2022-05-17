@@ -663,7 +663,7 @@ textarea {
 .page-content,
 .entry-content,
 .entry-summary {
-  margin: 1.5em 0 0;
+  margin: 0;
 }
 
 .page-links {
@@ -878,8 +878,12 @@ html {
 /* Copy & Lists */
 p {
   line-height: 1.5em;
-  margin-top: 1.5em;
+  margin-top: 1em;
   margin-bottom: 0;
+}
+
+.no-top-margin {
+  margin-top: 0;
 }
 
 ul,
@@ -915,7 +919,7 @@ h5,
 h6 {
   /* Change heading typefaces here */
   font-family: "Myriad Pro", Myriad, "Liberation Sans", "Nimbus Sans L", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  margin-top: 1.5em;
+  margin-top: 1em;
   margin-bottom: 0;
   line-height: 1em;
 }
