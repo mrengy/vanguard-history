@@ -1119,6 +1119,16 @@ code {
 /*******************************
          Theme Overrides
 *******************************/
+div.gform_wrapper {
+  background-color: rgba(200, 201, 199, 0.3);
+  margin-top: 1.5em;
+  box-sizing: border-box;
+  padding: 0 1em;
+  width: calc(100vw - 1em);
+  position: relative;
+  left: -1em;
+}
+
 /*******************************
          Site Overrides
 *******************************/

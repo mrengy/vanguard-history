@@ -139,7 +139,16 @@
 /*******************************
          Theme Overrides
 *******************************/
-
+div.gform_wrapper {
+  // need to add different styling for higher width breakpoints
+  background-color: $SCVLightGrayTranslucent;
+  margin-top: $leading;
+  box-sizing: border-box;
+  padding: 0 1em;
+  width: calc(100vw - 1em);
+  position: relative;
+  left: -1em;
+}
 
 
 /*******************************
