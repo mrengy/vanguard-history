@@ -471,11 +471,10 @@ button,
 input[type=button],
 input[type=reset],
 input[type=submit] {
-  border: 1px solid;
-  border-color: #ccc #ccc #bbb;
+  border: 0;
   border-radius: 3px;
-  background: #e6e6e6;
-  color: rgba(0, 0, 0, 0.8);
+  background: #007A33;
+  color: #FFFFFF;
   line-height: 1;
   padding: 0.6em 1em 0.4em;
 }
@@ -484,7 +483,7 @@ button:hover,
 input[type=button]:hover,
 input[type=reset]:hover,
 input[type=submit]:hover {
-  border-color: #ccc #bbb #aaa;
+  background: #215732;
 }
 
 button:active,
@@ -495,7 +494,7 @@ input[type=reset]:active,
 input[type=reset]:focus,
 input[type=submit]:active,
 input[type=submit]:focus {
-  border-color: #aaa #bbb #bbb;
+  background: #454545;
 }
 
 input[type=text],
@@ -1124,7 +1123,7 @@ div.gform_wrapper {
   background-color: rgba(200, 201, 199, 0.3);
   margin-top: 1.5em;
   box-sizing: border-box;
-  padding: 0 1em;
+  padding: 1.5em 1em;
   width: calc(100vw - 1em);
   position: relative;
   left: -1em;

@@ -144,7 +144,7 @@ div.gform_wrapper {
   background-color: $SCVLightGrayTranslucent;
   margin-top: $leading;
   box-sizing: border-box;
-  padding: 0 1em;
+  padding: $leading 1em;
   width: calc(100vw - 1em);
   position: relative;
   left: -1em;
