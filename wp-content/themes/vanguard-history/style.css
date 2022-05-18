@@ -1129,6 +1129,10 @@ div.gform_wrapper {
   left: -1em;
 }
 
+.gform_wrapper.gravity-theme .gfield.gsection {
+  border-bottom: 0;
+}
+
 /*******************************
          Site Overrides
 *******************************/

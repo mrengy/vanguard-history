@@ -150,6 +150,10 @@ div.gform_wrapper {
   left: -1em;
 }
 
+// GravityForms theme.min.css is currently loaded after style.css, so we have to use more specific selectors to override it here
+.gform_wrapper.gravity-theme .gfield.gsection {
+  border-bottom: 0;
+}
 
 /*******************************
          Site Overrides
