@@ -163,6 +163,24 @@ div.gform_wrapper {
     font-weight: 300;
     font-size: .875em;
   }
+  div.gfield:not(.gsection), fieldset.gfield {
+    margin-bottom: 1em;
+  }
+  .gfield_radio {
+    input[type="text"][value="Other"] {
+      margin-top: .5em;
+    }
+    .gchoice label{
+      font-size: 1em;
+      padding-left: .5em;
+    }
+    .gchoice {
+      margin-top: 1em;
+    }
+    .gfield-choice-input {
+      vertical-align: top;
+    }
+  }
 }
 
 .gform_wrapper span.gfield_required {
@@ -185,28 +203,6 @@ div.gform_drop_area {
 .gfield_radio .gchoice {
   font-weight: 300;
 }
-
-.gform_wrapper.gravity-theme {
-  div.gfield:not(.gsection), fieldset.gfield {
-    margin-bottom: 1em;
-  }
-  .gfield_radio {
-    input[type="text"][value="Other"] {
-      margin-top: .5em;
-    }
-    .gchoice label{
-      font-size: 1em;
-      padding-left: .5em;
-    }
-    .gchoice {
-      margin-top: 1em;
-    }
-    .gfield-choice-input {
-      vertical-align: top;
-    }
-  }
-}
-
 
 input[value="Other"]:disabled {
   display:none;
