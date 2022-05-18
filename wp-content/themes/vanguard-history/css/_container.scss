@@ -157,6 +157,12 @@ div.gform_wrapper {
   }
 }
 
+@media only screen and (min-width: $bp--md) {
+  div.gform_wrapper {
+    width: calc(933px + 2em);
+  }
+}
+
 
 // GravityForms theme.min.css is currently loaded after style.css, so we have to use more specific selectors to override it here. adding .gform_body is the key to this.
 
