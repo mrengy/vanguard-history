@@ -518,6 +518,7 @@ textarea {
   border: 1px solid #ccc;
   border-radius: 3px;
   padding: 3px;
+  font-weight: 300;
 }
 
 input[type=text]:focus,
@@ -1129,8 +1130,55 @@ div.gform_wrapper {
   left: -1em;
 }
 
+.gform_wrapper.gravity-theme label.gfield_label, .gform_wrapper.gravity-theme legend.gfield_label {
+  font-weight: normal;
+}
 .gform_wrapper.gravity-theme .gfield.gsection {
   border-bottom: 0;
+}
+.gform_wrapper.gravity-theme span.gform_drop_instructions, .gform_wrapper.gravity-theme span.gform_fileupload_rules, .gform_wrapper.gravity-theme div.gfield_description, .gform_wrapper.gravity-theme div.instruction {
+  font-weight: 300;
+  font-size: 0.875em;
+}
+
+.gform_wrapper span.gfield_required {
+  font-size: 1em;
+}
+
+.gform_wrapper .gfield_required .gfield_required_custom, .gform_wrapper .gfield_required span.gfield_required_text {
+  font-style: normal;
+  text-transform: lowercase;
+  color: #CB333B;
+  font-weight: normal;
+}
+
+div.gform_drop_area {
+  background-color: #FFFFFF;
+}
+
+.gfield_radio .gchoice {
+  font-weight: 300;
+}
+
+.gform_wrapper.gravity-theme div.gfield:not(.gsection), .gform_wrapper.gravity-theme fieldset.gfield {
+  margin-bottom: 1em;
+}
+.gform_wrapper.gravity-theme .gfield_radio input[type=text][value=Other] {
+  margin-top: 0.5em;
+}
+.gform_wrapper.gravity-theme .gfield_radio .gchoice label {
+  font-size: 1em;
+  padding-left: 0.5em;
+}
+.gform_wrapper.gravity-theme .gfield_radio .gchoice {
+  margin-top: 1em;
+}
+.gform_wrapper.gravity-theme .gfield_radio .gfield-choice-input {
+  vertical-align: top;
+}
+
+input[value=Other]:disabled {
+  display: none;
 }
 
 /*******************************

@@ -151,10 +151,66 @@ div.gform_wrapper {
 }
 
 // GravityForms theme.min.css is currently loaded after style.css, so we have to use more specific selectors to override it here
-.gform_wrapper.gravity-theme .gfield.gsection {
-  border-bottom: 0;
+
+.gform_wrapper.gravity-theme {
+  label.gfield_label, legend.gfield_label {
+    font-weight: normal;
+  }
+  .gfield.gsection {
+    border-bottom: 0;
+  }
+  span.gform_drop_instructions, span.gform_fileupload_rules, div.gfield_description, div.instruction {
+    font-weight: 300;
+    font-size: .875em;
+  }
 }
 
+.gform_wrapper span.gfield_required {
+  font-size: 1em;
+}
+
+.gform_wrapper .gfield_required {
+  .gfield_required_custom, span.gfield_required_text {
+    font-style: normal;
+    text-transform: lowercase;
+    color: $SCVRed;
+    font-weight: normal;
+  }
+}
+
+div.gform_drop_area {
+  background-color: $White;
+}
+
+.gfield_radio .gchoice {
+  font-weight: 300;
+}
+
+.gform_wrapper.gravity-theme {
+  div.gfield:not(.gsection), fieldset.gfield {
+    margin-bottom: 1em;
+  }
+  .gfield_radio {
+    input[type="text"][value="Other"] {
+      margin-top: .5em;
+    }
+    .gchoice label{
+      font-size: 1em;
+      padding-left: .5em;
+    }
+    .gchoice {
+      margin-top: 1em;
+    }
+    .gfield-choice-input {
+      vertical-align: top;
+    }
+  }
+}
+
+
+input[value="Other"]:disabled {
+  display:none;
+}
 /*******************************
          Site Overrides
 *******************************/
