@@ -152,7 +152,7 @@ div.gform_wrapper {
 
 // GravityForms theme.min.css is currently loaded after style.css, so we have to use more specific selectors to override it here
 
-.gform_wrapper.gravity-theme {
+.gform_wrapper.gravity-theme .gform_body{
   label.gfield_label, legend.gfield_label {
     font-weight: normal;
   }
@@ -180,6 +180,10 @@ div.gform_wrapper {
     .gfield-choice-input {
       vertical-align: top;
     }
+  }
+  input[type="color"], input[type="date"], input[type="datetime-local"], input[type="datetime"], input[type="email"], input[type="month"], input[type="number"], input[type="password"], input[type="search"],  input[type="tel"], input[type="text"], input[type="time"], input[type="url"], input[type="week"], select, textarea {
+    accent-color: $SCVGreen;
+    font-size: 1em;
   }
 }
 

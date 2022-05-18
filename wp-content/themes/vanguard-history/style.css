@@ -1129,31 +1129,35 @@ div.gform_wrapper {
   left: -1em;
 }
 
-.gform_wrapper.gravity-theme label.gfield_label, .gform_wrapper.gravity-theme legend.gfield_label {
+.gform_wrapper.gravity-theme .gform_body label.gfield_label, .gform_wrapper.gravity-theme .gform_body legend.gfield_label {
   font-weight: normal;
 }
-.gform_wrapper.gravity-theme .gfield.gsection {
+.gform_wrapper.gravity-theme .gform_body .gfield.gsection {
   border-bottom: 0;
 }
-.gform_wrapper.gravity-theme span.gform_drop_instructions, .gform_wrapper.gravity-theme span.gform_fileupload_rules, .gform_wrapper.gravity-theme div.gfield_description, .gform_wrapper.gravity-theme div.instruction {
+.gform_wrapper.gravity-theme .gform_body span.gform_drop_instructions, .gform_wrapper.gravity-theme .gform_body span.gform_fileupload_rules, .gform_wrapper.gravity-theme .gform_body div.gfield_description, .gform_wrapper.gravity-theme .gform_body div.instruction {
   font-weight: 300;
   font-size: 0.875em;
 }
-.gform_wrapper.gravity-theme div.gfield:not(.gsection), .gform_wrapper.gravity-theme fieldset.gfield {
+.gform_wrapper.gravity-theme .gform_body div.gfield:not(.gsection), .gform_wrapper.gravity-theme .gform_body fieldset.gfield {
   margin-bottom: 1em;
 }
-.gform_wrapper.gravity-theme .gfield_radio input[type=text][value=Other] {
+.gform_wrapper.gravity-theme .gform_body .gfield_radio input[type=text][value=Other] {
   margin-top: 0.5em;
 }
-.gform_wrapper.gravity-theme .gfield_radio .gchoice label {
+.gform_wrapper.gravity-theme .gform_body .gfield_radio .gchoice label {
   font-size: 1em;
   padding-left: 0.5em;
 }
-.gform_wrapper.gravity-theme .gfield_radio .gchoice {
+.gform_wrapper.gravity-theme .gform_body .gfield_radio .gchoice {
   margin-top: 1em;
 }
-.gform_wrapper.gravity-theme .gfield_radio .gfield-choice-input {
+.gform_wrapper.gravity-theme .gform_body .gfield_radio .gfield-choice-input {
   vertical-align: top;
+}
+.gform_wrapper.gravity-theme .gform_body input[type=color], .gform_wrapper.gravity-theme .gform_body input[type=date], .gform_wrapper.gravity-theme .gform_body input[type=datetime-local], .gform_wrapper.gravity-theme .gform_body input[type=datetime], .gform_wrapper.gravity-theme .gform_body input[type=email], .gform_wrapper.gravity-theme .gform_body input[type=month], .gform_wrapper.gravity-theme .gform_body input[type=number], .gform_wrapper.gravity-theme .gform_body input[type=password], .gform_wrapper.gravity-theme .gform_body input[type=search], .gform_wrapper.gravity-theme .gform_body input[type=tel], .gform_wrapper.gravity-theme .gform_body input[type=text], .gform_wrapper.gravity-theme .gform_body input[type=time], .gform_wrapper.gravity-theme .gform_body input[type=url], .gform_wrapper.gravity-theme .gform_body input[type=week], .gform_wrapper.gravity-theme .gform_body select, .gform_wrapper.gravity-theme .gform_body textarea {
+  accent-color: #007A33;
+  font-size: 1em;
 }
 
 .gform_wrapper span.gfield_required {
