@@ -150,16 +150,16 @@ div.gform_wrapper {
   left: -1em;
 }
 
-// GravityForms theme.min.css is currently loaded after style.css, so we have to use more specific selectors to override it here
+// GravityForms theme.min.css is currently loaded after style.css, so we have to use more specific selectors to override it here. adding .gform_body is the key to this.
 
 .gform_wrapper.gravity-theme .gform_body{
-  label.gfield_label, legend.gfield_label {
+  .gfield_label, .gfield_label {
     font-weight: normal;
   }
   .gfield.gsection {
     border-bottom: 0;
   }
-  span.gform_drop_instructions, span.gform_fileupload_rules, div.gfield_description, div.instruction {
+  .gform_drop_instructions, .gform_fileupload_rules, div.gfield_description, div.instruction {
     font-weight: 300;
     font-size: .875em;
   }

@@ -1129,13 +1129,13 @@ div.gform_wrapper {
   left: -1em;
 }
 
-.gform_wrapper.gravity-theme .gform_body label.gfield_label, .gform_wrapper.gravity-theme .gform_body legend.gfield_label {
+.gform_wrapper.gravity-theme .gform_body .gfield_label, .gform_wrapper.gravity-theme .gform_body .gfield_label {
   font-weight: normal;
 }
 .gform_wrapper.gravity-theme .gform_body .gfield.gsection {
   border-bottom: 0;
 }
-.gform_wrapper.gravity-theme .gform_body span.gform_drop_instructions, .gform_wrapper.gravity-theme .gform_body span.gform_fileupload_rules, .gform_wrapper.gravity-theme .gform_body div.gfield_description, .gform_wrapper.gravity-theme .gform_body div.instruction {
+.gform_wrapper.gravity-theme .gform_body .gform_drop_instructions, .gform_wrapper.gravity-theme .gform_body .gform_fileupload_rules, .gform_wrapper.gravity-theme .gform_body div.gfield_description, .gform_wrapper.gravity-theme .gform_body div.instruction {
   font-weight: 300;
   font-size: 0.875em;
 }
