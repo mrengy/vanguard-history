@@ -1129,6 +1129,11 @@ div.gform_wrapper {
   left: -1em;
 }
 
+@media only screen and (min-width: 768px) {
+  div.gform_wrapper {
+    width: calc(723px + 2em);
+  }
+}
 .gform_wrapper.gravity-theme .gform_body .gfield_label, .gform_wrapper.gravity-theme .gform_body .gfield_label {
   font-weight: normal;
 }

@@ -140,6 +140,7 @@
          Theme Overrides
 *******************************/
 div.gform_wrapper {
+  // get background color to extend to edges
   // need to add different styling for higher width breakpoints
   background-color: $SCVLightGrayTranslucent;
   margin-top: $leading;
@@ -149,6 +150,13 @@ div.gform_wrapper {
   position: relative;
   left: -1em;
 }
+
+@media only screen and (min-width: $bp--sm) {
+  div.gform_wrapper {
+    width: calc(723px + 2em);
+  }
+}
+
 
 // GravityForms theme.min.css is currently loaded after style.css, so we have to use more specific selectors to override it here. adding .gform_body is the key to this.
 
