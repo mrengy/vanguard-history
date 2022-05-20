@@ -89,5 +89,5 @@ get_header();
 <?php
 if (! is_page('upload-material')){
 	 get_sidebar();
-	 get_footer();
- }
+}
+get_footer();
