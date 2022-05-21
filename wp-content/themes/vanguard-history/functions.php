@@ -447,7 +447,8 @@ function form_to_media_library($entry){
 	// build array of uploads
 	$all_files_string = trim ($entry[ '1' ], '[]');
 	$all_files = explode(",", $all_files_string);
-  //do_action( 'qm/debug', $all_files);
+	// debug not working inside this action since it runs async
+	// do_action( 'qm/debug', $all_files);
 	// start loop to process each uploaded file
 
 	foreach ($all_files as $this_file) {

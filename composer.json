@@ -14,7 +14,8 @@
     "wpackagist-plugin/all-in-one-wp-migration": "*",
     "wpackagist-plugin/gravityformscli": "*",
     "wpackagist-plugin/restricted-site-access": "*",
-    "wpackagist-plugin/login-with-google": "*"
+    "wpackagist-plugin/login-with-google": "*",
+    "google/apiclient": "^2.12.1"
   },
   "require-dev": {
     "wpackagist-plugin/query-monitor": "*"
@@ -37,11 +38,17 @@
       }
   },
   "scripts": {
+    "pre-autoload-dump": "Google\\Task\\Composer::cleanup",
     "post-install-cmd":[
       "wp plugin activate --all && wp gf install --key=283af92393f339347c5e7f6aa889e0cc && wp plugin activate gravityforms"
     ],
     "post-update-cmd": [
       "wp plugin activate gravityformscli && wp gf update --key=283af92393f339347c5e7f6aa889e0cc"
     ]
+  },
+  "extra": {
+      "google/apiclient-services": [
+          "Drive"
+      ]
   }
 }
