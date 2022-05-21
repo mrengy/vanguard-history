@@ -87,7 +87,8 @@ get_header();
 	</main><!-- #main -->
 
 <?php
-if (! is_page('upload-material')){
+$excluded_pages = array('upload-material', 'upload-confirmation');
+if (! is_page($excluded_pages)){
 	 get_sidebar();
 }
 get_footer();

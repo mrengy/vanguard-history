@@ -24,7 +24,9 @@
 <?php wp_body_open(); ?>
 <div id="page" class="site">
 	<a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'vanguard-history' ); ?></a>
-	<?php if (! is_page('upload-material')){ ?>
+	<?php
+		$excluded_pages = array('upload-material', 'upload-confirmation');
+		if (! is_page($excluded_pages)){ ?>
 		<header id="masthead" class="site-header ui container">
 			<div class="site-branding">
 				<?php
