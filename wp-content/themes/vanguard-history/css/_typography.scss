@@ -9,7 +9,7 @@
 
 html {
     /* Change default typefaces here */
-    font-family: serif;
+    font-family: $MyriadStack;
     font-size: math.div($baseFontSize, 16) * 100%;
     // Make everything look a little nicer in webkit
     -webkit-font-smoothing: antialiased;
@@ -24,9 +24,13 @@ html {
 
 p {
     line-height: $leading;
-    margin-top: $leading;
+    margin-top: 1em;
     margin-bottom: 0;
 }
+.no-top-margin{
+    margin-top: 0;
+}
+
 ul,
 ol {
     margin-top: $leading;
@@ -55,32 +59,30 @@ h4,
 h5,
 h6 {
     /* Change heading typefaces here */
-    font-family: sans-serif;
-    margin-top: $leading;
+    font-family: $MyriadStack;
+    margin-top: 1em;
     margin-bottom: 0;
-    line-height: $leading;
+    line-height: $headerLeading;
 }
 h1 {
-    font-size: 3 * $scale * 1rem;
-    line-height: 3 * $leading;
-    margin-top: 2 * $leading;
+    font-size: 1.5 * $scale * 1rem;
+    //margin-top: 2 * $leading;
+    font-weight: 600;
 }
 h2 {
-    font-size: 2 * $scale * 1rem;
-    line-height: 2 * $leading;
-    margin-top: 2 * $leading;
-}
-h3 {
     font-size: 1 * $scale * 1rem;
 }
-h4 {
+h3 {
     font-size: math.div($scale, 2) * 1rem;
 }
-h5 {
+h4 {
     font-size: math.div($scale, 3) * 1rem;
 }
-h6 {
+h5 {
     font-size: math.div($scale, 4) * 1rem;
+}
+h6 {
+    font-size: math.div($scale, 5) * 1rem;
 }
 /* Tables */
 

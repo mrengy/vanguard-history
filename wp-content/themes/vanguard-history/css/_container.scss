@@ -22,7 +22,7 @@
 }
 
 /* Mobile */
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: $bp--sm) {
   .ui.container {
     width: auto !important;
     margin-left: 1em !important;
@@ -40,7 +40,7 @@
 }
 
 /* Tablet */
-@media only screen and (min-width: 768px) and (max-width: 991px) {
+@media only screen and (min-width: $bp--sm) and (max-width: calc($bp--md - 1px)) {
   .ui.container {
     width: 723px;
     margin-left: auto !important;
@@ -58,7 +58,7 @@
 }
 
 /* Small Monitor */
-@media only screen and (min-width: 992px) and (max-width: 1199px) {
+@media only screen and (min-width: $bp--md) and (max-width: calc($bp--lg - 1px)) {
   .ui.container {
     width: 933px;
     margin-left: auto !important;
@@ -76,7 +76,7 @@
 }
 
 /* Large Monitor */
-@media only screen and (min-width: 1200px) {
+@media only screen and (min-width: $bp--lg) {
   .ui.container {
     width: 1127px;
     margin-left: auto !important;
@@ -139,9 +139,92 @@
 /*******************************
          Theme Overrides
 *******************************/
+div.gform_wrapper {
+  // get background color to extend to edges
+  // need to add different styling for higher width breakpoints
+  background-color: $SCVLightGrayTranslucent;
+  margin-top: $leading;
+  box-sizing: border-box;
+  padding: $leading 1em;
+  width: calc(100vw - 1em);
+  position: relative;
+  left: -1em;
+}
+
+@media only screen and (min-width: $bp--sm) {
+  div.gform_wrapper {
+    width: calc(723px + 2em);
+  }
+}
+
+@media only screen and (min-width: $bp--md) {
+  div.gform_wrapper {
+    width: calc(933px + 2em);
+  }
+}
 
 
+// GravityForms theme.min.css is currently loaded after style.css, so we have to use more specific selectors to override it here. adding .gform_body is the key to this.
 
+.gform_wrapper.gravity-theme .gform_body{
+  .gfield_label, .gfield_label {
+    font-weight: normal;
+  }
+  .gfield.gsection {
+    border-bottom: 0;
+  }
+  .gform_drop_instructions, .gform_fileupload_rules, div.gfield_description, div.instruction {
+    font-weight: 300;
+    font-size: .875em;
+  }
+  div.gfield:not(.gsection), fieldset.gfield {
+    margin-bottom: 1em;
+  }
+  .gfield_radio {
+    input[type="text"][value="Other"] {
+      margin-top: .5em;
+    }
+    .gchoice label{
+      font-size: 1em;
+      padding-left: .5em;
+    }
+    .gchoice {
+      margin-top: 1em;
+    }
+    .gfield-choice-input {
+      vertical-align: top;
+    }
+  }
+  input[type="color"], input[type="date"], input[type="datetime-local"], input[type="datetime"], input[type="email"], input[type="month"], input[type="number"], input[type="password"], input[type="search"],  input[type="tel"], input[type="text"], input[type="time"], input[type="url"], input[type="week"], select, textarea {
+    accent-color: $SCVGreen;
+    font-size: 1em;
+  }
+}
+
+.gform_wrapper span.gfield_required {
+  font-size: 1em;
+}
+
+.gform_wrapper .gfield_required {
+  .gfield_required_custom, span.gfield_required_text {
+    font-style: normal;
+    text-transform: lowercase;
+    color: $SCVRed;
+    font-weight: normal;
+  }
+}
+
+div.gform_drop_area {
+  background-color: $White;
+}
+
+.gfield_radio .gchoice {
+  font-weight: 300;
+}
+
+input[value="Other"]:disabled {
+  display:none;
+}
 /*******************************
          Site Overrides
 *******************************/

@@ -443,17 +443,17 @@ table {
 /* Links
 --------------------------------------------- */
 a {
-  color: #4169e1;
+  color: #007A33;
 }
 
 a:visited {
-  color: #800080;
+  color: #215732;
 }
 
 a:hover,
 a:focus,
 a:active {
-  color: #191970;
+  color: #8A2A2B;
 }
 
 a:focus {
@@ -471,11 +471,10 @@ button,
 input[type=button],
 input[type=reset],
 input[type=submit] {
-  border: 1px solid;
-  border-color: #ccc #ccc #bbb;
+  border: 0;
   border-radius: 3px;
-  background: #e6e6e6;
-  color: rgba(0, 0, 0, 0.8);
+  background: #007A33;
+  color: #FFFFFF;
   line-height: 1;
   padding: 0.6em 1em 0.4em;
 }
@@ -484,7 +483,7 @@ button:hover,
 input[type=button]:hover,
 input[type=reset]:hover,
 input[type=submit]:hover {
-  border-color: #ccc #bbb #aaa;
+  background: #215732;
 }
 
 button:active,
@@ -495,7 +494,7 @@ input[type=reset]:active,
 input[type=reset]:focus,
 input[type=submit]:active,
 input[type=submit]:focus {
-  border-color: #aaa #bbb #bbb;
+  background: #454545;
 }
 
 input[type=text],
@@ -518,6 +517,7 @@ textarea {
   border: 1px solid #ccc;
   border-radius: 3px;
   padding: 3px;
+  font-weight: 300;
 }
 
 input[type=text]:focus,
@@ -611,7 +611,7 @@ textarea {
   display: block;
 }
 
-@media screen and (min-width: 37.5em) {
+@media screen and (min-width: 768px) {
   .menu-toggle {
     display: none;
   }
@@ -663,7 +663,7 @@ textarea {
 .page-content,
 .entry-content,
 .entry-summary {
-  margin: 1.5em 0 0;
+  margin: 0;
 }
 
 .page-links {
@@ -870,26 +870,30 @@ textarea {
 /* Setup */
 html {
   /* Change default typefaces here */
-  font-family: serif;
+  font-family: "Myriad Pro", Myriad, "Liberation Sans", "Nimbus Sans L", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 100%;
   -webkit-font-smoothing: antialiased;
 }
 
 /* Copy & Lists */
 p {
-  line-height: 1.5rem;
-  margin-top: 1.5rem;
+  line-height: 1.5em;
+  margin-top: 1em;
   margin-bottom: 0;
+}
+
+.no-top-margin {
+  margin-top: 0;
 }
 
 ul,
 ol {
-  margin-top: 1.5rem;
-  margin-bottom: 1.5rem;
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
 }
 ul li,
 ol li {
-  line-height: 1.5rem;
+  line-height: 1.5em;
   margin-right: 1rem;
 }
 ul ul,
@@ -901,9 +905,9 @@ ol ol {
 }
 
 blockquote {
-  line-height: 1.5rem;
-  margin-top: 1.5rem;
-  margin-bottom: 1.5rem;
+  line-height: 1.5em;
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
 }
 
 /* Headings */
@@ -914,43 +918,40 @@ h4,
 h5,
 h6 {
   /* Change heading typefaces here */
-  font-family: sans-serif;
-  margin-top: 1.5rem;
+  font-family: "Myriad Pro", Myriad, "Liberation Sans", "Nimbus Sans L", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  margin-top: 1em;
   margin-bottom: 0;
-  line-height: 1.5rem;
+  line-height: 1em;
 }
 
 h1 {
-  font-size: 4.242rem;
-  line-height: 4.5rem;
-  margin-top: 3rem;
+  font-size: 3rem;
+  font-weight: 600;
 }
 
 h2 {
-  font-size: 2.828rem;
-  line-height: 3rem;
-  margin-top: 3rem;
+  font-size: 2rem;
 }
 
 h3 {
-  font-size: 1.414rem;
+  font-size: 1rem;
 }
 
 h4 {
-  font-size: 0.707rem;
+  font-size: 0.6666666667rem;
 }
 
 h5 {
-  font-size: 0.4713333333rem;
+  font-size: 0.5rem;
 }
 
 h6 {
-  font-size: 0.3535rem;
+  font-size: 0.4rem;
 }
 
 /* Tables */
 table {
-  margin-top: 1.5rem;
+  margin-top: 1.5em;
   border-spacing: 0px;
   border-collapse: collapse;
 }
@@ -968,7 +969,7 @@ code {
 
 /* Leading paragraph text */
 .lead {
-  font-size: 1.414rem;
+  font-size: 2rem;
 }
 
 /* Hug a the block above you */
@@ -995,7 +996,7 @@ code {
 }
 
 /* Mobile */
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 768px) {
   .ui.container {
     width: auto !important;
     margin-left: 1em !important;
@@ -1118,6 +1119,80 @@ code {
 /*******************************
          Theme Overrides
 *******************************/
+div.gform_wrapper {
+  background-color: rgba(200, 201, 199, 0.3);
+  margin-top: 1.5em;
+  box-sizing: border-box;
+  padding: 1.5em 1em;
+  width: calc(100vw - 1em);
+  position: relative;
+  left: -1em;
+}
+
+@media only screen and (min-width: 768px) {
+  div.gform_wrapper {
+    width: calc(723px + 2em);
+  }
+}
+@media only screen and (min-width: 992px) {
+  div.gform_wrapper {
+    width: calc(933px + 2em);
+  }
+}
+.gform_wrapper.gravity-theme .gform_body .gfield_label, .gform_wrapper.gravity-theme .gform_body .gfield_label {
+  font-weight: normal;
+}
+.gform_wrapper.gravity-theme .gform_body .gfield.gsection {
+  border-bottom: 0;
+}
+.gform_wrapper.gravity-theme .gform_body .gform_drop_instructions, .gform_wrapper.gravity-theme .gform_body .gform_fileupload_rules, .gform_wrapper.gravity-theme .gform_body div.gfield_description, .gform_wrapper.gravity-theme .gform_body div.instruction {
+  font-weight: 300;
+  font-size: 0.875em;
+}
+.gform_wrapper.gravity-theme .gform_body div.gfield:not(.gsection), .gform_wrapper.gravity-theme .gform_body fieldset.gfield {
+  margin-bottom: 1em;
+}
+.gform_wrapper.gravity-theme .gform_body .gfield_radio input[type=text][value=Other] {
+  margin-top: 0.5em;
+}
+.gform_wrapper.gravity-theme .gform_body .gfield_radio .gchoice label {
+  font-size: 1em;
+  padding-left: 0.5em;
+}
+.gform_wrapper.gravity-theme .gform_body .gfield_radio .gchoice {
+  margin-top: 1em;
+}
+.gform_wrapper.gravity-theme .gform_body .gfield_radio .gfield-choice-input {
+  vertical-align: top;
+}
+.gform_wrapper.gravity-theme .gform_body input[type=color], .gform_wrapper.gravity-theme .gform_body input[type=date], .gform_wrapper.gravity-theme .gform_body input[type=datetime-local], .gform_wrapper.gravity-theme .gform_body input[type=datetime], .gform_wrapper.gravity-theme .gform_body input[type=email], .gform_wrapper.gravity-theme .gform_body input[type=month], .gform_wrapper.gravity-theme .gform_body input[type=number], .gform_wrapper.gravity-theme .gform_body input[type=password], .gform_wrapper.gravity-theme .gform_body input[type=search], .gform_wrapper.gravity-theme .gform_body input[type=tel], .gform_wrapper.gravity-theme .gform_body input[type=text], .gform_wrapper.gravity-theme .gform_body input[type=time], .gform_wrapper.gravity-theme .gform_body input[type=url], .gform_wrapper.gravity-theme .gform_body input[type=week], .gform_wrapper.gravity-theme .gform_body select, .gform_wrapper.gravity-theme .gform_body textarea {
+  accent-color: #007A33;
+  font-size: 1em;
+}
+
+.gform_wrapper span.gfield_required {
+  font-size: 1em;
+}
+
+.gform_wrapper .gfield_required .gfield_required_custom, .gform_wrapper .gfield_required span.gfield_required_text {
+  font-style: normal;
+  text-transform: lowercase;
+  color: #CB333B;
+  font-weight: normal;
+}
+
+div.gform_drop_area {
+  background-color: #FFFFFF;
+}
+
+.gfield_radio .gchoice {
+  font-weight: 300;
+}
+
+input[value=Other]:disabled {
+  display: none;
+}
+
 /*******************************
          Site Overrides
 *******************************/
@@ -2708,7 +2783,7 @@ code {
         Reverse
 -----------------------*/
 /* Mobile */
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 991px) {
   .ui[class*="mobile reversed"].grid,
 .ui[class*="mobile reversed"].grid > .row,
 .ui.grid > [class*="mobile reversed"].row {

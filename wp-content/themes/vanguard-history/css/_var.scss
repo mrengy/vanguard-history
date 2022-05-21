@@ -1,12 +1,32 @@
+// font stack
+$MyriadStack: "Myriad Pro", Myriad, "Liberation Sans", "Nimbus Sans L", "Helvetica Neue", Helvetica, Arial, sans-serif;
+
 // Typesetting variables. Edit here or override in main file prior to import of this.
 $baseFontSize:16 !default; // in pixels.
 $baseLineHeight:1.5 !default; // how large the line height is as a multiple of font size
-$leading:$baseLineHeight * 1rem !default;
+$leading:$baseLineHeight * 1em !default;
+$headerLeading: 1em;
 // Rate of growth for headings
 // I actually like this to be slightly smaller then the leading. Makes for tight headings.
-$scale:1.414 !default;
+$scale:2 !default;
 
 // breakpoints// from device width https://semantic-ui.com/elements/container.html
+$bp--xs: 320px;
 $bp--sm: 768px;
 $bp--md: 992px;
 $bp--lg: 1200px;
+$bp--xl: 1920px;
+
+// colors
+$White: #FFFFFF;
+$SCVGreen: #007A33;
+$SCVRed: #CB333B;
+$SCVBlack: #332F21;
+$SCVDarkGray: #454545;
+$SCVGray: #9EA2A2;
+$SCVLightGray: #C8C9C7;
+$SCVLightGrayTranslucent: rgba(200, 201, 199, .3);
+$SCVForestGreen: #215732;
+$SCVMaroon: #8A2A2B;
+$SCVBrown: #4E3629;
+$SCVGold: #EAAA00;

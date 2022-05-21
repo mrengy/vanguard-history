@@ -87,5 +87,7 @@ get_header();
 	</main><!-- #main -->
 
 <?php
-get_sidebar();
+if (! is_page('upload-material')){
+	 get_sidebar();
+}
 get_footer();

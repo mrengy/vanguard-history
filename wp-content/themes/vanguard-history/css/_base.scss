@@ -460,17 +460,17 @@ table {
 /* Links
 --------------------------------------------- */
 a {
-	color: #4169e1;
+	color: $SCVGreen;
 }
 
 a:visited {
-	color: #800080;
+	color: $SCVForestGreen;
 }
 
 a:hover,
 a:focus,
 a:active {
-	color: #191970;
+	color: $SCVMaroon;
 }
 
 a:focus {
@@ -488,11 +488,10 @@ button,
 input[type="button"],
 input[type="reset"],
 input[type="submit"] {
-	border: 1px solid;
-	border-color: #ccc #ccc #bbb;
+	border: 0;
 	border-radius: 3px;
-	background: #e6e6e6;
-	color: rgba(0, 0, 0, 0.8);
+	background: $SCVGreen;
+	color: $White;
 	line-height: 1;
 	padding: 0.6em 1em 0.4em;
 }
@@ -501,7 +500,7 @@ button:hover,
 input[type="button"]:hover,
 input[type="reset"]:hover,
 input[type="submit"]:hover {
-	border-color: #ccc #bbb #aaa;
+	background: $SCVForestGreen;
 }
 
 button:active,
@@ -512,7 +511,7 @@ input[type="reset"]:active,
 input[type="reset"]:focus,
 input[type="submit"]:active,
 input[type="submit"]:focus {
-	border-color: #aaa #bbb #bbb;
+	background: $SCVDarkGray;
 }
 
 input[type="text"],
@@ -535,6 +534,7 @@ textarea {
 	border: 1px solid #ccc;
 	border-radius: 3px;
 	padding: 3px;
+	font-weight: 300;
 }
 
 input[type="text"]:focus,
@@ -630,7 +630,7 @@ textarea {
 	display: block;
 }
 
-@media screen and (min-width: 37.5em) {
+@media screen and (min-width: $bp--sm) {
 
 	.menu-toggle {
 		display: none;
@@ -686,7 +686,7 @@ textarea {
 .page-content,
 .entry-content,
 .entry-summary {
-	margin: 1.5em 0 0;
+	margin: 0;
 }
 
 .page-links {
