@@ -14,7 +14,8 @@
     "wpackagist-plugin/all-in-one-wp-migration": "*",
     "wpackagist-plugin/gravityformscli": "*",
     "wpackagist-plugin/restricted-site-access": "*",
-    "wpackagist-plugin/login-with-google": "*"
+    "wpackagist-plugin/login-with-google": "*",
+    "wpackagist-plugin/wp-maximum-upload-file-size": "*"
   },
   "require-dev": {
     "wpackagist-plugin/query-monitor": "*"
