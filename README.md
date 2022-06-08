@@ -1,4 +1,4 @@
-Documenting the history of the Santa Clara Vanguard through stories. Will be launched at [history.scvanguard.org](https://history.scvanguard.org) (not yet live). Note in order to access the site, first you may need to log into the WordPress site. If you don't have an account and need one, ask Mike Eng. 
+Documenting the history of the Santa Clara Vanguard through stories. Will be launched at [history.scvanguard.org](https://history.scvanguard.org) (currently just a material upload form lives there as a first phase). See [Vanguard Historical Society](scvanguard.org/historical-society/) for background behind this project. 
 
 Uses [Composer](https://getcomposer.org/) for dependency (plugin) management.
 
