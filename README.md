@@ -1,5 +1,7 @@
 Documenting the history of the Santa Clara Vanguard through stories. Will be launched at [history.scvanguard.org](https://history.scvanguard.org) (currently just a material upload form lives there as a first phase). See [Vanguard Historical Society](scvanguard.org/historical-society/) for background behind this project. 
 
+Built on WordPress.
+
 Uses [Composer](https://getcomposer.org/) for dependency (plugin) management.
 
 Uses [Sass](https://sass-lang.com) for pre-processing CSS, making the CSS more manageable and less repetitive.
