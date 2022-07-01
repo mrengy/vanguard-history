@@ -34,7 +34,7 @@
             "version": "1.0",
             "dist":{
               "url": "https://raw.githubusercontent.com/marcj/google-api-php-client/master/src/contrib/Google_DriveService.php",
-              "type": "php"
+              "type": "file"
             },
             "source": {
               "url": "https://github.com/marcj/google-api-php-client",
