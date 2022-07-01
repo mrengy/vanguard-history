@@ -28,17 +28,11 @@
           "url":"https://wpackagist.org"
       },
       {
-          "google-drive-service": {
-            "type": "package",
-            "package": {
-              "name": "marcj/google-api-php-client",
-              "version": "1.0",
-              "source": {
-                "url": "https://github.com/marcj/google-api-php-client/blob/master/src/contrib/Google_DriveService.php",
-                "type": "git",
-                "reference": "origin/master"
-              }
-            }
+          "type": "package",
+          "package": {
+            "name": "marcj/google-api-php-client",
+            "version": "1.0",
+            "url": "https://raw.githubusercontent.com/marcj/google-api-php-client/master/src/contrib/Google_DriveService.php"
           }
       }
   ],
