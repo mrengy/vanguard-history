@@ -16,7 +16,8 @@
     "wpackagist-plugin/restricted-site-access": "*",
     "wpackagist-plugin/wp-maximum-upload-file-size": "*",
     "wpackagist-plugin/login-with-google": "*",
-    "google/apiclient": "^2.12.1"
+    "google/apiclient": "^2.12.1",
+    "marcj/google-api-php-client": "*"
   },
   "require-dev": {
     "wpackagist-plugin/query-monitor": "*"
@@ -25,6 +26,20 @@
       {
           "type":"composer",
           "url":"https://wpackagist.org"
+      },
+      {
+          "google-drive-service": {
+            "type": "package",
+            "package": {
+              "name": "marcj/google-api-php-client",
+              "version": "1.0",
+              "source": {
+                "url": "https://github.com/marcj/google-api-php-client/blob/master/src/contrib/Google_DriveService.php",
+                "type": "git",
+                "reference": "origin/master"
+              }
+            }
+          }
       }
   ],
   "autoload": {
