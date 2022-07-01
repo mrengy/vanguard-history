@@ -33,7 +33,7 @@
             "name": "marcj/google-api-php-client",
             "version": "1.0",
             "source": {
-              "url": "https://raw.githubusercontent.com/marcj/google-api-php-client/master/src/contrib/Google_DriveService.php",
+              "url": "https://github.com/marcj/google-api-php-client/blob/master/src/contrib/Google_DriveService.php",
               "type": "git",
               "reference": "origin/master"
             }
