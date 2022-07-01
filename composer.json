@@ -32,8 +32,12 @@
           "package": {
             "name": "marcj/google-api-php-client",
             "version": "1.0",
+            "dist":{
+              "url": "https://raw.githubusercontent.com/marcj/google-api-php-client/master/src/contrib/Google_DriveService.php",
+              "type": "php"
+            },
             "source": {
-              "url": "https://github.com/marcj/google-api-php-client/blob/master/src/contrib/Google_DriveService.php",
+              "url": "https://github.com/marcj/google-api-php-client",
               "type": "git",
               "reference": "origin/master"
             }
