@@ -461,8 +461,10 @@ function form_to_media_library($entry){
 	$all_files_string = trim ($entry[ '1' ], '[]');
 	$all_files = explode(",", $all_files_string);
   //do_action( 'qm/debug', $all_files);
-	// start loop to process each uploaded file
 
+	$image_filetypes = array('jpeg', 'jpg', 'gif', 'png', 'bmp');
+
+	// start loop to process each uploaded file
 	foreach ($all_files as $this_file) {
 
 		// set filename
@@ -474,8 +476,6 @@ function form_to_media_library($entry){
 
 		// check the type of file. We'll use this as the 'post_mime_type'
 		$filetype = wp_check_filetype( basename( $filename ), null );
-
-
 
 		// Prepare an array of post data for the attachment.
 		$attachment = array(
@@ -497,20 +497,25 @@ function form_to_media_library($entry){
 		// Make sure that this file is included, as wp_generate_attachment_metadata() depends on it.
 		require_once( ABSPATH . 'wp-admin/includes/image.php' );
 
-		// Generate alternate sizes for the attachment, and update the database record.
-		$attach_data = wp_generate_attachment_metadata( $attach_id, $upload['file'] );
-		wp_update_attachment_metadata( $attach_id, $attach_data );
+		// do_action( 'qm/debug', $filetype);
+		// debug not working here per https://wordpress.org/support/topic/debug-not-working-inside-a-filter/
+
+		// conditional logic: only if file type is image
+		if (in_array($filetype['ext'], $image_filetypes)) {
+			// Generate alternate sizes for the attachment, and update the database record.
+			$attach_data = wp_generate_attachment_metadata( $attach_id, $upload['file'] );
+			wp_update_attachment_metadata( $attach_id, $attach_data );
+		}
 
 		// set custom field values
-			wp_set_object_terms( $attach_id, rgar( $entry, '2'), 'submitter_name' );
-			wp_set_object_terms( $attach_id, rgar( $entry, '3'), 'submitter_email' );
-			wp_set_object_terms( $attach_id, rgar( $entry, '4'), 'vhs_year' );
-			wp_set_object_terms( $attach_id, rgar( $entry, '6'), 'ensemble' );
-			wp_set_object_terms( $attach_id, rgar( $entry, '11'), 'creator_name' );
+		wp_set_object_terms( $attach_id, rgar( $entry, '2'), 'submitter_name' );
+		wp_set_object_terms( $attach_id, rgar( $entry, '3'), 'submitter_email' );
+		wp_set_object_terms( $attach_id, rgar( $entry, '4'), 'vhs_year' );
+		wp_set_object_terms( $attach_id, rgar( $entry, '6'), 'ensemble' );
+		wp_set_object_terms( $attach_id, rgar( $entry, '11'), 'creator_name' );
 
-			// Note that the copyright info is saved as a "value" separate from the "label" shown to the user. The value is set when editing the form in GravityForms.
-			// do_action( 'qm/debug', rgar( $entry, '7') );
-			wp_set_object_terms( $attach_id, rgar( $entry, '7'), 'copyright' );
+		// Note that the copyright info is saved as a "value" separate from the "label" shown to the user. The value is set when editing the form in GravityForms.
+		wp_set_object_terms( $attach_id, rgar( $entry, '7'), 'copyright' );
 
 	// end loop
 	}
