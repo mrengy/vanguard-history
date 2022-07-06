@@ -435,19 +435,6 @@ add_filter( 'wp_terms_checklist_args', 'media_visibility_radio_buttons' );
 }
 add_action('init', 'vhs_custom_post_type');
 
-// Add mp4 files mime type to WordPress in order to allow mp4 files to be uploaded, per https://docs.gravityforms.com/permitted-file-types-for-uploading/#h-wordpress-core-filters.
-add_filter( 'wp_check_filetype_and_ext', function ( $wp_check_filetype_and_ext, $file, $filename, $mimes, $real_mime ) {
-	GFCommon::log_debug( 'Running for file: ' . $filename );
-	GFCommon::log_debug( '$real_mime value: ' . var_export( $real_mime, true ) );
-	$wp_filetype = wp_check_filetype( $filename, $mimes );
-	GFCommon::log_debug( '$wp_filetype value: ' . print_r( $wp_filetype, true ) );
-	if ( in_array( $wp_filetype['ext'], [ 'mp4' ] ) ) {
-	   $wp_check_filetype_and_ext['ext']  = $wp_filetype['ext'];
-	   $wp_check_filetype_and_ext['type'] = $wp_filetype['type'];
-	}
-	return $wp_check_filetype_and_ext;
- }, 10, 5 );
-
 /**
  * Upload form submissions to media library
  */
