@@ -23,6 +23,9 @@ wp-content/*
 # ignore specific themes
 wp-content/themes/twenty*/
 
+# ignore credentials
+*credentials.php
+
 # ignore all files starting with .
 .*
 
