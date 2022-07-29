@@ -24,7 +24,6 @@ wp-content/*
 wp-content/themes/twenty*/
 
 # ignore credentials
-# wp-content/themes/vanguard-history/credentials.php
 *credentials.php
 
 # ignore all files starting with .
