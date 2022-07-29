@@ -16,7 +16,7 @@
     "wpackagist-plugin/restricted-site-access": "*",
     "wpackagist-plugin/wp-maximum-upload-file-size": "*",
     "wpackagist-plugin/login-with-google": "*",
-    "wpackagist-plugin/media-sync": "*"
+    "wpackagist-plugin/media-sync": "*",
     "google/apiclient": "^2.12.1",
     "marcj/google-api-php-client": "*"
   },
