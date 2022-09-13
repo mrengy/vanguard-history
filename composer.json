@@ -16,6 +16,7 @@
     "wpackagist-plugin/restricted-site-access": "*",
     "wpackagist-plugin/login-with-google": "*",
     "wpackagist-plugin/wp-maximum-upload-file-size": "*",
+    "wpackagist-plugin/enable-media-replace": "*",
     "wpackagist-plugin/media-sync": "*"
   },
   "require-dev": {
