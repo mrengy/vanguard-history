@@ -1,4 +1,4 @@
-Documenting the history of the Santa Clara Vanguard through stories. Will be launched at [history.scvanguard.org](https://history.scvanguard.org) (currently just a material upload form lives there as a first phase). See [Vanguard Historical Society](scvanguard.org/historical-society/) for background behind this project. 
+Documenting the history of the Santa Clara Vanguard through stories. Will be launched at [history.scvanguard.org](https://history.scvanguard.org) (currently just a material upload form lives there as a first phase). See [Vanguard Historical Society](scvanguard.org/historical-society/) for background behind this project.
 
 Built on WordPress.
 
@@ -31,7 +31,7 @@ If you plan on making changes to any CSS, you will need to [install SASS on your
 
 #### Preparation
 
-Ensure you've got a working WordPress account for the production site, [history.scvanguard.org](https://history.scvanguard.org). Note in order to access the site, first you may need to enter a separate username / password of "historyscv" / "scv1967". If you don't have a WordPress account there, ask Mike Eng for one. It will make things easier if you use your same username, email address, and password on the local site you'll create next.
+Ensure you've got a working WordPress account for the production site, [history.scvanguard.org](https://history.scvanguard.org). If you don't have a WordPress account there, ask Mike Eng for one. It will make things easier if you use your same username, email address, and password on the local site you'll create next.
 
 #### Install WordPress locally
 
