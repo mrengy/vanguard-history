@@ -17,7 +17,8 @@
     "wpackagist-plugin/login-with-google": "*",
     "wpackagist-plugin/wp-maximum-upload-file-size": "*",
     "wpackagist-plugin/enable-media-replace": "*",
-    "wpackagist-plugin/media-sync": "*"
+    "wpackagist-plugin/media-sync": "*",
+    "wpackagist-plugin/easy-wp-smtp": "*"
   },
   "require-dev": {
     "wpackagist-plugin/query-monitor": "*"
