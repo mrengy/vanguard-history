@@ -67,7 +67,7 @@ If in the command line, you see an error involving `gravityformscli` or `wp gf`,
     1. log in and go to the Plugins page
     1. [upload the gravityforms.zip file from the WordPress admin](https://www.wonderplugin.com/wordpress-tutorials/how-to-manually-install-a-wordpress-plugin-zip-file/).
 
-If you in the command line, "Error: Error establishing a database connection.
+If in the command line, you see, "Error: Error establishing a database connection.
 ", and you're on Mac OS, try the solution listed at [WP-Cli : Error establishing a database connection - Amazingly simple solution](https://community.localwp.com/t/wp-cli-error-establishing-a-database-connection-amazingly-simple-solution/20794).
 
 Activate all the plugins by [running](https://developer.wordpress.org/cli/commands/plugin/activate/) `wp plugin activate --all` in the command line or opening WordPress Admin for your local installation, logging in, and navigating to the `plugins` page.
