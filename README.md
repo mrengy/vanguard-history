@@ -116,15 +116,20 @@ Run `composer update` (or `php composer.phar update`) to update plugins to match
 
 There are many ways to use Git branches. Here, we will use an approach of <a href="https://gist.github.com/vlandham/3b2b79c40bc7353ae95a">feature branches and pull requests</a>. In that tutorial, replace "master" with "main". For the most part, we will not be committing directly on the "main" branch, but on a branch specific to the feature or issue you are working on. New branches will be created automatically when a GitHub issue is assigned. You probably won’t need to create your own branches, but you can if you like.
 
-## committing and pushing
+## committing changes
 
-After you've made local changes, commit them, one by one. When you've got a bunch to send back to Github, `push` them. See [these basics](https://docs.gitlab.com/ee/gitlab-basics/start-using-git.html#add-and-commit-local-changes) for details. (where that page says "GitLab", replace that mentally with "Github"). Then rather than merging into the main branch yourself, [create a pull request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request) from your branch when it's ready to be merged back into the main branch.
+After you've made local changes, commit them, one by one. When you've got a bunch to send back to Github, `push` them on your feature branch. See [these basics](https://docs.gitlab.com/ee/gitlab-basics/start-using-git.html#add-and-commit-local-changes) for details. (where that page says "GitLab", replace that mentally with "Github"). Then rather than merging into the main branch yourself, [create a pull request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request) from your branch when it's ready to be merged back into the main branch.
 
 
 # Site administration on servers
-The site administrator (Mike Eng) will merge pull requests and deploy changes to the server (production).
+The site administrator (Mike Eng) will merge pull requests and deploy changes to the servers (development, stage, and production).
 
-After deploying to production, the administrator will [connect to the server using SSH](https://wpengine.com/support/ssh-gateway/), and run `php composer.phar update` there to update plugins to match what is specified in composer.json.
+For the development and stage sites, you'll need to log into WordPress to view anything. Use the "forgot password" functionality or ask the site administrator (Mike Eng) if you have trouble logging in.
+
+1. Development site: https://historyscv-dev.dreamhosters.com
+1. Stage site: https://historyscv-stage.dreamhosters.com
+
+After deploying to a server, the administrator will [connect to the server using SSH](https://wpengine.com/support/ssh-gateway/), and run `php composer.phar update` there to update plugins to match what is specified in composer.json.
 
 # Core team
 1. [Mike Eng](https://github.com/mrengy)
