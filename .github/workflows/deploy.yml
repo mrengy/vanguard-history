@@ -1,2 +1,6 @@
 name: branch-deploy
+id: branch-deploy
 uses: github/branch-deploy@v3.0.3
+with:
+  environment: "dev"
+  stable_branch: "main"
