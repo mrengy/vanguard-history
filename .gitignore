@@ -29,6 +29,9 @@ wp-content/themes/twenty*/
 # ignore all files starting with .
 .*
 
+# track .github directory
+!.github
+
 # track this file .gitignore (i.e. do NOT ignore it)
 !.gitignore
 
