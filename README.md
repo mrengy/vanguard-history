@@ -6,6 +6,8 @@ Uses [Composer](https://getcomposer.org/) for dependency (plugin) management.
 
 Uses [Sass](https://sass-lang.com) for pre-processing CSS, making the CSS more manageable and less repetitive.
 
+Uses [WP CLI](https://wp-cli.org/) for faster WordPress administration from the command line.
+
 # What is the source of truth for which things?
 
 We will work on code (which plugins to use, theme code, and mu-plugin code) **locally first**, then push it to Github, review it, and eventually deploy it to the production website. **Github is the source of truth for code**.
@@ -26,6 +28,8 @@ To set up the site, you will need to [install Composer on your local machine](ht
 
 If you plan on making changes to any CSS, you will need to [install SASS on your local machine](https://sass-lang.com/install).
 
+For some of the local WordPress site administration tasks like bulk activating plugins and manually installing some like GravityForms, you will need to [install WP CLI](https://wp-cli.org/#installing).
+
 
 ### Set up the site on your local machine
 
@@ -45,7 +49,9 @@ Install [Local](https://localwp.com/) on your computer. In Local, create a new s
 
 ![screenshot showing "open site shell" option](https://localwp.com/wp-content/uploads/2020/10/local-open-site-shell.png.webp)
 
-A command line prompt should open. Rather than cloning this repository like one usually would, you'll need to do something a little different to track this repository since the Local directory already has files in it. In that command line prompt, enter:
+A command line prompt should open in the directory of your local WordPress installation. If it doesn't open in the correct directory, you can navigate to it manually. On Mac OS, it lives under "your-username" > "Local Sites" > "vanguard-history" > "app" > "public".
+
+Rather than cloning this repository like one usually would, you'll need to do something a little different to track this repository since the Local directory already has the WordPress core files in it. In that command line prompt, enter:
 
 <pre>
 git init .
@@ -53,6 +59,12 @@ git remote add origin git@github.com:mrengy/vanguard-history.git
 git fetch origin
 git checkout main
 </pre>
+
+#### Point WP CLI to the right place
+
+Check that [WP CLI](https://wp-cli.org/) is able to connect to your local WordPress installation. From the command line prompt in your local WordPress directory (mentioned above), run `wp plugin update`. If it works, it will show a table of installed plugins.
+
+If you get `Error: Error establishing a database connection`, you'll need to edit your local wp-config.php file in a text editor and change the `DB_HOST` value from `localhost` to another string. In order to find the right string, open the Local app, go to the Vanguard History site, and click the "Database" tab. Copy the entire string listed next to `Socket`. Then in wp-config.php, change the `DB_HOST` value from `localhost` to `localhost:that-string-you-just-copied`. It will be something like `localhost:/Users/your-username/Library/Application Support/Local/run/WvEot0rmv/mysql/mysqld.sock`. If that doesn't work, you can get the string another way, listed at [WP-Cli : Error establishing a database connection - Amazingly simple solution](https://community.localwp.com/t/wp-cli-error-establishing-a-database-connection-amazingly-simple-solution/20794) - *note, we have tested this on Mac OS only, not sure if it differs on other operating systems*.
 
 #### Install plugins
 
@@ -70,9 +82,6 @@ If in the command line, you see an error involving `gravityformscli` or `wp gf`,
 
 Activate all the plugins by [running](https://developer.wordpress.org/cli/commands/plugin/activate/) `wp plugin activate --all` in the command line or opening WordPress Admin for your local installation, logging in, and navigating to the `plugins` page.
 
-If in the command line, you see, "Error: Error establishing a database connection.
-", and you're on Mac OS, try the solution listed at [WP-Cli : Error establishing a database connection - Amazingly simple solution](https://community.localwp.com/t/wp-cli-error-establishing-a-database-connection-amazingly-simple-solution/20794).
-
 #### Migrate database and uploads from production to local
 
 Get a backup of the production site from the [All in One WordPress Migration Export page](https://history.scvanguard.org/wp-admin/admin.php?page=ai1wm_export). Note the following settings:
@@ -88,6 +97,8 @@ Get a backup of the production site from the [All in One WordPress Migration Exp
 1. Export to "file"
 
 Download the file to your computer. it should end in ".wpress".
+
+You may need to [update some files in your local WordPress installation](https://help.servmask.com/2018/10/27/how-to-increase-maximum-upload-file-size-in-wordpress/) to allow large uploads. 
 
 [Open the WordPress Admin from Local](https://localwp.com/help-docs/local-features/using-one-click-admin/) and go to "All in one WP Migration" > "Import". If "All in one WP Migration" does not appear in the Admin menu, you need to activate the "All in one WP Migration" plugin.
 
