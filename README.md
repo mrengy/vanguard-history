@@ -84,6 +84,8 @@ Activate all the plugins by [running](https://developer.wordpress.org/cli/comman
 
 #### Migrate database and uploads from production to local
 
+##### Option 1: export / import media files along with the database
+
 Get a backup of the production site from the [All in One WordPress Migration Export page](https://history.scvanguard.org/wp-admin/admin.php?page=ai1wm_export). Note the following settings:
 
 1. Use: "Find _ replace with _ in the database" to change the url from the production url to your local url. Find: "https://history.scvanguard.org". Replace with: "http://vanguard-history.local" (or whatever your local url is).
@@ -98,7 +100,7 @@ Get a backup of the production site from the [All in One WordPress Migration Exp
 
 Download the file to your computer. it should end in ".wpress".
 
-You may need to [update some files in your local WordPress installation](https://help.servmask.com/2018/10/27/how-to-increase-maximum-upload-file-size-in-wordpress/) to allow large uploads. 
+You may need to [update some files in your local WordPress installation](https://help.servmask.com/2018/10/27/how-to-increase-maximum-upload-file-size-in-wordpress/) to allow large uploads.
 
 [Open the WordPress Admin from Local](https://localwp.com/help-docs/local-features/using-one-click-admin/) and go to "All in one WP Migration" > "Import". If "All in one WP Migration" does not appear in the Admin menu, you need to activate the "All in one WP Migration" plugin.
 
@@ -107,6 +109,17 @@ Select or drag your .wpress file into the indicated area on the import page and 
 When prompted to log in to WordPress Admin on your local site after importing the migration file, you will need to use your password from the production site. You might want to change your password on the local site later.
 
 That's it! View your local site to ensure it matches what's on the production site.
+
+##### Option 2: export / import database separate from media files
+
+If the file from the All in One WordPress Migration plugin is too large to import, you can exclude media files from the export file and copy in some media files separately. Follow the steps in the above section, with the following changes.
+
+When creating the export, also check the option:
+
+1. "Do not export media library (files)"
+
+After importing the database file in your local WordPress Admin, manually copy in media files. Download and unzip a couple of directories of uploads by month from [this Basecamp thread](https://3.basecamp.com/5067876/buckets/22032865/messages/5561851381#__recording_5586109819) (ask Mike Eng if you need access to Basecamp). Go to your local site folder. Get there from the Local app > under the site "Vanguard History", click "Go to site folder". Place the media files under "vanguard-history" > "app" > "public" > "wp-content" > "uploads". Within "uploads", there are directories organized by year and month. Place the directories and their contents under "uploads" in the appropriate year / month structure.
+
 
 ## To make edits to CSS
 
