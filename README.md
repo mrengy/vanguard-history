@@ -164,3 +164,6 @@ After deploying to a server, the administrator will [connect to the server using
 
 # Core team
 1. [Mike Eng](https://github.com/mrengy)
+1. Adam Noyce
+1. [Shekhar Khedekar](https://github.com/shekharkhedekar)
+1. Shannon Stamm McGhee
