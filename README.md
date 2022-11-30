@@ -71,6 +71,7 @@ wp plugin update
 ```
 
 If you get `Error: Error establishing a database connection`, you'll need to edit your local wp-config.php file in a text editor and change the `DB_HOST` value from `localhost` to another string. In order to find the right string, open the Local app, go to the Vanguard History site, and click the "Database" tab. Copy the entire string listed next to `Socket`. Then in wp-config.php, change the `DB_HOST` value from `localhost` to `localhost:that-string-you-just-copied`. It will be something like `localhost:/Users/your-username/Library/Application Support/Local/run/WvEot0rmv/mysql/mysqld.sock`. If that doesn't work, you can get the string another way, listed at [WP-Cli : Error establishing a database connection - Amazingly simple solution](https://community.localwp.com/t/wp-cli-error-establishing-a-database-connection-amazingly-simple-solution/20794) - *note, we have tested this on Mac OS only, not sure if it differs on other operating systems*.
+<img width="1197" alt="screenshot of where in Local to find the socket-path string needed" src="https://user-images.githubusercontent.com/2223603/204912603-710dc943-08d6-472a-8cd3-057969df9159.png">
 
 #### Install plugins
 
