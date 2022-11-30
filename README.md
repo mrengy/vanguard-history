@@ -49,7 +49,9 @@ Install [Local](https://localwp.com/) on your computer. In Local, create a new s
 
 ![screenshot showing "open site shell" option](https://localwp.com/wp-content/uploads/2020/10/local-open-site-shell.png.webp)
 
-A command line prompt should open in the directory of your local WordPress installation. If it doesn't open in the correct directory, you can navigate to it manually. On Mac OS, it lives under "your-username" > "Local Sites" > "vanguard-history" > "app" > "public".
+A command line prompt should open in the directory of your local WordPress installation. If it doesn't open in the correct directory, you can navigate to it manually. On Mac OS, it lives under:
+```sh
+ ~/Local Sites/vanguard-history/app/public
 
 Rather than cloning this repository like one usually would, you'll need to do something a little different to track this repository since the Local directory already has the WordPress core files in it. In that command line prompt, enter:
 
