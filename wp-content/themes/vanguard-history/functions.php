@@ -430,6 +430,7 @@ add_filter( 'wp_terms_checklist_args', 'media_visibility_radio_buttons' );
             ),
                 'public'      => true,
                 'has_archive' => true,
+								'supports' => array('title','editor','author','excerpt','comments','revisions')
         )
     );
 }
