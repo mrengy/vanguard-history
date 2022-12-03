@@ -16,7 +16,7 @@
  );
 ?>
 <div id="footer-menu-heading-container">
- <h2 class="footer-menu">Other VMAPA Sites</h2>
+ <h2 class="footer-menu" id="other-vmapa-sites">Other VMAPA Sites</h2>
 </div>
 <?php
  wp_nav_menu(

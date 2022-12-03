@@ -73,14 +73,14 @@ get_header();
 						}
 					?>
 					</div>
+					<h2 class="footer-menu" id="help-us-tell-more-stories">Help us tell more stories</h2>
 					<?php
-
-			wp_nav_menu(
-				array(
-					'theme_location' => 'footer-calls-to-action',
-					'menu_id'        => 'footer-calls-to-action',
-				)
-			);
+					wp_nav_menu(
+						array(
+							'theme_location' => 'footer-calls-to-action',
+							'menu_id'        => 'footer-calls-to-action',
+						)
+					);
 
 			// If comments are open or we have at least one comment, load up the comment template.
 			if ( comments_open() || get_comments_number() ) :
