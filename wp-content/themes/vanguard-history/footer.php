@@ -8,7 +8,6 @@
  *
  * @package Vanguard_History
  */
-
  wp_nav_menu(
    array(
      'theme_location' => 'footer-1',
