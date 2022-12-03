@@ -75,13 +75,6 @@ get_header();
 					</div>
 					<?php
 
-			the_post_navigation(
-				array(
-					'prev_text' => '<span class="nav-subtitle">' . esc_html__( 'Previous:', 'vanguard-history' ) . '</span> <span class="nav-title">%title</span>',
-					'next_text' => '<span class="nav-subtitle">' . esc_html__( 'Next:', 'vanguard-history' ) . '</span> <span class="nav-title">%title</span>',
-				)
-			);
-
 			wp_nav_menu(
 				array(
 					'theme_location' => 'footer-calls-to-action',
