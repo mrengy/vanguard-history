@@ -44,6 +44,11 @@
 					'</div>'
 				);
 			}
+
+			if(has_excerpt()){
+				the_excerpt();
+			}
+			
 		}
 	?>
 

@@ -55,6 +55,8 @@ if ( ! function_exists( 'vanguard_history_setup' ) ) :
 		register_nav_menus(
 			array(
 				'menu-1' => esc_html__( 'Primary', 'vanguard-history' ),
+				'footer-1' => esc_html__( 'Footer 1', 'vanguard-history' ),
+				'footer-2' => esc_html__( 'Footer 2', 'vanguard-history' ),
 			)
 		);
 
