@@ -82,6 +82,13 @@ get_header();
 				)
 			);
 
+			wp_nav_menu(
+				array(
+					'theme_location' => 'footer-calls-to-action',
+					'menu_id'        => 'footer-calls-to-action',
+				)
+			);
+
 			// If comments are open or we have at least one comment, load up the comment template.
 			if ( comments_open() || get_comments_number() ) :
 				comments_template();

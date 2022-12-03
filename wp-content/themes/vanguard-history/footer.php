@@ -10,12 +10,6 @@
  */
  wp_nav_menu(
    array(
-     'theme_location' => 'footer-calls-to-action',
-     'menu_id'        => 'footer-calls-to-action',
-   )
- );
- wp_nav_menu(
-   array(
      'theme_location' => 'footer-1',
      'menu_id'        => 'footer-1-menu',
    )
