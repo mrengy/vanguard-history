@@ -30,17 +30,12 @@ if ( post_password_required() ) {
 			<?php
 			$vanguard_history_comment_count = get_comments_number();
 			if ( '1' === $vanguard_history_comment_count ) {
-				printf(
-					/* translators: 1: title. */
-					esc_html__( 'One thought on &ldquo;%1$s&rdquo;', 'vanguard-history' ),
-					'<span>' . wp_kses_post( get_the_title() ) . '</span>'
-				);
+				echo('One comment');
 			} else {
 				printf(
 					/* translators: 1: comment count number, 2: title. */
-					esc_html( _nx( '%1$s thought on &ldquo;%2$s&rdquo;', '%1$s thoughts on &ldquo;%2$s&rdquo;', $vanguard_history_comment_count, 'comments title', 'vanguard-history' ) ),
+					esc_html( _nx( '%1$s comment', '%1$s comments', $vanguard_history_comment_count, 'comments title', 'vanguard-history' ) ),
 					number_format_i18n( $vanguard_history_comment_count ), // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-					'<span>' . wp_kses_post( get_the_title() ) . '</span>'
 				);
 			}
 			?>
