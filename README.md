@@ -12,7 +12,7 @@ Uses [WP CLI](https://wp-cli.org/) for faster WordPress administration from the 
 
 We will work on code (which plugins to use, theme code, and mu-plugin code) **locally first**, then push it to Github, review it, and eventually deploy it to the production website. **Github is the source of truth for code**.
 
-**The production website is the source of truth for content** (database and uploaded files). We can periodically pull database content down from production to local installs to match what is in production. If you make database changes locally that the production site should have, **also make those changes on the production site**.
+**The stage website is the source of truth for content** (database and uploaded files). We can periodically pull database content down from stage to local installs to match what is in production. If you make database changes locally that the stage site should have, **also make those changes on the stage site**.
 
 # Working locally
 
@@ -89,13 +89,13 @@ If in the command line, you see an error involving `gravityformscli` or `wp gf`,
 
 Activate all the plugins by [running](https://developer.wordpress.org/cli/commands/plugin/activate/) `wp plugin activate --all` in the command line or opening WordPress Admin for your local installation, logging in, and navigating to the `plugins` page.
 
-#### Migrate database and uploads from production to local
+#### Migrate database and uploads from stage to local
 
 ##### Option 1: export / import media files along with the database
 
-Get a backup of the production site from the [All in One WordPress Migration Export page](https://history.scvanguard.org/wp-admin/admin.php?page=ai1wm_export). Note the following settings:
+Get a backup of the production site from the [All in One WordPress Migration Export page](https://historyscv-stage.dreamhosters.com/wp-admin/admin.php?page=ai1wm_export). Note the following settings:
 
-1. Use: "Find _ replace with _ in the database" to change the url from the production url to your local url. Find: "https://history.scvanguard.org". Replace with: "http://vanguard-history.local" (or whatever your local url is).
+1. Use: "Find _ replace with _ in the database" to change the url from the production url to your local url. Find: "https://historyscv-stage.dreamhosters.com". Replace with: "http://vanguard-history.local" (or whatever your local url is).
 1. Under "advanced options", check only the following:
     1. "Do not export spam comments"
     1. "Do not export post revisions"
