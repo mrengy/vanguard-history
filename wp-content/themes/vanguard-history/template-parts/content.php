@@ -87,49 +87,24 @@
 			</div>
 				<?php
 					$show_piece_counter = 0;
+					// need a better if statement - to detect if there are show pieces whose child elements have non-empty values
 					if(have_rows('show_pieces')){
-
-					$show_piece_fields = get_field_object('show_pieces');
-					/*
-					$non_empty_show_piece_fields = array_filter($show_piece_fields['value'], function($x) { return ($x !== ""); });
-					$count_non_empty_show_piece_fields = count($non_empty_show_piece_fields);
-					echo ($count_non_empty_show_piece_fields);
-
-					do_action( 'qm/debug', $non_empty_show_piece_fields );
-					*/
-					//do_action( 'qm/debug', $show_piece_fields );
+					//$show_piece_fields = get_field_object('show_pieces');
 					$show_pieces = get_field('show_pieces');
-					$count_show_pieces = count(get_field('show_pieces'));
-					do_action( 'qm/debug', $count_show_pieces );
 
 				?>
 				<dl id="show-pieces">
 					<?php
 						while(have_rows('show_pieces')){ the_row();
-							$show_piece_counter ++;
-
 							foreach($show_pieces as $show_piece){
-								echo ('show piece |');
+								if( empty($show_piece['show_piece_title'] )){
+									return false;
+								} else {
+										echo("<dt>".$show_piece['show_piece_title']."</dt>");
+										echo("<dd>".$show_piece['show_piece_composer']."</dd>");
+										do_action( 'qm/debug', $show_piece );
+								}
 							}
-							/*
-							$this_row_debug = get_row();
-							do_action( 'qm/debug', $this_row_debug );
-							*/
-
-							if(have_rows('show_piece_'.$show_piece_counter)){
-								while(have_rows('show_piece_'.$show_piece_counter)){ the_row();
-
-
-								$inner_row_debug = get_row();
-								do_action( 'qm/debug', $inner_row_debug );
-								do_action( 'qm/debug', $show_piece_counter );
-					?>
-								<dt> <?php the_sub_field('show_piece_title'); ?> </dt>
-								<dd> <?php the_sub_field('show_piece_composer'); ?> </dd>
-					<?php
-								} //while(have_rows('show_pieces')): the_row();
-							} //if(have_rows('show_pieces')):
-
 					?>
 					<?php
 						} //while(have_rows)('show_pieces')): the_row():
