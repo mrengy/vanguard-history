@@ -98,7 +98,7 @@
 						while(have_rows('show_pieces')){ the_row();
 							foreach($show_pieces as $show_piece){
 								if( empty($show_piece['show_piece_title'] )){
-									return false;
+									continue;
 								} else {
 										echo("<dt>".$show_piece['show_piece_title']."</dt>");
 										echo("<dd>".$show_piece['show_piece_composer']."</dd>");
@@ -118,10 +118,10 @@
 					Final Score
 				</h2>
 				<div id="final-score">
-
+					<?php the_field('final_score');?>
 				</div>
 				<div id="final-placement">
-					()
+					<?php the_field('final_placement');?>
 				</div>
 			</div>
 		</section><!-- show-info-->
