@@ -98,6 +98,9 @@
 					do_action( 'qm/debug', $non_empty_show_piece_fields );
 					*/
 					//do_action( 'qm/debug', $show_piece_fields );
+					$show_pieces = get_field('show_pieces');
+					$count_show_pieces = count(get_field('show_pieces'));
+					do_action( 'qm/debug', $count_show_pieces );
 
 				?>
 				<dl id="show-pieces">
@@ -105,6 +108,9 @@
 						while(have_rows('show_pieces')){ the_row();
 							$show_piece_counter ++;
 
+							foreach($show_pieces as $show_piece){
+								echo ('show piece |');
+							}
 							/*
 							$this_row_debug = get_row();
 							do_action( 'qm/debug', $this_row_debug );
@@ -112,6 +118,7 @@
 
 							if(have_rows('show_piece_'.$show_piece_counter)){
 								while(have_rows('show_piece_'.$show_piece_counter)){ the_row();
+
 
 								$inner_row_debug = get_row();
 								do_action( 'qm/debug', $inner_row_debug );
