@@ -121,7 +121,7 @@
 					<?php the_field('final_score');?>
 				</div>
 				<div id="final-placement">
-					<?php the_field('final_placement');?>
+					(<?php the_field('final_placement');?>)
 				</div>
 			</div>
 		</section><!-- show-info-->
