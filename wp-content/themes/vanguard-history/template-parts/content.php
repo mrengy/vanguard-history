@@ -48,34 +48,83 @@
 			if(has_excerpt()){
 				the_excerpt();
 			}
-			
+
 		}
 	?>
 
 	<div class="entry-content">
-		<?php
-		the_content(
-			sprintf(
-				wp_kses(
-					/* translators: %s: Name of current post. Only visible to screen readers */
-					__( 'Continue reading<span class="screen-reader-text"> "%s"</span>', 'vanguard-history' ),
-					array(
-						'span' => array(
-							'class' => array(),
-						),
-					)
-				),
-				wp_kses_post( get_the_title() )
-			)
-		);
+		<section id="story">
+			<?php
+			the_content(
+				sprintf(
+					wp_kses(
+						/* translators: %s: Name of current post. Only visible to screen readers */
+						__( 'Continue reading<span class="screen-reader-text"> "%s"</span>', 'vanguard-history' ),
+						array(
+							'span' => array(
+								'class' => array(),
+							),
+						)
+					),
+					wp_kses_post( get_the_title() )
+				)
+			);
 
-		wp_link_pages(
-			array(
-				'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'vanguard-history' ),
-				'after'  => '</div>',
-			)
-		);
-		?>
+			wp_link_pages(
+				array(
+					'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'vanguard-history' ),
+					'after'  => '</div>',
+				)
+			);
+			?>
+		</section><!--story-->
+		<section id="show-info">
+			<h2 id="repertoire">
+				Repertoire
+			</h2>
+			<div id="show-title">
+				<?php the_field('show_title');?>
+			</div>
+				<?php
+					$show_piece_counter = 0;
+					// need a better if statement - to detect if there are show pieces whose child elements have non-empty values
+					if(have_rows('show_pieces')){
+					//$show_piece_fields = get_field_object('show_pieces');
+					$show_pieces = get_field('show_pieces');
+
+				?>
+				<dl id="show-pieces">
+					<?php
+						while(have_rows('show_pieces')){ the_row();
+							foreach($show_pieces as $show_piece){
+								if( empty($show_piece['show_piece_title'] )){
+									continue;
+								} else {
+										echo("<dt>".$show_piece['show_piece_title']."</dt>");
+										echo("<dd>".$show_piece['show_piece_composer']."</dd>");
+										do_action( 'qm/debug', $show_piece );
+								}
+							}
+					?>
+					<?php
+						} //while(have_rows)('show_pieces')): the_row():
+					?>
+				</dl>
+			<?php
+				} //have_rows('show_pieces')
+			?>
+			<div id="final-score-info">
+				<h2 id="final-score-heading">
+					Final Score
+				</h2>
+				<div id="final-score">
+					<?php the_field('final_score');?>
+				</div>
+				<div id="final-placement">
+					(<?php the_field('final_placement');?>)
+				</div>
+			</div>
+		</section><!-- show-info-->
 	</div><!-- .entry-content -->
 
 	<footer class="entry-footer ui container">
