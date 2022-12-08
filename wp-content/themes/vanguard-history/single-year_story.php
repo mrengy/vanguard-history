@@ -72,7 +72,9 @@ get_header();
 							echo($thumbnail);
 						}
 					?>
-					</div>
+					</div><!--media-container-->
+					<button class="show-hide" id="show-all-media"><span class="button-action">Show</span> all media</button>
+					
 					<h2 class="footer-menu" id="help-us-tell-more-stories">Help us tell more stories</h2>
 					<?php
 					wp_nav_menu(
