@@ -1,5 +1,5 @@
 jQuery(document).ready(function($){
-
+  //*** start show / hide year story content button
   var story = $("#story");
   var button_action = $("#show-hide-full-story .button-action");
   var button_action_default_text = button_action.html();
@@ -21,5 +21,5 @@ jQuery(document).ready(function($){
       button_action.html(button_action_default_text);
     }
   });
-
+  //*** end show / hide year story content button
 });
