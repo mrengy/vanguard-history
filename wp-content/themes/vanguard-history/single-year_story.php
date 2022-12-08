@@ -46,7 +46,7 @@ get_header();
 								),
 						),
 
-						'posts_per_page' => -1,
+						'posts_per_page' => 6,
 					);
 					$media_query = new WP_Query ($media_query_args);
 
