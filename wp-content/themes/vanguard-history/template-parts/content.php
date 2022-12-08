@@ -54,7 +54,7 @@
 
 	<div class="entry-content">
 		<button class="show-hide" id="show-hide-full-story"><span class="button-action">Show</span> full story</button>
-		<section id="story" hidden>
+		<section id="story" hidden="hidden">
 			<?php
 			the_content(
 				sprintf(
