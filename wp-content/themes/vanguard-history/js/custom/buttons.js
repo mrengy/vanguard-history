@@ -24,15 +24,15 @@ jQuery(document).ready(function($){
   //*** end show / hide year story content button
 
   //*** start show all media button
-  $("#show-all-media").click(function(){
-    var this2 = this;
+  $('#show-all-media').click(function(){
+    var fruit = 'banana';
     $.get(my_ajax_obj.ajax_url, {      //POST request
 			//_ajax_nonce: my_ajax_obj.nonce, //nonce
-			action: "vanguard_history_all_media_for_year_story",         //action
-			title: this.value               //data
+			action: 'vanguard_history_all_media_for_year_story',         //action
+			fruit: fruit               //data
 			}, function(data) {            //callback
-				this2.remove(); //remove current button
-				$("#media-container").append(data);       //insert server response
+				//this2.remove(); //remove current button
+				$('#media-container').append(data);       //insert server response
 			}
 		);
   })
