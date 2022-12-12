@@ -76,7 +76,10 @@ get_header();
 
 			echo('</div>'); // closing tag for media-container
 
+			//how many thumbnails did we load? 
 			$num_thumbnails_returned = count($thumbnails);
+
+			// only display the "show all media" button if there is more media
 			if($num_thumbnails_returned >= $thumbnails_to_show){
 				?>
 					<button class="show-hide" id="show-all-media"><span class="button-action">Show</span> all media</button>
