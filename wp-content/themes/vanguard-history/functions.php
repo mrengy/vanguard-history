@@ -152,6 +152,7 @@ function vanguard_history_scripts() {
 	wp_enqueue_script( 'vanguard-history-navigation', get_template_directory_uri() . '/js/custom/navigation.js', array(), false, true );
 
 	wp_enqueue_script( 'vanguard-history-buttons', get_template_directory_uri() . '/js/custom/buttons.js', array('jquery'), false, true );
+  wp_localize_script( 'vanguard-history-buttons', 'my_ajax_object', array( 'ajax_url' => admin_url( 'admin-ajax.php' ) ) );
 
 	wp_enqueue_script( 'vanguard-history-forms', get_template_directory_uri() . '/js/custom/forms.js', array('jquery'), false, true );
 
@@ -560,3 +561,66 @@ function my_attachment_fields_to_edit( $form_fields ) {
 }
 
 add_filter( 'attachment_fields_to_edit', 'my_attachment_fields_to_edit' );
+
+// ajax handler for loading all media in year story
+function vanguard_history_all_media_for_year_story() {
+	if( isset($_REQUEST) ) {
+		$this_year = $_REQUEST['year'];
+		$this_ensemble = $_REQUEST['ensemble'];
+		/*
+		echo $this_ensemble;
+		echo $this_year;
+		*/
+		// query media
+		$media_query_args = array(
+			'post_type'   => 'attachment',
+			'post_status' => 'any',
+
+			'tax_query' => array(
+					'relation' => 'AND',
+					array(
+						'taxonomy' => 'ensemble',
+						'field' => 'slug',
+						'terms' => $this_ensemble,
+					),
+					array(
+						'taxonomy' => 'vhs_year',
+						'field' => 'slug',
+						'terms' => $this_year,
+					),
+					array(
+						'taxonomy' => 'media_visibility',
+						'field' => 'slug',
+						'terms' => 'published',
+					),
+			),
+
+			'offset' => 6
+
+			// in the future, might need to change this once we have more attachments - want it to show all wihout pagination (until we build pagination)
+		);
+		$media_query = new WP_Query ($media_query_args);
+
+		$thumbnails = array();
+
+		if ( $media_query->have_posts() ) : while ( $media_query->have_posts() ) : $media_query->the_post();
+				// store thumbnails in array
+				$thumbnails[] = wp_get_attachment_link( get_the_ID(), 'thumbnail', true );
+
+			endwhile;
+		endif; // end of media loop
+
+		// Be kind; rewind
+		wp_reset_postdata();
+
+		// output all the results
+		foreach($thumbnails as $thumbnail){
+			echo($thumbnail);
+		}
+
+		die();
+	}
+}
+
+add_action( 'wp_ajax_vanguard_history_all_media_for_year_story', 'vanguard_history_all_media_for_year_story' );
+add_action( 'wp_ajax_nopriv_vanguard_history_all_media_for_year_story', 'vanguard_history_all_media_for_year_story' );

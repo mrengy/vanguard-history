@@ -22,4 +22,42 @@ jQuery(document).ready(function($){
     }
   });
   //*** end show / hide year story content button
+
+  //*** start show all media button
+  const media_container = $('#media-container');
+  const year = media_container.data('year');
+  const ensemble = media_container.data('ensemble');
+  $('#show-all-media').click(function(e){
+    $.ajax({
+          //type: 'post',
+          url: my_ajax_object.ajax_url, // Since WP 2.8 ajaxurl is always defined and points to admin-ajax.php
+          data: {
+              'action':'vanguard_history_all_media_for_year_story', // This is our PHP function below
+              'year' : year,
+              'ensemble' : ensemble
+          },
+          success: function(data) {
+            // This outputs the result of the ajax request (The Callback)
+            media_container.append(data);
+            $(e.target).remove();
+          },
+          error: function(errorThrown) {
+              console.log(errorThrown);
+          }
+      });
+
+
+    /*
+    $.get(my_ajax_obj.ajax_url, {      //POST request
+			//_ajax_nonce: my_ajax_obj.nonce, //nonce
+			action: 'vanguard_history_all_media_for_year_story',         //action
+			fruit: fruit               //data
+			}, function(data) {            //callback
+				//this2.remove(); //remove current button
+				$('#media-container').append(data);       //insert server response
+			}
+		);
+    */
+  })
+  //*** end show all media button
 });

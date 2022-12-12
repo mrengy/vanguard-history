@@ -103,7 +103,7 @@
 								} else {
 										echo("<dt>".$show_piece['show_piece_title']."</dt>");
 										echo("<dd>".$show_piece['show_piece_composer']."</dd>");
-										do_action( 'qm/debug', $show_piece );
+										//do_action( 'qm/debug', $show_piece );
 								}
 							}
 					?>
