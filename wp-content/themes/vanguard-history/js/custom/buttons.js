@@ -31,7 +31,8 @@ jQuery(document).ready(function($){
           url: my_ajax_object.ajax_url, // Since WP 2.8 ajaxurl is always defined and points to admin-ajax.php
           data: {
               'action':'vanguard_history_all_media_for_year_story', // This is our PHP function below
-              'fruit' : fruit // This is the variable we are sending via AJAX
+              'year' : 2001,
+              'ensemble' : 'vanguard'
           },
           success: function(data) {
             // This outputs the result of the ajax request (The Callback)

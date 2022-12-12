@@ -565,11 +565,11 @@ add_filter( 'attachment_fields_to_edit', 'my_attachment_fields_to_edit' );
 // ajax handler for loading all media in year story
 function vanguard_history_all_media_for_year_story() {
 	if( isset($_REQUEST) ) {
-		$fruit = $_REQUEST['fruit'];
-		if ( $fruit == 'banana' ) {
-			$fruit = 'apple';
-			echo $fruit;
-		}
+		$year = $_REQUEST['year'];
+		$ensemble = $_REQUEST['ensemble'];
+		echo $ensemble;
+		echo $year;
+
 		die();
 	}
 }
