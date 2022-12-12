@@ -26,25 +26,20 @@ jQuery(document).ready(function($){
   //*** start show all media button
   var fruit = 'banana';
   $('#show-all-media').click(function(){
-    jQuery.ajax({
-          type: 'post',
+    $.ajax({
+          //type: 'post',
           url: my_ajax_object.ajax_url, // Since WP 2.8 ajaxurl is always defined and points to admin-ajax.php
           data: {
-              action:'vanguard_history_all_media_for_year_story', // This is our PHP function below
+              'action':'vanguard_history_all_media_for_year_story', // This is our PHP function below
               'fruit' : fruit // This is the variable we are sending via AJAX
           },
-          complete: function(response){
-            console.log(JSON.parse(response.responseText).data);
-          }
-          /*
           success: function(data) {
-      // This outputs the result of the ajax request (The Callback)
+            // This outputs the result of the ajax request (The Callback)
               $('#media-container').append(data);
           },
           error: function(errorThrown) {
               console.log(errorThrown);
           }
-          */
       });
 
 
