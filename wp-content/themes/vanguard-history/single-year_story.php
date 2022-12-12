@@ -65,16 +65,17 @@ get_header();
 					wp_reset_postdata();
 
 					//display media
-					?>
-					<div id="media-container" class= "ui grid">
-					<?php
+					echo('<div id="media-container" class="ui grid" data-year="'.$this_year.'" data-ensemble="'.$this_ensemble.'">');
+
 						foreach($thumbnails as $thumbnail){
 							echo($thumbnail);
 						}
+
+					echo('</div>') // closing tag for media-container
 					?>
-					</div><!--media-container-->
-					<button class="show-hide" id="show-all-media"><span class="button-action">Show</span> all media</button>
 					
+					<button class="show-hide" id="show-all-media"><span class="button-action">Show</span> all media</button>
+
 					<h2 class="footer-menu" id="help-us-tell-more-stories">Help us tell more stories</h2>
 					<?php
 					wp_nav_menu(

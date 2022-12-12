@@ -24,19 +24,21 @@ jQuery(document).ready(function($){
   //*** end show / hide year story content button
 
   //*** start show all media button
-  var fruit = 'banana';
+  const media_container = $('#media-container');
+  const year = media_container.data('year');
+  const ensemble = media_container.data('ensemble');
   $('#show-all-media').click(function(e){
     $.ajax({
           //type: 'post',
           url: my_ajax_object.ajax_url, // Since WP 2.8 ajaxurl is always defined and points to admin-ajax.php
           data: {
               'action':'vanguard_history_all_media_for_year_story', // This is our PHP function below
-              'year' : 2001,
-              'ensemble' : 'vanguard'
+              'year' : year,
+              'ensemble' : ensemble
           },
           success: function(data) {
             // This outputs the result of the ajax request (The Callback)
-            $('#media-container').append(data);
+            media_container.append(data);
             $(e.target).remove();
           },
           error: function(errorThrown) {
