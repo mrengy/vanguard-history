@@ -25,7 +25,7 @@ jQuery(document).ready(function($){
 
   //*** start show all media button
   var fruit = 'banana';
-  $('#show-all-media').click(function(){
+  $('#show-all-media').click(function(e){
     $.ajax({
           //type: 'post',
           url: my_ajax_object.ajax_url, // Since WP 2.8 ajaxurl is always defined and points to admin-ajax.php
@@ -36,7 +36,8 @@ jQuery(document).ready(function($){
           },
           success: function(data) {
             // This outputs the result of the ajax request (The Callback)
-              $('#media-container').append(data);
+            $('#media-container').append(data);
+            $(e.target).remove();
           },
           error: function(errorThrown) {
               console.log(errorThrown);
