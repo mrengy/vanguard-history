@@ -29,8 +29,7 @@ jQuery(document).ready(function($){
   const ensemble = media_container.data('ensemble');
   $('#show-all-media').click(function(e){
     $.ajax({
-          //type: 'post',
-          url: my_ajax_object.ajax_url, // Since WP 2.8 ajaxurl is always defined and points to admin-ajax.php
+          url: my_ajax_object.ajax_url, // passed in functions.php > wp_localize_script
           data: {
               'action':'vanguard_history_all_media_for_year_story', // This is our PHP function below
               'year' : year,
@@ -46,18 +45,6 @@ jQuery(document).ready(function($){
           }
       });
 
-
-    /*
-    $.get(my_ajax_obj.ajax_url, {      //POST request
-			//_ajax_nonce: my_ajax_obj.nonce, //nonce
-			action: 'vanguard_history_all_media_for_year_story',         //action
-			fruit: fruit               //data
-			}, function(data) {            //callback
-				//this2.remove(); //remove current button
-				$('#media-container').append(data);       //insert server response
-			}
-		);
-    */
   })
   //*** end show all media button
 });
