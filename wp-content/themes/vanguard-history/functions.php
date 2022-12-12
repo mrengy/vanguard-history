@@ -564,6 +564,10 @@ add_filter( 'attachment_fields_to_edit', 'my_attachment_fields_to_edit' );
 
 // ajax handler for loading all media in year story
 function vanguard_history_all_media_for_year_story() {
+	$data = $_POST['data'];
+	wp_send_json_success($data);
+	die();
+	/*
 	if( isset($_REQUEST) ) {
 		$fruit = $_REQUEST['fruit'];
 		if ($fruit == 'banana') {
@@ -572,6 +576,7 @@ function vanguard_history_all_media_for_year_story() {
 		}
 		die();
 	}
+	*/
 }
 
 add_action( 'wp_ajax_example_ajax_request', 'vanguard_history_all_media_for_year_story' );
