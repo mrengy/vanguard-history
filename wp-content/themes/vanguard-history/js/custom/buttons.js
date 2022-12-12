@@ -22,7 +22,6 @@ jQuery(document).ready(function($){
     }
   });
   //*** end show / hide year story content button
-<<<<<<< HEAD
 
   //*** start show all media button
   const media_container = $('#media-container');
@@ -61,6 +60,4 @@ jQuery(document).ready(function($){
     */
   })
   //*** end show all media button
-=======
->>>>>>> show-hide-full-content
 });
