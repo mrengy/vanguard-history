@@ -27,7 +27,7 @@ jQuery(document).ready(function($){
   var fruit = 'banana';
   $('#show-all-media').click(function(){
     $.ajax({
-          type: "GET",
+          type: "post",
           dataType: "json",
           url: my_ajax_object.ajax_url, // Since WP 2.8 ajaxurl is always defined and points to admin-ajax.php
           data: {
