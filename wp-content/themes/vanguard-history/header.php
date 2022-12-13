@@ -31,7 +31,7 @@
 		if (! is_page($excluded_pages)){ ?>
         <header id="masthead" class="site-header ui">
             <div class="site-logo">
-                <img src="wp-content/themes/vanguard-history/img/Star.svg" />
+                <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/Star.svg" alt="Vanguard star icon"/>
             </div>
             <div class=" site-branding">
                 <?php
