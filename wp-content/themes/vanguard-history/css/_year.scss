@@ -1,0 +1,42 @@
+@import "./_var.scss";
+
+.year-top {
+	background-color: $SCVRed;
+	background-image: url("/wp-content/themes/vanguard-history/img/RedShield.svg");
+	background-repeat: space;
+	padding: $spacing-md;
+	color: $White;
+
+	blockquote {
+		font-style: italic;
+		border-left: 2px solid $White;
+		padding-left: 1rem;
+	}
+
+	.byline {
+		margin-left: 2rem;
+		font-weight: $fontWeightSemiBold;
+	}
+}
+
+.year-story-video {
+	border-radius: $spacing-md;
+	box-shadow: $spacing-xs $spacing-xs $spacing-md $SCVBlackTranslucent;
+	background: $SCVBlack;
+	max-width: 560px; // TODO confirm that this is consistent for all year videos
+
+	overflow: hidden;
+	p {
+		margin: 0;
+	}
+}
+
+.year-story {
+	margin-bottom: 1rem;
+}
+
+.entry-title {
+	margin: 0 0 $spacing-md 0;
+
+	text-shadow: $textShadow;
+}

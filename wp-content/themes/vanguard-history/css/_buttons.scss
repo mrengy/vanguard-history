@@ -1,0 +1,12 @@
+@import "./_var.scss";
+
+.button {
+	cursor: pointer;
+	&.button-text {
+		background: transparent;
+		text-shadow: $textShadow;
+		font-weight: $fontWeightSemiBold;
+		text-align: left;
+		padding: $spacing-md 0;
+	}
+}

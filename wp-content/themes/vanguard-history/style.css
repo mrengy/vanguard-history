@@ -443,7 +443,7 @@ table {
 /* Links
 --------------------------------------------- */
 a {
-  color: #007A33;
+  color: #007a33;
 }
 
 a:visited {
@@ -453,7 +453,7 @@ a:visited {
 a:hover,
 a:focus,
 a:active {
-  color: #8A2A2B;
+  color: #8a2a2b;
 }
 
 a:focus {
@@ -473,8 +473,8 @@ input[type=reset],
 input[type=submit] {
   border: 0;
   border-radius: 3px;
-  background: #007A33;
-  color: #FFFFFF;
+  background: #007a33;
+  color: #ffffff;
   line-height: 1;
   padding: 0.6em 1em 0.4em;
 }
@@ -1153,7 +1153,7 @@ div.gform_wrapper {
   vertical-align: top;
 }
 .gform_wrapper.gravity-theme .gform_body input[type=color], .gform_wrapper.gravity-theme .gform_body input[type=date], .gform_wrapper.gravity-theme .gform_body input[type=datetime-local], .gform_wrapper.gravity-theme .gform_body input[type=datetime], .gform_wrapper.gravity-theme .gform_body input[type=email], .gform_wrapper.gravity-theme .gform_body input[type=month], .gform_wrapper.gravity-theme .gform_body input[type=number], .gform_wrapper.gravity-theme .gform_body input[type=password], .gform_wrapper.gravity-theme .gform_body input[type=search], .gform_wrapper.gravity-theme .gform_body input[type=tel], .gform_wrapper.gravity-theme .gform_body input[type=text], .gform_wrapper.gravity-theme .gform_body input[type=time], .gform_wrapper.gravity-theme .gform_body input[type=url], .gform_wrapper.gravity-theme .gform_body input[type=week], .gform_wrapper.gravity-theme .gform_body select, .gform_wrapper.gravity-theme .gform_body textarea {
-  accent-color: #007A33;
+  accent-color: #007a33;
   font-size: 1em;
 }
 
@@ -1164,12 +1164,12 @@ div.gform_wrapper {
 .gform_wrapper .gfield_required .gfield_required_custom, .gform_wrapper .gfield_required span.gfield_required_text {
   font-style: normal;
   text-transform: lowercase;
-  color: #CB333B;
+  color: #cb333b;
   font-weight: normal;
 }
 
 div.gform_drop_area {
-  background-color: #FFFFFF;
+  background-color: #ffffff;
 }
 
 .gfield_radio .gchoice {
@@ -3220,8 +3220,19 @@ input[value=Other]:disabled {
 /*******************************
          Site Overrides
 *******************************/
+.button {
+  cursor: pointer;
+}
+.button.button-text {
+  background: transparent;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+  font-weight: 600;
+  text-align: left;
+  padding: 16px 0;
+}
+
 .site-header {
-  background-color: #332F21;
+  background-color: #332f21;
   padding: 12px;
   display: flex;
   align-items: center;
@@ -3238,7 +3249,7 @@ input[value=Other]:disabled {
   text-align: center;
 }
 .site-branding a {
-  color: #FFFFFF;
+  color: #ffffff;
   text-decoration: none;
 }
 
@@ -3259,7 +3270,7 @@ input[value=Other]:disabled {
 
 .menu-main-navigation-container {
   position: absolute;
-  background-color: #332F21;
+  background-color: #332f21;
   right: 0;
   top: 100%;
   width: 100%;
@@ -3269,10 +3280,10 @@ input[value=Other]:disabled {
   padding: 1rem;
 }
 .menu-main-navigation-container .menu-item a {
-  color: #FFFFFF;
+  color: #ffffff;
 }
 .menu-main-navigation-container .menu-item a:hover {
-  color: #CB333B;
+  color: #cb333b;
 }
 
 @media screen and (min-width: 768px) {
@@ -3283,6 +3294,42 @@ input[value=Other]:disabled {
   .menu-main-navigation-container {
     position: relative;
   }
+}
+.year-top {
+  background-color: #cb333b;
+  background-image: url("/wp-content/themes/vanguard-history/img/RedShield.svg");
+  background-repeat: space;
+  padding: 16px;
+  color: #ffffff;
+}
+.year-top blockquote {
+  font-style: italic;
+  border-left: 2px solid #ffffff;
+  padding-left: 1rem;
+}
+.year-top .byline {
+  margin-left: 2rem;
+  font-weight: 600;
+}
+
+.year-story-video {
+  border-radius: 16px;
+  box-shadow: 4px 4px 16px rgba(0, 0, 0, 0.3);
+  background: #332f21;
+  max-width: 560px;
+  overflow: hidden;
+}
+.year-story-video p {
+  margin: 0;
+}
+
+.year-story {
+  margin-bottom: 1rem;
+}
+
+.entry-title {
+  margin: 0 0 16px 0;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 /*# sourceMappingURL=style.css.map */

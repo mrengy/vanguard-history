@@ -10,9 +10,9 @@
 get_header();
 ?>
 
-	<main id="primary" class="site-main ui container">
+<main id="primary" class="site-main ui">
 
-		<?php
+    <?php
 		while ( have_posts() ) :
 			the_post();
 
@@ -82,13 +82,13 @@ get_header();
 			// only display the "show all media" button if there is more media
 			if($num_thumbnails_returned >= $thumbnails_to_show){
 				?>
-					<button class="show-hide" id="show-all-media"><span class="button-action">Show</span> all media</button>
-				<?php
+    <button class="show-hide" id="show-all-media"><span class="button-action">Show</span> all media</button>
+    <?php
 			}
 			?>
 
-			<h2 class="footer-menu" id="help-us-tell-more-stories">Help us tell more stories</h2>
-			<?php
+    <h2 class="footer-menu" id="help-us-tell-more-stories">Help us tell more stories</h2>
+    <?php
 			wp_nav_menu(
 				array(
 					'theme_location' => 'footer-calls-to-action',
@@ -103,7 +103,7 @@ get_header();
 
 		endwhile; // End of the loop.
 		?>
-	</main><!-- #main -->
+</main><!-- #main -->
 
 <?php
 get_footer();
