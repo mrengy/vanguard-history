@@ -16,7 +16,6 @@ jQuery(document).ready(function($){
 
     // if story is visible to start
     else{
-      console.log('clicked hide');
       story.attr('hidden', 'hidden');
       button_action.html(button_action_default_text);
     }
