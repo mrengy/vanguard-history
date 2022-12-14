@@ -12,7 +12,7 @@ Uses [WP CLI](https://wp-cli.org/) for faster WordPress administration from the 
 
 We will work on code (which plugins to use, theme code, and mu-plugin code) **locally first**, then push it to Github, review it, and eventually deploy it to the production website. **Github is the source of truth for code**.
 
-**The stage website is the source of truth for content** (database and uploaded files). We can periodically pull database content down from stage to local installs to match what is in production. If you make database changes locally that the stage site should have, **also make those changes on the stage site**.
+**The stage website is the source of truth for content** (database and uploaded files). We can periodically pull database content down from stage to dev and local installs to sync it. If you make database changes locally that the stage site should have, **also make those changes on the stage site**.
 
 # Working locally
 
@@ -35,7 +35,7 @@ For some of the local WordPress site administration tasks like bulk activating p
 
 #### Preparation
 
-Ensure you've got a working WordPress account for the production site, [history.scvanguard.org](https://history.scvanguard.org). If you don't have a WordPress account there, ask Mike Eng for one. It will make things easier if you use your same username, email address, and password on the local site you'll create next.
+Ensure you've got a working WordPress account for the stage site, [historyscv-stage.dreamhosters.com](https://historyscv-stage.dreamhosters.com). If you don't have a WordPress account there, ask Mike Eng for one. It will make things easier if you use your same username, email address, and password on the local site you'll create next.
 
 #### Install WordPress locally
 
@@ -93,9 +93,9 @@ Activate all the plugins by [running](https://developer.wordpress.org/cli/comman
 
 ##### Option 1: export / import media files along with the database
 
-Get a backup of the production site from the [All in One WordPress Migration Export page](https://historyscv-stage.dreamhosters.com/wp-admin/admin.php?page=ai1wm_export). Note the following settings:
+Get a backup of the stage site from the [All in One WordPress Migration Export page](https://historyscv-stage.dreamhosters.com/wp-admin/admin.php?page=ai1wm_export). Note the following settings:
 
-1. Use: "Find _ replace with _ in the database" to change the url from the production url to your local url. Find: "https://historyscv-stage.dreamhosters.com". Replace with: "http://vanguard-history.local" (or whatever your local url is).
+1. Use: "Find _ replace with _ in the database" to change the url from the stage url to your local url. Find: "https://historyscv-stage.dreamhosters.com". Replace with: "http://vanguard-history.local" (or whatever your local url is).
 1. Under "advanced options", check only the following:
     1. "Do not export spam comments"
     1. "Do not export post revisions"
@@ -113,9 +113,9 @@ You may need to [update some files in your local WordPress installation](https:/
 
 Select or drag your .wpress file into the indicated area on the import page and follow the prompts. Note that the prompt to save your permalinks structure after import completes is important for getting the import to work. You just need to follow the link to the permalinks settings page and click "save changes" without changing any other settings.
 
-When prompted to log in to WordPress Admin on your local site after importing the migration file, you will need to use your password from the production site. You might want to change your password on the local site later.
+When prompted to log in to WordPress Admin on your local site after importing the migration file, you will need to use your password from the stage site. You might want to change your password on the local site later.
 
-That's it! View your local site to ensure it matches what's on the production site.
+That's it! View your local site to ensure it matches what's on the stage site.
 
 ##### Option 2: export / import database separate from media files
 
