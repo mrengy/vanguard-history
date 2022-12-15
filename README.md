@@ -95,15 +95,24 @@ Activate all the plugins by [running](https://developer.wordpress.org/cli/comman
 
 Get a backup of the stage site from the [All in One WordPress Migration Export page](https://historyscv-stage.dreamhosters.com/wp-admin/admin.php?page=ai1wm_export). Note the following settings:
 
-1. Use: "Find _ replace with _ in the database" to change the url from the stage url to your local url. Find: "https://historyscv-stage.dreamhosters.com". Replace with: "http://vanguard-history.local" (or whatever your local url is).
-1. Under "advanced options", check only the following:
+1. Use: "Find _ replace with _ in the database" to change the url from the stage url to your local url. 
+   Find:
+   ```
+   https://historyscv-stage.dreamhosters.com 
+   ```
+   
+   Replace with: (or whatever your local url is).
+   ```
+   http://vanguard-history.local
+   ```
+3. Under "advanced options", check only the following:
     1. "Do not export spam comments"
     1. "Do not export post revisions"
     1. "Do not export themes (files)"
     1. "Do not export must-use plugins (files)"
     1. "Do not export plugins (files)"
     1. "Do not replace email domain (sql)"
-1. Export to "file"
+4. Export to "file"
 
 Download the file to your computer. it should end in ".wpress".
 
