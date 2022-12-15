@@ -3298,7 +3298,7 @@ input[value=Other]:disabled {
 .year-top {
   background-color: #cb333b;
   background-image: url("/wp-content/themes/vanguard-history/img/RedShield.svg");
-  background-repeat: space;
+  background-repeat: no-repeat;
   padding: 16px;
   color: #ffffff;
 }
