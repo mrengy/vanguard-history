@@ -9,5 +9,9 @@
 @use "css/container" as *;
 @use "css/grid" as *;
 
-// VHS styles
+// VHS global styles
+@use "css/buttons" as *;
 @use "css/header" as *;
+
+// VHS Year styles
+@use "css/year" as *;

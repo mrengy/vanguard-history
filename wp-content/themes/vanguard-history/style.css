@@ -443,7 +443,7 @@ table {
 /* Links
 --------------------------------------------- */
 a {
-  color: #007A33;
+  color: #215732;
 }
 
 a:visited {
@@ -453,7 +453,7 @@ a:visited {
 a:hover,
 a:focus,
 a:active {
-  color: #8A2A2B;
+  color: #8a2a2b;
 }
 
 a:focus {
@@ -473,8 +473,8 @@ input[type=reset],
 input[type=submit] {
   border: 0;
   border-radius: 3px;
-  background: #007A33;
-  color: #FFFFFF;
+  background: #215732;
+  color: #ffffff;
   line-height: 1;
   padding: 0.6em 1em 0.4em;
 }
@@ -619,6 +619,13 @@ textarea {
     display: flex;
   }
 }
+.site {
+  max-width: 1280px;
+  margin: auto;
+  background-color: #ffffff;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
 .site-main .comment-navigation,
 .site-main .posts-navigation,
 .site-main .post-navigation {
@@ -1153,7 +1160,7 @@ div.gform_wrapper {
   vertical-align: top;
 }
 .gform_wrapper.gravity-theme .gform_body input[type=color], .gform_wrapper.gravity-theme .gform_body input[type=date], .gform_wrapper.gravity-theme .gform_body input[type=datetime-local], .gform_wrapper.gravity-theme .gform_body input[type=datetime], .gform_wrapper.gravity-theme .gform_body input[type=email], .gform_wrapper.gravity-theme .gform_body input[type=month], .gform_wrapper.gravity-theme .gform_body input[type=number], .gform_wrapper.gravity-theme .gform_body input[type=password], .gform_wrapper.gravity-theme .gform_body input[type=search], .gform_wrapper.gravity-theme .gform_body input[type=tel], .gform_wrapper.gravity-theme .gform_body input[type=text], .gform_wrapper.gravity-theme .gform_body input[type=time], .gform_wrapper.gravity-theme .gform_body input[type=url], .gform_wrapper.gravity-theme .gform_body input[type=week], .gform_wrapper.gravity-theme .gform_body select, .gform_wrapper.gravity-theme .gform_body textarea {
-  accent-color: #007A33;
+  accent-color: #215732;
   font-size: 1em;
 }
 
@@ -1164,12 +1171,12 @@ div.gform_wrapper {
 .gform_wrapper .gfield_required .gfield_required_custom, .gform_wrapper .gfield_required span.gfield_required_text {
   font-style: normal;
   text-transform: lowercase;
-  color: #CB333B;
+  color: #cb333b;
   font-weight: normal;
 }
 
 div.gform_drop_area {
-  background-color: #FFFFFF;
+  background-color: #ffffff;
 }
 
 .gfield_radio .gchoice {
@@ -3220,8 +3227,34 @@ input[value=Other]:disabled {
 /*******************************
          Site Overrides
 *******************************/
+.button {
+  cursor: pointer;
+}
+.button.button-primary {
+  text-align: center;
+  padding: 24px;
+  text-transform: uppercase;
+  border: 1px solid #ffffff;
+  border-radius: 9999px;
+  font-size: 24px;
+  font-weight: 300;
+}
+.button.button-text {
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+  font-weight: 600;
+  background: transparent;
+  text-align: left;
+  padding: 16px 0;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 24px;
+}
+
 .site-header {
-  background-color: #332F21;
+  background-color: #332f21;
   padding: 12px;
   display: flex;
   align-items: center;
@@ -3238,7 +3271,7 @@ input[value=Other]:disabled {
   text-align: center;
 }
 .site-branding a {
-  color: #FFFFFF;
+  color: #ffffff;
   text-decoration: none;
 }
 
@@ -3259,7 +3292,7 @@ input[value=Other]:disabled {
 
 .menu-main-navigation-container {
   position: absolute;
-  background-color: #332F21;
+  background-color: #332f21;
   right: 0;
   top: 100%;
   width: 100%;
@@ -3269,10 +3302,10 @@ input[value=Other]:disabled {
   padding: 1rem;
 }
 .menu-main-navigation-container .menu-item a {
-  color: #FFFFFF;
+  color: #ffffff;
 }
 .menu-main-navigation-container .menu-item a:hover {
-  color: #CB333B;
+  color: #cb333b;
 }
 
 @media screen and (min-width: 768px) {
@@ -3283,6 +3316,110 @@ input[value=Other]:disabled {
   .menu-main-navigation-container {
     position: relative;
   }
+}
+.year-section {
+  padding: 16px;
+}
+
+.year-top {
+  background-color: #cb333b;
+  background-image: url("/wp-content/themes/vanguard-history/img/RedShield.svg");
+  background-repeat: no-repeat;
+  color: #ffffff;
+}
+.year-top blockquote {
+  font-style: italic;
+  border-left: 2px solid #ffffff;
+  padding-left: 16px;
+  margin: 16px 0 8px;
+}
+.year-top figure {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: stretch;
+  width: auto !important;
+}
+.year-top .byline {
+  margin-left: 16px;
+  font-weight: 600;
+}
+.year-top .wp-caption-text {
+  font-size: 0.75rem;
+  font-style: italic;
+}
+
+.year-story-video {
+  border-radius: 16px;
+  box-shadow: 4px 4px 16px rgba(0, 0, 0, 0.3);
+  background: #332f21;
+  max-width: 560px;
+  overflow: hidden;
+}
+.year-story-video p {
+  margin: 0;
+}
+
+.year-story {
+  margin-bottom: 1rem;
+}
+
+.entry-title {
+  margin: 0 0 16px 0;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.entry-heading {
+  color: #215732;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+  font-size: 30px;
+  font-weight: normal;
+  margin: 0 0 16px;
+}
+
+.year-show-title {
+  font-size: 24px;
+  margin-bottom: 24px;
+}
+
+.year-piece-title,
+.year-piece-composer {
+  font-size: 20px;
+}
+
+.year-piece-title {
+  font-weight: 400;
+}
+
+.year-piece-composer {
+  font-weight: 300;
+  margin-left: 0;
+}
+
+.year-score-placement {
+  font-size: 24px;
+  font-weight: 300;
+}
+
+.year-media {
+  background-color: #215732;
+}
+.year-media .entry-heading {
+  color: #ffffff;
+}
+
+.year-media-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  overflow: hidden;
+}
+.year-media-grid a {
+  display: block;
+}
+.year-media-grid img {
+  border: 1px solid #ffffff;
+  border-radius: 8px;
 }
 
 /*# sourceMappingURL=style.css.map */
