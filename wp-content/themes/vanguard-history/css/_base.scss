@@ -639,13 +639,12 @@ textarea {
 		display: flex;
 	}
 }
+
 .site {
-	background-color: $SCVGreen;
-}
-.site-main {
-	max-width: 960px;
+	max-width: 1280px;
 	margin: auto;
 	background-color: $White;
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
 
 .site-main .comment-navigation,
