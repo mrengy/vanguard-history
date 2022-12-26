@@ -1,26 +1,28 @@
-on: push
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, closed]
 
 jobs:
   build_css:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Extract branch name
-        shell: bash
-        run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
-        id: extract_branch
       - name: Compile vanguard-history theme css
         uses: gha-utilities/sass-build@v0.4.10
         with:
-          source: wp-content/themes/vanguard-history/style.scss
-          destination: wp-content/themes/vanguard-history/style.css
+          source: ./wp-content/themes/vanguard-history/style.scss
+          destination: ./wp-content/themes/vanguard-history/style.css
 
-      - name: Add and Commit changes to pr-pages branch
+      - name: Add and Commit built css
+        env:
+          CI_COMMIT_MESSAGE: Continuous Integration Build CSS
+          CI_COMMIT_AUTHOR: Continuous Integration
         run: |
-          git config --local user.email 'action@github.com'
-          git config --local user.name 'GitHub Action'
-          git add wp-content/themes/vanguard-history/style.css
-          git commit -m 'Compile vanguard-history theme css'
+          git config --global user.name "${{ env.CI_COMMIT_AUTHOR }}"
+          git config --global user.email "username@users.noreply.github.com"
+          git add ./wp-content/themes/vanguard-history/style.scss
+          git commit -m "${{ env.CI_COMMIT_MESSAGE }}"
+          git push
 
       - name: Push changes
         uses: ad-m/github-push-action@master
