@@ -1,5 +1,9 @@
 @import "./_var.scss";
 
+.year-section {
+	padding: $spacing-md;
+}
+
 .year-top {
 	background-color: $SCVRed;
 	background-image: url("/wp-content/themes/vanguard-history/img/RedShield.svg");
@@ -10,17 +14,31 @@
 	blockquote {
 		font-style: italic;
 		border-left: 2px solid $White;
-		padding-left: 1rem;
+		padding-left: $spacing-md;
+		margin: $spacing-md 0 $spacing-sm;
+	}
+
+	figure {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: stretch;
+		width: auto !important;
 	}
 
 	.byline {
-		margin-left: 2rem;
-		font-weight: $fontWeightSemiBold;
+		margin-left: $spacing-md;
+		font-weight: $font-weight-semibold;
+	}
+
+	.wp-caption-text {
+		font-size: 0.75rem;
+		font-style: italic;
 	}
 }
 
 .year-story-video {
-	border-radius: $spacing-md;
+	border-radius: $border-radius-md;
 	box-shadow: $spacing-xs $spacing-xs $spacing-md $SCVBlackTranslucent;
 	background: $SCVBlack;
 	max-width: 560px; // TODO confirm that this is consistent for all year videos
@@ -37,6 +55,61 @@
 
 .entry-title {
 	margin: 0 0 $spacing-md 0;
+	text-shadow: $text-shadow;
+}
 
-	text-shadow: $textShadow;
+.entry-heading {
+	color: $SCVGreen;
+	text-shadow: $text-shadow;
+	font-size: $font-size-lg;
+	font-weight: normal;
+	margin: 0 0 $spacing-md;
+}
+
+.year-show-title {
+	font-size: $font-size-md;
+	margin-bottom: $spacing-lg;
+}
+
+.year-piece-title,
+.year-piece-composer {
+	font-size: $font-size-sm;
+}
+
+.year-piece-title {
+	font-weight: $font-weight-normal;
+}
+
+.year-piece-composer {
+	font-weight: $font-weight-light;
+	margin-left: 0;
+}
+
+.year-score-placement {
+	font-size: $font-size-md;
+	font-weight: $font-weight-light;
+}
+
+.year-media {
+	background-color: $SCVGreen;
+
+	.entry-heading {
+		color: $White;
+	}
+}
+
+.year-media-grid {
+	display: flex;
+	flex-wrap: wrap;
+	gap: $spacing-md;
+	overflow: hidden;
+
+	a {
+		display: block;
+	}
+
+	img {
+		border: 1px solid $White;
+		border-radius: $border-radius-sm;
+	}
 }

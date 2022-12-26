@@ -2,11 +2,28 @@
 
 .button {
 	cursor: pointer;
+
+	&.button-primary {
+		text-align: center;
+		padding: $spacing-lg;
+		text-transform: uppercase;
+		border: 1px solid $White;
+		border-radius: $border-radius-lg;
+		font-size: $font-size-md;
+		font-weight: $font-weight-light;
+	}
+
 	&.button-text {
+		text-shadow: $text-shadow;
+		font-weight: $font-weight-semibold;
 		background: transparent;
-		text-shadow: $textShadow;
-		font-weight: $fontWeightSemiBold;
 		text-align: left;
 		padding: $spacing-md 0;
 	}
+}
+
+.button-container {
+	display: flex;
+	justify-content: center;
+	margin-top: $spacing-lg;
 }
