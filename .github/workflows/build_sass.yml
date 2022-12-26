@@ -7,6 +7,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: PWD
+        run: pwd
+
+      - name: LSLA
+        run: ls -la
+
       - name: Compile vanguard-history theme css
         uses: gha-utilities/sass-build@v0.4.10
         with:
