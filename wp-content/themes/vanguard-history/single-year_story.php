@@ -60,33 +60,51 @@ get_header();
 					$thumbnails[] = wp_get_attachment_link( get_the_ID(), 'thumbnail', true );
 
 				endwhile;
-				//only show heading if there are items to show
-				echo('<h2>Media</h2>');
+				
 			endif; // end of media loop
+
+			$thumbnails_count = count($thumbnails);
 
 			// Be kind; rewind
 			wp_reset_postdata();
 
-			//display media
-			echo('<div id="media-container" class="ui grid" data-year="'.$this_year.'" data-ensemble="'.$this_ensemble.'">');
+			if ($thumbnails_count>0) {?>
+    <div class="year-media year-section">
+        <h2 class="entry-heading">Media</h2>
+        <div class="container">
+            <div id="media-container" class="year-media-grid" data-year="<?php echo $this_year ?>"
+                data-ensemble="<?php echo $this_ensemble ?>">
+                <?php
 
-				foreach($thumbnails as $thumbnail){
-					echo($thumbnail);
-				}
+					foreach($thumbnails as $thumbnail){
+						echo($thumbnail);
+					}
 
-			echo('</div>'); // closing tag for media-container
-
-			//how many thumbnails did we load? 
-			$num_thumbnails_returned = count($thumbnails);
-
-			// only display the "show all media" button if there is more media
-			if($num_thumbnails_returned >= $thumbnails_to_show){
 				?>
-    <button class="show-hide" id="show-all-media"><span class="button-action">Show</span> all media</button>
-    <?php
-			}
-			?>
+            </div>
+            <?php
 
+				//how many thumbnails did we load? 
+				$num_thumbnails_returned = $thumbnails_count;
+
+				// only display the "show all media" button if there is more media
+				if($num_thumbnails_returned >= $thumbnails_to_show){?>
+            <div class="button-container">
+                <button class="show-hide button button-primary" id="show-all-media">
+                    Show <span class="button-action">all</span> media
+                </button>
+            </div>
+            <?php } ?>
+            <div class="button-container">
+                <a href="/upload-material">
+                    <button class="button button-primary" id="submit-content">
+                        <span class="button-action">Submit</span> content
+                    </button>
+                </a>
+            </div>
+        </div>
+    </div>
+    <?php } ?>
     <h2 class="footer-menu" id="help-us-tell-more-stories">Help us tell more stories</h2>
     <?php
 			wp_nav_menu(
@@ -102,8 +120,10 @@ get_header();
 			endif;
 
 		endwhile; // End of the loop.
-		?>
+	?>
+
 </main><!-- #main -->
 
 <?php
-get_footer();
+	get_footer();
+?>

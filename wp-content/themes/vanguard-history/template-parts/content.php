@@ -10,13 +10,13 @@
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-    <div class="year-top">
+    <div class="year-top year-section">
         <header class="entry-header">
             <?php
 		if ( is_singular() ) :
 			the_title( '<h1 class="entry-title">', '</h1>' );
 		else :
-			the_title( '<h2 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
+			the_title( '<h1 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h1>' );
 		endif;
 
 		if ( 'post' === get_post_type() ) :
@@ -84,14 +84,14 @@
         </section>
     </div>
 
-    <div class="entry-content">
+    <div class="entry-content year-section">
         <!--story-->
         <section id="show-info">
-            <h2 id="repertoire">
+            <h2 id="repertoire" class="entry-heading">
                 Repertoire
             </h2>
-            <div id="show-title">
-                <?php the_field('show_title');?>
+            <div id="show-title" class="year-show-title">
+                "<?php the_field('show_title');?>"
             </div>
             <?php
 					$show_piece_counter = 0;
@@ -108,8 +108,8 @@
 								if( empty($show_piece['show_piece_title'] )){
 									continue;
 								} else {
-										echo("<dt>".$show_piece['show_piece_title']."</dt>");
-										echo("<dd>".$show_piece['show_piece_composer']."</dd>");
+										echo("<dt class='year-piece-title'>".$show_piece['show_piece_title']."</dt>");
+										echo("<dd class='year-piece-composer'>".$show_piece['show_piece_composer']."</dd>");
 										//do_action( 'qm/debug', $show_piece );
 								}
 							}
@@ -122,14 +122,16 @@
 				} //have_rows('show_pieces')
 			?>
             <div id="final-score-info">
-                <h2 id="final-score-heading">
+                <h2 id=" final-score-heading" class="entry-heading">
                     Final Score
                 </h2>
-                <div id="final-score">
-                    <?php the_field('final_score');?>
-                </div>
-                <div id="final-placement">
-                    (<?php the_field('final_placement');?>)
+                <div class="year-score-placement">
+                    <span id="final-score">
+                        <?php the_field('final_score');?>
+                    </span>
+                    <span id="final-placement">
+                        (<?php the_field('final_placement');?>)
+                    </span>
                 </div>
             </div>
         </section><!-- show-info-->

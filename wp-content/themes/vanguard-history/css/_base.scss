@@ -50,7 +50,7 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 
 --------------------------------------------------------------*/
 
-@use 'var' as *;
+@use "var" as *;
 
 /*--------------------------------------------------------------
 # Generic
@@ -631,7 +631,6 @@ textarea {
 }
 
 @media screen and (min-width: $bp--sm) {
-
 	.menu-toggle {
 		display: none;
 	}
@@ -640,12 +639,18 @@ textarea {
 		display: flex;
 	}
 }
+.site {
+	background-color: $SCVGreen;
+}
+.site-main {
+	max-width: 960px;
+	margin: auto;
+	background-color: $White;
+}
 
 .site-main .comment-navigation,
-.site-main
-.posts-navigation,
-.site-main
-.post-navigation {
+.site-main .posts-navigation,
+.site-main .post-navigation {
 	margin: 0 0 1.5em;
 }
 
@@ -868,7 +873,6 @@ textarea {
 /* Alignments
 --------------------------------------------- */
 .alignleft {
-
 	/*rtl:ignore*/
 	float: left;
 
@@ -878,7 +882,6 @@ textarea {
 }
 
 .alignright {
-
 	/*rtl:ignore*/
 	float: right;
 
