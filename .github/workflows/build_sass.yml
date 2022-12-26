@@ -1,0 +1,24 @@
+on: push
+
+jobs:
+  build_css:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Compile vanguard-history theme css
+        uses: gha-utilities/sass-build@v0.4.10
+        with:
+          source: /wp-content/themes/vanguard-history/style.scss
+          destination: /wp-content/themes/vanguard-history/style.css
+
+      - name: Add and Commit changes to pr-pages branch
+        run: |
+          git config --local user.email 'action@github.com'
+          git config --local user.name 'GitHub Action'
+          git add /wp-content/themes/vanguard-history/style.css
+          git commit -m 'Compile vanguard-history theme css'
+
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
