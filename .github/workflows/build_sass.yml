@@ -1,0 +1,39 @@
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, closed]
+
+jobs:
+  build_css:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: GIT status
+        run: git status
+
+      - name: PWD
+        run: pwd
+
+      - name: LSLA
+        run: ls -la
+
+      - name: Compile vanguard-history theme css
+        uses: gha-utilities/sass-build@v0.4.10
+        with:
+          source: ./wp-content/themes/vanguard-history/style.scss
+          destination: ./wp-content/themes/vanguard-history/style.css
+
+      - name: Add and Commit built css
+        env:
+          CI_COMMIT_MESSAGE: Continuous Integration Build CSS
+          CI_COMMIT_AUTHOR: Continuous Integration
+        run: |
+          git config --global user.name "${{ env.CI_COMMIT_AUTHOR }}"
+          git config --global user.email "username@users.noreply.github.com"
+          git add ./wp-content/themes/vanguard-history/style.scss
+          git commit -m "${{ env.CI_COMMIT_MESSAGE }}"
+          git push
+
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
