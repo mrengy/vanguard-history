@@ -3325,6 +3325,7 @@ input[value=Other]:disabled {
   background-color: #cb333b;
   background-image: url("/wp-content/themes/vanguard-history/img/RedShield.svg");
   background-repeat: no-repeat;
+  padding: 16px;
   color: #ffffff;
 }
 .year-top blockquote {
@@ -3417,9 +3418,15 @@ input[value=Other]:disabled {
 .year-media-grid a {
   display: block;
 }
+.year-media-grid a:nth-child(n+7) {
+  display: none;
+}
 .year-media-grid img {
   border: 1px solid #ffffff;
   border-radius: 8px;
+}
+.year-media-grid.expanded a:nth-child(n+7) {
+  display: block;
 }
 
 /*# sourceMappingURL=style.css.map */

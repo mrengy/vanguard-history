@@ -31,9 +31,10 @@ jQuery(document).ready(function ($) {
 	const media_button_action_default_text = media_button_action.html();
 	const media_button_action_alternate_text = "Less";
 	$("#show-all-media").click(function (e) {
-		const isExpanded = show_all_media_button.attr("data-expanded");
+		const isExpanded = media_container.hasClass("expanded");
+		const hasFetched = media_container.hasClass("fetched");
 
-		if (isExpanded === undefined) {
+		if (!hasFetched) {
 			// Media has not been expanded, request the rest of the media
 			$.ajax({
 				url: my_ajax_object.ajax_url, // passed in functions.php > wp_localize_script
@@ -46,7 +47,7 @@ jQuery(document).ready(function ($) {
 					// This outputs the result of the ajax request (The Callback)
 					media_container.append(data);
 					media_button_action.html(media_button_action_alternate_text);
-					show_all_media_button.attr("data-expanded", true);
+					media_container.addClass("expanded fetched");
 				},
 				error: function (errorThrown) {
 					console.log(errorThrown);
@@ -55,15 +56,13 @@ jQuery(document).ready(function ($) {
 			return;
 		}
 
-		if (isExpanded === "true") {
+		if (isExpanded) {
 			// Collapse media section
-			media_container.css("max-height", "490px");
 			media_button_action.html(media_button_action_default_text);
-			show_all_media_button.attr("data-expanded", false);
+			media_container.removeClass("expanded");
 		} else {
-			media_container.css("max-height", "9999px");
 			media_button_action.html(media_button_action_alternate_text);
-			show_all_media_button.attr("data-expanded", true);
+			media_container.addClass("expanded");
 		}
 	});
 	//*** end show all media button
