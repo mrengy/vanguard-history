@@ -16,6 +16,7 @@ get_header();
 		while ( have_posts() ) :
 			the_post();
 
+			// Get the content
 			get_template_part( 'template-parts/content', get_post_type() );
 
 			//get taxonomies from the post
