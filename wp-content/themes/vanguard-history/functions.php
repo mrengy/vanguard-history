@@ -644,78 +644,90 @@ class Custom_Walker_Comment extends Walker_Comment {
 		<<?php echo $tag; ?> id="comment-<?php comment_ID(); ?>" <?php comment_class( $this->has_children ? 'parent' : '', $comment ); ?>>
 			<article id="div-comment-<?php comment_ID(); ?>" class="comment-body">
 				<footer class="comment-meta">
-					<div class="comment-author vcard">
-						<?php
+					<?php
 						$comment_author_link = get_comment_author_link( $comment );
 						$comment_author_url  = get_comment_author_url( $comment );
 						$comment_author      = get_comment_author( $comment );
 						$avatar              = get_avatar( $comment, $args['avatar_size'] );
-						if ( 0 != $args['avatar_size'] ) {
-							if ( empty( $comment_author_url ) ) {
-								echo $avatar;
-							} else {
-								printf( '<a href="%s" rel="external nofollow" class="url">', $comment_author_url );
-								echo $avatar;
-							}
-						}
-						/*
-						 * Using the `check` icon instead of `check_circle`, since we can't add a
-						 * fill color to the inner check shape when in circle form.
-						 */
-
-						/*
-						// not getting $post object correctly here, so commenting out
-						if ( $comment->user_id === $post->post_author ) {
-							printf( '<span class="post-author-badge" aria-hidden="true">%s</span>', custom_get_icon_svg( 'check', 24 ) );
-						}
-						*/
-
-						/*
-						 * Using the `check` icon instead of `check_circle`, since we can't add a
-						 * fill color to the inner check shape when in circle form.
-						 */
-
-						// not getting $post object correctly here, so commenting out
-						/*
-						if ( $comment->user_id === $post->post_author ) {
-							printf( '<span class="post-author-badge" aria-hidden="true">%s</span>', custom_get_icon_svg( 'check', 24 ) );
-						}
-						*/
-						
-						printf(
-							/* translators: %s: comment author link */
-							wp_kses(
-								__( '%s <span class="screen-reader-text says">says:</span>', 'custom' ),
-								array(
-									'span' => array(
-										'class' => array(),
-									),
-								)
-							),
-							'<b class="fn">' . get_comment_author_link( $comment ) . '</b>'
-						);
-
-						if ( ! empty( $comment_author_url ) ) {
-							echo '</a>';
-						}
-						?>
-					</div><!-- .comment-author -->
-
-					<div class="comment-metadata">
-						<a href="<?php echo esc_url( get_comment_link( $comment, $args ) ); ?>">
-							<?php
-								/* translators: 1: comment date, 2: comment time */
-								$comment_timestamp = sprintf( __( '%1$s at %2$s', 'custom' ), get_comment_date( '', $comment ), get_comment_time() );
-							?>
-							<time datetime="<?php comment_time( 'c' ); ?>" title="<?php echo $comment_timestamp; ?>">
-								<?php echo $comment_timestamp; ?>
-							</time>
-						</a>
+					?>
+					<div class="comment-avatar">
 						<?php
-							//$edit_comment_icon = custom_get_icon_svg( 'edit', 16 );
-							//edit_comment_link( __( 'Edit', 'custom' ), '<span class="edit-link-sep">&mdash;</span> <span class="edit-link">' . $edit_comment_icon, '</span>' );
+							if ( 0 != $args['avatar_size'] ) {
+								if ( empty( $comment_author_url ) ) {
+									echo $avatar;
+								} else {
+									printf( '<a href="%s" rel="external nofollow" class="url">', $comment_author_url );
+									echo $avatar;
+								}
+							}
 						?>
-					</div><!-- .comment-metadata -->
+					</div>
+					<div class="comment-author-metadata">
+						<div class="comment-author vcard">
+							<?php
+
+							/*
+							 * Using the `check` icon instead of `check_circle`, since we can't add a
+							 * fill color to the inner check shape when in circle form.
+							 */
+
+							/*
+							// not getting $post object correctly here, so commenting out
+							if ( $comment->user_id === $post->post_author ) {
+								printf( '<span class="post-author-badge" aria-hidden="true">%s</span>', custom_get_icon_svg( 'check', 24 ) );
+							}
+							*/
+
+							/*
+							 * Using the `check` icon instead of `check_circle`, since we can't add a
+							 * fill color to the inner check shape when in circle form.
+							 */
+
+							// not getting $post object correctly here, so commenting out
+							/*
+							if ( $comment->user_id === $post->post_author ) {
+								printf( '<span class="post-author-badge" aria-hidden="true">%s</span>', custom_get_icon_svg( 'check', 24 ) );
+							}
+							*/
+
+							printf(
+								/* translators: %s: comment author link */
+								wp_kses(
+									__( '%s <span class="screen-reader-text says">says:</span>', 'custom' ),
+									array(
+										'span' => array(
+											'class' => array(),
+										),
+									)
+								),
+								'<b class="fn">' . get_comment_author_link( $comment ) . '</b>'
+							);
+
+							if ( ! empty( $comment_author_url ) ) {
+								echo '</a>';
+							}
+							?>
+						</div><!-- .comment-author -->
+
+						<div class="comment-metadata">
+							<a href="<?php echo esc_url( get_comment_link( $comment, $args ) ); ?>">
+								<?php
+									/* translators: 1: comment date, 2: comment time */
+									$comment_timestamp = sprintf( __( '%1$s at %2$s', 'custom' ), get_comment_date( '', $comment ), get_comment_time() );
+								?>
+								<time datetime="<?php comment_time( 'c' ); ?>" title="<?php echo $comment_timestamp; ?>">
+									<?php echo $comment_timestamp; ?>
+								</time>
+							</a>
+							<?php
+								//$edit_comment_icon = custom_get_icon_svg( 'edit', 16 );
+								//edit_comment_link( __( 'Edit', 'custom' ), '<span class="edit-link-sep">&mdash;</span> <span class="edit-link">' . $edit_comment_icon, '</span>' );
+							?>
+						</div><!-- .comment-metadata -->
+
+					</div><!-- .comment-author-metadata -->
+
+
 
 					<?php if ( '0' == $comment->comment_approved ) : ?>
 					<p class="comment-awaiting-moderation"><?php _e( 'Your comment is awaiting moderation.', 'custom' ); ?></p>
