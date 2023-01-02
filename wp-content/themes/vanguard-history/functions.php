@@ -665,7 +665,7 @@ class Custom_Walker_Comment extends Walker_Comment {
 
 						// throwing error call to undefined function
 						if ( $comment->user_id === $post->post_author ) {
-							printf( '<span class="post-author-badge" aria-hidden="true">%s</span>', custom_get_icon_svg( 'check', 24 ) );
+							//printf( '<span class="post-author-badge" aria-hidden="true">%s</span>', custom_get_icon_svg( 'check', 24 ) );
 						}
 
 						/*
@@ -673,7 +673,7 @@ class Custom_Walker_Comment extends Walker_Comment {
 						 * fill color to the inner check shape when in circle form.
 						 */
 						if ( $comment->user_id === $post->post_author ) {
-							printf( '<span class="post-author-badge" aria-hidden="true">%s</span>', custom_get_icon_svg( 'check', 24 ) );
+							//printf( '<span class="post-author-badge" aria-hidden="true">%s</span>', custom_get_icon_svg( 'check', 24 ) );
 						}
 
 						printf(
@@ -706,8 +706,8 @@ class Custom_Walker_Comment extends Walker_Comment {
 							</time>
 						</a>
 						<?php
-							$edit_comment_icon = custom_get_icon_svg( 'edit', 16 );
-							edit_comment_link( __( 'Edit', 'custom' ), '<span class="edit-link-sep">&mdash;</span> <span class="edit-link">' . $edit_comment_icon, '</span>' );
+							//$edit_comment_icon = custom_get_icon_svg( 'edit', 16 );
+							//edit_comment_link( __( 'Edit', 'custom' ), '<span class="edit-link-sep">&mdash;</span> <span class="edit-link">' . $edit_comment_icon, '</span>' );
 						?>
 					</div><!-- .comment-metadata -->
 
