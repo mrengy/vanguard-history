@@ -663,19 +663,25 @@ class Custom_Walker_Comment extends Walker_Comment {
 						 * fill color to the inner check shape when in circle form.
 						 */
 
-						// throwing error call to undefined function
+						/*
+						// not getting $post object correctly here, so commenting out
 						if ( $comment->user_id === $post->post_author ) {
-							//printf( '<span class="post-author-badge" aria-hidden="true">%s</span>', custom_get_icon_svg( 'check', 24 ) );
+							printf( '<span class="post-author-badge" aria-hidden="true">%s</span>', custom_get_icon_svg( 'check', 24 ) );
 						}
+						*/
 
 						/*
 						 * Using the `check` icon instead of `check_circle`, since we can't add a
 						 * fill color to the inner check shape when in circle form.
 						 */
-						if ( $comment->user_id === $post->post_author ) {
-							//printf( '<span class="post-author-badge" aria-hidden="true">%s</span>', custom_get_icon_svg( 'check', 24 ) );
-						}
 
+						// not getting $post object correctly here, so commenting out
+						/*
+						if ( $comment->user_id === $post->post_author ) {
+							printf( '<span class="post-author-badge" aria-hidden="true">%s</span>', custom_get_icon_svg( 'check', 24 ) );
+						}
+						*/
+						
 						printf(
 							/* translators: %s: comment author link */
 							wp_kses(
