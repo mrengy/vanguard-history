@@ -1,0 +1,85 @@
+@import "./_var.scss";
+
+.comments-area {
+	padding: $spacing-md;
+}
+
+.comments-title,
+.comment-reply-title {
+	font-size: $font-size-lg;
+	color: $SCVGreen;
+	text-shadow: $text-shadow;
+	font-weight: $font-weight-normal;
+}
+
+.comment {
+	padding: 0;
+	margin: 0;
+}
+
+.comment-list {
+	margin: $spacing-md 0;
+	padding: 0;
+
+	.children {
+		margin: 0;
+		padding: 0;
+
+		.comment-body {
+			padding-left: 55px;
+		}
+	}
+}
+
+.comment-author,
+.comment-metadata,
+.comment-content,
+.reply,
+.comment-respond {
+	font-size: $font-size-sm;
+}
+
+.comment-author {
+	a {
+		font-weight: $font-weight-normal;
+		text-decoration: none;
+	}
+	img {
+		width: 80px;
+		height: 80px;
+		border-radius: $border-radius-md;
+	}
+}
+
+.comment-content {
+	font-weight: $font-weight-light;
+}
+
+.reply {
+	text-align: right;
+	a {
+		color: $SCVRed;
+	}
+}
+
+.comment-body {
+	padding: $spacing-md 0;
+	border-bottom: 1px solid $SCVGreen;
+}
+
+.comment-respond {
+	label {
+		font-size: $font-size-lg;
+		color: $SCVGreen;
+	}
+	input:not([type="submit"]),
+	textarea {
+		border-radius: $border-radius-md;
+		border-color: $SCVGreen;
+		box-shadow: $box-shadow;
+	}
+
+	.form-submit {
+		text-align: center;
+	}
+}

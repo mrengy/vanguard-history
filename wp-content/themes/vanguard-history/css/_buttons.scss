@@ -1,16 +1,28 @@
 @import "./_var.scss";
 
-.button {
+.button,
+input[type="submit"] {
 	cursor: pointer;
 
-	&.button-primary {
+	&.button-primary,
+	&.submit {
 		text-align: center;
 		padding: $spacing-lg;
 		text-transform: uppercase;
-		border: 1px solid $White;
 		border-radius: $border-radius-lg;
 		font-size: $font-size-md;
 		font-weight: $font-weight-light;
+		background-color: transparent;
+	}
+
+	&.button-primary {
+		border: 1px solid $White;
+		color: $White;
+	}
+
+	&.submit {
+		border: 1px solid $SCVGreen;
+		color: $SCVGreen;
 	}
 
 	&.button-text {
