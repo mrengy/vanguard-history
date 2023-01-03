@@ -658,6 +658,7 @@ class Custom_Walker_Comment extends Walker_Comment {
 								} else {
 									printf( '<a href="%s" rel="external nofollow" class="url">', $comment_author_url );
 									echo $avatar;
+									echo( '</a>');
 								}
 							}
 						?>
@@ -702,10 +703,6 @@ class Custom_Walker_Comment extends Walker_Comment {
 								),
 								'<b class="fn">' . get_comment_author_link( $comment ) . '</b>'
 							);
-
-							if ( ! empty( $comment_author_url ) ) {
-								echo '</a>';
-							}
 							?>
 						</div><!-- .comment-author -->
 
