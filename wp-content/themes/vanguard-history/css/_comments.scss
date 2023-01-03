@@ -10,6 +10,7 @@
 	color: $SCVGreen;
 	text-shadow: $text-shadow;
 	font-weight: $font-weight-normal;
+	margin: 0;
 }
 
 .comment {
@@ -18,7 +19,7 @@
 }
 
 .comment-list {
-	margin: $spacing-md 0;
+	margin: 0;
 	padding: 0;
 
 	.children {
@@ -31,23 +32,31 @@
 	}
 }
 
-.comment-author,
-.comment-metadata,
+.comment-author-metadata,
 .comment-content,
 .reply,
 .comment-respond {
 	font-size: $font-size-sm;
 }
 
-.comment-author {
-	a {
-		font-weight: $font-weight-normal;
-		text-decoration: none;
-	}
+.comment-meta {
+	display: flex;
+	align-items: center;
+}
+
+.comment-avatar {
+	margin-right: $spacing-md;
 	img {
 		width: 80px;
 		height: 80px;
 		border-radius: $border-radius-md;
+	}
+}
+
+.comment-author {
+	a {
+		font-weight: $font-weight-normal;
+		text-decoration: none;
 	}
 }
 

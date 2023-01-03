@@ -708,7 +708,7 @@ class Custom_Walker_Comment extends Walker_Comment {
 										),
 									)
 								),
-								'<b class="fn">' . get_comment_author_link( $comment ) . '</b>'
+								'<span class="fn">' . get_comment_author_link( $comment ) . ' says:</span>'
 							);
 							?>
                 </div><!-- .comment-author -->
