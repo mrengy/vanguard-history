@@ -47,8 +47,10 @@ if ( post_password_required() ) {
 			<?php
 			wp_list_comments(
 				array(
+					'walker'     => new Custom_Walker_Comment(),
 					'style'      => 'ol',
 					'short_ping' => true,
+					'type' 			 => 'comment'
 				)
 			);
 			?>
