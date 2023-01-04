@@ -19,7 +19,7 @@
 }
 
 .comment-list {
-	margin: 0;
+	margin: 0 0 $spacing-md 0;
 	padding: 0;
 
 	.children {
@@ -34,7 +34,7 @@
 
 .comment-author-metadata,
 .comment-content,
-.reply,
+.comment-reply,
 .comment-respond {
 	font-size: $font-size-sm;
 }
@@ -44,11 +44,16 @@
 	align-items: center;
 }
 
+.comment-author-metadata {
+	padding-left: $spacing-md;
+}
+
+$comment-avatar-size: 80px;
 .comment-avatar {
-	margin-right: $spacing-md;
+	min-width: $comment-avatar-size;
 	img {
-		width: 80px;
-		height: 80px;
+		width: $comment-avatar-size;
+		height: $comment-avatar-size;
 		border-radius: $border-radius-md;
 	}
 }
@@ -64,7 +69,7 @@
 	font-weight: $font-weight-light;
 }
 
-.reply {
+.comment-reply {
 	text-align: right;
 	a {
 		color: $SCVRed;
