@@ -562,6 +562,12 @@ function my_attachment_fields_to_edit( $form_fields ) {
 
 add_filter( 'attachment_fields_to_edit', 'my_attachment_fields_to_edit' );
 
+function get_vhs_footer() {
+	echo '<div class="main-footer">';
+	echo get_footer();
+	echo '</div>';
+}
+
 // ajax handler for loading all media in year story
 function vanguard_history_all_media_for_year_story() {
 	if( isset($_REQUEST) ) {
