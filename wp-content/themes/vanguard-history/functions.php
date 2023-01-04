@@ -761,9 +761,3 @@ class Custom_Walker_Comment extends Walker_Comment {
     <?php
 	}
 }
-
-function get_vhs_footer() {
-	echo '<div class="main-footer">';
-	echo get_footer();
-	echo '</div>';
-}
