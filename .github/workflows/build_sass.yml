@@ -31,6 +31,13 @@ jobs:
           source: ./wp-content/themes/vanguard-history/style.scss
           destination: ./wp-content/themes/vanguard-history/style.css
 
+      - name: Ensure CSS has newline at EOF
+        # https://github.com/marketplace/actions/newline-action
+        uses: shekharkhedekar/newline-action@637704d278cd60987f102e1a03cdd345e520edc2
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          config-path: .github/newline.yml
+
       - name: Post build status
         id: post_build_status
         run: |
