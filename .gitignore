@@ -29,9 +29,6 @@ wp-content/themes/twenty*/
 # ignore all files starting with .
 .*
 
-# track linelint config
-!.linelint.yml
-
 # track .github directory
 !.github
 

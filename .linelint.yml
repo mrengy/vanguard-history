@@ -1,5 +1,0 @@
-rules:
-  end-of-file:
-    enable: true
-    autofix: true
-    single-new-line: true
