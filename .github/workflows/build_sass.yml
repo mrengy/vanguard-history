@@ -47,6 +47,17 @@ jobs:
           echo "status=$(git status --short)"
           echo "status=$(git status --short)" >> $GITHUB_OUTPUT
 
+      - name: Add Comment
+        # https://github.com/marketplace/actions/comment-pull-request
+        uses: thollander/actions-comment-pull-request@v2
+        if: ${{ steps.post_build_status.outputs.status != '' }}
+        with:
+          message: |
+            :robot: SASS changes detected - CSS has been rebuilt.
+            ```
+            ${{ steps.post_build_status.outputs.status }}
+            ```
+
       - name: Commit built css
         # https://github.com/marketplace/actions/add-commit
         uses: EndBug/add-and-commit@v9
