@@ -1,3 +1,6 @@
+# TODO remove the creation of build-css-tmp branch, checkout ${{ github.head_ref }} instead
+# and figure out how to make two commits without hitting fast forward errors.
+
 on:
   pull_request:
     types: [opened, synchronize, reopened, closed]
@@ -30,6 +33,13 @@ jobs:
         with:
           source: ./wp-content/themes/vanguard-history/style.scss
           destination: ./wp-content/themes/vanguard-history/style.css
+
+      - name: Ensure CSS has newline at EOF
+        # https://github.com/marketplace/actions/newline-action
+        uses: Logerfo/newline-action@0.0.4
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          config-path: .github/newline.yml
 
       - name: Post build status
         id: post_build_status
