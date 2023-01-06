@@ -31,13 +31,6 @@ jobs:
           source: ./wp-content/themes/vanguard-history/style.scss
           destination: ./wp-content/themes/vanguard-history/style.css
 
-      - name: Ensure CSS has newline at EOF
-        # https://github.com/marketplace/actions/newline-action
-        uses: Logerfo/newline-action@0.0.4
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          config-path: .github/newline.yml
-
       - name: Post build status
         id: post_build_status
         run: |
@@ -59,6 +52,14 @@ jobs:
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           message: SASS changes were found. Github actions has rebuilt the following file ```steps.post_build_status.outputs.status```
+
+      - name: Ensure CSS has newline at EOF
+        # https://github.com/marketplace/actions/newline-action
+        uses: Logerfo/newline-action@0.0.4
+        if: ${{ steps.post_build_status.outputs.status != '' }}
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          config-path: .github/newline.yml
 
       # - name: Merge build-css-temp branch in PR
       #   # https://github.com/marketplace/actions/merge-branch
