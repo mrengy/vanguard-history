@@ -708,7 +708,7 @@ class Custom_Walker_Comment extends Walker_Comment {
 										),
 									)
 								),
-								'<b class="fn">' . get_comment_author_link( $comment ) . '</b>'
+								'<span class="fn">' . get_comment_author_link( $comment ) . ' says:</span>'
 							);
 							?>
                 </div><!-- .comment-author -->
@@ -742,22 +742,21 @@ class Custom_Walker_Comment extends Walker_Comment {
             <?php comment_text(); ?>
         </div><!-- .comment-content -->
 
+				<?php
+					comment_reply_link(
+						array_merge(
+							$args,
+							array(
+								'add_below' => 'div-comment',
+								'depth'     => $depth,
+								'max_depth' => $args['max_depth'],
+								'before'    => '<div class="comment-reply">',
+								'after'     => '</div>',
+							)
+						)
+					);
+				?>
     </article><!-- .comment-body -->
-
-    <?php
-			comment_reply_link(
-				array_merge(
-					$args,
-					array(
-						'add_below' => 'div-comment',
-						'depth'     => $depth,
-						'max_depth' => $args['max_depth'],
-						'before'    => '<div class="comment-reply">',
-						'after'     => '</div>',
-					)
-				)
-			);
-			?>
     <?php
 	}
 }
