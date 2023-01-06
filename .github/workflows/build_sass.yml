@@ -22,7 +22,7 @@ jobs:
         # https://github.com/marketplace/actions/checkout
         uses: actions/checkout@v3
         with:
-          ref: ${{ github.base_ref }}
+          ref: ${{ github.head_ref }}
 
       - name: Compile vanguard-history theme css
         # https://github.com/marketplace/actions/sass-build
