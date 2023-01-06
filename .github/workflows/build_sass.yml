@@ -51,7 +51,6 @@ jobs:
         with:
           message: "Update Built CSS"
           default_author: github_actions
-          push: true
 
       - name: Add Comment
         # https://github.com/marketplace/actions/pr-comment
