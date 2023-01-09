@@ -19,7 +19,7 @@ get_header();
 		<div id="tagline">
 			<?php echo html_entity_decode( get_bloginfo('description')); ?>
 		</div>
-
+		<a id="homepage-link-to-about" href="<?php echo site_url(); ?>/about">About the project</a>
 		<?php
 		while ( have_posts() ) :
 			the_post();
