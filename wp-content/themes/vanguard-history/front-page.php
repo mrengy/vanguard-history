@@ -16,6 +16,9 @@ get_header();
 ?>
 
 	<main id="primary" class="site-main ui container">
+		<div id="tagline">
+			<?php echo( get_bloginfo('description')); ?>
+		</div>
 
 		<?php
 		while ( have_posts() ) :
