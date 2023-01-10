@@ -436,7 +436,7 @@ add_filter( 'wp_terms_checklist_args', 'media_visibility_radio_buttons' );
             ),
                 'public'      => true,
                 'has_archive' => true,
-								'supports' => array('title','editor','author','excerpt','comments','revisions')
+								'supports' => array('title','editor','author','excerpt','comments','revisions', 'thumbnail')
         )
     );
 }
@@ -761,6 +761,6 @@ class Custom_Walker_Comment extends Walker_Comment {
 	}
 } // end custom walker comment class
 
-function show_featured_story(){
+function show_featured_story( $featured_slug ){
 	echo ("featured story here");
 }
