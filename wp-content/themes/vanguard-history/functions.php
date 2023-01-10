@@ -762,5 +762,26 @@ class Custom_Walker_Comment extends Walker_Comment {
 } // end custom walker comment class
 
 function show_featured_story( $featured_slug ){
-	echo ("featured story here");
+	$args = array(
+		'name' => $featured_slug,
+		'post_type' => 'year_story',
+		'post_status' => 'publish',
+		'numberposts' => 1
+	);
+
+	$featured_story = get_posts($args);
+
+	if( $featured_story ){
+		/*
+		echo('<pre>');
+		print_r($featured_story);
+		echo('</pre>');
+		*/
+		
+		echo($featured_story[0]->post_title);
+	} else{
+		do_action('qm/error', 'featured story not found');
+	}
+
+	//echo ("featured story here");
 }

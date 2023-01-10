@@ -22,7 +22,7 @@ get_header();
 		<a id="homepage-link-to-about" href="<?php echo site_url(); ?>/about">About the project</a>
 		<section id="featured-story">
 			<?php
-				show_featured_story();
+				show_featured_story('2001-scv');
 			?>
 		</section>
 		<?php
