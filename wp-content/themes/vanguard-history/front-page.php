@@ -20,6 +20,11 @@ get_header();
 			<?php echo html_entity_decode( get_bloginfo('description')); ?>
 		</div>
 		<a id="homepage-link-to-about" href="<?php echo site_url(); ?>/about">About the project</a>
+		<section id="featured-story">
+			<?php
+				show_featured_story();
+			?>
+		</section>
 		<?php
 		while ( have_posts() ) :
 			the_post();

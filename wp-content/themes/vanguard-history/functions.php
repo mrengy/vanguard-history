@@ -759,4 +759,8 @@ class Custom_Walker_Comment extends Walker_Comment {
     </article><!-- .comment-body -->
     <?php
 	}
+} // end custom walker comment class
+
+function show_featured_story(){
+	echo ("featured story here");
 }
