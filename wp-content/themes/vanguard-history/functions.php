@@ -772,15 +772,18 @@ function show_featured_story( $featured_slug ){
 	$featured_story = get_posts($args);
 
 	if( $featured_story ){
-		/*
+		
 		echo('<pre>');
 		print_r($featured_story);
 		echo('</pre>');
-		*/
-		
-		echo($featured_story[0]->post_title);
+
+
+		//define variables to be echoed
+		$title = $featured_story[0]->post_title;
+
+		echo($title);
 	} else{
-		do_action('qm/error', 'featured story not found');
+		do_action('qm/error', 'featured story not found in function show_featured_story');
 	}
 
 	//echo ("featured story here");

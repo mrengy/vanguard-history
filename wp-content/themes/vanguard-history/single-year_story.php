@@ -17,7 +17,7 @@ get_header();
 			the_post();
 
 			// Get the content
-			get_template_part( 'template-parts/content', get_post_type() );
+			get_template_part( 'template-parts/content', 'year-story' );
 
 			//get taxonomies from the post
 			$this_ensemble = wp_get_post_terms(get_the_ID(),'ensemble')[0]->slug;
@@ -61,7 +61,7 @@ get_header();
 					$thumbnails[] = wp_get_attachment_link( get_the_ID(), 'thumbnail', true );
 
 				endwhile;
-				
+
 			endif; // end of media loop
 
 			$thumbnails_count = count($thumbnails);
@@ -85,7 +85,7 @@ get_header();
             </div>
             <?php
 
-				//how many thumbnails did we load? 
+				//how many thumbnails did we load?
 				$num_thumbnails_returned = $thumbnails_count;
 
 				// only display the "show all media" button if there is more media
