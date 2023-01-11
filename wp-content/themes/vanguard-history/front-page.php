@@ -29,11 +29,12 @@ get_header();
 		while ( have_posts() ) :
 			the_post();
 
+			// get the content
 			get_template_part( 'template-parts/content', 'front-page' );
-
 		endwhile; // End of the loop.
-		?>
 
+		// query media
+		?>
 	</main><!-- #main -->
 
 <?php

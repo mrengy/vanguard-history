@@ -70,7 +70,7 @@ get_header();
 			wp_reset_postdata();
 
 			if ($thumbnails_count>0) {?>
-    <div class="year-media year-section">
+    <div class="year-media year-section media-grid">
         <h2 class="entry-heading">Media</h2>
         <div class="container">
             <div id="media-container" class="year-media-grid" data-year="<?php echo $this_year ?>"
