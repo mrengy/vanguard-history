@@ -782,9 +782,24 @@ function show_featured_story( $featured_slug ){
 		$link = $featured_story[0]->guid;
 		$title = $featured_story[0]->post_title;
 		$excerpt = $featured_story[0]->post_excerpt;
-		$thumbnail = get_the_post_thumbnail($featured_story[0]->ID, 'large');
+		$thumbnail = get_the_post_thumbnail($featured_story[0]->ID, 'large',['id' => 'featured-story-thumbnail']);
 
-		echo($thumbnail);
+		echo("
+			<a href='$link'>
+			$thumbnail
+			</a>
+			<h1 class='featured-story-title'>
+				<a href='$link'>
+					Featured Story: $title
+				</a>
+			</h1>
+			<div id='featured-story-excerpt'>
+				$excerpt
+			</div>
+			<a href='$link'>
+				Show Full Story
+			</a>
+		");
 	} else{
 		do_action('qm/error', 'featured story not found in function show_featured_story');
 	}
