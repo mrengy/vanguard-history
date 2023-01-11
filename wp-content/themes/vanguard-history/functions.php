@@ -773,6 +773,7 @@ function show_featured_story( $featured_slug ){
 
 	if( $featured_story ){
 		/*
+		// debug for displaying the post object
 		echo('<pre>');
 		print_r($featured_story);
 		echo('</pre>');
@@ -803,6 +804,4 @@ function show_featured_story( $featured_slug ){
 	} else{
 		do_action('qm/error', 'featured story not found in function show_featured_story');
 	}
-
-	//echo ("featured story here");
 }
