@@ -89,22 +89,23 @@ get_header();
 						<?php
 						//how many thumbnails did we load?
 						$num_thumbnails_returned = $thumbnails_count;
+
+						// only display the "show all media" button if there is more media
+						if($num_thumbnails_returned >= $thumbnails_to_show){
 						?>
-	            <div class="button-container">
-								<?php
-								// only display the "show all media" button if there is more media
-								if($num_thumbnails_returned >= $thumbnails_to_show){
-								?>
-	                <button class="show-hide button button-primary" id="show-more-media-all-years">
-	                    Show <span class="button-action">more</span> media
-	                </button>
-								<?php } ?>
+							<div class="button-container">
+                <a class="button button-primary" id="all-media" href="<?php echo(site_url());?>/media">
+                    All media
+                </a>
+	        		</div>
+						<?php } ?>
+							<div class="button-container">
 								<a class="button button-primary" id="upload-material" href="<?php echo(site_url());?>/upload-material">
 										Upload material
 								</a>
-	            </div>
-        		</div>
+            </div>
     		</div>
+			</div>
     <?php } ?>
 	</main><!-- #main -->
 
