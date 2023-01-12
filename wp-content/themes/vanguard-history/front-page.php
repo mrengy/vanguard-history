@@ -75,10 +75,10 @@ get_header();
 			wp_reset_postdata();
 
 			if ($thumbnails_count>0) { ?>
-		    <div class="year-media year-section media-grid">
+		    <div class="media home-section media-grid">
 		        <h2 class="entry-heading">Media</h2>
 		        <div class="container">
-		            <div id="media-container" class="all-media-grid">
+		            <div id="media-container" class="media-grid">
 		                <?php
 											foreach($thumbnails as $thumbnail){
 												echo($thumbnail);
@@ -86,25 +86,25 @@ get_header();
 										?>
         				</div>
 
-						<?php
-						//how many thumbnails did we load?
-						$num_thumbnails_returned = $thumbnails_count;
+							<?php
+							//how many thumbnails did we load?
+							$num_thumbnails_returned = $thumbnails_count;
 
-						// only display the "show all media" button if there is more media
-						if($num_thumbnails_returned >= $thumbnails_to_show){
-						?>
-							<div class="button-container">
-                <a class="button button-primary" id="all-media" href="<?php echo(site_url());?>/media">
-                    All media
-                </a>
-	        		</div>
-						<?php } ?>
-							<div class="button-container">
-								<a class="button button-primary" id="upload-material" href="<?php echo(site_url());?>/upload-material">
-										Upload material
-								</a>
-            </div>
-    		</div>
+							// only display the "show all media" button if there is more media
+							if($num_thumbnails_returned >= $thumbnails_to_show){
+							?>
+								<div class="button-container">
+	                <a class="button button-primary" id="all-media" href="<?php echo(site_url());?>/media">
+	                    All media
+	                </a>
+		        		</div>
+							<?php } ?>
+								<div class="button-container">
+									<a class="button button-primary" id="upload-material" href="<?php echo(site_url());?>/upload-material">
+											Upload material
+									</a>
+	            	</div>
+		    		</div>
 			</div>
     <?php } ?>
 	</main><!-- #main -->
