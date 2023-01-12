@@ -16,9 +16,9 @@ get_header();
 ?>
 
 	<main id="primary" class="site-main ui container">
-		<div id="tagline">
+		<h1 id="tagline">
 			<?php echo html_entity_decode( get_bloginfo('description')); ?>
-		</div>
+		</h1>
 		<a id="homepage-link-to-about" href="<?php echo site_url(); ?>/about">About the project</a>
 		<section id="featured-story">
 			<?php
@@ -33,78 +33,74 @@ get_header();
 			get_template_part( 'template-parts/content', 'front-page' );
 		endwhile; // End of the loop.
 		?>
-		<section id="recent-uploads">
-			<h1 id="recent-uploads-heading">
-				Recent Uploads
-			</h1>
-			<?php
-				// query media
-				// how many media thumbnails to show at first
-				$thumbnails_to_show = 6;
 
-				// query media
-				$media_query_args = array(
-					'post_type'   => 'attachment',
-					'post_status' => 'any',
-					'order' => 'DESC',
-					'orderby' => 'date',
+		<?php
+			// query media
+			// how many media thumbnails to show at first
+			$thumbnails_to_show = 6;
 
-					'tax_query' => array(
-							'relation' => 'AND',
-							array(
-								'taxonomy' => 'media_visibility',
-								'field' => 'slug',
-								'terms' => 'published',
-							),
-					),
+			// query media
+			$media_query_args = array(
+				'post_type'   => 'attachment',
+				'post_status' => 'any',
+				'order' => 'DESC',
+				'orderby' => 'date',
 
-					'posts_per_page' => $thumbnails_to_show,
-				);
-				$media_query = new WP_Query ($media_query_args);
+				'tax_query' => array(
+						'relation' => 'AND',
+						array(
+							'taxonomy' => 'media_visibility',
+							'field' => 'slug',
+							'terms' => 'published',
+						),
+				),
 
-				$thumbnails = array();
+				'posts_per_page' => $thumbnails_to_show,
+			);
+			$media_query = new WP_Query ($media_query_args);
 
-				if ( $media_query->have_posts() ) : while ( $media_query->have_posts() ) : $media_query->the_post();
-						// store thumbnails in array
-						$thumbnails[] = wp_get_attachment_link( get_the_ID(), 'thumbnail', true );
+			$thumbnails = array();
 
-					endwhile;
+			if ( $media_query->have_posts() ) : while ( $media_query->have_posts() ) : $media_query->the_post();
+					// store thumbnails in array
+					$thumbnails[] = wp_get_attachment_link( get_the_ID(), 'thumbnail', true );
 
-				endif; // end of media loop
+				endwhile;
 
-				$thumbnails_count = count($thumbnails);
+			endif; // end of media loop
 
-				// Be kind; rewind
-				wp_reset_postdata();
+			$thumbnails_count = count($thumbnails);
 
-				if ($thumbnails_count>0) { ?>
-			    <div class="year-media year-section media-grid">
-			        <h2 class="entry-heading">Media</h2>
-			        <div class="container">
-			            <div id="media-container" class="all-media-grid">
-			                <?php
-												foreach($thumbnails as $thumbnail){
-													echo($thumbnail);
-												}
-											?>
-          				</div>
+			// Be kind; rewind
+			wp_reset_postdata();
 
-							<?php
-							//how many thumbnails did we load?
-							$num_thumbnails_returned = $thumbnails_count;
+			if ($thumbnails_count>0) { ?>
+		    <div class="year-media year-section media-grid">
+		        <h2 class="entry-heading">Media</h2>
+		        <div class="container">
+		            <div id="media-container" class="all-media-grid">
+		                <?php
+											foreach($thumbnails as $thumbnail){
+												echo($thumbnail);
+											}
+										?>
+        				</div>
 
-							// only display the "show all media" button if there is more media
-							if($num_thumbnails_returned >= $thumbnails_to_show){?>
-			            <div class="button-container">
-			                <button class="show-hide button button-primary" id="show-more-media">
-			                    Show <span class="button-action">more</span> media
-			                </button>
-			            </div>
-	            <?php } ?>
-	        		</div>
-	    		</div>
-	    <?php } ?>
-		</section>
+						<?php
+						//how many thumbnails did we load?
+						$num_thumbnails_returned = $thumbnails_count;
+
+						// only display the "show all media" button if there is more media
+						if($num_thumbnails_returned >= $thumbnails_to_show){?>
+		            <div class="button-container">
+		                <button class="show-hide button button-primary" id="show-more-media">
+		                    Show <span class="button-action">more</span> media
+		                </button>
+		            </div>
+            <?php } ?>
+        		</div>
+    		</div>
+    <?php } ?>
 	</main><!-- #main -->
 
 <?php
