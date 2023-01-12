@@ -95,7 +95,7 @@ get_header();
 								// only display the "show all media" button if there is more media
 								if($num_thumbnails_returned >= $thumbnails_to_show){
 								?>
-	                <button class="show-hide button button-primary" id="show-more-media">
+	                <button class="show-hide button button-primary" id="show-more-media-all-years">
 	                    Show <span class="button-action">more</span> media
 	                </button>
 								<?php } ?>

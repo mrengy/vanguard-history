@@ -631,6 +631,70 @@ function vanguard_history_all_media_for_year_story() {
 add_action( 'wp_ajax_vanguard_history_all_media_for_year_story', 'vanguard_history_all_media_for_year_story' );
 add_action( 'wp_ajax_nopriv_vanguard_history_all_media_for_year_story', 'vanguard_history_all_media_for_year_story' );
 
+// ajax handler for loading more media across all years
+function vanguard_history_more_media_all_years() {
+	if( isset($_REQUEST) ) {
+		$this_year = $_REQUEST['year'];
+		$this_ensemble = $_REQUEST['ensemble'];
+		/*
+		echo $this_ensemble;
+		echo $this_year;
+		*/
+		// query media
+		$media_query_args = array(
+			'post_type'   => 'attachment',
+			'post_status' => 'any',
+
+			'tax_query' => array(
+					'relation' => 'AND',
+					array(
+						'taxonomy' => 'ensemble',
+						'field' => 'slug',
+						'terms' => $this_ensemble,
+					),
+					array(
+						'taxonomy' => 'vhs_year',
+						'field' => 'slug',
+						'terms' => $this_year,
+					),
+					array(
+						'taxonomy' => 'media_visibility',
+						'field' => 'slug',
+						'terms' => 'published',
+					),
+			),
+
+			'offset' => 6
+
+			// in the future, might need to change this once we have more attachments - want it to show all wihout pagination (until we build pagination)
+		);
+		$media_query = new WP_Query ($media_query_args);
+
+		$thumbnails = array();
+
+		if ( $media_query->have_posts() ) : while ( $media_query->have_posts() ) : $media_query->the_post();
+				// store thumbnails in array
+				$thumbnails[] = wp_get_attachment_link( get_the_ID(), 'thumbnail', true );
+
+			endwhile;
+		endif; // end of media loop
+
+		// Be kind; rewind
+		wp_reset_postdata();
+
+		// output all the results
+		foreach($thumbnails as $thumbnail){
+			echo($thumbnail);
+		}
+
+		die();
+	}
+}
+
+add_action( 'wp_ajax_vanguard_history_more_media_all_years', 'vanguard_history_more_media_all_years' );
+add_action( 'wp_ajax_nopriv_vanguard_history_more_media_all_years', 'vanguard_history_more_media_all_years' );
+
+
 class Custom_Walker_Comment extends Walker_Comment {
 
 	/**
