@@ -16,28 +16,21 @@ get_header();
 ?>
 
 	<main id="primary" class="site-main ui container">
-		<h1 id="tagline">
-			<?php echo html_entity_decode( get_bloginfo('description')); ?>
-		</h1>
-		<a id="homepage-link-to-about" href="<?php echo site_url(); ?>/about">About the project</a>
-		<section id="featured-story">
-			<?php
-				show_featured_story('2001-scv');
-			?>
-		</section>
+
 		<?php
 		while ( have_posts() ) :
 			the_post();
 
 			// get the content
-			get_template_part( 'template-parts/content', 'front-page' );
+			get_template_part( 'template-parts/content', 'page' );
+
 		endwhile; // End of the loop.
 		?>
 
 		<?php
 			// query media
-			// how many media thumbnails to show at first
-			$thumbnails_to_show = 6;
+			// how many media thumbnails to show at first. -1 means all
+			$thumbnails_to_show = -1;
 
 			// query media
 			$media_query_args = array(
@@ -75,8 +68,7 @@ get_header();
 			wp_reset_postdata();
 
 			if ($thumbnails_count>0) { ?>
-		    <div class="media home-section media-grid">
-		        <h2 class="entry-heading">Recent Uploads</h2>
+		    <div class="media media-section media-grid">
 		        <div class="container">
 		            <div id="media-container" class="media-grid">
 		                <?php
@@ -85,20 +77,10 @@ get_header();
 											}
 										?>
         				</div>
-
 							<?php
-							//how many thumbnails did we load?
-							$num_thumbnails_returned = $thumbnails_count;
-
-							// only display the "show all media" button if there is more media
-							if($num_thumbnails_returned >= $thumbnails_to_show){
+								//how many thumbnails did we load?
+								$num_thumbnails_returned = $thumbnails_count;
 							?>
-								<div class="button-container">
-	                <a class="button button-primary" id="all-media" href="<?php echo(site_url());?>/media">
-	                    All media
-	                </a>
-		        		</div>
-							<?php } ?>
 								<div class="button-container">
 									<a class="button button-primary" id="upload-material" href="<?php echo(site_url());?>/upload-material">
 											Upload material
@@ -107,6 +89,7 @@ get_header();
 		    		</div>
 			</div>
     <?php } ?>
+
 	</main><!-- #main -->
 
 <?php

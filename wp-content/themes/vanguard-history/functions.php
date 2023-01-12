@@ -436,7 +436,7 @@ add_filter( 'wp_terms_checklist_args', 'media_visibility_radio_buttons' );
             ),
                 'public'      => true,
                 'has_archive' => true,
-								'supports' => array('title','editor','author','excerpt','comments','revisions')
+								'supports' => array('title','editor','author','excerpt','comments','revisions', 'thumbnail')
         )
     );
 }
@@ -758,5 +758,50 @@ class Custom_Walker_Comment extends Walker_Comment {
 				?>
     </article><!-- .comment-body -->
     <?php
+	}
+} // end custom walker comment class
+
+function show_featured_story( $featured_slug ){
+	$args = array(
+		'name' => $featured_slug,
+		'post_type' => 'year_story',
+		'post_status' => 'publish',
+		'numberposts' => 1
+	);
+
+	$featured_story = get_posts($args);
+
+	if( $featured_story ){
+		/*
+		// debug for displaying the post object
+		echo('<pre>');
+		print_r($featured_story);
+		echo('</pre>');
+		*/
+
+		//define variables to be echoed
+		$link = $featured_story[0]->guid;
+		$title = $featured_story[0]->post_title;
+		$excerpt = $featured_story[0]->post_excerpt;
+		$thumbnail = get_the_post_thumbnail($featured_story[0]->ID, 'large',['id' => 'featured-story-thumbnail']);
+
+		echo("
+			<a href='$link'>
+			$thumbnail
+			</a>
+			<h2 id='featured-story-heading'>
+				<a href='$link'>
+					Featured Story: $title
+				</a>
+			</h2>
+			<div id='featured-story-excerpt'>
+				$excerpt
+			</div>
+			<a href='$link'>
+				Show Full Story
+			</a>
+		");
+	} else{
+		do_action('qm/error', 'featured story not found in function show_featured_story');
 	}
 }
