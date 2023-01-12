@@ -76,7 +76,7 @@ get_header();
 
 			if ($thumbnails_count>0) { ?>
 		    <div class="media home-section media-grid">
-		        <h2 class="entry-heading">Media</h2>
+		        <h2 class="entry-heading">Recent Uploads</h2>
 		        <div class="container">
 		            <div id="media-container" class="media-grid">
 		                <?php
