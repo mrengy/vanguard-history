@@ -32,9 +32,16 @@ get_header();
 			// get the content
 			get_template_part( 'template-parts/content', 'front-page' );
 		endwhile; // End of the loop.
-
-		// query media
 		?>
+		<section id="recent-uploads">
+			<h1 id="recent-uploads-heading">
+				Recent Uploads
+			</h1>
+			<?php
+			// query media
+
+			?>
+		</section>
 	</main><!-- #main -->
 
 <?php

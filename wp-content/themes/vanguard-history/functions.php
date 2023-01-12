@@ -789,7 +789,7 @@ function show_featured_story( $featured_slug ){
 			<a href='$link'>
 			$thumbnail
 			</a>
-			<h1 class='featured-story-title'>
+			<h1 id='featured-story-heading'>
 				<a href='$link'>
 					Featured Story: $title
 				</a>
