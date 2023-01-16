@@ -41,6 +41,10 @@ wp-content/themes/twenty*/
 # track readme.md in the root (i.e. do NOT ignore it)
 !readme.md
 
+# track package.json and package-lock.json in the root (i.e. do NOT ignore it)
+!package.json
+!package-lock.json
+
 # ignore all files that start with ~
 ~*
 
