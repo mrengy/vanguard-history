@@ -168,7 +168,7 @@ Do this when you are coming back to work on the code after any time away. In <a 
 1. [`git pull`](https://docs.gitlab.com/ee/gitlab-basics/start-using-git.html#download-the-latest-changes-in-the-project) to update the main branch with the latest code from Github.
 1. `git checkout <working-branchname>`
 1. `git pull` to update your working branch
-1. `git rebase main` (you may have to resolve some conflicts, but they're usually straightforward
+1. `git rebase main` (you may have to resolve some conflicts, but they're usually straightforward)
 1. If another teammate added or removed plugins, `composer update` (or `php composer.phar update`) to update plugins to match what is specified in composer.json. This will update plugins that have new versions available, delete plugins removed from composer.json, and install new plugins added to composer.json.
 
 ## committing changes
