@@ -32,10 +32,30 @@
 
         <?php
 
-    //show featured image
-		vanguard_history_post_thumbnail();
+    //hide featured image for now
+		//vanguard_history_post_thumbnail();
+
+		//only show year story video on single year story pages
+		$year_story_video = get_field('year_story_video');
+
+		if(isset($year_story_video)){
+			echo(
+				'<div class="year-story-video">'.
+				$year_story_video.
+				'</div>'
+			);
+		}
+
+		if(has_excerpt()){
+			the_excerpt();
+		}
 	?>
-        <section id="content">
+
+
+
+        <button class="show-hide button button-text" id="show-hide-full-story"><span class="button-action">Show</span>
+            Full Story</button>
+        <section id="story" class="year-story" hidden="hidden">
             <?php
 			the_content(
 				sprintf(
