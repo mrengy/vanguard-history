@@ -154,7 +154,7 @@ After importing the database file in your local WordPress Admin, manually copy i
 1. Select your downloaded SQL file
 1. Run the following:
 
-````sh
+```sh
 cd ~/Local Sites/vanguard-history/app/public
 npm run replace-stage-urls
 ```
