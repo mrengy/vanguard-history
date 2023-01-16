@@ -10,7 +10,7 @@
 get_header();
 ?>
 
-<main id="primary" class="site-main ui">
+<main id="primary" class="site-main">
 
     <?php
 		while ( have_posts() ) :
@@ -70,10 +70,10 @@ get_header();
 			wp_reset_postdata();
 
 			if ($thumbnails_count>0) {?>
-    <div class="year-media year-section media-grid">
+    <div class="content-media content-section">
         <h2 class="entry-heading">Media</h2>
         <div class="container">
-            <div id="media-container" class="year-media-grid" data-year="<?php echo $this_year ?>"
+            <div id="media-container" class="content-media-grid" data-year="<?php echo $this_year ?>"
                 data-ensemble="<?php echo $this_ensemble ?>">
                 <?php
 

@@ -742,7 +742,7 @@ class Custom_Walker_Comment extends Walker_Comment {
             <?php comment_text(); ?>
         </div><!-- .comment-content -->
 
-				<?php
+        <?php
 					comment_reply_link(
 						array_merge(
 							$args,
@@ -789,15 +789,15 @@ function show_featured_story( $featured_slug ){
 			<a href='$link'>
 			$thumbnail
 			</a>
-			<h2 id='featured-story-heading'>
+			<h2 class='featured-story-heading'>
 				<a href='$link'>
 					Featured Story: $title
 				</a>
 			</h2>
-			<div id='featured-story-excerpt'>
+			<div class='featured-story-excerpt'>
 				$excerpt
 			</div>
-			<a href='$link'>
+			<a href='$link' class='featured-story-link'>
 				Show Full Story
 			</a>
 		");

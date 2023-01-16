@@ -15,17 +15,18 @@
 get_header();
 ?>
 
-	<main id="primary" class="site-main ui container">
-		<h1 id="tagline">
-			<?php echo html_entity_decode( get_bloginfo('description')); ?>
-		</h1>
-		<a id="homepage-link-to-about" href="<?php echo site_url(); ?>/about">About the project</a>
-		<section id="featured-story">
-			<?php
+<main id="primary" class="site-main">
+    <div class="content-section content-intro">
+        <h1 id="tagline" class="site-heading">
+            <?php echo html_entity_decode( get_bloginfo('description')); ?>
+        </h1>
+        <a id="homepage-link-to-about" href="<?php echo site_url(); ?>/about">About the project</a>
+        <section class="featured-story">
+            <?php
 				show_featured_story('2001-scv');
 			?>
-		</section>
-		<?php
+        </section>
+        <?php
 		while ( have_posts() ) :
 			the_post();
 
@@ -33,8 +34,11 @@ get_header();
 			get_template_part( 'template-parts/content', 'front-page' );
 		endwhile; // End of the loop.
 		?>
+    </div>
 
-		<?php
+    <div class="content-section content-media">
+
+        <?php
 			// query media
 			// how many media thumbnails to show at first
 			$thumbnails_to_show = 6;
@@ -75,39 +79,43 @@ get_header();
 			wp_reset_postdata();
 
 			if ($thumbnails_count>0) { ?>
-		    <div class="media home-section media-grid">
-		        <h2 class="entry-heading">Recent Uploads</h2>
-		        <div class="container">
-		            <div id="media-container" class="media-grid">
-		                <?php
+
+        <h2 class="entry-heading">Recent Uploads</h2>
+        <div class="container">
+            <div id="media-container" class="content-media-grid">
+                <?php
 											foreach($thumbnails as $thumbnail){
 												echo($thumbnail);
 											}
 										?>
-        				</div>
+            </div>
 
-							<?php
+            <?php
 							//how many thumbnails did we load?
 							$num_thumbnails_returned = $thumbnails_count;
 
 							// only display the "show all media" button if there is more media
 							if($num_thumbnails_returned >= $thumbnails_to_show){
 							?>
-								<div class="button-container">
-	                <a class="button button-primary" id="all-media" href="<?php echo(site_url());?>/media">
-	                    All media
-	                </a>
-		        		</div>
-							<?php } ?>
-								<div class="button-container">
-									<a class="button button-primary" id="upload-material" href="<?php echo(site_url());?>/upload-material">
-											Upload material
-									</a>
-	            	</div>
-		    		</div>
-			</div>
+            <div class="button-container">
+                <a id="all-media" href="<?php echo(site_url());?>/media">
+                    <button class="button button-primary">
+                        All media
+                    </button>
+                </a>
+            </div>
+            <?php } ?>
+            <div class="button-container">
+                <a id="upload-material" href="<?php echo(site_url());?>/upload-material">
+                    <button class="button button-primary">
+                        Upload material
+                    </button>
+                </a>
+            </div>
+        </div>
+    </div>
     <?php } ?>
-	</main><!-- #main -->
+</main><!-- #main -->
 
 <?php
 get_vhs_footer();
