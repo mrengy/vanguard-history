@@ -26,9 +26,14 @@ You will also need [a Github account](https://github.com/join) to contribute cod
 
 To set up the site, you will need to [install Composer on your local machine](https://getcomposer.org/doc/00-intro.md).
 
-If you plan on making changes to any CSS, you will need to [install SASS on your local machine](https://sass-lang.com/install).
-
 For some of the local WordPress site administration tasks like bulk activating plugins and manually installing some like GravityForms, you will need to [install WP CLI](https://wp-cli.org/#installing).
+
+To run any NPM scripts, you'll need run the following:
+
+```sh
+cd ~/Local Sites/vanguard-history/app/public
+npm i
+```
 
 ### Set up the site on your local machine
 
@@ -139,18 +144,37 @@ When creating the export, also check the option:
 
 After importing the database file in your local WordPress Admin, manually copy in media files. Download and unzip a couple of directories of uploads by month from [this Basecamp thread](https://3.basecamp.com/5067876/buckets/22032865/messages/5561851381#__recording_5586109819) (ask Mike Eng if you need access to Basecamp). Go to your local site folder. Get there from the Local app > under the site "Vanguard History", click "Go to site folder". Place the media files under "vanguard-history" > "app" > "public" > "wp-content" > "uploads". Within "uploads", there are directories organized by year and month. Place the directories and their contents under "uploads" in the appropriate year / month structure.
 
-## To make edits to CSS
+##### Option 3: import database sql
 
-In the command line prompt (here's <a href="#command-line">how to open it</a>), navigate into the active theme's directory. If using Bash (likely the default), use the command `cd wp-content/themes/vanguard-history`.
+1. Ask [mrengy](https://github.com/mrengy) to export the stage SQL
+1. Download the resulting zip and extract it
+1. In Local, go to the Database Tab > Click `Open Adminer`
+1. Select all tables in the list and click `Drop`
+1. On the left side of the window, click `Import`
+1. Select your downloaded SQL file
+1. Run the following:
 
-Then, run:
-
-```sh
-# These options match the options when the sass is built in pull requests
-sass . --watch --style=compressed --no-source-map
+````sh
+cd ~/Local Sites/vanguard-history/app/public
+npm run replace-stage-urls
 ```
 
-This will check for any .scss files in the current directory and compile them into proper .css files. More in [SASS basics](https://sass-lang.com/guide#topic-1). You'll want to edit only the .scss files when editing the CSS. SASS will do the rest.
+## To make edits to CSS
+
+In the command line prompt (here's <a href="#command-line">how to open it</a>), run the following:
+
+```sh
+cd wp-content/themes/vanguard-history
+npm run sass:watch
+````
+
+This will check for any `.scss` files in the current directory and compile them into proper `.css` files. More in [SASS basics](https://sass-lang.com/guide#topic-1). You'll want to edit only the `.scss` files when editing the CSS. SASS will do the rest.
+
+If you want to build the `.scss` files once without starting the watcher, run:
+
+```sh
+npm run sass
+```
 
 ## Changing plugins
 
