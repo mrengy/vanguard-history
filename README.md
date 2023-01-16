@@ -28,9 +28,10 @@ To set up the site, you will need to [install Composer on your local machine](ht
 
 For some of the local WordPress site administration tasks like bulk activating plugins and manually installing some like GravityForms, you will need to [install WP CLI](https://wp-cli.org/#installing).
 
-To run any NPM scripts, you'll need run the following within `/wp-content/themes/vanguard-history`:
+To run any NPM scripts, you'll need run the following:
 
 ```sh
+cd ~/Local Sites/vanguard-history/app/public
 npm i
 ```
 
