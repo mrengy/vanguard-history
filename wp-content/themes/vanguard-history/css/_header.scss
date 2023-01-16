@@ -20,7 +20,10 @@
 
 	a {
 		color: $White;
-		text-decoration: none;
+		border: 0;
+		&:hover {
+			color: $SCVRed;
+		}
 	}
 }
 
@@ -43,13 +46,21 @@
 	background-color: $SCVBlack;
 	right: 0;
 	top: 100%;
-	width: 100%;
 	z-index: 10;
 
 	.menu-item {
-		padding: 1rem;
+		padding: 1rem 0;
+		margin: 0 1rem;
+		text-align: right;
+		border-bottom: 1px solid $SCVLightGrayTranslucent;
+		font-size: $font-size-sm;
+
+		&:last-child {
+			border-bottom-color: transparent;
+		}
 		a {
 			color: $White;
+			border: 0;
 			&:hover {
 				color: $SCVRed;
 			}
@@ -66,5 +77,9 @@
 	}
 	.menu-main-navigation-container {
 		position: relative;
+
+		.menu-item {
+			border: 0;
+		}
 	}
 }
