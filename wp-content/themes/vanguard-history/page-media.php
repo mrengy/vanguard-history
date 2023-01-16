@@ -15,9 +15,9 @@
 get_header();
 ?>
 
-	<main id="primary" class="site-main ui container">
+<main id="primary" class="site-main content-section content-media">
 
-		<?php
+    <?php
 		while ( have_posts() ) :
 			the_post();
 
@@ -27,7 +27,7 @@ get_header();
 		endwhile; // End of the loop.
 		?>
 
-		<?php
+    <?php
 			// query media
 			// how many media thumbnails to show at first. -1 means all
 			$thumbnails_to_show = -1;
@@ -68,29 +68,29 @@ get_header();
 			wp_reset_postdata();
 
 			if ($thumbnails_count>0) { ?>
-		    <div class="media media-section media-grid">
-		        <div class="container">
-		            <div id="media-container" class="media-grid">
-		                <?php
+
+    <div id="media-container" class="content-media-grid">
+        <?php
 											foreach($thumbnails as $thumbnail){
 												echo($thumbnail);
 											}
 										?>
-        				</div>
-							<?php
+    </div>
+    <?php
 								//how many thumbnails did we load?
 								$num_thumbnails_returned = $thumbnails_count;
 							?>
-								<div class="button-container">
-									<a class="button button-primary" id="upload-material" href="<?php echo(site_url());?>/upload-material">
-											Upload material
-									</a>
-	            	</div>
-		    		</div>
-			</div>
+    <div class="button-container">
+        <a id="upload-material" href="<?php echo(site_url());?>/upload-material">
+            <button class="button button-primary">
+                Upload material
+            </button>
+        </a>
+    </div>
+
     <?php } ?>
 
-	</main><!-- #main -->
+</main><!-- #main -->
 
 <?php
 get_vhs_footer();
