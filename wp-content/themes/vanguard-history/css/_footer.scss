@@ -37,7 +37,10 @@
 	.menu-item {
 		a {
 			color: $White;
-			text-decoration: none;
+			border: 0;
+			&:hover {
+				color: $SCVRed;
+			}
 		}
 	}
 
