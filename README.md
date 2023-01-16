@@ -156,19 +156,26 @@ This will check for any .scss files in the current directory and compile them in
 
 Trying a new plugin? We want to ensure that team members are using the same plugins and that the live site gets the plugins you are using locally. So instead of installing plugins from WordPress Admin or adding the plugin files manually, add a line for the plugin to composer.json. Then run `composer update` (or `php composer.phar update`, depending on how you installed [Composer](https://getcomposer.org/)) in the command line to install it. (Note, this will update all plugins). If you don't need the plugin anymore and are confident that nothing else depends on it, delete the line from composer.json and run `composer update` again.
 
-## To get updates from other team members
-
-Do this when you are coming back to work on the code after any time away. In <a href="#command-line">the command line</a>, [Run "git pull"](https://docs.gitlab.com/ee/gitlab-basics/start-using-git.html#download-the-latest-changes-in-the-project) to update with the latest code from Github.
-
-Run `composer update` (or `php composer.phar update`) to update plugins to match what is specified in composer.json. This will update plugins that have new versions available, delete plugins removed from composer.json, and install new plugins added to composer.json.
-
 ## branching
 
 There are many ways to use Git branches. Here, we will use an approach of <a href="https://gist.github.com/vlandham/3b2b79c40bc7353ae95a">feature branches and pull requests</a>. In that tutorial, replace "master" with "main". For the most part, we will not be committing directly on the "main" branch, but on a branch specific to the feature or issue you are working on. New branches will be created automatically when a GitHub issue is assigned. You probably won’t need to create your own branches, but you can if you like.
 
+## To get updates from other team members
+
+Do this when you are coming back to work on the code after any time away. In <a href="#command-line">the command line</a>, Run: 
+
+1. `git checkout main`
+1. [`git pull`](https://docs.gitlab.com/ee/gitlab-basics/start-using-git.html#download-the-latest-changes-in-the-project) to update the main branch with the latest code from Github.
+1. `git checkout <working-branchname>`
+1. `git pull` to update your working branch
+1. `git rebase main` (you may have to resolve some conflicts, but they're usually straightforward
+1. If another teammate added or removed plugins, `composer update` (or `php composer.phar update`) to update plugins to match what is specified in composer.json. This will update plugins that have new versions available, delete plugins removed from composer.json, and install new plugins added to composer.json.
+
 ## committing changes
 
-After you've made local changes, commit them, one by one. When you've got a bunch to send back to Github, `push` them on your feature branch. See [these basics](https://docs.gitlab.com/ee/gitlab-basics/start-using-git.html#add-and-commit-local-changes) for details. (where that page says "GitLab", replace that mentally with "Github"). Then rather than merging into the main branch yourself, [create a pull request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request) from your branch when it's ready to be merged back into the main branch.
+After you've made local changes, commit them, one by one. When you've got a bunch to send back to Github, `push` them on your feature branch. (Use `git push -f` to force push if you rebased as above.)
+
+See [these basics](https://docs.gitlab.com/ee/gitlab-basics/start-using-git.html#add-and-commit-local-changes) for details. (where that page says "GitLab", replace that mentally with "Github"). Then rather than merging into the main branch yourself, [create a pull request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request) from your branch when it's ready to be merged back into the main branch.
 
 # Site administration on servers
 
