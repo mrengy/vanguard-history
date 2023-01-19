@@ -26,9 +26,14 @@ You will also need [a Github account](https://github.com/join) to contribute cod
 
 To set up the site, you will need to [install Composer on your local machine](https://getcomposer.org/doc/00-intro.md).
 
-If you plan on making changes to any CSS, you will need to [install SASS on your local machine](https://sass-lang.com/install).
-
 For some of the local WordPress site administration tasks like bulk activating plugins and manually installing some like GravityForms, you will need to [install WP CLI](https://wp-cli.org/#installing).
+
+To run any NPM scripts, you'll need run the following:
+
+```sh
+cd ~/Local Sites/vanguard-history/app/public
+npm i
+```
 
 ### Set up the site on your local machine
 
@@ -139,36 +144,62 @@ When creating the export, also check the option:
 
 After importing the database file in your local WordPress Admin, manually copy in media files. Download and unzip a couple of directories of uploads by month from [this Basecamp thread](https://3.basecamp.com/5067876/buckets/22032865/messages/5561851381#__recording_5586109819) (ask Mike Eng if you need access to Basecamp). Go to your local site folder. Get there from the Local app > under the site "Vanguard History", click "Go to site folder". Place the media files under "vanguard-history" > "app" > "public" > "wp-content" > "uploads". Within "uploads", there are directories organized by year and month. Place the directories and their contents under "uploads" in the appropriate year / month structure.
 
-## To make edits to CSS
+##### Option 3: import database sql
 
-In the command line prompt (here's <a href="#command-line">how to open it</a>), navigate into the active theme's directory. If using Bash (likely the default), use the command `cd wp-content/themes/vanguard-history`.
-
-Then, run:
+1. Ask [mrengy](https://github.com/mrengy) to export the stage SQL
+1. Download the resulting zip and extract it
+1. In Local, go to the Database Tab > Click `Open Adminer`
+1. Select all tables in the list and click `Drop`
+1. On the left side of the window, click `Import`
+1. Select your downloaded SQL file
+1. Run the following:
 
 ```sh
-# These options match the options when the sass is built in pull requests
-sass . --watch --style=compressed --no-source-map
+cd ~/Local Sites/vanguard-history/app/public
+npm run replace-stage-urls
 ```
 
-This will check for any .scss files in the current directory and compile them into proper .css files. More in [SASS basics](https://sass-lang.com/guide#topic-1). You'll want to edit only the .scss files when editing the CSS. SASS will do the rest.
+## To make edits to CSS
+
+In the command line prompt (here's <a href="#command-line">how to open it</a>), run the following:
+
+```sh
+cd wp-content/themes/vanguard-history
+npm run sass:watch
+````
+
+This will check for any `.scss` files in the current directory and compile them into proper `.css` files. More in [SASS basics](https://sass-lang.com/guide#topic-1). You'll want to edit only the `.scss` files when editing the CSS. SASS will do the rest.
+
+If you want to build the `.scss` files once without starting the watcher, run:
+
+```sh
+npm run sass
+```
 
 ## Changing plugins
 
 Trying a new plugin? We want to ensure that team members are using the same plugins and that the live site gets the plugins you are using locally. So instead of installing plugins from WordPress Admin or adding the plugin files manually, add a line for the plugin to composer.json. Then run `composer update` (or `php composer.phar update`, depending on how you installed [Composer](https://getcomposer.org/)) in the command line to install it. (Note, this will update all plugins). If you don't need the plugin anymore and are confident that nothing else depends on it, delete the line from composer.json and run `composer update` again.
 
-## To get updates from other team members
-
-Do this when you are coming back to work on the code after any time away. In <a href="#command-line">the command line</a>, [Run "git pull"](https://docs.gitlab.com/ee/gitlab-basics/start-using-git.html#download-the-latest-changes-in-the-project) to update with the latest code from Github.
-
-Run `composer update` (or `php composer.phar update`) to update plugins to match what is specified in composer.json. This will update plugins that have new versions available, delete plugins removed from composer.json, and install new plugins added to composer.json.
-
 ## branching
 
 There are many ways to use Git branches. Here, we will use an approach of <a href="https://gist.github.com/vlandham/3b2b79c40bc7353ae95a">feature branches and pull requests</a>. In that tutorial, replace "master" with "main". For the most part, we will not be committing directly on the "main" branch, but on a branch specific to the feature or issue you are working on. New branches will be created automatically when a GitHub issue is assigned. You probably won’t need to create your own branches, but you can if you like.
 
+## To get updates from other team members
+
+Do this when you are coming back to work on the code after any time away. In <a href="#command-line">the command line</a>, Run: 
+
+1. `git checkout main`
+1. [`git pull`](https://docs.gitlab.com/ee/gitlab-basics/start-using-git.html#download-the-latest-changes-in-the-project) to update the main branch with the latest code from Github.
+1. `git checkout <working-branchname>`
+1. `git pull` to update your working branch
+1. `git rebase main` (you may have to resolve some conflicts, but they're usually straightforward)
+1. If another teammate added or removed plugins, `composer update` (or `php composer.phar update`) to update plugins to match what is specified in composer.json. This will update plugins that have new versions available, delete plugins removed from composer.json, and install new plugins added to composer.json.
+
 ## committing changes
 
-After you've made local changes, commit them, one by one. When you've got a bunch to send back to Github, `push` them on your feature branch. See [these basics](https://docs.gitlab.com/ee/gitlab-basics/start-using-git.html#add-and-commit-local-changes) for details. (where that page says "GitLab", replace that mentally with "Github"). Then rather than merging into the main branch yourself, [create a pull request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request) from your branch when it's ready to be merged back into the main branch.
+After you've made local changes, commit them, one by one. When you've got a bunch to send back to Github, `push` them on your feature branch. (Use `git push -f` to force push if you rebased as above.)
+
+See [these basics](https://docs.gitlab.com/ee/gitlab-basics/start-using-git.html#add-and-commit-local-changes) for details. (where that page says "GitLab", replace that mentally with "Github"). Then rather than merging into the main branch yourself, [create a pull request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request) from your branch when it's ready to be merged back into the main branch.
 
 # Site administration on servers
 

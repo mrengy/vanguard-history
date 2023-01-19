@@ -1,0 +1,16 @@
+{
+  "name": "vanguard-history",
+  "version": "1.0.0",
+  "description": "NPM dependencies to run scripts, not used directly by the app",
+  "main": "index.js",
+  "scripts": {
+    "sass": "sass . --style=compressed --no-source-map",
+    "sass:watch": "npm run sass -- --watch",
+    "replace-stage-urls": "wp search-replace 'https://historyscv-stage.dreamhosters.com' 'http://vanguard-history.local'"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "sass": "^1.57.1"
+  }
+}
