@@ -43,11 +43,14 @@
 	background-color: $SCVBlack;
 	right: 0;
 	top: 100%;
-	width: 100%;
 	z-index: 10;
 
 	.menu-item {
-		padding: 1rem;
+		padding: 1rem 0;
+		margin: 0 1rem;
+		font-size: $font-size-sm;
+		text-align: right;
+		border-bottom: 1px solid $SCVLightGrayTranslucent;
 		a {
 			color: $White;
 			&:hover {
@@ -66,5 +69,9 @@
 	}
 	.menu-main-navigation-container {
 		position: relative;
+
+		.menu-item {
+			border-bottom: 0;
+		}
 	}
 }
