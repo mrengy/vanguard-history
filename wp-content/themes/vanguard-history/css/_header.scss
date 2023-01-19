@@ -20,7 +20,10 @@
 
 	a {
 		color: $White;
-		text-decoration: none;
+		border: 0;
+		&:hover {
+			color: $SCVRed;
+		}
 	}
 }
 
@@ -48,11 +51,16 @@
 	.menu-item {
 		padding: 1rem 0;
 		margin: 0 1rem;
-		font-size: $font-size-sm;
 		text-align: right;
 		border-bottom: 1px solid $SCVLightGrayTranslucent;
+		font-size: $font-size-sm;
+
+		&:last-child {
+			border-bottom-color: transparent;
+		}
 		a {
 			color: $White;
+			border: 0;
 			&:hover {
 				color: $SCVRed;
 			}
@@ -71,7 +79,8 @@
 		position: relative;
 
 		.menu-item {
-			border-bottom: 0;
+      shekhar/hyperlink
+			border: 0;
 		}
 	}
 }
