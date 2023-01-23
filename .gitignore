@@ -83,3 +83,6 @@ Thumbs.db
 
 # ignore node dependency directories
 node_modules/
+
+# ignore built css
+wp-content/themes/vanguard-history/style.css
