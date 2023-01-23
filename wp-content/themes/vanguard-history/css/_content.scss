@@ -14,6 +14,16 @@ figure {
 	align-items: center;
 	justify-content: stretch;
 	width: auto !important;
+
+	a {
+		border: none;
+	}
+
+	img,
+	iframe {
+		border-radius: $border-radius-md;
+		box-shadow: $box-shadow;
+	}
 }
 
 // Typography
@@ -67,16 +77,12 @@ figure {
 // Sections
 .content-section {
 	padding: $spacing-md $spacing-md $spacing-lg $spacing-md;
+	font-size: $font-size-sm;
 }
 
 .content-intro {
 	background-color: $SCVRed;
 	color: $White;
-
-	img {
-		border-radius: $border-radius-md;
-		box-shadow: $box-shadow;
-	}
 
 	.byline {
 		margin-left: $spacing-md;
@@ -107,6 +113,7 @@ figure {
 
 	a {
 		display: block;
+		border: none;
 		&:nth-child(n + 7) {
 			display: none;
 		}
@@ -120,4 +127,8 @@ figure {
 	&.expanded a:nth-child(n + 7) {
 		display: block;
 	}
+}
+
+.content-page {
+	min-height: 100vh;
 }
