@@ -20,7 +20,7 @@
 
 	a {
 		color: $White;
-		border: 0;
+		border: none;
 		&:hover {
 			color: $SCVRed;
 		}
@@ -60,7 +60,7 @@
 		}
 		a {
 			color: $White;
-			border: 0;
+			border: none;
 			&:hover {
 				color: $SCVRed;
 			}
@@ -79,7 +79,7 @@
 		position: relative;
 
 		.menu-item {
-			border: 0;
+			border: none;
 		}
 	}
 }
