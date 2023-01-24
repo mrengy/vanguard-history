@@ -56,6 +56,10 @@ $comment-avatar-size: 80px;
 		height: $comment-avatar-size;
 		border-radius: $border-radius-md;
 	}
+
+	a {
+		border: none;
+	}
 }
 
 .comment-author {

@@ -15,9 +15,9 @@
 get_header();
 ?>
 
-	<main id="primary" class="site-main ui container">
-
-		<?php
+<main id="primary" class="site-main">
+    <div class="content-section content-media content-page">
+        <?php
 		while ( have_posts() ) :
 			the_post();
 
@@ -30,8 +30,9 @@ get_header();
 
 		endwhile; // End of the loop.
 		?>
+    </div>
 
-	</main><!-- #main -->
+</main><!-- #main -->
 
 <?php
 $excluded_pages = array('upload-material', 'upload-confirmation');

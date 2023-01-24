@@ -38,4 +38,8 @@ input[type="submit"] {
 	display: flex;
 	justify-content: center;
 	margin-top: $spacing-lg;
+
+	a {
+		border: none;
+	}
 }
