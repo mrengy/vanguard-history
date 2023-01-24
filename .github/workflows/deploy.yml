@@ -1,13 +1,9 @@
-name: ssh command
+name: Deploy with SSH
 on: push
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Echo stuff
-        run: echo ${{ secrets.SSH_HOST }} |
-          echo ${{ secrets.SSH_USER }} |
-          echo ${{ secrets.SSH_KEY }} |
       - name: SSH
         id: ssh
         uses: invi5H/ssh-action@v1
@@ -16,3 +12,4 @@ jobs:
           SSH_USER: ${{ secrets.SSH_USER }}
           SSH_KEY: ${{ secrets.SSH_KEY }}
           script: pwd
+      - run: ssh ${{ steps.ssh.outputs.SERVER }} pwd
