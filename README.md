@@ -166,7 +166,7 @@ In the command line prompt (here's <a href="#command-line">how to open it</a>), 
 ```sh
 cd wp-content/themes/vanguard-history
 npm run sass:watch
-````
+```
 
 This will check for any `.scss` files in the current directory and compile them into proper `.css` files. More in [SASS basics](https://sass-lang.com/guide#topic-1). You'll want to edit only the `.scss` files when editing the CSS. SASS will do the rest.
 
@@ -174,6 +174,12 @@ If you want to build the `.scss` files once without starting the watcher, run:
 
 ```sh
 npm run sass
+```
+
+To have the latest SASS built when you pull, run:
+
+```sh
+git config core.hooksPath .github/hooks
 ```
 
 ## Changing plugins
@@ -186,7 +192,7 @@ There are many ways to use Git branches. Here, we will use an approach of <a hre
 
 ## To get updates from other team members
 
-Do this when you are coming back to work on the code after any time away. In <a href="#command-line">the command line</a>, Run: 
+Do this when you are coming back to work on the code after any time away. In <a href="#command-line">the command line</a>, Run:
 
 1. `git checkout main`
 1. [`git pull`](https://docs.gitlab.com/ee/gitlab-basics/start-using-git.html#download-the-latest-changes-in-the-project) to update the main branch with the latest code from Github.
@@ -218,3 +224,7 @@ After deploying to a server, the administrator will [connect to the server using
 1. Adam Noyce
 1. [Shekhar Khedekar](https://github.com/shekharkhedekar)
 1. Shannon Stamm McGhee
+
+```
+
+```
