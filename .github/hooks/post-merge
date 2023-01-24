@@ -1,0 +1,10 @@
+#!/bin/sh
+
+# 
+# Post Merge hook to compile SCSS > CSS when a new SHA is pulled via git pull
+# Requires the following to be run on deploy instances:
+# git config core.hooksPath .github/hooks
+# 
+cd wp-content/themes/vanguard-history/
+npm i
+npm run sass
