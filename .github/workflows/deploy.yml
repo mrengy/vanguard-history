@@ -5,10 +5,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Echo stuff
-        run: echo ${{ secrets.SSH_HOST }}; |
-          echo ${{ secrets.SSH_USER }}; |
-          echo ${{ secrets.SSH_KEY }}; |
-      - id: ssh
+        run: echo ${{ secrets.SSH_HOST }} |
+          echo ${{ secrets.SSH_USER }} |
+          echo ${{ secrets.SSH_KEY }} |
+      - name: SSH
+        id: ssh
         uses: invi5H/ssh-action@v1
         with:
           SSH_HOST: ${{ secrets.SSH_HOST }}
