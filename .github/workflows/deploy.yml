@@ -5,6 +5,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: SSH
+        # https://github.com/marketplace/actions/ssh-remote-commands
+        uses: appleboy/ssh-action@v0.1.7
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_KEY }}
+          script: pwd
+      - name: SSH
         id: ssh
         uses: invi5H/ssh-action@v1
         with:
