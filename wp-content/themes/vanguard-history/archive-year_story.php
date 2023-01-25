@@ -72,24 +72,36 @@ get_header();
 							</h2>
 							<ul id="year-stories-scv-list" class="archive-list">
 								<?php foreach($scv_year_stories as $scv_year_story){
-									$this_link = $scv_year_story->{'guid'};
-									$this_year = $scv_year_story->{'year'};
-									$this_show_title = $scv_year_story->{'show_title'};
-									echo("
-											<li>
-												<a href='$this_link'>
-													<span class='year'>
-														$this_year
-													</span>
-													<span class='separator'>
-														&#8212;
-													</span>
-													<span class='show-title'>
-														$this_show_title
-													</span>
-												</a>
-											</li>
-									");
+										$this_link = $scv_year_story->{'guid'};
+										$this_year = $scv_year_story->{'year'};
+										$this_show_title = $scv_year_story->{'show_title'};
+										if (!empty($this_show_title)){
+											echo("
+													<li>
+														<a href='$this_link'>
+															<span class='year'>
+																$this_year
+															</span>
+															<span class='separator'>
+																&#8212;
+															</span>
+															<span class='show-title'>
+																$this_show_title
+															</span>
+														</a>
+													</li>
+											");
+									} else{
+										echo("
+												<li>
+													<a href='$this_link'>
+														<span class='year'>
+															$this_year
+														</span>
+													</a>
+										   </li>
+											");
+									}
 								}?>
 							</ul>
 						</div>
@@ -148,24 +160,36 @@ get_header();
 						</h2>
 						<ul id="year-stories-cadets-list" class="archive-list">
 							<?php foreach($cadets_year_stories as $cadets_year_story){
-								$this_link = $cadets_year_story->{'guid'};
-								$this_year = $cadets_year_story->{'year'};
-								$this_show_title = $cadets_year_story->{'show_title'};
-								echo("
-										<li>
-											<a href='$this_link'>
-												<span class='year'>
-													$this_year
-												</span>
-												<span class='separator'>
-													&#8212;
-												</span>
-												<span class='show-title'>
-													$this_show_title
-												</span>
-											</a>
-										</li>
-								");
+									$this_link = $cadets_year_story->{'guid'};
+									$this_year = $cadets_year_story->{'year'};
+									$this_show_title = $cadets_year_story->{'show_title'};
+									if (!empty($this_show_title)){
+										echo("
+												<li>
+													<a href='$this_link'>
+														<span class='year'>
+															$this_year
+														</span>
+														<span class='separator'>
+															&#8212;
+														</span>
+														<span class='show-title'>
+															$this_show_title
+														</span>
+													</a>
+												</li>
+										");
+								} else{
+									echo("
+											<li>
+												<a href='$this_link'>
+													<span class='year'>
+														$this_year
+													</span>
+												</a>
+									   </li>
+										");
+								}
 							}?>
 						</ul>
 					</div>
