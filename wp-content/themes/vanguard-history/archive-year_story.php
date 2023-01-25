@@ -26,7 +26,6 @@ get_header();
 			<?php
 				$scv_year_stories_query_args = array(
 					'post_type'   => 'year_story',
-					'post_status' => 'publish',
 					'order' => 'DESC',
 					'orderby' => 'title',
 
