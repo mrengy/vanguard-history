@@ -93,13 +93,13 @@ get_header();
 								}?>
 							</ul>
 						</div>
-						<?php // print_r($scv_year_stories); ?>
 		<?php	}
 
 				// Be kind; rewind
 				wp_reset_postdata();
-		?>
-		<?php
+
+				// end SCV year stories list
+
 			$cadets_year_stories_query_args = array(
 				'post_type'   => 'year_story',
 				'order' => 'DESC',
@@ -169,11 +169,12 @@ get_header();
 							}?>
 						</ul>
 					</div>
-					<?php // print_r($scv_year_stories); ?>
 	<?php	}
 
 			// Be kind; rewind
 			wp_reset_postdata();
+
+			// end Cadets year stories list
 	?>
 
 	</main><!-- #main -->
