@@ -11,28 +11,6 @@ get_header();
 ?>
 
 	<main id="primary" class="site-main ui container">
-
-		<?php
-			$scv_year_stories_query_args = array(
-				'post_type'   => 'year_story',
-				'post_status' => 'publish',
-				'order' => 'DESC',
-				'orderby' => 'title',
-
-				'tax_query' => array(
-						'relation' => 'AND',
-						array(
-							'taxonomy' => 'ensemble',
-							'field' => 'slug',
-							'terms' => 'Vanguard',
-						),
-				),
-
-				'posts_per_page' => -1,
-			);
-
-			$scv_year_stories_query = new WP_Query($scv_year_stories_query_args);
-		?>
 			<div class="content-section content-intro">
 				<header class="page-header">
 					<?php
@@ -45,31 +23,46 @@ get_header();
 					</div>
 				</header><!-- .page-header -->
 			</div>
-			<?php if ( $scv_year_stories_query->have_posts() ) :
-			/* Start the Loop */
-			while ( $scv_year_stories_query->have_posts() ) :
-				$scv_year_stories_query->the_post();
+			<?php
+				$scv_year_stories_query_args = array(
+					'post_type'   => 'year_story',
+					'post_status' => 'publish',
+					'order' => 'DESC',
+					'orderby' => 'title',
 
-				/*
-				 * Include the Post-Type-specific template for the content.
-				 * If you want to override this in a child theme, then include a file
-				 * called content-___.php (where ___ is the Post Type name) and that will be used instead.
-				 */
-				get_template_part( 'template-parts/content', get_post_type() );
+					'tax_query' => array(
+							'relation' => 'AND',
+							array(
+								'taxonomy' => 'ensemble',
+								'field' => 'slug',
+								'terms' => 'Vanguard',
+							),
+					),
 
-			endwhile;
+					'posts_per_page' => -1,
+				);
+				$scv_year_stories_query = new WP_Query($scv_year_stories_query_args);
 
-			the_posts_navigation();
+				$scv_year_stories = array();
 
-		else :
+				if ( $scv_year_stories_query->have_posts() ) :
+					/* Start the Loop */
+					while ( $scv_year_stories_query->have_posts() ) :
+						$scv_year_stories_query->the_post();
+						// store stories in array
+						$scv_year_stories[] = get_post(get_the_ID());
 
-			get_template_part( 'template-parts/content', 'none' );
+					endwhile;
 
-		endif;
-		?>
+				endif;
+
+				$scv_year_stories_count = count($scv_year_stories);
+
+				// Be kind; rewind
+				wp_reset_postdata();
+			?>
 
 	</main><!-- #main -->
 
 <?php
-get_sidebar();
 get_vhs_footer();
