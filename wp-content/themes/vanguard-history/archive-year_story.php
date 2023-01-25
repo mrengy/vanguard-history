@@ -98,7 +98,83 @@ get_header();
 
 				// Be kind; rewind
 				wp_reset_postdata();
-			?>
+		?>
+		<?php
+			$cadets_year_stories_query_args = array(
+				'post_type'   => 'year_story',
+				'order' => 'DESC',
+				'orderby' => 'title',
+
+				'tax_query' => array(
+						'relation' => 'AND',
+						array(
+							'taxonomy' => 'ensemble',
+							'field' => 'slug',
+							'terms' => 'Vanguard Cadets / B-Corps',
+						),
+				),
+
+				'posts_per_page' => -1,
+			);
+			$cadets_year_stories_query = new WP_Query($cadets_year_stories_query_args);
+
+			$cadets_year_stories = array();
+
+			if ( $cadets_year_stories_query->have_posts() ) :
+				/* Start the Loop */
+				$i = 0;
+				while ( $cadets_year_stories_query->have_posts() ) :
+					$cadets_year_stories_query->the_post();
+					// store stories in array
+					$cadets_year_stories[] = get_post(get_the_ID());
+
+					// adding properties to year story object
+					$cadets_year_stories[$i]->{'year_object'} = get_the_terms(get_the_ID(), 'vhs_year');
+					$cadets_year_stories[$i]->{'year'} = $cadets_year_stories[$i]->{'year_object'}[0]->{'slug'};
+					$cadets_year_stories[$i]->{'show_title'} = get_field('show_title');
+					$i++;
+
+				endwhile;
+
+			endif;
+
+			$cadets_year_stories_count = count($cadets_year_stories);
+
+			if($cadets_year_stories_count>0){
+	?>
+					<div id="year-stories-cadets-container" class="archive-container">
+						<h2 class="ensemble-heading">
+							Vanguard Cadets / B-Corps
+						</h2>
+						<ul id="year-stories-cadets-list" class="archive-list">
+							<?php foreach($cadets_year_stories as $cadets_year_story){
+								$this_link = $cadets_year_story->{'guid'};
+								$this_year = $cadets_year_story->{'year'};
+								$this_show_title = $cadets_year_story->{'show_title'};
+								echo("
+										<li>
+											<a href='$this_link'>
+												<span class='year'>
+													$this_year
+												</span>
+												<span class='separator'>
+													&#8212;
+												</span>
+												<span class='show-title'>
+													$this_show_title
+												</span>
+											</a>
+										</li>
+								");
+							}?>
+						</ul>
+					</div>
+					<?php // print_r($scv_year_stories); ?>
+	<?php	}
+
+			// Be kind; rewind
+			wp_reset_postdata();
+	?>
 
 	</main><!-- #main -->
 
