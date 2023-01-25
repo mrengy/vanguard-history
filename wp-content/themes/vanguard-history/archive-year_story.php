@@ -46,10 +46,15 @@ get_header();
 
 				if ( $scv_year_stories_query->have_posts() ) :
 					/* Start the Loop */
+					$i = 0;
 					while ( $scv_year_stories_query->have_posts() ) :
 						$scv_year_stories_query->the_post();
 						// store stories in array
 						$scv_year_stories[] = get_post(get_the_ID());
+
+						// adding properties to year story object
+						$scv_year_stories[$i]->{'jawn'} = 'thing';
+						$i++;
 
 					endwhile;
 
