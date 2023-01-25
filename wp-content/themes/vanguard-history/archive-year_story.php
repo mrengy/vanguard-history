@@ -57,6 +57,21 @@ get_header();
 
 				$scv_year_stories_count = count($scv_year_stories);
 
+				if($scv_year_stories_count>0){
+		?>
+						<div id="year-stories-scv-container" class="archive-container">
+							<h2 class="ensemble-heading">
+								SCV
+							</h2>
+							<ul id="year-stories-scv-list" class="archive-list">
+								...
+							</ul>
+						</div>
+						<pre>
+							<?php print_r($scv_year_stories); ?>
+						</pre>
+		<?php	}
+
 				// Be kind; rewind
 				wp_reset_postdata();
 			?>
