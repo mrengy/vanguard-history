@@ -21,19 +21,19 @@ get_header();
             <?php echo html_entity_decode( get_bloginfo('description')); ?>
         </h1>
         <a id="homepage-link-to-about" href="<?php echo site_url(); ?>/about">About the project</a>
-        <section class="featured-story">
-            <?php
-				show_featured_story('2001-scv');
-			?>
-        </section>
         <?php
-		while ( have_posts() ) :
-			the_post();
+		      while ( have_posts() ) :
+			      the_post();
 
-			// get the content
-			get_template_part( 'template-parts/content', 'front-page' );
-		endwhile; // End of the loop.
-		?>
+          	// get the content
+          	get_template_part( 'template-parts/content', 'front-page' );
+          endwhile; // End of the loop.
+		    ?>
+        <section class="featured-story">
+          <?php
+				      show_featured_story('2001-scv');
+			    ?>
+        </section>
     </div>
 
     <div class="content-section content-media">
