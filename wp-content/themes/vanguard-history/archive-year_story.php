@@ -71,12 +71,29 @@ get_header();
 								SCV
 							</h2>
 							<ul id="year-stories-scv-list" class="archive-list">
-								...
+								<?php foreach($scv_year_stories as $scv_year_story){
+									$this_link = $scv_year_story->{'guid'};
+									$this_year = $scv_year_story->{'year'};
+									$this_show_title = $scv_year_story->{'show_title'};
+									echo("
+											<li>
+												<a href='$this_link'>
+													<span class='year'>
+														$this_year
+													</span>
+													<span class='separator'>
+														&#8212;
+													</span>
+													<span class='show-title'>
+														$this_show_title
+													</span>
+												</a>
+											</li>
+									");
+								}?>
 							</ul>
 						</div>
-						<pre>
-							<?php print_r($scv_year_stories); ?>
-						</pre>
+						<?php // print_r($scv_year_stories); ?>
 		<?php	}
 
 				// Be kind; rewind
