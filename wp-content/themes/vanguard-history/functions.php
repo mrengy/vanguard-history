@@ -166,7 +166,7 @@ add_action( 'wp_enqueue_scripts', 'vanguard_history_scripts' );
   * Enqueue admin scripts to temporarily fix 1px by 1px images in media library
 	*/
 	function wpdocs_selectively_enqueue_admin_script( $hook ) {
-		do_action( 'qm/debug', $hook );
+		//do_action( 'qm/debug', $hook );
 		// skip enqueueing the script unless on media > library page or media > assistant page in admin
 		if ('upload.php' != $hook && 'media_page_mla-menu' != $hook){
 			return;
