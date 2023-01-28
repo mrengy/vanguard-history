@@ -163,6 +163,19 @@ function vanguard_history_scripts() {
 add_action( 'wp_enqueue_scripts', 'vanguard_history_scripts' );
 
 /**
+  * Enqueue admin scripts to temporarily fix 1px by 1px images in media library
+	*/
+	function wpdocs_selectively_enqueue_admin_script( $hook ) {
+		//do_action( 'qm/debug', $hook );
+		// skip enqueueing the script unless on media > library page or media > assistant page in admin
+		if ('upload.php' != $hook && 'media_page_mla-menu' != $hook){
+			return;
+		}
+	    wp_enqueue_script( 'media-library', get_template_directory_uri() . '/js/custom/media-library.js', array('jquery'), false, true );
+	}
+	add_action( 'admin_enqueue_scripts', 'wpdocs_selectively_enqueue_admin_script' );
+
+/**
  * Implement the Custom Header feature.
  */
 require get_template_directory() . '/inc/custom-header.php';
