@@ -32,13 +32,16 @@ get_header();
 			// how many media thumbnails to show at first. -1 means all
 			$thumbnails_to_show = 42;
 
+      //Protect against arbitrary paged values
+      $paged = ( get_query_var( 'paged' ) ) ? absint( get_query_var( 'paged' ) ) : 1;
+
 			// query media
 			$media_query_args = array(
 				'post_type'   => 'attachment',
 				'post_status' => 'any',
 				'order' => 'DESC',
 				'orderby' => 'date',
-
+        'paged' => $paged,
 				'tax_query' => array(
 						'relation' => 'AND',
 						array(
@@ -47,7 +50,6 @@ get_header();
 							'terms' => 'published',
 						),
 				),
-
 				'posts_per_page' => $thumbnails_to_show,
 			);
 			$media_query = new WP_Query ($media_query_args);
