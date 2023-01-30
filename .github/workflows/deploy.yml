@@ -1,7 +1,11 @@
-name: ssh command
-on: push
+name: pull main branch to stage with each push to main (like a merged PR)
+on:
+  push:
+    branches:
+      - main
+
 jobs:
-  test:
+  pull-main-on-stage:
     runs-on: ubuntu-latest
     steps:
       - id: ssh
@@ -10,4 +14,4 @@ jobs:
           SSH_HOST: ${{ secrets.SSH_HOST }}
           SSH_USER: ${{ secrets.SSH_USER }}
           SSH_KEY: ${{ secrets.SSH_KEY }}
-      - run: ssh ${{ steps.ssh.outputs.SERVER }} pwd
+      - run: ssh ${{ steps.ssh.outputs.SERVER }} cd stage.historyscv && git checkout main && git pull
