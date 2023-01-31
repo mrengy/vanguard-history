@@ -26,9 +26,28 @@ get_header();
 				)
 			);
 			*/
-			previous_post_link();
-			next_post_link();
+			$vhs_previous_link = get_previous_image_link('large');
+			$vhs_next_link = get_next_image_link('large');
+			?>
 
+			<nav id="previous-next-nav">
+			<?php
+			// these are not displaying, but it seems to be showing up somehow
+			if (!empty($vhs_previous_link)){
+					echo("<div id='previous'>
+						Previous: $vhs_previous_link
+					</div>");
+			}
+
+			if (!empty($vhs_next_link)){
+					echo("<div id='next'>
+						Next: $vhs_next_link
+					</div>");
+			}
+			?>
+			</nav>
+
+			<?php
 			// If comments are open or we have at least one comment, load up the comment template.
 			if ( comments_open() || get_comments_number() ) :
 				comments_template();
