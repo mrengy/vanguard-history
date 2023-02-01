@@ -54,7 +54,7 @@ get_header();
 
 						// adding properties to year story object
 						$scv_year_stories[$i]->{'year_object'} = get_the_terms(get_the_ID(), 'vhs_year');
-						$scv_year_stories[$i]->{'year'} = $scv_year_stories[$i]->{'year_object'}[0]->{'slug'};
+						$scv_year_stories[$i]->{'year'} = $scv_year_stories[$i]->{'year_object'}[0]->{'name'};
 						$scv_year_stories[$i]->{'show_title'} = get_field('show_title');
 						$i++;
 
