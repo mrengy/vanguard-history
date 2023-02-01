@@ -54,6 +54,16 @@
 			);
 		}
 		?>
+		<pre>
+			<?php
+				// adding properties to post object
+				$post->{'year_object'} = get_the_terms(get_the_ID(), 'vhs_year');
+				$post->{'year'} = $post->{'year_object'}[0]->{'name'};
+				$post->{'ensemble_object'} = get_the_terms(get_the_ID(), 'ensemble');
+				echo $post->{'ensemble'} = $post->{'year_object'}[0]->{'name'};
+				print_r($post);
+			?>
+		</pre>
 	</div><!-- .entry-content -->
 
 	<footer class="entry-footer ui container">
