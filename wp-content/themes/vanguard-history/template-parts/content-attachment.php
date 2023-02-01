@@ -60,7 +60,11 @@
 				$post->{'year_object'} = get_the_terms(get_the_ID(), 'vhs_year');
 				$post->{'year'} = $post->{'year_object'}[0]->{'name'};
 				$post->{'ensemble_object'} = get_the_terms(get_the_ID(), 'ensemble');
-				echo $post->{'ensemble'} = $post->{'year_object'}[0]->{'name'};
+				$post->{'ensemble'} = $post->{'ensemble_object'}[0]->{'name'};
+				$post->{'creator_object'} = get_the_terms(get_the_ID(), 'creator_name');
+				$post->{'creator'} = $post->{'creator_object'}[0]->{'name'};
+				$post->{'submitter_object'} = get_the_terms(get_the_ID(), 'submitter_name');
+				$post->{'submitter'} = $post->{'submitter_object'}[0]->{'name'};
 				print_r($post);
 			?>
 		</pre>
