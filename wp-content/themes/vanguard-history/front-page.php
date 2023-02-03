@@ -20,7 +20,7 @@ get_header();
         <h1 id="tagline" class="site-heading">
             <?php echo html_entity_decode( get_bloginfo('description')); ?>
         </h1>
-        <a id="homepage-link-to-about" href="<?php echo site_url(); ?>/about">About the project</a>
+        <a id="homepage-link-to-about" class="end-of-paragraph-link" href="<?php echo site_url(); ?>/about">About the project</a>
         <?php
 		      while ( have_posts() ) :
 			      the_post();
