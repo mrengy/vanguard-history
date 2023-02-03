@@ -53,6 +53,16 @@
 				)
 			);
 		}
+
+		/*
+		wp_link_pages(
+			array(
+				'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'vanguard-history' ),
+				'after'  => '</div>',
+			)
+		);
+		*/
+
 		// adding properties to post object
 		$post->{'year_object'} = get_the_terms(get_the_ID(), 'vhs_year');
 		$year = $post->{'year_object'}[0]->{'name'};
@@ -62,6 +72,7 @@
 		$creator = $post->{'creator_object'}[0]->{'name'};
 		$post->{'submitter_object'} = get_the_terms(get_the_ID(), 'submitter_name');
 		$submitter = $post->{'submitter_object'}[0]->{'name'};
+
 		?>
 
 		<div id="attachment-properties">

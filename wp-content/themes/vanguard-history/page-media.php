@@ -30,7 +30,10 @@ get_header();
     <?php
 			// query media
 			// how many media thumbnails to show at first. -1 means all
-			$thumbnails_to_show = -1;
+			$thumbnails_to_show = 42;
+
+      //Protect against arbitrary paged values
+      $paged = ( get_query_var( 'paged' ) ) ? absint( get_query_var( 'paged' ) ) : 1;
 
 			// query media
 			$media_query_args = array(
@@ -38,7 +41,7 @@ get_header();
 				'post_status' => 'any',
 				'order' => 'DESC',
 				'orderby' => 'date',
-
+        'paged' => $paged,
 				'tax_query' => array(
 						'relation' => 'AND',
 						array(
@@ -47,7 +50,6 @@ get_header();
 							'terms' => 'published',
 						),
 				),
-
 				'posts_per_page' => $thumbnails_to_show,
 			);
 			$media_query = new WP_Query ($media_query_args);
@@ -57,7 +59,6 @@ get_header();
 			if ( $media_query->have_posts() ) : while ( $media_query->have_posts() ) : $media_query->the_post();
 					// store thumbnails in array
 					$thumbnails[] = wp_get_attachment_link( get_the_ID(), 'thumbnail', true );
-
 				endwhile;
 
 			endif; // end of media loop
@@ -77,9 +78,28 @@ get_header();
 										?>
     </div>
     <?php
-								//how many thumbnails did we load?
-								$num_thumbnails_returned = $thumbnails_count;
-							?>
+			//how many thumbnails did we load? might not need this.
+			$num_thumbnails_returned = $thumbnails_count;
+
+      // pagination
+
+      // if ($thumbnails_count > $thumbnails_to_show){
+
+      $big = 999999999; // need an unlikely integer
+      $translated = __( 'Page', 'mytextdomain' ); // Supply translatable string
+      $paginate_args = array(
+        'base' => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
+      	'format' => '?paged=%#%',
+      	'current' => max( 1, get_query_var('paged') ),
+      	'total' => $media_query->max_num_pages,
+        'before_page_number' => '<span class="screen-reader-text">'.$translated.' </span>'
+      );
+
+        echo("<div id='pagination'>");
+          echo paginate_links($paginate_args);
+        echo("</div>");
+      //}
+		?>
     <div class="button-container">
         <a id="upload-material" href="<?php echo(site_url());?>/upload-material">
             <button class="button button-primary">
