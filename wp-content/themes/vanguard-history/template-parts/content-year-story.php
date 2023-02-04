@@ -10,7 +10,7 @@
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-    <div class="content-section content-intro">
+    <div class="content-section content-primary">
         <header class="entry-header">
             <?php
 		if ( is_singular() ) :

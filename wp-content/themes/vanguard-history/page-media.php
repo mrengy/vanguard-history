@@ -15,7 +15,7 @@
 get_header();
 ?>
 
-<main id="primary" class="site-main content-section content-media">
+<main id="primary" class="site-main content-section content-secondary">
 
     <?php
 		while ( have_posts() ) :
@@ -70,7 +70,7 @@ get_header();
 
 			if ($thumbnails_count>0) { ?>
 
-    <div id="media-container" class="content-media-grid">
+    <div id="media-container" class="content-secondary-grid">
         <?php
 											foreach($thumbnails as $thumbnail){
 												echo($thumbnail);

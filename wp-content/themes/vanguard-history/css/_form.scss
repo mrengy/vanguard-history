@@ -1,0 +1,17 @@
+@import "./_var.scss";
+div.gform_wrapper {
+	width: auto;
+	left: 0;
+	background: transparent;
+	padding: 0;
+
+	.gfield_required span.gfield_required_text,
+	.gfield_error label,
+	.gfield_error legend {
+		color: $White;
+	}
+
+	&.gravity-theme .gform_body div.gfield_description {
+		font-weight: $font-weight-bold;
+	}
+}

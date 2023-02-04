@@ -70,10 +70,10 @@ get_header();
 			wp_reset_postdata();
 
 			if ($thumbnails_count>0) {?>
-    <div class="content-media content-section">
+    <div class="content-secondary content-section">
         <h2 class="entry-heading">Media</h2>
         <div class="container">
-            <div id="media-container" class="content-media-grid" data-year="<?php echo $this_year ?>"
+            <div id="media-container" class="content-secondary-grid" data-year="<?php echo $this_year ?>"
                 data-ensemble="<?php echo $this_ensemble ?>">
                 <?php
 

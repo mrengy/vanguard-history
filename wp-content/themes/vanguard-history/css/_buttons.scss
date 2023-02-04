@@ -5,7 +5,8 @@ input[type="submit"] {
 	cursor: pointer;
 
 	&.button-primary,
-	&.submit {
+	&.submit,
+	&.gform_button {
 		text-align: center;
 		padding: $spacing-lg;
 		text-transform: uppercase;
@@ -15,7 +16,8 @@ input[type="submit"] {
 		background-color: transparent;
 	}
 
-	&.button-primary {
+	&.button-primary,
+	&.gform_button {
 		border: 1px solid $White;
 		color: $White;
 	}
