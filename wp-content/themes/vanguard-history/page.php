@@ -16,7 +16,7 @@ get_header();
 ?>
 
 <main id="primary" class="site-main">
-    <div class="content-section content-media content-page">
+    <div class="content-section content-secondary content-page">
         <?php
 		while ( have_posts() ) :
 			the_post();

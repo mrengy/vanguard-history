@@ -16,7 +16,7 @@ get_header();
 ?>
 
 <main id="primary" class="site-main">
-    <div class="content-section content-intro">
+    <div class="content-section content-primary">
         <h1 id="tagline" class="site-heading">
             <?php echo html_entity_decode( get_bloginfo('description')); ?>
         </h1>
@@ -36,7 +36,7 @@ get_header();
         </section>
     </div>
 
-    <div class="content-section content-media">
+    <div class="content-section content-secondary">
 
         <?php
 			// query media
@@ -82,7 +82,7 @@ get_header();
 
         <h2 class="entry-heading">Recent Uploads</h2>
         <div class="container">
-            <div id="media-container" class="content-media-grid">
+            <div id="media-container" class="content-secondary-grid">
                 <?php
 											foreach($thumbnails as $thumbnail){
 												echo($thumbnail);
