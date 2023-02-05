@@ -19,7 +19,8 @@ get_header();
 			the_archive_description('<div class="entry-description">', '</div>');
 			?>
             <div class="archive-content">
-                Not all years show here yet since we're building out these stories bit by bit.
+                <p>Firsthand accounts of the year, told by those who experienced them.</p>
+				<p>Not all years show here yet since we're building out these stories bit by bit.</p>
                 <a id="archive-link-to-about" class="end-of-paragraph-link" href="<?php echo site_url(); ?>/about">About
                     the project</a>
             </div>
