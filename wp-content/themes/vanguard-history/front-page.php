@@ -20,8 +20,7 @@ get_header();
         <h1 id="tagline" class="site-heading">
             <?php echo html_entity_decode( get_bloginfo('description')); ?>
         </h1>
-        <a id="homepage-link-to-about" class="end-of-paragraph-link" href="<?php echo site_url(); ?>/about">About the project</a>
-        <?php
+		<?php
 		      while ( have_posts() ) :
 			      the_post();
 
@@ -29,6 +28,7 @@ get_header();
           	get_template_part( 'template-parts/content', 'front-page' );
           endwhile; // End of the loop.
 		    ?>
+        <a id="homepage-link-to-about" class="end-of-paragraph-link" href="<?php echo site_url(); ?>/about">About the project</a>
         <section class="featured-story">
           <?php
 				      show_featured_story('2001-scv');
