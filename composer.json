@@ -18,7 +18,8 @@
     "wpackagist-plugin/wp-maximum-upload-file-size": "*",
     "wpackagist-plugin/enable-media-replace": "*",
     "wpackagist-plugin/media-sync": "*",
-    "wpackagist-plugin/wp-mail-smtp": "*"
+    "wpackagist-plugin/wp-mail-smtp": "*",
+    "wpackagist-plugin/antispambot": "*"
   },
   "require-dev": {
     "wpackagist-plugin/query-monitor": "*"
