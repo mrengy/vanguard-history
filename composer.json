@@ -19,7 +19,7 @@
     "wpackagist-plugin/enable-media-replace": "*",
     "wpackagist-plugin/media-sync": "*",
     "wpackagist-plugin/wp-mail-smtp": "*",
-    "wpackagist-plugin/antispambot": "*"
+    "wpackagist-plugin/email-address-obfuscation": "*"
   },
   "require-dev": {
     "wpackagist-plugin/query-monitor": "*"
