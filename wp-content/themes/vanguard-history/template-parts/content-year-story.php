@@ -58,8 +58,26 @@
         <section id="story" class="year-story" hidden="hidden">
             <?php
 
-			$this_year_story_author = wp_get_post_terms(get_the_ID(),'year_story_author')[0]->name;
-			print_r($this_year_story_author);
+			// display year story authors
+			$this_year_story_authors = wp_get_post_terms(get_the_ID(),'year_story_author');
+			$num_year_story_authors = count($this_year_story_authors);
+			//print_r($num_year_story_authors);
+
+			if($num_year_story_authors > 0){
+				$first_year_story_author = $this_year_story_authors[0]->name;
+				echo("
+					<div id='authors'>
+						Written by $first_year_story_author
+				");
+
+				if($num_year_story_authors > 1){
+
+				}
+
+				echo("
+					</div>
+				");
+			}
 
 			the_content(
 				sprintf(
