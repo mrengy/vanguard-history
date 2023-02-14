@@ -66,7 +66,7 @@
 			if($num_year_story_authors > 0){
 				//display year story authors
 				echo("
-					<div id='authors'>
+					<div class='authors'>
 						Written by 
 				");
 				foreach ($year_story_authors as $i){
