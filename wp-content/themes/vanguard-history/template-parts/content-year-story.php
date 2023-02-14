@@ -63,14 +63,8 @@
 			$num_year_story_authors = count($this_year_story_authors);
 			$year_story_author_counter = 0;
 
-			// debug 
-			echo("<pre>");
-			print_r($this_year_story_authors);
-			echo("</pre>");
-
 			if($num_year_story_authors > 0){
-				$first_year_story_author = $this_year_story_authors[0]->name;
-
+				//display year story authors
 				echo("
 					<div id='authors'>
 						Written by 
@@ -78,19 +72,12 @@
 				foreach ($this_year_story_authors as $i){
 					echo($i->name);
 
-
 					//if it's not the last author, add a comma and space before the next author
 					$year_story_author_counter ++;
-					
 					if($year_story_author_counter < $num_year_story_authors){
 						echo(", ");
 					}
 				}
-
-				if($num_year_story_authors > 1){
-
-				}
-
 				echo("
 					</div>
 				");
