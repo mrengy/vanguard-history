@@ -383,6 +383,32 @@ function register_taxonomy_copyright(){
 	register_taxonomy( 'copyright', 'attachment', $args );
 }
 
+function register_taxonomy_year_story_author(){
+	$labels = array(
+			'name'              => _x( 'Year Story Author', 'taxonomy general name' ),
+			'singular_name'     => _x( 'Year Story Author', 'taxonomy singular name' ),
+			'search_items'      => __( 'Search Year Story Authors' ),
+			'all_items'         => __( 'All Year Story Authors' ),
+			'parent_item'       => __( 'Parent Year Story Author' ),
+			'parent_item_colon' => __( 'Parent Year Story Author:' ),
+			'edit_item'         => __( 'Edit Year Story Author' ),
+			'update_item'       => __( 'Update Year Story Author' ),
+			'add_new_item'      => __( 'Add New Year Story Author' ),
+			'new_item_name'     => __( 'New Year Story Author Value' ),
+			'menu_name'         => __( 'Year Story Author' ),
+	);
+	$args   = array(
+			'hierarchical'      => false, // make it hierarchical (like categories)
+			'labels'            => $labels,
+			'show_ui'           => true,
+			'show_admin_column' => true,
+			'query_var'         => true,
+			'create_posts'      => false,
+			'rewrite'           => [ 'slug' => 'year_story_author' ],
+	);
+	register_taxonomy( 'year_story_author', 'year_story', $args );
+}
+
 function add_tags_to_pages() {
 register_taxonomy_for_object_type( 'post_tag', 'page' );
 }
@@ -395,6 +421,7 @@ add_action( 'init', 'register_taxonomy_submitter_name' );
 add_action( 'init', 'register_taxonomy_submitter_email' );
 add_action( 'init', 'register_taxonomy_creator_name' );
 add_action( 'init', 'register_taxonomy_copyright' );
+add_action( 'init', 'register_taxonomy_year_story_author' );
 //add_action('add_meta_boxes', 'add_custom_meta_box_media_visibility');
 //add_action('add_attachment', 'save_media_visibility'); //originally was add_action('save_post',...)
 
