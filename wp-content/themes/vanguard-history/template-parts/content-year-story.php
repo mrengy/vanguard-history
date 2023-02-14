@@ -57,6 +57,10 @@
             Full Story</button>
         <section id="story" class="year-story" hidden="hidden">
             <?php
+
+			$this_year_story_author = wp_get_post_terms(get_the_ID(),'year_story_author')[0]->name;
+			print_r($this_year_story_author);
+
 			the_content(
 				sprintf(
 					wp_kses(
