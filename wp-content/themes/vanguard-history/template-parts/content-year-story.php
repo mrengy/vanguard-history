@@ -58,7 +58,7 @@
         <section id="story" class="year-story" hidden="hidden">
             <?php
 
-			// display year story authors
+			// determine whether we have any authors set for this year story
 			$year_story_authors = wp_get_post_terms(get_the_ID(),'year_story_author');
 			$num_year_story_authors = count($year_story_authors);
 			$year_story_author_counter = 0;
