@@ -59,8 +59,8 @@
             <?php
 
 			// display year story authors
-			$this_year_story_authors = wp_get_post_terms(get_the_ID(),'year_story_author');
-			$num_year_story_authors = count($this_year_story_authors);
+			$year_story_authors = wp_get_post_terms(get_the_ID(),'year_story_author');
+			$num_year_story_authors = count($year_story_authors);
 			$year_story_author_counter = 0;
 
 			if($num_year_story_authors > 0){
@@ -69,7 +69,7 @@
 					<div id='authors'>
 						Written by 
 				");
-				foreach ($this_year_story_authors as $i){
+				foreach ($year_story_authors as $i){
 					echo($i->name);
 
 					//if it's not the last author, add a comma and space before the next author
