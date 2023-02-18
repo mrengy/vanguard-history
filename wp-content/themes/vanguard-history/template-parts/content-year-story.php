@@ -117,11 +117,11 @@
 			<?php 
 				$this_show_title = get_field('show_title');
 				if (!empty($this_show_title)){
-					echo('
+					echo <<<END
 						<div id="show-title" class="year-show-title">
-							'.'"'.$this_show_title.'"'.'
+							"$this_show_title"
 						</div>
-					');
+					END;
 				}
 			?>
             <?php
