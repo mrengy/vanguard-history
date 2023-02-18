@@ -38,12 +38,12 @@
 		//only show year story video on single year story pages
 		$year_story_video = get_field('year_story_video');
 
-		if(isset($year_story_video)){
-			echo(
-				'<div class="year-story-video">'.
-				$year_story_video.
-				'</div>'
-			);
+		if(!empty($year_story_video)){
+			echo <<<END
+				<div class="year-story-video">
+					$year_story_video
+				</div>
+			END;
 		}
 
 		if(has_excerpt()){
