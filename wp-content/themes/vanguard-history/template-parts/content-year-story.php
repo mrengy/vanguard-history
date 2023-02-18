@@ -38,12 +38,12 @@
 		//only show year story video on single year story pages
 		$year_story_video = get_field('year_story_video');
 
-		if(isset($year_story_video)){
-			echo(
-				'<div class="year-story-video">'.
-				$year_story_video.
-				'</div>'
-			);
+		if(!empty($year_story_video)){
+			echo <<<END
+				<div class="year-story-video">
+					$year_story_video
+				</div>
+			END;
 		}
 
 		if(has_excerpt()){
@@ -114,9 +114,16 @@
             <h2 id="repertoire" class="entry-heading">
                 Repertoire
             </h2>
-            <div id="show-title" class="year-show-title">
-                "<?php the_field('show_title');?>"
-            </div>
+			<?php 
+				$this_show_title = get_field('show_title');
+				if (!empty($this_show_title)){
+					echo <<<END
+						<div id="show-title" class="year-show-title">
+							"$this_show_title"
+						</div>
+					END;
+				}
+			?>
             <?php
 					$show_piece_counter = 0;
 					// need a better if statement - to detect if there are show pieces whose child elements have non-empty values
@@ -144,20 +151,23 @@
             </dl>
             <?php
 				} //have_rows('show_pieces')
+
+				$this_final_score = get_field('final_score');
+				$this_final_placement = get_field('final_placement');
+				if(!empty($this_final_score)){
+					echo <<<END
+						<div id="final-score-info">
+							<h2 id=" final-score-heading" class="entry-heading">
+								Final Score
+							</h2>
+							<div class="year-score-placement">
+								<span id="final-score">$this_final_score</span>
+								<span id="final-placement">($this_final_placement)</span>
+							</div>
+						</div>
+					END;
+				}
 			?>
-            <div id="final-score-info">
-                <h2 id=" final-score-heading" class="entry-heading">
-                    Final Score
-                </h2>
-                <div class="year-score-placement">
-                    <span id="final-score">
-                        <?php the_field('final_score');?>
-                    </span>
-                    <span id="final-placement">
-                        (<?php the_field('final_placement');?>)
-                    </span>
-                </div>
-            </div>
         </section><!-- show-info-->
     </div><!-- .entry-content -->
 
