@@ -114,9 +114,16 @@
             <h2 id="repertoire" class="entry-heading">
                 Repertoire
             </h2>
-            <div id="show-title" class="year-show-title">
-                "<?php the_field('show_title');?>"
-            </div>
+			<?php 
+				$this_show_title = get_field('show_title');
+				if (!empty($this_show_title)){
+					echo('
+						<div id="show-title" class="year-show-title">
+							'.'"'.$this_show_title.'"'.'
+						</div>
+					');
+				}
+			?>
             <?php
 					$show_piece_counter = 0;
 					// need a better if statement - to detect if there are show pieces whose child elements have non-empty values
