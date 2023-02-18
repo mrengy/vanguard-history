@@ -151,20 +151,27 @@
             </dl>
             <?php
 				} //have_rows('show_pieces')
+
+				$this_final_score = the_field('final_score');
+				$this_final_placement = the_field('final_placement');
+				if(!empty($this_final_score)){
+					echo('
+						<div id="final-score-info">
+							<h2 id=" final-score-heading" class="entry-heading">
+								Final Score
+							</h2>
+							<div class="year-score-placement">
+								<span id="final-score">
+									'.$this_final_score.'
+								</span>
+								<span id="final-placement">
+									('.$this_final_placement.')
+								</span>
+							</div>
+						</div>
+					');
+				}
 			?>
-            <div id="final-score-info">
-                <h2 id=" final-score-heading" class="entry-heading">
-                    Final Score
-                </h2>
-                <div class="year-score-placement">
-                    <span id="final-score">
-                        <?php the_field('final_score');?>
-                    </span>
-                    <span id="final-placement">
-                        (<?php the_field('final_placement');?>)
-                    </span>
-                </div>
-            </div>
         </section><!-- show-info-->
     </div><!-- .entry-content -->
 
