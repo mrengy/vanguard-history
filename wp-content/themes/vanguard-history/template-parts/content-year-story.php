@@ -152,8 +152,8 @@
             <?php
 				} //have_rows('show_pieces')
 
-				$this_final_score = the_field('final_score');
-				$this_final_placement = the_field('final_placement');
+				$this_final_score = get_field('final_score');
+				$this_final_placement = get_field('final_placement');
 				if(!empty($this_final_score)){
 					echo <<<END
 						<div id="final-score-info">
