@@ -155,21 +155,17 @@
 				$this_final_score = the_field('final_score');
 				$this_final_placement = the_field('final_placement');
 				if(!empty($this_final_score)){
-					echo('
+					echo <<<END
 						<div id="final-score-info">
 							<h2 id=" final-score-heading" class="entry-heading">
 								Final Score
 							</h2>
 							<div class="year-score-placement">
-								<span id="final-score">
-									'.$this_final_score.'
-								</span>
-								<span id="final-placement">
-									('.$this_final_placement.')
-								</span>
+								<span id="final-score">$this_final_score</span>
+								<span id="final-placement">($this_final_placement)</span>
 							</div>
 						</div>
-					');
+					END;
 				}
 			?>
         </section><!-- show-info-->
