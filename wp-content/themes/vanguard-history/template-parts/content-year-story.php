@@ -52,9 +52,19 @@
 	?>
 
 
+		<?php 
+			//only display show full story link if there is post content
 
-        <button class="show-hide button button-text" id="show-hide-full-story"><span class="button-action">Show</span>
-            Full Story</button>
+			$this_content = get_the_content();
+			if(!empty($this_content)){
+				echo <<<END
+					<button class="show-hide button button-text" id="show-hide-full-story">
+					<span class="button-action">Show</span>
+						Full Story
+					</button>
+				END;
+			}
+		?>
         <section id="story" class="year-story" hidden="hidden">
             <?php
 
@@ -111,9 +121,25 @@
     <div class="entry-content year-section">
         <!--story-->
         <section id="show-info">
-            <h2 id="repertoire" class="entry-heading">
-                Repertoire
-            </h2>
+			<?php
+				$show_piece_counter = 0;
+				// need a better if statement - to detect if there are show pieces whose child elements have non-empty values
+				if(have_rows('show_pieces')){
+				//$show_piece_fields = get_field_object('show_pieces');
+				$show_pieces = get_field('show_pieces');
+			?>
+			<?php 
+				// only show "repertoire" heading if there are pieces to display. Need to do some magic in order to see if nested array is empty
+				// https://stackoverflow.com/a/58350774/370407
+				$show_pieces_filtered = array_filter(array_map('array_filter', $show_pieces));
+				if(!empty($show_pieces_filtered)){
+					echo <<<END
+						<h2 id="repertoire" class="entry-heading">
+							Repertoire
+						</h2>
+					END;
+				}
+			?>
 			<?php 
 				$this_show_title = get_field('show_title');
 				if (!empty($this_show_title)){
@@ -124,14 +150,6 @@
 					END;
 				}
 			?>
-            <?php
-					$show_piece_counter = 0;
-					// need a better if statement - to detect if there are show pieces whose child elements have non-empty values
-					if(have_rows('show_pieces')){
-					//$show_piece_fields = get_field_object('show_pieces');
-					$show_pieces = get_field('show_pieces');
-
-				?>
             <dl id="show-pieces">
                 <?php
 						while(have_rows('show_pieces')){ the_row();
