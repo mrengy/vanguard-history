@@ -53,8 +53,7 @@
 
 
 		<?php 
-			//only display show full story link if there is post content
-
+			// only display show full story link if there is post content
 			$this_content = get_the_content();
 			if(!empty($this_content)){
 				echo <<<END
@@ -62,6 +61,15 @@
 					<span class="button-action">Show</span>
 						Full Story
 					</button>
+				END;
+			} else{
+				// empty post content message
+				echo("We don't have a story written for this year yet. Interested in helping write one? Get in touch at ");
+				$email = antispambot('history@scvanguard.org');
+				echo <<<END
+					<a href="mailto:$email">
+						$email
+					</a>
 				END;
 			}
 		?>
