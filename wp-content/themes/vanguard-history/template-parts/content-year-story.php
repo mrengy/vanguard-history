@@ -64,7 +64,7 @@
 				END;
 			} else{
 				// empty post content message
-				echo("We don't have a story written for this year yet. Interested in helping write one? Get in touch at ");
+				echo("We don't have a story for this year yet. Help us write one. Get in touch at ");
 				$email = antispambot('history@scvanguard.org');
 				echo <<<END
 					<a href="mailto:$email">
