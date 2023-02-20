@@ -36,8 +36,4 @@ get_header();
 </main><!-- #main -->
 
 <?php
-$excluded_pages = array('upload-material', 'upload-confirmation');
-if (! is_page($excluded_pages)){
-	 get_sidebar();
-}
 get_vhs_footer();

@@ -10,8 +10,9 @@
  */
 
 // Footer menus
- // Only show on pages / posts other than upload material - for building content before MVP launch
- if(! (is_page(12))){
+ // Only show on pages / posts other than coming soon - for building content before MVP launch
+ $excluded_pages = array('coming-soon');
+if (! is_page($excluded_pages)){
    wp_nav_menu(
      array(
        'theme_location' => 'footer-1',
