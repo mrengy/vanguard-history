@@ -34,8 +34,9 @@ get_header();
 	</main><!-- #main -->
 
 <?php
-$excluded_pages = array('upload-material', 'upload-confirmation');
+$excluded_pages = array('upload-material', 'upload-confirmation', 'coming-soon');
 if (! is_page($excluded_pages)){
-	 get_sidebar();
+	get_sidebar();
 }
+
 get_footer();
