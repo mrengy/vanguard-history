@@ -1,0 +1,47 @@
+@import "./_var.scss";
+
+.button,
+input[type="submit"] {
+	cursor: pointer;
+
+	&.button-primary,
+	&.submit,
+	&.gform_button {
+		text-align: center;
+		padding: $spacing-lg;
+		text-transform: uppercase;
+		border-radius: $border-radius-lg;
+		font-size: $font-size-md;
+		font-weight: $font-weight-light;
+		background-color: transparent;
+	}
+
+	&.button-primary,
+	&.gform_button {
+		border: 1px solid $White;
+		color: $White;
+	}
+
+	&.submit {
+		border: 1px solid $SCVGreen;
+		color: $SCVGreen;
+	}
+
+	&.button-text {
+		text-shadow: $text-shadow;
+		font-weight: $font-weight-semibold;
+		background: transparent;
+		text-align: left;
+		padding: $spacing-md 0;
+	}
+}
+
+.button-container {
+	display: flex;
+	justify-content: center;
+	margin-top: $spacing-lg;
+
+	a {
+		border: none;
+	}
+}

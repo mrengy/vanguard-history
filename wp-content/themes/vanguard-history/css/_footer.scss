@@ -1,0 +1,56 @@
+@import "./_var.scss";
+
+.main-footer {
+	background-color: $SCVBlack;
+	padding: $spacing-md;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+	height: 9rem;
+
+	.menu-first-footer-container {
+		padding-bottom: $spacing-lg;
+		width: 50%;
+	}
+
+	#footer-menu-heading-container h2 {
+		margin: 0.25em 0;
+	}
+	.menu {
+		margin: 0;
+		padding: 0;
+	}
+
+	.menu-item {
+		margin-bottom: $spacing-md;
+		list-style: none;
+	}
+
+	.footer-menu,
+	.menu {
+		font-weight: $font-weight-bold;
+		font-size: $font-size-xs;
+		color: $White;
+	}
+
+	.menu-item {
+		a {
+			color: $White;
+			border: 0;
+			&:hover {
+				color: $SCVRed;
+			}
+		}
+	}
+
+	.menu-other-vmapa-sites-container {
+		.menu-item {
+			margin-bottom: 0;
+		}
+
+		a {
+			font-weight: $font-weight-normal;
+		}
+	}
+}

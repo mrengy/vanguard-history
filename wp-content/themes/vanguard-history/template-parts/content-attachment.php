@@ -53,14 +53,64 @@
 				)
 			);
 		}
-		
+
+		/*
 		wp_link_pages(
 			array(
 				'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'vanguard-history' ),
 				'after'  => '</div>',
 			)
 		);
+		*/
+
+		// adding properties to post object
+		$post->{'year_object'} = get_the_terms(get_the_ID(), 'vhs_year');
+		$year = $post->{'year_object'}[0]->{'name'};
+		$post->{'ensemble_object'} = get_the_terms(get_the_ID(), 'ensemble');
+		$ensemble = $post->{'ensemble_object'}[0]->{'name'};
+		$post->{'creator_object'} = get_the_terms(get_the_ID(), 'creator_name');
+		$creator = $post->{'creator_object'}[0]->{'name'};
+		$post->{'submitter_object'} = get_the_terms(get_the_ID(), 'submitter_name');
+		$submitter = $post->{'submitter_object'}[0]->{'name'};
+
 		?>
+
+		<div id="attachment-properties">
+			<?php
+			//displaying properties
+			if(!empty($year) || !empty($ensemble)){
+				echo("
+					<div id='year-and-ensemble' class='attachment-property attachment-property-group'>
+						<span id='year'>$year</span><span id='ensemble'>$ensemble</span>
+					</div>
+				");
+			}
+			//logic to include dl tag for creator and submitter
+			if(!empty($creator) || !empty($submitter)){
+				//open dl tag
+				echo("<dl id='creator and submitter'>");
+				if(!empty($creator)){
+					echo("
+						<div id='creator' class='attachment-property list-group'>
+							<dt>Created by</dt>
+							<dd>$creator</dd>
+						</div>
+					");
+				}
+				if(!empty($submitter)){
+					echo("
+						<div id='submitter' class='attachment-property list-group'>
+							<dt>Uploaded by</dt>
+							<dd>$submitter</dd>
+						</div>
+					");
+				}
+				// close dl tag
+				echo("</dl>");
+			}
+
+			?>
+		</div>
 	</div><!-- .entry-content -->
 
 	<footer class="entry-footer ui container">

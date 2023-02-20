@@ -148,6 +148,7 @@ function vanguard_history_scripts() {
 	wp_enqueue_script( 'vanguard-history-navigation', get_template_directory_uri() . '/js/custom/navigation.js', array(), false, true );
 
 	wp_enqueue_script( 'vanguard-history-buttons', get_template_directory_uri() . '/js/custom/buttons.js', array('jquery'), false, true );
+  wp_localize_script( 'vanguard-history-buttons', 'my_ajax_object', array( 'ajax_url' => admin_url( 'admin-ajax.php' ) ) );
 
 	wp_enqueue_script( 'vanguard-history-forms', get_template_directory_uri() . '/js/custom/forms.js', array('jquery'), false, true );
 
@@ -365,6 +366,32 @@ function register_taxonomy_copyright(){
 	register_taxonomy( 'copyright', 'attachment', $args );
 }
 
+function register_taxonomy_year_story_author(){
+	$labels = array(
+			'name'              => _x( 'Year Story Author', 'taxonomy general name' ),
+			'singular_name'     => _x( 'Year Story Author', 'taxonomy singular name' ),
+			'search_items'      => __( 'Search Year Story Authors' ),
+			'all_items'         => __( 'All Year Story Authors' ),
+			'parent_item'       => __( 'Parent Year Story Author' ),
+			'parent_item_colon' => __( 'Parent Year Story Author:' ),
+			'edit_item'         => __( 'Edit Year Story Author' ),
+			'update_item'       => __( 'Update Year Story Author' ),
+			'add_new_item'      => __( 'Add New Year Story Author' ),
+			'new_item_name'     => __( 'New Year Story Author Value' ),
+			'menu_name'         => __( 'Year Story Author' ),
+	);
+	$args   = array(
+			'hierarchical'      => false, // make it hierarchical (like categories)
+			'labels'            => $labels,
+			'show_ui'           => true,
+			'show_admin_column' => true,
+			'query_var'         => true,
+			'create_posts'      => false,
+			'rewrite'           => [ 'slug' => 'year_story_author' ],
+	);
+	register_taxonomy( 'year_story_author', 'year_story', $args );
+}
+
 function add_tags_to_pages() {
 register_taxonomy_for_object_type( 'post_tag', 'page' );
 }
@@ -377,6 +404,7 @@ add_action( 'init', 'register_taxonomy_submitter_name' );
 add_action( 'init', 'register_taxonomy_submitter_email' );
 add_action( 'init', 'register_taxonomy_creator_name' );
 add_action( 'init', 'register_taxonomy_copyright' );
+add_action( 'init', 'register_taxonomy_year_story_author' );
 //add_action('add_meta_boxes', 'add_custom_meta_box_media_visibility');
 //add_action('add_attachment', 'save_media_visibility'); //originally was add_action('save_post',...)
 
@@ -431,7 +459,7 @@ add_filter( 'wp_terms_checklist_args', 'media_visibility_radio_buttons' );
             ),
                 'public'      => true,
                 'has_archive' => true,
-								'supports' => array('title','editor','author','excerpt','comments','revisions')
+								'supports' => array('title','editor','author','excerpt','comments','revisions', 'thumbnail')
         )
     );
 }
@@ -556,3 +584,263 @@ function my_attachment_fields_to_edit( $form_fields ) {
 }
 
 add_filter( 'attachment_fields_to_edit', 'my_attachment_fields_to_edit' );
+
+function get_vhs_footer() {
+	echo '<div class="main-footer">';
+	echo get_footer();
+	echo '</div>';
+}
+
+// ajax handler for loading all media in year story
+function vanguard_history_all_media_for_year_story() {
+	if( isset($_REQUEST) ) {
+		$this_year = $_REQUEST['year'];
+		$this_ensemble = $_REQUEST['ensemble'];
+		/*
+		echo $this_ensemble;
+		echo $this_year;
+		*/
+		// query media
+		$media_query_args = array(
+			'post_type'   => 'attachment',
+			'post_status' => 'any',
+
+			'tax_query' => array(
+					'relation' => 'AND',
+					array(
+						'taxonomy' => 'ensemble',
+						'field' => 'slug',
+						'terms' => $this_ensemble,
+					),
+					array(
+						'taxonomy' => 'vhs_year',
+						'field' => 'slug',
+						'terms' => $this_year,
+					),
+					array(
+						'taxonomy' => 'media_visibility',
+						'field' => 'slug',
+						'terms' => 'published',
+					),
+			),
+
+			'offset' => 6
+
+			// in the future, might need to change this once we have more attachments - want it to show all wihout pagination (until we build pagination)
+		);
+		$media_query = new WP_Query ($media_query_args);
+
+		$thumbnails = array();
+
+		if ( $media_query->have_posts() ) : while ( $media_query->have_posts() ) : $media_query->the_post();
+				// store thumbnails in array
+				$thumbnails[] = wp_get_attachment_link( get_the_ID(), 'thumbnail', true );
+
+			endwhile;
+		endif; // end of media loop
+
+		// Be kind; rewind
+		wp_reset_postdata();
+
+		// output all the results
+		foreach($thumbnails as $thumbnail){
+			echo($thumbnail);
+		}
+
+		die();
+	}
+}
+
+add_action( 'wp_ajax_vanguard_history_all_media_for_year_story', 'vanguard_history_all_media_for_year_story' );
+add_action( 'wp_ajax_nopriv_vanguard_history_all_media_for_year_story', 'vanguard_history_all_media_for_year_story' );
+
+class Custom_Walker_Comment extends Walker_Comment {
+
+	/**
+	 * Outputs a comment in the HTML5 format.
+	 *
+	 * @see wp_list_comments()
+	 *
+	 * @param WP_Comment $comment Comment to display.
+	 * @param int        $depth   Depth of the current comment.
+	 * @param array      $args    An array of arguments.
+	 */
+	protected function html5_comment( $comment, $depth, $args ) {
+
+		$tag = ( 'div' === $args['style'] ) ? 'div' : 'li';
+
+		?>
+<<?php echo $tag; ?> id="comment-<?php comment_ID(); ?>"
+    <?php comment_class( $this->has_children ? 'parent' : '', $comment ); ?>>
+    <article id="div-comment-<?php comment_ID(); ?>" class="comment-body">
+        <footer class="comment-meta">
+            <?php
+						$comment_author_link = get_comment_author_link( $comment );
+						$comment_author_url  = get_comment_author_url( $comment );
+						$comment_author      = get_comment_author( $comment );
+						$avatar              = get_avatar( $comment, $args['avatar_size'] );
+					?>
+            <div class="comment-avatar">
+                <?php
+							if ( 0 != $args['avatar_size'] ) {
+								if ( empty( $comment_author_url ) ) {
+									echo $avatar;
+								} else {
+									printf( '<a href="%s" rel="external nofollow" class="url">', $comment_author_url );
+									echo $avatar;
+									echo( '</a>');
+								}
+							}
+						?>
+            </div>
+            <div class="comment-author-metadata">
+                <div class="comment-author vcard">
+                    <?php
+
+							/*
+							 * Using the `check` icon instead of `check_circle`, since we can't add a
+							 * fill color to the inner check shape when in circle form.
+							 */
+
+							/*
+							// not getting $post object correctly here, so commenting out
+							if ( $comment->user_id === $post->post_author ) {
+								printf( '<span class="post-author-badge" aria-hidden="true">%s</span>', custom_get_icon_svg( 'check', 24 ) );
+							}
+							*/
+
+							/*
+							 * Using the `check` icon instead of `check_circle`, since we can't add a
+							 * fill color to the inner check shape when in circle form.
+							 */
+
+							// not getting $post object correctly here, so commenting out
+							/*
+							if ( $comment->user_id === $post->post_author ) {
+								printf( '<span class="post-author-badge" aria-hidden="true">%s</span>', custom_get_icon_svg( 'check', 24 ) );
+							}
+							*/
+
+							printf(
+								/* translators: %s: comment author link */
+								wp_kses(
+									__( '%s <span class="screen-reader-text says">says:</span>', 'custom' ),
+									array(
+										'span' => array(
+											'class' => array(),
+										),
+									)
+								),
+								'<span class="fn">' . get_comment_author_link( $comment ) . ' says:</span>'
+							);
+							?>
+                </div><!-- .comment-author -->
+
+                <div class="comment-metadata">
+                    <a href="<?php echo esc_url( get_comment_link( $comment, $args ) ); ?>">
+                        <?php
+									/* translators: 1: comment date, 2: comment time */
+									$comment_timestamp = sprintf( __( '%1$s at %2$s', 'custom' ), get_comment_date( '', $comment ), get_comment_time() );
+								?>
+                        <time datetime="<?php comment_time( 'c' ); ?>" title="<?php echo $comment_timestamp; ?>">
+                            <?php echo $comment_timestamp; ?>
+                        </time>
+                    </a>
+                    <?php
+								//$edit_comment_icon = custom_get_icon_svg( 'edit', 16 );
+								//edit_comment_link( __( 'Edit', 'custom' ), '<span class="edit-link-sep">&mdash;</span> <span class="edit-link">' . $edit_comment_icon, '</span>' );
+							?>
+                </div><!-- .comment-metadata -->
+
+            </div><!-- .comment-author-metadata -->
+
+
+
+            <?php if ( '0' == $comment->comment_approved ) : ?>
+            <p class="comment-awaiting-moderation"><?php _e( 'Your comment is awaiting moderation.', 'custom' ); ?></p>
+            <?php endif; ?>
+        </footer><!-- .comment-meta -->
+
+        <div class="comment-content">
+            <?php comment_text(); ?>
+        </div><!-- .comment-content -->
+
+        <?php
+					comment_reply_link(
+						array_merge(
+							$args,
+							array(
+								'add_below' => 'div-comment',
+								'depth'     => $depth,
+								'max_depth' => $args['max_depth'],
+								'before'    => '<div class="comment-reply">',
+								'after'     => '</div>',
+							)
+						)
+					);
+				?>
+    </article><!-- .comment-body -->
+    <?php
+	}
+} // end custom walker comment class
+
+function show_featured_story( $featured_slug ){
+	$args = array(
+		'name' => $featured_slug,
+		'post_type' => 'year_story',
+		'post_status' => 'publish',
+		'numberposts' => 1
+	);
+
+	$featured_story = get_posts($args);
+
+	if( $featured_story ){
+		/*
+		// debug for displaying the post object
+		echo('<pre>');
+		print_r($featured_story);
+		echo('</pre>');
+		*/
+
+		//define variables to be echoed
+		$link = $featured_story[0]->guid;
+		$title = $featured_story[0]->post_title;
+		$excerpt = $featured_story[0]->post_excerpt;
+		$thumbnail = get_the_post_thumbnail($featured_story[0]->ID, 'large',['id' => 'featured-story-thumbnail']);
+
+		echo("
+			<a href='$link'>
+			$thumbnail
+			</a>
+			<h2 class='featured-story-heading'>
+				<a href='$link'>
+					Featured Story: $title
+				</a>
+			</h2>
+			<div class='featured-story-excerpt'>
+				$excerpt
+			</div>
+			<a href='$link' class='featured-story-link'>
+				Show Full Story
+			</a>
+		");
+	} else{
+		do_action('qm/error', 'featured story not found in function show_featured_story');
+	}
+}
+
+// remove prefix like "Archive: " from the_archive_title
+add_filter('get_the_archive_title', function ($title) {
+    if (is_category()) {
+        $title = single_cat_title('', false);
+    } elseif (is_tag()) {
+        $title = single_tag_title('', false);
+    } elseif (is_author()) {
+        $title = '<span class="vcard">' . get_the_author() . '</span>';
+    } elseif (is_tax()) { //for custom post types
+        $title = sprintf(__('%1$s'), single_term_title('', false));
+    } elseif (is_post_type_archive()) {
+        $title = post_type_archive_title('', false);
+    }
+    return $title;
+});

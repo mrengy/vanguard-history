@@ -10,52 +10,33 @@
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<header class="entry-header">
-		<?php
+    <div class="year-top year-section">
+        <header class="entry-header">
+            <?php
 		if ( is_singular() ) :
 			the_title( '<h1 class="entry-title">', '</h1>' );
 		else :
-			the_title( '<h2 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
+			the_title( '<h1 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h1>' );
 		endif;
 
 		if ( 'post' === get_post_type() ) :
 			?>
-			<div class="entry-meta">
-				<?php
+            <div class="entry-meta">
+                <?php
 				vanguard_history_posted_on();
 				vanguard_history_posted_by();
 				?>
-			</div><!-- .entry-meta -->
-		<?php endif; ?>
-	</header><!-- .entry-header -->
+            </div><!-- .entry-meta -->
+            <?php endif; ?>
+        </header><!-- .entry-header -->
 
-	<?php
+        <?php
 
+    //show featured image
 		vanguard_history_post_thumbnail();
-
-		//only show year story video on single year story pages
-		if(is_single()){
-			$year_story_video = get_field('year_story_video');
-
-			if(isset($year_story_video)){
-				echo(
-					'<div id ="year story video">'.
-					$year_story_video.
-					'</div>'
-				);
-			}
-
-			if(has_excerpt()){
-				the_excerpt();
-			}
-
-		}
 	?>
-
-	<div class="entry-content">
-		<button class="show-hide" id="show-hide-full-story"><span class="button-action">Show</span> full story</button>
-		<section id="story" hidden="hidden">
-			<?php
+        <section id="content">
+            <?php
 			the_content(
 				sprintf(
 					wp_kses(
@@ -78,15 +59,19 @@
 				)
 			);
 			?>
-		</section><!--story-->
-		<section id="show-info">
-			<h2 id="repertoire">
-				Repertoire
-			</h2>
-			<div id="show-title">
-				<?php the_field('show_title');?>
-			</div>
-				<?php
+        </section>
+    </div>
+
+    <div class="entry-content year-section">
+        <!--story-->
+        <section id="show-info">
+            <h2 id="repertoire" class="entry-heading">
+                Repertoire
+            </h2>
+            <div id="show-title" class="year-show-title">
+                "<?php the_field('show_title');?>"
+            </div>
+            <?php
 					$show_piece_counter = 0;
 					// need a better if statement - to detect if there are show pieces whose child elements have non-empty values
 					if(have_rows('show_pieces')){
@@ -94,41 +79,43 @@
 					$show_pieces = get_field('show_pieces');
 
 				?>
-				<dl id="show-pieces">
-					<?php
+            <dl id="show-pieces">
+                <?php
 						while(have_rows('show_pieces')){ the_row();
 							foreach($show_pieces as $show_piece){
 								if( empty($show_piece['show_piece_title'] )){
 									continue;
 								} else {
-										echo("<dt>".$show_piece['show_piece_title']."</dt>");
-										echo("<dd>".$show_piece['show_piece_composer']."</dd>");
-										do_action( 'qm/debug', $show_piece );
+										echo("<dt class='year-piece-title'>".$show_piece['show_piece_title']."</dt>");
+										echo("<dd class='year-piece-composer'>".$show_piece['show_piece_composer']."</dd>");
+										//do_action( 'qm/debug', $show_piece );
 								}
 							}
 					?>
-					<?php
+                <?php
 						} //while(have_rows)('show_pieces')): the_row():
 					?>
-				</dl>
-			<?php
+            </dl>
+            <?php
 				} //have_rows('show_pieces')
 			?>
-			<div id="final-score-info">
-				<h2 id="final-score-heading">
-					Final Score
-				</h2>
-				<div id="final-score">
-					<?php the_field('final_score');?>
-				</div>
-				<div id="final-placement">
-					(<?php the_field('final_placement');?>)
-				</div>
-			</div>
-		</section><!-- show-info-->
-	</div><!-- .entry-content -->
+            <div id="final-score-info">
+                <h2 id=" final-score-heading" class="entry-heading">
+                    Final Score
+                </h2>
+                <div class="year-score-placement">
+                    <span id="final-score">
+                        <?php the_field('final_score');?>
+                    </span>
+                    <span id="final-placement">
+                        (<?php the_field('final_placement');?>)
+                    </span>
+                </div>
+            </div>
+        </section><!-- show-info-->
+    </div><!-- .entry-content -->
 
-	<footer class="entry-footer ui container">
-		<?php vanguard_history_entry_footer(); ?>
-	</footer><!-- .entry-footer -->
+    <footer class="entry-footer ui container">
+        <?php vanguard_history_entry_footer(); ?>
+    </footer><!-- .entry-footer -->
 </article><!-- #post-<?php the_ID(); ?> -->

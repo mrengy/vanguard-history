@@ -22,12 +22,12 @@ if ( post_password_required() ) {
 
 <div id="comments" class="comments-area">
 
-	<?php
+    <?php
 	// You can start editing here -- including this comment!
 	if ( have_comments() ) :
 		?>
-		<h2 class="comments-title">
-			<?php
+    <h2 class="comments-title">
+        <?php
 			$vanguard_history_comment_count = get_comments_number();
 			if ( '1' === $vanguard_history_comment_count ) {
 				echo('One comment');
@@ -39,31 +39,34 @@ if ( post_password_required() ) {
 				);
 			}
 			?>
-		</h2><!-- .comments-title -->
+    </h2><!-- .comments-title -->
 
-		<?php the_comments_navigation(); ?>
+    <?php the_comments_navigation(); ?>
 
-		<ol class="comment-list">
-			<?php
+    <ol class="comment-list">
+        <?php
 			wp_list_comments(
 				array(
-					'style'      => 'ol',
-					'short_ping' => true,
+					'walker'     	=> new Custom_Walker_Comment(),
+					'style'      	=> 'ol',
+					'short_ping'  	=> true,
+					'type' 		  	=> 'comment',
+					'avatar_size' 	=> 80,
 				)
 			);
 			?>
-		</ol><!-- .comment-list -->
+    </ol><!-- .comment-list -->
 
-		<?php
+    <?php
 		the_comments_navigation();
 
 		// If comments are closed and there are comments, let's leave a little note, shall we?
-		if ( ! comments_open() ) :
-			?>
-			<p class="no-comments"><?php esc_html_e( 'Comments are closed.', 'vanguard-history' ); ?></p>
-			<?php
+		if ( ! comments_open() ) :?>
+    <p class="no-comments">
+        <?php esc_html_e( 'Comments are closed.', 'vanguard-history' ); ?>
+    </p>
+    <?php
 		endif;
-
 	endif; // Check for have_comments().
 
 	comment_form();

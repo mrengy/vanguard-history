@@ -1,10 +1,21 @@
 //***** importing other files *****//
 
 // base
-@use 'css/var' as *;
-@use 'css/base' as *;
-@use 'css/typography' as *;
+@use "css/var" as *;
+@use "css/base" as *;
+@use "css/typography" as *;
 
 // layouts
-@use 'css/container' as *;
-@use 'css/grid' as *;
+@use "css/container" as *;
+@use "css/grid" as *;
+
+// VHS global styles
+@use "css/buttons" as *;
+@use "css/header" as *;
+@use "css/footer" as *;
+@use "css/content" as *;
+@use "css/comments" as *;
+@use "css/form" as *;
+
+// VHS Year styles
+@use "css/year" as *;
