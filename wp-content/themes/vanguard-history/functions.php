@@ -12,10 +12,6 @@ if ( ! defined( '_S_VERSION' ) ) {
 	define( '_S_VERSION', '1.0.0' );
 }
 
-@ini_set( 'upload_max_size' , '2000M' );
-@ini_set( 'post_max_size', '2000M');
-@ini_set( 'max_execution_time', '500' );
-
 if ( ! function_exists( 'vanguard_history_setup' ) ) :
 	/**
 	 * Sets up theme defaults and registers support for various WordPress features.
