@@ -25,9 +25,9 @@
     <?php wp_body_open(); ?>
     <div id="page" class="site">
         <a class="skip-link screen-reader-text"
-            href="#primary"><?php esc_html_e( 'Skip to content', 'vanguard-history' ); ?></a>
+            href="#primary"><?php esc_html_e( 'Skip to content', 'vanguard-history'); ?></a>
         <?php
-		$excluded_pages = array('upload-material', 'upload-confirmation');
+		$excluded_pages = array('coming-soon');
 		if (! is_page($excluded_pages)){ ?>
         <header id="masthead" class="site-header ui">
             <div class="site-logo">
