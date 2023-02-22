@@ -129,18 +129,15 @@
     <div class="entry-content year-section">
         <!--story-->
         <section id="show-info">
-			<?php
+		<?php
 				$show_piece_counter = 0;
-				// need a better if statement - to detect if there are show pieces whose child elements have non-empty values
 				if(have_rows('show_pieces')){
-				//$show_piece_fields = get_field_object('show_pieces');
 				$show_pieces = get_field('show_pieces');
 			?>
 			<?php 
-				// only show "repertoire" heading if there are pieces to display. Need to do some magic in order to see if nested array is empty
-				// https://stackoverflow.com/a/58350774/370407
-				$show_pieces_filtered = array_filter(array_map('array_filter', $show_pieces));
-				if(!empty($show_pieces_filtered)){
+				// only show "repertoire" heading if there are pieces to display. 
+				// https://stackoverflow.com/a/18401706/370407
+				if(!empty($show_pieces['show_piece_1']['show_piece_title'])){
 					echo <<<END
 						<h2 id="repertoire" class="entry-heading">
 							Repertoire
