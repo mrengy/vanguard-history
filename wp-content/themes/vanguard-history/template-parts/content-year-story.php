@@ -131,7 +131,6 @@
         <section id="show-info">
 			<?php
 				$show_piece_counter = 0;
-				// need a better if statement - to detect if there are show pieces whose child elements have non-empty values
 				if(have_rows('show_pieces')){
 				$show_pieces = get_field('show_pieces');
 			?>
