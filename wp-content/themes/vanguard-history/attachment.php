@@ -27,8 +27,10 @@ get_header();
 			);
 			*/
 			//currently can go back to a parent page but want to navigate through in order shown on media page
+			/*
 			previous_post_link();
 			next_post_link();
+			*/
 			/*
 			$vhs_previous_link = get_previous_image_link('large');
 			$vhs_next_link = get_next_image_link('large');
