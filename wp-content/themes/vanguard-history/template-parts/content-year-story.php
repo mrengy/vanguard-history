@@ -57,6 +57,31 @@
 			END;
 		}
 
+		// determine whether we have any authors set for this year story
+		$year_story_authors = wp_get_post_terms(get_the_ID(),'year_story_author');
+		$num_year_story_authors = count($year_story_authors);
+		$year_story_author_counter = 0;
+
+		if($num_year_story_authors > 0){
+			//display year story authors
+			echo("
+				<div class='authors'>
+					Written by 
+			");
+			foreach ($year_story_authors as $i){
+				echo($i->name);
+
+				//if it's not the last author, add a comma and space before the next author
+				$year_story_author_counter ++;
+				if($year_story_author_counter < $num_year_story_authors){
+					echo(", ");
+				}
+			}
+			echo("
+				</div>
+			");
+		}
+
 		if(has_excerpt()){
 			the_excerpt();
 		}
@@ -67,32 +92,6 @@
 		?>
         <section id="story" class="year-story" hidden="hidden">
             <?php
-
-			// determine whether we have any authors set for this year story
-			$year_story_authors = wp_get_post_terms(get_the_ID(),'year_story_author');
-			$num_year_story_authors = count($year_story_authors);
-			$year_story_author_counter = 0;
-
-			if($num_year_story_authors > 0){
-				//display year story authors
-				echo("
-					<div class='authors'>
-						Written by 
-				");
-				foreach ($year_story_authors as $i){
-					echo($i->name);
-
-					//if it's not the last author, add a comma and space before the next author
-					$year_story_author_counter ++;
-					if($year_story_author_counter < $num_year_story_authors){
-						echo(", ");
-					}
-				}
-				echo("
-					</div>
-				");
-			}
-
 			the_content(
 				sprintf(
 					wp_kses(
