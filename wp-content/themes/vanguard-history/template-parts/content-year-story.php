@@ -13,21 +13,8 @@
     <div class="content-section content-primary">
         <header class="entry-header">
             <?php
-		if ( is_singular() ) :
-			the_title( '<h1 class="entry-title">', '</h1>' );
-		else :
-			the_title( '<h1 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h1>' );
-		endif;
-
-		if ( 'post' === get_post_type() ) :
+				the_title( '<h1 class="entry-title">', '</h1>' );
 			?>
-            <div class="entry-meta">
-                <?php
-				vanguard_history_posted_on();
-				vanguard_history_posted_by();
-				?>
-            </div><!-- .entry-meta -->
-            <?php endif; ?>
         </header><!-- .entry-header -->
 
         <?php
@@ -44,6 +31,55 @@
 					$year_story_video
 				</div>
 			END;
+		} else {
+			echo('<div class="featured-image">');
+			vanguard_history_post_thumbnail();
+			echo('</div>');
+		}
+
+		// only display show full story link if there is post content
+		$this_content = get_the_content();
+		if(!empty($this_content)){
+			echo <<<END
+				<button class="show-hide button button-text" id="show-hide-full-story">
+				<span class="button-action">Show</span>
+					Full Story
+				</button>
+			END;
+		} else{
+			// empty post content message
+			echo("We don't have a story for this year yet. Help us write one. Get in touch at ");
+			$email = antispambot('history@scvanguard.org');
+			echo <<<END
+				<a href="mailto:$email">
+					$email
+				</a>
+			END;
+		}
+
+		// determine whether we have any authors set for this year story
+		$year_story_authors = wp_get_post_terms(get_the_ID(),'year_story_author');
+		$num_year_story_authors = count($year_story_authors);
+		$year_story_author_counter = 0;
+
+		if($num_year_story_authors > 0){
+			//display year story authors
+			echo("
+				<div class='authors'>
+					Written by 
+			");
+			foreach ($year_story_authors as $i){
+				echo($i->name);
+
+				//if it's not the last author, add a comma and space before the next author
+				$year_story_author_counter ++;
+				if($year_story_author_counter < $num_year_story_authors){
+					echo(", ");
+				}
+			}
+			echo("
+				</div>
+			");
 		}
 
 		if(has_excerpt()){
@@ -51,56 +87,11 @@
 		}
 	?>
 
-
 		<?php 
-			// only display show full story link if there is post content
-			$this_content = get_the_content();
-			if(!empty($this_content)){
-				echo <<<END
-					<button class="show-hide button button-text" id="show-hide-full-story">
-					<span class="button-action">Show</span>
-						Full Story
-					</button>
-				END;
-			} else{
-				// empty post content message
-				echo("We don't have a story for this year yet. Help us write one. Get in touch at ");
-				$email = antispambot('history@scvanguard.org');
-				echo <<<END
-					<a href="mailto:$email">
-						$email
-					</a>
-				END;
-			}
+			
 		?>
         <section id="story" class="year-story" hidden="hidden">
             <?php
-
-			// determine whether we have any authors set for this year story
-			$year_story_authors = wp_get_post_terms(get_the_ID(),'year_story_author');
-			$num_year_story_authors = count($year_story_authors);
-			$year_story_author_counter = 0;
-
-			if($num_year_story_authors > 0){
-				//display year story authors
-				echo("
-					<div class='authors'>
-						Written by 
-				");
-				foreach ($year_story_authors as $i){
-					echo($i->name);
-
-					//if it's not the last author, add a comma and space before the next author
-					$year_story_author_counter ++;
-					if($year_story_author_counter < $num_year_story_authors){
-						echo(", ");
-					}
-				}
-				echo("
-					</div>
-				");
-			}
-
 			the_content(
 				sprintf(
 					wp_kses(
@@ -181,7 +172,7 @@
 					echo <<<END
 						<div id="final-score-info">
 							<h2 id=" final-score-heading" class="entry-heading">
-								Final Score
+								Final Score / Placement
 							</h2>
 							<div class="year-score-placement">
 								<span id="final-score">$this_final_score</span>
