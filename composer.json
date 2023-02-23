@@ -18,7 +18,9 @@
     "wpackagist-plugin/enable-media-replace": "*",
     "wpackagist-plugin/media-sync": "*",
     "wpackagist-plugin/wp-mail-smtp": "*",
-    "wpackagist-plugin/email-address-obfuscation": "*"
+    "wpackagist-plugin/email-address-obfuscation": "*",
+    "wpackagist-plugin/wp-super-cache": "*",
+    "wpackagist-plugin/jetpack-boost": "*"
   },
   "require-dev": {
     "wpackagist-plugin/query-monitor": "*"
