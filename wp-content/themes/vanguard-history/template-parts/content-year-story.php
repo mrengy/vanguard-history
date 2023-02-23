@@ -37,31 +37,33 @@
 			echo('</div>');
 		}
 
+		// only display show full story link if there is post content
+		$this_content = get_the_content();
+		if(!empty($this_content)){
+			echo <<<END
+				<button class="show-hide button button-text" id="show-hide-full-story">
+				<span class="button-action">Show</span>
+					Full Story
+				</button>
+			END;
+		} else{
+			// empty post content message
+			echo("We don't have a story for this year yet. Help us write one. Get in touch at ");
+			$email = antispambot('history@scvanguard.org');
+			echo <<<END
+				<a href="mailto:$email">
+					$email
+				</a>
+			END;
+		}
+
 		if(has_excerpt()){
 			the_excerpt();
 		}
 	?>
 
 		<?php 
-			// only display show full story link if there is post content
-			$this_content = get_the_content();
-			if(!empty($this_content)){
-				echo <<<END
-					<button class="show-hide button button-text" id="show-hide-full-story">
-					<span class="button-action">Show</span>
-						Full Story
-					</button>
-				END;
-			} else{
-				// empty post content message
-				echo("We don't have a story for this year yet. Help us write one. Get in touch at ");
-				$email = antispambot('history@scvanguard.org');
-				echo <<<END
-					<a href="mailto:$email">
-						$email
-					</a>
-				END;
-			}
+			
 		?>
         <section id="story" class="year-story" hidden="hidden">
             <?php
