@@ -36,6 +36,7 @@ jQuery(document).ready(function ($) {
 
 		if (!hasFetched) {
 			// Media has not been expanded, request the rest of the media
+			$(this).hide();
 			$.ajax({
 				url: my_ajax_object.ajax_url, // passed in functions.php > wp_localize_script
 				data: {
@@ -53,6 +54,7 @@ jQuery(document).ready(function ($) {
 					console.log(errorThrown);
 				},
 			});
+			$(this).show();
 			return;
 		}
 
