@@ -13,21 +13,8 @@
     <div class="content-section content-primary">
         <header class="entry-header">
             <?php
-		if ( is_singular() ) :
-			the_title( '<h1 class="entry-title">', '</h1>' );
-		else :
-			the_title( '<h1 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h1>' );
-		endif;
-
-		if ( 'post' === get_post_type() ) :
+				the_title( '<h1 class="entry-title">', '</h1>' );
 			?>
-            <div class="entry-meta">
-                <?php
-				vanguard_history_posted_on();
-				vanguard_history_posted_by();
-				?>
-            </div><!-- .entry-meta -->
-            <?php endif; ?>
         </header><!-- .entry-header -->
 
         <?php
@@ -44,13 +31,16 @@
 					$year_story_video
 				</div>
 			END;
+		} else {
+			echo('<div class="featured-image">');
+			vanguard_history_post_thumbnail();
+			echo('</div>');
 		}
 
 		if(has_excerpt()){
 			the_excerpt();
 		}
 	?>
-
 
 		<?php 
 			// only display show full story link if there is post content
