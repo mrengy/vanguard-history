@@ -31,7 +31,7 @@ get_header();
         <a id="homepage-link-to-about" class="end-of-paragraph-link" href="<?php echo site_url(); ?>/about">About the project</a>
         <section class="featured-story">
           <?php
-				      show_featured_story('2001-scv');
+				      show_featured_story('1992-scv');
 			    ?>
         </section>
     </div>
