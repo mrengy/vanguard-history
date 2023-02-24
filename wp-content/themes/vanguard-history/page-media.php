@@ -79,16 +79,28 @@ get_header();
 		$position = strpos( $current_url , '/page' );
 		$nopaging_url = ( $position ) ? substr( $current_url, 0, $position ) : $current_url;
 		$bare_url = trailingslashit( $nopaging_url );
-		
+
+		//build array of options for each year
+		$year_options = array();
+		$current_year = date("Y");
+		for ($i=1967; $i<=$current_year; $i++){
+			array_push($year_options, '<option value="'.$i.'">'.$i.'</option>');
+		}
+
 		//display filter media form
+
+		//some magic to get print_r to run inside heredoc syntax
+		//https://stackoverflow.com/a/73345608/370407
+		$print_r = 'print_r';
+
 		echo <<<END
 			<form id="media-filters" class="content" method="get" action="$bare_url">
 				<h2 class="form-title-inline" id="filter-title">Filter by:</h2>
 				<label>
 					Year
-					<select name="year" id="year" aria-label="year">
+					<select name="filter_year" id="filter_year" aria-label="year">
 						<option value="" selected>All</option>
-						<option value="1967">1967</option>
+						{$print_r($year_options, true)}
 					</select>
 				</label>
 				<label>
