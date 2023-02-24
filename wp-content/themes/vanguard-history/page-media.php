@@ -231,7 +231,19 @@ get_header();
     </div>
 
     <?php 
-		} //if ($thumbnails_count>0)
+		//if ($thumbnails_count>0)
+		} else{
+			echo <<<END
+				<p class="empty-message" id="empty-all-media-page">
+					We haven't published any media that match these filters yet. 
+				</p>
+				<form id="clear-filters-form" action="$bare_url">
+					<button id="clear-filters-button" class="button button-text">
+						Clear filters
+					</button>
+				</form>
+			END;
+		}
 	?>
 
 </main><!-- #main -->
