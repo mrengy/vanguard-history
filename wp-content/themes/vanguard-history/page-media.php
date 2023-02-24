@@ -32,7 +32,7 @@ get_header();
 			// how many media thumbnails to show at first. -1 means all
 			$thumbnails_to_show = 42;
 
-			//Protect against arbitrary values / sql injection
+			//Protect against arbitrary values / sql injection and store the GET variables
 			$paged = ( get_query_var( 'paged' ) ) ? absint( get_query_var( 'paged' ) ) : 1;
 			$vhs_year = sanitize_text_field( $_GET['vhs_year'] );
 			$ensemble = sanitize_text_field( $_GET['ensemble'] );
@@ -54,6 +54,29 @@ get_header();
 				),
 				'posts_per_page' => $thumbnails_to_show,
 			);
+
+			// if there is a year set in the filter, add this to the query
+			if(!empty($vhs_year)){
+				$query_args_for_vhs_year = array(
+					'taxonomy' => 'vhs_year',
+					'field' => 'slug',
+					'terms' => $vhs_year,
+				);
+
+				$media_query_args['tax_query'][] = $query_args_for_vhs_year;
+			}
+
+			// if there is an ensemble set in the filter, add this to the query
+			if(!empty($ensemble)){
+				$query_args_for_ensemble = array(
+					'taxonomy' => 'ensemble',
+					'field' => 'slug',
+					'terms' => $ensemble,
+				);
+
+				$media_query_args['tax_query'][] = $query_args_for_ensemble;
+			}
+
 			$media_query = new WP_Query ($media_query_args);
 
 			$thumbnails = array();
@@ -70,7 +93,7 @@ get_header();
 			// Be kind; rewind
 			wp_reset_postdata();
 
-			if ($thumbnails_count>0) { 
+			
 	?>
 	
 	<?php 
@@ -115,6 +138,7 @@ get_header();
 			// build the rest of the ensemble options, setting the appropriate one as selected
 			$all_ensembles = array('Vanguard', 'Vanguard Cadets / B-Corps', 'Alumni Corps', 'Other');
 			foreach($all_ensembles as $this_ensemble){
+				// take the human-readable ensemble and convert it to a slug
 				$this_ensemble_slug = strtolower( str_replace(array(' / ', ' '),array('-','-'),$this_ensemble) );
 
 				// set the appropriate option as selected
@@ -153,10 +177,11 @@ get_header();
 	?>
 	<div id="media-container" class="content-secondary-grid">
         <?php
-											foreach($thumbnails as $thumbnail){
-												echo($thumbnail);
-											}
-										?>
+			if ($thumbnails_count>0) { 
+				foreach($thumbnails as $thumbnail){
+					echo($thumbnail);
+				}
+		?>
     </div>
     <?php
 			//how many thumbnails did we load? might not need this.
@@ -189,7 +214,10 @@ get_header();
         </a>
     </div>
 
-    <?php } ?>
+    <?php 
+		} 
+		//if ($thumbnails_count>0)
+	?>
 
 </main><!-- #main -->
 
