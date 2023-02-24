@@ -34,9 +34,13 @@ get_header();
 
 			//Protect against arbitrary values / sql injection and store the GET variables
 			$paged = ( get_query_var( 'paged' ) ) ? absint( get_query_var( 'paged' ) ) : 1;
-			$vhs_year = sanitize_text_field( $_GET['vhs_year'] );
-			$ensemble = sanitize_text_field( $_GET['ensemble'] );
-
+			if (!empty($_GET['vhs_year'])){
+				$vhs_year = sanitize_text_field( $_GET['vhs_year'] );
+			}
+			if (!empty($_GET['ensemble'])){
+				$ensemble = sanitize_text_field( $_GET['ensemble'] );
+			}
+			
 			// query media
 			$media_query_args = array(
 				'post_type'   => 'attachment',
