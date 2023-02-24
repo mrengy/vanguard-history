@@ -86,27 +86,51 @@ get_header();
 		$year_options = array();
 		$current_year = date("Y");
 		
-		// if the year is not set in the URL, set "all" to selected.
-		if(empty($vhs_year)){
-			array_push($year_options, '<option value="" selected>All</option>');
-		} else {
-			array_push($year_options, '<option value="">All</option>');
-		}
-
-		// build the rest of the year options, setting the appropriate one as selected
-		for ($i=1967; $i<=$current_year; $i++){
-			if($vhs_year == $i){
-				array_push($year_options, '<option value="'.$i.'" selected>'.$i.'</option>');
-			} else{
-				array_push($year_options, '<option value="'.$i.'">'.$i.'</option>');
+			// if the year is not set in the URL, set "all" to selected.
+			if(empty($vhs_year)){
+				array_push($year_options, '<option value="" selected>All</option>');
+			} else {
+				array_push($year_options, '<option value="">All</option>');
 			}
-		}
+
+			// build the rest of the year options, setting the appropriate one as selected
+			for ($i=1967; $i<=$current_year; $i++){
+				if($vhs_year == $i){
+					array_push($year_options, '<option value="'.$i.'" selected>'.$i.'</option>');
+				} else{
+					array_push($year_options, '<option value="'.$i.'">'.$i.'</option>');
+				}
+			}
+		
+		//build array of options for ensemble
+		$ensemble_options = array();
+
+			// if the ensemble is not set in the URL, set "all" to selected.
+			if(empty($ensemble)){
+				array_push($ensemble_options, '<option value="" selected>All</option>');
+			} else {
+				array_push($ensemble_options, '<option value="">All</option>');
+			}
+			
+			// build the rest of the ensemble options, setting the appropriate one as selected
+			$all_ensembles = array('Vanguard', 'Vanguard Cadets / B-Corps', 'Alumni Corps', 'Other');
+			foreach($all_ensembles as $this_ensemble){
+				$this_ensemble_slug = strtolower( str_replace(array(' / ', ' '),array('-','-'),$this_ensemble) );
+
+				// set the appropriate option as selected
+				if($ensemble == $this_ensemble_slug){
+					array_push($ensemble_options, "<option value='$this_ensemble_slug' selected>$this_ensemble</option>");
+				} else{
+					array_push($ensemble_options, "<option value='$this_ensemble_slug'>$this_ensemble</option>");
+				}
+			}
+
 
 		//display filter media form
 
-		//some magic to get print_r to run inside heredoc syntax
+		//some magic to get implode() to run inside heredoc syntax
 		//https://stackoverflow.com/a/73345608/370407
-		$print_r = 'print_r';
+		$implode = 'implode';
 
 		echo <<<END
 			<form id="media-filters" class="content" method="get" action="$bare_url">
@@ -114,17 +138,13 @@ get_header();
 				<label>
 					Year
 					<select name="vhs_year" id="vhs_year" aria-label="year">
-						{$print_r($year_options, true)}
+						{$implode(" ",$year_options)}
 					</select>
 				</label>
 				<label>
 					Ensemble
 					<select name="ensemble" id="ensemble" aria-label="ensemble">
-						<option value="" selected>All</option>
-						<option value="vanguard">Vanguard</option>
-						<option value="vanguard-cadets-b-corps">Vanguard Cadets / B-Corps</option>
-						<option value="alumni-corps">Alumni Corps</option>
-						<option value="other">Other</option>
+						{$implode(" ",$ensemble_options)}
 					</select>
 				</label>
 				<button type="submit">Apply filters</button>
