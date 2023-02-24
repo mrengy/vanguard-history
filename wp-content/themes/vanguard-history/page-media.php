@@ -152,6 +152,7 @@ get_header();
 				$this_ensemble_slug = strtolower( str_replace(array(' / ', ' '),array('-','-'),$this_ensemble) );
 
 				// set the appropriate option as selected
+				// this if (!empty) and two identical else statements seems repetitive but avoids a php warning if ensemble is not set
 				if(!empty($ensemble)){
 					if($ensemble == $this_ensemble_slug){
 						array_push($ensemble_options, "<option value='$this_ensemble_slug' selected>$this_ensemble</option>");
@@ -230,8 +231,7 @@ get_header();
     </div>
 
     <?php 
-		} 
-		//if ($thumbnails_count>0)
+		} //if ($thumbnails_count>0)
 	?>
 
 </main><!-- #main -->
