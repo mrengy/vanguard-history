@@ -41,7 +41,7 @@ get_header();
 				'post_status' => 'any',
 				'order' => 'DESC',
 				'orderby' => 'date',
-        'paged' => $paged,
+        		'paged' => $paged,
 				'tax_query' => array(
 						'relation' => 'AND',
 						array(
@@ -68,9 +68,44 @@ get_header();
 			// Be kind; rewind
 			wp_reset_postdata();
 
-			if ($thumbnails_count>0) { ?>
-
-    <div id="media-container" class="content-secondary-grid">
+			if ($thumbnails_count>0) { 
+	?>
+	
+	<?php 
+		//get current url, but remove "page/#" from it, if present
+		//https://wordpress.stackexchange.com/a/247739/7313
+		global $wp;
+		$current_url =  home_url( $wp->request );
+		$position = strpos( $current_url , '/page' );
+		$nopaging_url = ( $position ) ? substr( $current_url, 0, $position ) : $current_url;
+		$bare_url = trailingslashit( $nopaging_url );
+		
+		//display filter media form
+		echo <<<END
+			<form id="media-filters" class="content" method="get" action="$bare_url">
+				<h2 class="form-title-inline" id="filter-title">Filter by:</h2>
+				<label>
+					Year
+					<select name="year" id="year" aria-label="year">
+						<option value="" selected>All</option>
+						<option value="1967">1967</option>
+					</select>
+				</label>
+				<label>
+					Ensemble
+					<select name="ensemble" id="ensemble" aria-label="ensemble">
+						<option value="" selected>All</option>
+						<option value="vanguard">Vanguard</option>
+						<option value="vanguard-cadets-b-corps">Vanguard Cadets / B-Corps</option>
+						<option value="alumni-corps">Alumni Corps</option>
+						<option value="other">Other</option>
+					</select>
+				</label>
+				<button type="submit">Apply filters</button>
+			</form>
+		END;
+	?>
+	<div id="media-container" class="content-secondary-grid">
         <?php
 											foreach($thumbnails as $thumbnail){
 												echo($thumbnail);
