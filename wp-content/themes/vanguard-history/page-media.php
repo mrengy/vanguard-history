@@ -40,7 +40,7 @@ get_header();
 			if (!empty($_GET['ensemble'])){
 				$ensemble = sanitize_text_field( $_GET['ensemble'] );
 			}
-			
+
 			// query media
 			$media_query_args = array(
 				'post_type'   => 'attachment',
@@ -122,9 +122,15 @@ get_header();
 
 			// build the rest of the year options, setting the appropriate one as selected
 			for ($i=1967; $i<=$current_year; $i++){
-				if($vhs_year == $i){
-					array_push($year_options, '<option value="'.$i.'" selected>'.$i.'</option>');
-				} else{
+				// this if (!empty) and two identical else statements seems repetitive but avoids a php warning if vhs_year is not set
+				if(!empty($vhs_year)){
+					if($vhs_year == $i){
+						array_push($year_options, '<option value="'.$i.'" selected>'.$i.'</option>');
+					} else{
+					   array_push($year_options, '<option value="'.$i.'">'.$i.'</option>');
+				   }
+				}
+				 else{
 					array_push($year_options, '<option value="'.$i.'">'.$i.'</option>');
 				}
 			}
@@ -146,9 +152,14 @@ get_header();
 				$this_ensemble_slug = strtolower( str_replace(array(' / ', ' '),array('-','-'),$this_ensemble) );
 
 				// set the appropriate option as selected
-				if($ensemble == $this_ensemble_slug){
-					array_push($ensemble_options, "<option value='$this_ensemble_slug' selected>$this_ensemble</option>");
-				} else{
+				if(!empty($ensemble)){
+					if($ensemble == $this_ensemble_slug){
+						array_push($ensemble_options, "<option value='$this_ensemble_slug' selected>$this_ensemble</option>");
+					} else{
+						array_push($ensemble_options, "<option value='$this_ensemble_slug'>$this_ensemble</option>");
+					}
+				}
+				else{
 					array_push($ensemble_options, "<option value='$this_ensemble_slug'>$this_ensemble</option>");
 				}
 			}
