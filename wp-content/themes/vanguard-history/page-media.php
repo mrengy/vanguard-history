@@ -190,6 +190,20 @@ get_header();
 				<button type="submit">Apply filters</button>
 			</form>
 		END;
+
+		//show clear filters button if filters are set to anything other than all
+		function show_inline_clear_filters($bare_url){
+			echo <<<END
+				<form id="clear-filters-form-inline" class="clear-filters-form" action="$bare_url">
+					<button id="clear-filters-button" class="button button-text">
+						Clear filters
+					</button>
+				</form>
+			END;
+		}
+		if(!empty($vhs_year) || !empty($ensemble)){
+			show_inline_clear_filters($bare_url);
+		}
 	?>
 	<div id="media-container" class="content-secondary-grid">
         <?php
@@ -237,7 +251,7 @@ get_header();
 				<p class="empty-message" id="empty-all-media-page">
 					We haven't published any media that match these filters yet. 
 				</p>
-				<form id="clear-filters-form" action="$bare_url">
+				<form id="clear-filters-form-no-media" class="clear-filters-form" action="$bare_url">
 					<button id="clear-filters-button" class="button button-text">
 						Clear filters
 					</button>
