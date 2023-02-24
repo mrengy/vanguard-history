@@ -32,8 +32,10 @@ get_header();
 			// how many media thumbnails to show at first. -1 means all
 			$thumbnails_to_show = 42;
 
-      //Protect against arbitrary paged values
-      $paged = ( get_query_var( 'paged' ) ) ? absint( get_query_var( 'paged' ) ) : 1;
+			//Protect against arbitrary values / sql injection
+			$paged = ( get_query_var( 'paged' ) ) ? absint( get_query_var( 'paged' ) ) : 1;
+			$vhs_year = sanitize_text_field( $_GET['vhs_year'] );
+			$ensemble = sanitize_text_field( $_GET['ensemble'] );
 
 			// query media
 			$media_query_args = array(
