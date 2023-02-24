@@ -98,7 +98,7 @@ get_header();
 				<h2 class="form-title-inline" id="filter-title">Filter by:</h2>
 				<label>
 					Year
-					<select name="filter_year" id="filter_year" aria-label="year">
+					<select name="vhs_year" id="vhs_year" aria-label="year">
 						<option value="" selected>All</option>
 						{$print_r($year_options, true)}
 					</select>
