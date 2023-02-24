@@ -191,8 +191,8 @@ get_header();
 			</form>
 		END;
 
-		//show clear filters button if filters are set to anything other than all
-		function show_inline_clear_filters($bare_url){
+		//show clear filters button if filters are set to anything other than all and there is some media displayed
+		if((!empty($vhs_year) || !empty($ensemble)) && $thumbnails_count>0){
 			echo <<<END
 				<form id="clear-filters-form-inline" class="clear-filters-form" action="$bare_url">
 					<button id="clear-filters-button" class="button button-text">
@@ -200,9 +200,6 @@ get_header();
 					</button>
 				</form>
 			END;
-		}
-		if(!empty($vhs_year) || !empty($ensemble)){
-			show_inline_clear_filters($bare_url);
 		}
 	?>
 	<div id="media-container" class="content-secondary-grid">
