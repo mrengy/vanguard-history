@@ -85,8 +85,21 @@ get_header();
 		//build array of options for each year
 		$year_options = array();
 		$current_year = date("Y");
+		
+		// if the year is not set in the URL, set "all" to selected.
+		if(empty($vhs_year)){
+			array_push($year_options, '<option value="" selected>All</option>');
+		} else {
+			array_push($year_options, '<option value="">All</option>');
+		}
+
+		// build the rest of the year options, setting the appropriate one as selected
 		for ($i=1967; $i<=$current_year; $i++){
-			array_push($year_options, '<option value="'.$i.'">'.$i.'</option>');
+			if($vhs_year == $i){
+				array_push($year_options, '<option value="'.$i.'" selected>'.$i.'</option>');
+			} else{
+				array_push($year_options, '<option value="'.$i.'">'.$i.'</option>');
+			}
 		}
 
 		//display filter media form
@@ -101,7 +114,6 @@ get_header();
 				<label>
 					Year
 					<select name="vhs_year" id="vhs_year" aria-label="year">
-						<option value="" selected>All</option>
 						{$print_r($year_options, true)}
 					</select>
 				</label>
