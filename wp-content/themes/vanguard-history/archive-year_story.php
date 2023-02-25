@@ -19,7 +19,7 @@ get_header();
 			the_archive_description('<div class="entry-description">', '</div>');
 			?>
             <div class="archive-content">
-                <p>Firsthand accounts of some past years, told by those who lived them.</p>
+                <p>Explore firsthand accounts of past years, told by those who lived them.</p>
 				<p>Compiling these stories is a multi-year volunteer project, which is still in early stages. We appreciate your patience as we continue to add content. <a id="archive-link-to-about" class="end-of-paragraph-link" href="<?php echo site_url(); ?>/about">About
                     the project</a>
 				</p>
