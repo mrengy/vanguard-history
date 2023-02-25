@@ -39,7 +39,7 @@ jQuery(document).ready(function ($) {
 			$(this).hide();
 			show_all_media_button.addClass("loading");
 			$.ajax({
-				url: my_ajax_object.ajax_url + "1", // passed in functions.php > wp_localize_script
+				url: my_ajax_object.ajax_url, // passed in functions.php > wp_localize_script
 				data: {
 					action: "vanguard_history_all_media_for_year_story", // This is our PHP function below
 					year: year,
