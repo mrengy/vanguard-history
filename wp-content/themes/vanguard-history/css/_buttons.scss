@@ -16,7 +16,7 @@ input[type="submit"] {
 		font-size: $font-size-md;
 		font-weight: $font-weight-light;
 		background-color: transparent;
-		transition: all 0.1s ease-in;
+		transition: background-color 0.1s ease-in;
 		&:hover,
 		&:focus {
 			background-color: $SCVLightGrayTranslucent;
@@ -40,6 +40,14 @@ input[type="submit"] {
 		background: transparent;
 		text-align: left;
 		padding: $spacing-md 0;
+	}
+
+	&.loading {
+		color: transparent;
+		background-image: url("./img/spinner.gif");
+		background-size: contain;
+		background-repeat: no-repeat;
+		background-position: center center;
 	}
 }
 
