@@ -20,7 +20,8 @@
     "wpackagist-plugin/wp-mail-smtp": "*",
     "wpackagist-plugin/email-address-obfuscation": "*",
     "wpackagist-plugin/wp-super-cache": "*",
-    "wpackagist-plugin/jetpack-boost": "*"
+    "wpackagist-plugin/jetpack-boost": "*",
+    "wpackagist-plugin/google-analytics-for-wordpress": "*"
   },
   "require-dev": {
     "wpackagist-plugin/query-monitor": "*"
