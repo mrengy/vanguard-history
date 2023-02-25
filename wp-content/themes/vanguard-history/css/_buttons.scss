@@ -1,12 +1,14 @@
 @import "./_var.scss";
 
 .button,
+.wp-block-button,
 input[type="submit"] {
 	cursor: pointer;
 
 	&.button-primary,
 	&.submit,
-	&.gform_button {
+	&.gform_button,
+	&.is-style-outline {
 		text-align: center;
 		padding: $spacing-lg;
 		text-transform: uppercase;
@@ -14,6 +16,11 @@ input[type="submit"] {
 		font-size: $font-size-md;
 		font-weight: $font-weight-light;
 		background-color: transparent;
+		transition: all 0.1s ease-in;
+		&:hover,
+		&:focus {
+			background-color: $SCVLightGrayTranslucent;
+		}
 	}
 
 	&.button-primary,
