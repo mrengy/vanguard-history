@@ -46,7 +46,7 @@ figure {
 
 .featured-story-heading {
 	font-size: $font-size-md;
-	margin: 1.5rem 0;
+	margin: 0 0 1.5rem 0;
 
 	a {
 		border: 0;
@@ -56,19 +56,30 @@ figure {
 .featured-story-excerpt {
 	font-style: italic;
 	font-size: $font-size-sm;
-	margin-bottom: 2rem;
+	margin-bottom: $spacing-lg;
 }
 
 .featured-story {
+	display: flex;
+	gap: $spacing-md;
+	flex-wrap: wrap;
+	margin-top: $spacing-lg;
+
 	a {
 		border-color: transparent;
 	}
+
 	.featured-story-link {
 		border-color: $White;
 		font-weight: $font-weight-bold;
 		text-shadow: $text-shadow;
 		font-size: $font-size-xs;
 	}
+}
+
+.featured-story-info {
+	// Allows 2 col layout in desktop
+	max-width: 592px;
 }
 .entry-title {
 	margin: 0 0 $spacing-md 0;
@@ -89,6 +100,40 @@ figure {
 
 .entry-content {
 	margin-bottom: $spacing-md;
+
+	.media {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		margin-bottom: $spacing-sm;
+
+		img {
+			box-shadow: $box-shadow;
+			margin-bottom: $spacing-sm;
+			border-radius: $border-radius-md;
+			border: 1px solid $White;
+		}
+	}
+
+	.properties-container {
+		text-align: center;
+		margin-bottom: $spacing-sm;
+		font-size: $font-size-xs;
+		font-style: italic;
+		flex: 1;
+	}
+}
+
+.previous-next-container {
+	display: flex;
+	justify-content: center;
+
+	.previous-next {
+		max-width: 1024px;
+		flex: 1;
+		display: flex;
+		justify-content: space-between;
+	}
 }
 
 // Sections
@@ -105,11 +150,11 @@ figure {
 		margin-left: $spacing-md;
 		font-weight: $font-weight-semibold;
 	}
+}
 
-	.wp-caption-text {
-		font-size: 0.75rem;
-		font-style: italic;
-	}
+.wp-caption-text {
+	font-size: 0.75rem;
+	font-style: italic;
 }
 
 .content-secondary {
@@ -127,6 +172,7 @@ figure {
 	flex-wrap: wrap;
 	gap: $spacing-md;
 	overflow: hidden;
+	justify-content: center;
 
 	a {
 		display: block;
@@ -162,6 +208,6 @@ figure {
 	}
 }
 
-#show-hide-full-story{
+#show-hide-full-story {
 	margin-top: 1rem;
 }

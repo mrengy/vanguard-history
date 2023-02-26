@@ -1,12 +1,14 @@
 @import "./_var.scss";
 
 .button,
+.wp-block-button,
 input[type="submit"] {
 	cursor: pointer;
 
 	&.button-primary,
 	&.submit,
-	&.gform_button {
+	&.gform_button,
+	&.is-style-outline {
 		text-align: center;
 		padding: $spacing-lg;
 		text-transform: uppercase;
@@ -14,6 +16,11 @@ input[type="submit"] {
 		font-size: $font-size-md;
 		font-weight: $font-weight-light;
 		background-color: transparent;
+		transition: background-color 0.1s ease-in;
+		&:hover,
+		&:focus {
+			background-color: $SCVLightGrayTranslucent;
+		}
 	}
 
 	&.button-primary,
@@ -33,6 +40,14 @@ input[type="submit"] {
 		background: transparent;
 		text-align: left;
 		padding: $spacing-md 0;
+	}
+
+	&.loading {
+		color: transparent;
+		background-image: url("./img/spinner.gif");
+		background-size: contain;
+		background-repeat: no-repeat;
+		background-position: center center;
 	}
 }
 

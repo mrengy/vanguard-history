@@ -37,6 +37,7 @@ jQuery(document).ready(function ($) {
 		if (!hasFetched) {
 			// Media has not been expanded, request the rest of the media
 			$(this).hide();
+			show_all_media_button.addClass("loading");
 			$.ajax({
 				url: my_ajax_object.ajax_url, // passed in functions.php > wp_localize_script
 				data: {
@@ -49,9 +50,15 @@ jQuery(document).ready(function ($) {
 					media_container.append(data);
 					media_button_action.html(media_button_action_alternate_text);
 					media_container.addClass("expanded fetched");
+					show_all_media_button.removeClass("loading");
 				},
-				error: function (errorThrown) {
-					console.log(errorThrown);
+				error: function (error) {
+					console.error(
+						"Error accessing " + my_ajax_object.ajax_url,
+						error.responseText
+					);
+					show_all_media_button.removeClass("loading");
+					media_button_action.html(media_button_action_default_text);
 				},
 			});
 			$(this).show();
