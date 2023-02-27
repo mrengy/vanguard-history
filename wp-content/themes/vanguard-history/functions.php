@@ -645,6 +645,8 @@ function vanguard_history_all_media_for_year_story()
 				),
 			),
 
+			'offset' => 6,
+
 			'posts_per_page' => 99999
 
 			// in the future, might need to change this once we have more attachments - want it to show all wihout pagination (until we build pagination)
