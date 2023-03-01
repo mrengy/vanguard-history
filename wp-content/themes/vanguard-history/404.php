@@ -18,7 +18,7 @@ get_header();
 			</header><!-- .page-header -->
 
 			<div class="page-content">
-				<p><?php esc_html_e( 'It seems nothing was found at this location. Maybe try one of the links below or a search?', 'vanguard-history' ); ?></p>
+				<p><?php esc_html_e( 'It seems nothing was found at this location.', 'vanguard-history' ); ?></p>
 
 					<?php
 					//get_search_form();
