@@ -17,7 +17,15 @@ get_header();
 	while (have_posts()) :
 		the_post();
 
-		get_template_part('template-parts/content', get_post_type());
+		$post->{'media_visibility'} = get_the_terms(get_the_ID(), 'media_visibility');
+		$media_visibility = $post->{'media_visibility'}[0]->{'slug'};
+
+		//only display attachment if the "visibility" is set to "published"
+		if($media_visibility == 'published'){
+			get_template_part('template-parts/content', get_post_type());
+		} else {
+			echo('Sorry, this item is either not published or the URL is wrong.');
+		}
 
 	/*
 			the_post_navigation(
