@@ -116,4 +116,5 @@ get_header();
 </main><!-- #main -->
 
 <?php
+show_disclaimer();
 get_vhs_footer();

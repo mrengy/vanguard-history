@@ -913,3 +913,17 @@ function remove_tax_from_sitemap( $taxonomies ) {
 	return $taxonomies;
 }
 add_filter( 'wp_sitemaps_taxonomies', 'remove_tax_from_sitemap' );
+
+// show disclaimer page content
+function show_disclaimer(){
+	$disclaimer_page = get_page_by_path('disclaimer');
+	$disclaimer_content = $disclaimer_page->post_content;
+	$disclaimer_content = apply_filters('the_content', $disclaimer_content);
+	if(!empty($disclaimer_content)){
+		echo <<<END
+			<div class="disclaimer">
+				$disclaimer_content
+			</div>
+		END;
+	}
+}
