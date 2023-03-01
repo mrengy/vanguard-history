@@ -844,3 +844,45 @@ add_filter('get_the_archive_title', function ($title) {
     }
     return $title;
 });
+
+// remove search sitewide for now, except for the WordPress Admin area
+// doesn't remove the search widget from 404 page, but removing that separately for now
+// https://stackoverflow.com/a/45597262/370407
+function disable_search($query, $error = true)
+{
+    if (is_search()) {
+        $query->is_search = false;
+        $query->query_vars[s] = false;
+        $query->query[s] = false;
+
+        // to error
+
+        if ($error == true) $query->is_404 = true;
+    }
+}
+function remove_search_widget() {
+	unregister_widget('WP_Widget_Search');
+}
+if(!is_admin()){
+	add_action('parse_query', 'disable_search');
+    add_filter('get_search_form', function(){ return null; });
+	add_action( 'widgets_init', 'remove_search_widget' );
+}
+
+// show 404 template while keeping the current URL
+function show_404_in_page(){
+	global $wp_query;
+	$wp_query->set_404();
+	status_header( 404 );
+	get_template_part( 404 ); exit();
+}
+
+// remove all taxonomies from sitemap
+function remove_tax_from_sitemap( $taxonomies ) {
+	$all_taxonomies = get_taxonomies();
+	foreach($all_taxonomies as $this_taxonomy){
+		unset( $taxonomies[$this_taxonomy] );
+	}
+	return $taxonomies;
+}
+add_filter( 'wp_sitemaps_taxonomies', 'remove_tax_from_sitemap' );

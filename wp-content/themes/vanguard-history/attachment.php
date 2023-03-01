@@ -16,7 +16,15 @@ get_header();
 		while ( have_posts() ) :
 			the_post();
 
-			get_template_part( 'template-parts/content', get_post_type() );
+			$post->{'media_visibility'} = get_the_terms(get_the_ID(), 'media_visibility');
+			$media_visibility = $post->{'media_visibility'}[0]->{'slug'};
+
+			//only display attachment if the "visibility" is set to "published"
+			if($media_visibility == 'published'){
+				get_template_part('template-parts/content', get_post_type());
+			} else {
+				show_404_in_page();
+			}
 
 			/*
 			the_post_navigation(
@@ -27,8 +35,8 @@ get_header();
 			);
 			*/
 			//currently can go back to a parent page but want to navigate through in order shown on media page
-			previous_post_link();
-			next_post_link();
+			//previous_post_link();
+			//next_post_link();
 			/*
 			$vhs_previous_link = get_previous_image_link('large');
 			$vhs_next_link = get_next_image_link('large');

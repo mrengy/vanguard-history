@@ -21,7 +21,8 @@
     "wpackagist-plugin/email-address-obfuscation": "*",
     "wpackagist-plugin/wp-super-cache": "*",
     "wpackagist-plugin/jetpack-boost": "*",
-    "wpackagist-plugin/ga-google-analytics": "*"
+    "wpackagist-plugin/ga-google-analytics": "*",
+    "wpackagist-plugin/redirection": "*"
   },
   "require-dev": {
     "wpackagist-plugin/query-monitor": "*"
