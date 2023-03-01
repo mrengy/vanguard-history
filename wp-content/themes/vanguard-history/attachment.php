@@ -24,11 +24,7 @@ get_header();
 		if($media_visibility == 'published'){
 			get_template_part('template-parts/content', get_post_type());
 		} else {
-			// show 404 template while keeping the current URL
-			global $wp_query;
-			$wp_query->set_404();
-			status_header( 404 );
-			get_template_part( 404 ); exit();
+			show_404_in_page();
 		}
 
 	/*
