@@ -20,7 +20,6 @@ get_header();
 			?>
             <div class="archive-content">
                 <p>Explore firsthand accounts of past years, told by those who lived them.</p>
-				<p>Compiling these stories is a multi-year volunteer project, which is still in early stages. We appreciate your patience as we continue to add content.</p>
             </div>
         </header><!-- .page-header -->
     </div>
