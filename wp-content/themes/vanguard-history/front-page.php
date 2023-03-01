@@ -118,15 +118,5 @@ get_header();
 </main><!-- #main -->
 
 <?php
-// disclaimer
-$disclaimer_page = get_page_by_path('disclaimer');
-$disclaimer_content = $disclaimer_page->post_content;
-$disclaimer_content = apply_filters('the_content', $disclaimer_content);
-if(!empty($disclaimer_content)){
-	echo <<<END
-		<div class="disclaimer">
-			$disclaimer_content
-		</div>
-	END;
-}
+show_disclaimer();
 get_vhs_footer();

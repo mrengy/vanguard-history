@@ -54,4 +54,5 @@ get_header();
 
 <?php
 get_sidebar();
+show_disclaimer();
 get_vhs_footer();

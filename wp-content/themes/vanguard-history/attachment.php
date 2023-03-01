@@ -74,4 +74,7 @@ get_header();
 	?>
 
 </main><!-- #main -->
-<?php get_vhs_footer(); ?>
+<?php 
+show_disclaimer();
+get_vhs_footer(); 
+?>

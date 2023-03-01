@@ -120,5 +120,6 @@ get_header();
 </main><!-- #main -->
 
 <?php
-	get_vhs_footer();
+show_disclaimer();
+get_vhs_footer();
 ?>
