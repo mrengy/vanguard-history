@@ -1,5 +1,11 @@
 @import "./_var.scss";
 
+.disclaimer {
+	background-color: $SCVLightGray;
+	padding: $spacing-md;
+	padding-bottom: $spacing-lg;
+}
+
 .main-footer {
 	background-color: $SCVBlack;
 	padding: $spacing-md;
