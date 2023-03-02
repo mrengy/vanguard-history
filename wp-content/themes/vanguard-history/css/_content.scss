@@ -13,17 +13,16 @@ figure {
 	flex-direction: column;
 	align-items: center;
 	justify-content: stretch;
-	width: auto !important;
 
 	a {
 		border: none;
 	}
+}
 
-	img,
-	iframe {
-		border-radius: $border-radius-md;
-		box-shadow: $box-shadow;
-	}
+img,
+iframe {
+	border-radius: $border-radius-md;
+	box-shadow: $box-shadow;
 }
 
 .wp-block-buttons > .wp-block-button {
@@ -204,12 +203,6 @@ figure {
 	margin: 0 0 $spacing-xl;
 	padding: 0;
 	list-style: none;
-}
-
-.year-story-list {
-	.entry-heading {
-		margin: 0 0 $spacing-xl;
-	}
 }
 
 #show-hide-full-story {
