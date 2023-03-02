@@ -171,36 +171,39 @@ get_header();
 	//https://stackoverflow.com/a/73345608/370407
 	$implode = 'implode';
 
-	echo <<<END
-			<form id="media-filters" class="content media-filters" method="get" action="$bare_url">
-				<h2 class="form-title-inline" id="filter-title">Filter by:</h2>
-				<label>
-					<div>Year:</div>
-					<select name="vhs_year" id="vhs_year" aria-label="year">
-						{$implode(" ",$year_options)}
-					</select>
-				</label>
-				<label>
-					<div>Ensemble:</div>
-					<select name="ensemble" id="ensemble" aria-label="ensemble">
-						{$implode(" ",$ensemble_options)}
-					</select>
-				</label>
-				<button type="submit">Apply filters</button>
-			</form>
-		END;
+	?>
+	<form id="media-filters" class="content media-filters" method="get" action="<?php echo $bare_url; ?>">
+		<h2 class="form-title-inline" id="filter-title">Filter by:</h2>
+		<div class="media-filters-controls">
+			<label>
+				<div>Year:</div>
+				<select name="vhs_year" id="vhs_year" aria-label="year">
+					<?php echo $implode(" ", $year_options); ?>
+				</select>
+			</label>
+			<label>
+				<div>Ensemble:</div>
+				<select name="ensemble" id="ensemble" aria-label="ensemble">
+					<?php echo $implode(" ", $ensemble_options); ?>
+				</select>
+			</label>
+			<button type="submit" class="button button-primary">Apply filters</button>
+	</form>
+	<?php
 
 	//show clear filters button if filters are set to anything other than all and there is some media displayed
-	if ((!empty($vhs_year) || !empty($ensemble)) && $thumbnails_count > 0) {
-		echo <<<END
-				<form id="clear-filters-form-inline" class="clear-filters-form" action="$bare_url">
-					<button id="clear-filters-button" class="button button-text">
-						Clear filters
-					</button>
-				</form>
-			END;
+	if (!empty($vhs_year) || !empty($ensemble)) {
+	?>
+		<form id="clear-filters-form-no-media" class="clear-filters-form" action="<?php $bare_url ?>">
+			<button id="clear-filters-button" class="button button-primary">
+				Clear filters
+			</button>
+		</form>
+	<?php
 	}
 	?>
+	</div>
+
 	<div id="media-container" class="content-secondary-grid">
 		<?php
 		if ($thumbnails_count > 0) {
@@ -243,16 +246,11 @@ get_header();
 <?php
 			//if ($thumbnails_count>0)
 		} else {
-			echo <<<END
-				<p class="empty-message" id="empty-all-media-page">
-					We haven't published any media that match these filters yet. 
-				</p>
-				<form id="clear-filters-form-no-media" class="clear-filters-form" action="$bare_url">
-					<button id="clear-filters-button" class="button button-text">
-						Clear filters
-					</button>
-				</form>
-			END;
+?>
+	<p class="empty-message" id="empty-all-media-page">
+		We haven't published any media that match these filters yet.
+	</p>
+<?php
 		}
 ?>
 
