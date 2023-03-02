@@ -29,6 +29,8 @@
 		&.prev,
 		&.next {
 			border-color: transparent;
+			width:auto;
+			border-radius: 0;
 		}
 	}
 }
