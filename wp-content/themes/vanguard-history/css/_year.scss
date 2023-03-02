@@ -5,19 +5,34 @@
 }
 
 .year-story-video {
-	border-radius: $border-radius-md;
-	box-shadow: $box-shadow;
-	background: $SCVBlack;
-	max-width: 560px; // TODO confirm that this is consistent for all year videos
-
 	overflow: hidden;
 	p {
-		margin: 0;
+		aspect-ratio: 16/9;
+		position: relative;
+		@supports not (aspect-ratio: 16 / 9) {
+			width: 100%;
+			padding-bottom: 56.25%;
+		}
+
+		iframe {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+		}
 	}
 }
 
 .year-story {
 	margin-bottom: 1rem;
+	max-width: 800px;
+}
+
+.year-story-list {
+	.entry-heading {
+		margin: 0 0 $spacing-xl;
+	}
 }
 
 .year-show-title {
