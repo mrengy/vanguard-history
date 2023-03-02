@@ -11,7 +11,16 @@ div.gform_wrapper {
 		color: $White;
 	}
 
+	&.gravity-theme .gfield .ginput_container input.medium {
+		width: 100%;
+		max-width: 500px;
+	}
+
 	&.gravity-theme .gform_body div.gfield_description {
 		font-weight: $font-weight-bold;
+	}
+
+	&.gravity-theme .gform_footer {
+		justify-content: center;
 	}
 }

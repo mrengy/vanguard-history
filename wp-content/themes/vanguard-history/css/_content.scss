@@ -215,3 +215,35 @@ figure {
 #show-hide-full-story {
 	margin-top: 1rem;
 }
+
+.media-filters {
+	margin-bottom: $spacing-lg;
+	.media-filters-controls {
+		display: flex;
+		align-items: center;
+		justify-content: flex-start;
+		gap: $spacing-md;
+		flex-wrap: wrap;
+		margin: $spacing-md 0 0 0;
+	}
+
+	label {
+		display: flex;
+		align-items: center;
+		gap: $spacing-sm;
+
+		select {
+			min-width: 230px;
+			width: 230px;
+			line-height: 2;
+			min-height: 32px;
+			padding: 8px;
+			color: $SCVGray;
+			flex: 1;
+		}
+	}
+
+	.clear-filters-form {
+		display: block;
+	}
+}

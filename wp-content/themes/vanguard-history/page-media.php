@@ -18,7 +18,7 @@ get_header();
 
 <main id="primary" class="site-main content-section content-secondary">
 
-    <?php
+	<?php
 	while (have_posts()) :
 		the_post();
 
@@ -28,13 +28,19 @@ get_header();
 	endwhile; // End of the loop.
 	?>
 
-    <?php
+	<?php
 	// query media
 	// how many media thumbnails to show at first. -1 means all
 	$thumbnails_to_show = 42;
 
-	//Protect against arbitrary paged values
+	//Protect against arbitrary values / sql injection and store the GET variables
 	$paged = (get_query_var('paged')) ? absint(get_query_var('paged')) : 1;
+	if (!empty($_GET['vhs_year'])) {
+		$vhs_year = sanitize_text_field($_GET['vhs_year']);
+	}
+	if (!empty($_GET['ensemble'])) {
+		$ensemble = sanitize_text_field($_GET['ensemble']);
+	}
 
 	// query media
 	$media_query_args = array(
@@ -53,6 +59,29 @@ get_header();
 		),
 		'posts_per_page' => $thumbnails_to_show,
 	);
+
+	// if there is a year set in the filter, add this to the query
+	if (!empty($vhs_year)) {
+		$query_args_for_vhs_year = array(
+			'taxonomy' => 'vhs_year',
+			'field' => 'slug',
+			'terms' => $vhs_year,
+		);
+
+		$media_query_args['tax_query'][] = $query_args_for_vhs_year;
+	}
+
+	// if there is an ensemble set in the filter, add this to the query
+	if (!empty($ensemble)) {
+		$query_args_for_ensemble = array(
+			'taxonomy' => 'ensemble',
+			'field' => 'slug',
+			'terms' => $ensemble,
+		);
+
+		$media_query_args['tax_query'][] = $query_args_for_ensemble;
+	}
+
 	$media_query = new WP_Query($media_query_args);
 
 	$thumbnails = array();
@@ -69,49 +98,161 @@ get_header();
 	// Be kind; rewind
 	wp_reset_postdata();
 
-	if ($thumbnails_count > 0) { ?>
 
-    <div id="media-container" class="content-secondary-grid">
-        <?php
+	?>
+
+	<?php
+	//get current url, but remove "page/#" from it, if present
+	//https://wordpress.stackexchange.com/a/247739/7313
+	global $wp;
+	$current_url =  home_url($wp->request);
+	$position = strpos($current_url, '/page');
+	$nopaging_url = ($position) ? substr($current_url, 0, $position) : $current_url;
+	$bare_url = trailingslashit($nopaging_url);
+
+	//build array of options for each year
+	$year_options = array();
+	$current_year = date("Y");
+
+	// if the year is not set in the URL, set "all" to selected.
+	if (empty($vhs_year)) {
+		array_push($year_options, '<option value="" selected>All</option>');
+	} else {
+		array_push($year_options, '<option value="">All</option>');
+	}
+
+	// build the rest of the year options, setting the appropriate one as selected
+	for ($i = 1965; $i <= $current_year; $i++) {
+		// this if (!empty) and two identical else statements seems repetitive but avoids a php warning if vhs_year is not set
+		if (!empty($vhs_year)) {
+			if ($vhs_year == $i) {
+				array_push($year_options, '<option value="' . $i . '" selected>' . $i . '</option>');
+			} else {
+				array_push($year_options, '<option value="' . $i . '">' . $i . '</option>');
+			}
+		} else {
+			array_push($year_options, '<option value="' . $i . '">' . $i . '</option>');
+		}
+	}
+
+	//build array of options for ensemble
+	$ensemble_options = array();
+
+	// if the ensemble is not set in the URL, set "all" to selected.
+	if (empty($ensemble)) {
+		array_push($ensemble_options, '<option value="" selected>All</option>');
+	} else {
+		array_push($ensemble_options, '<option value="">All</option>');
+	}
+
+	// build the rest of the ensemble options, setting the appropriate one as selected
+	$all_ensembles = array('Vanguard', 'Vanguard Cadets / B-Corps', 'Alumni Corps', 'Other');
+	foreach ($all_ensembles as $this_ensemble) {
+		// take the human-readable ensemble and convert it to a slug
+		$this_ensemble_slug = strtolower(str_replace(array(' / ', ' '), array('-', '-'), $this_ensemble));
+
+		// set the appropriate option as selected
+		// this if (!empty) and two identical else statements seems repetitive but avoids a php warning if ensemble is not set
+		if (!empty($ensemble)) {
+			if ($ensemble == $this_ensemble_slug) {
+				array_push($ensemble_options, "<option value='$this_ensemble_slug' selected>$this_ensemble</option>");
+			} else {
+				array_push($ensemble_options, "<option value='$this_ensemble_slug'>$this_ensemble</option>");
+			}
+		} else {
+			array_push($ensemble_options, "<option value='$this_ensemble_slug'>$this_ensemble</option>");
+		}
+	}
+
+
+	//display filter media form
+
+	//some magic to get implode() to run inside heredoc syntax
+	//https://stackoverflow.com/a/73345608/370407
+	$implode = 'implode';
+
+	?>
+	<form id="media-filters" class="content media-filters" method="get" action="<?php echo $bare_url; ?>">
+		<h2 class="form-title-inline" id="filter-title">Filter by:</h2>
+		<div class="media-filters-controls">
+			<label>
+				<div>Year:</div>
+				<select name="vhs_year" id="vhs_year" aria-label="year">
+					<?php echo $implode(" ", $year_options); ?>
+				</select>
+			</label>
+			<label>
+				<div>Ensemble:</div>
+				<select name="ensemble" id="ensemble" aria-label="ensemble">
+					<?php echo $implode(" ", $ensemble_options); ?>
+				</select>
+			</label>
+			<button type="submit" class="button button-primary">Apply filters</button>
+	</form>
+	<?php
+
+	//show clear filters button if filters are set to anything other than all and there is some media displayed
+	if (!empty($vhs_year) || !empty($ensemble)) {
+	?>
+		<form id="clear-filters-form-no-media" class="clear-filters-form" action="<?php $bare_url ?>">
+			<button id="clear-filters-button" class="button button-primary">
+				Clear filters
+			</button>
+		</form>
+	<?php
+	}
+	?>
+	</div>
+
+	<div id="media-container" class="content-secondary-grid">
+		<?php
+		if ($thumbnails_count > 0) {
 			foreach ($thumbnails as $thumbnail) {
 				echo ($thumbnail);
 			}
-			?>
-    </div>
-    <?php
-		//how many thumbnails did we load? might not need this.
-		$num_thumbnails_returned = $thumbnails_count;
-
-		// pagination
-
-		// if ($thumbnails_count > $thumbnails_to_show){
-
-		$big = 999999999; // need an unlikely integer
-		$translated = __('Page', 'mytextdomain'); // Supply translatable string
-		$paginate_args = array(
-			'base' => str_replace($big, '%#%', esc_url(get_pagenum_link($big))),
-			'format' => '?paged=%#%',
-			'current' => max(1, get_query_var('paged')),
-			'total' => $media_query->max_num_pages,
-			'before_page_number' => '<span class="screen-reader-text">' . $translated . ' </span>',
-			'prev_text' => '&lt;',
-			'next_text' => '&gt;'
-		);
-
-		echo ("<div id='pagination'>");
-		echo paginate_links($paginate_args);
-		echo ("</div>");
-		//}
 		?>
-    <div class="button-container">
-        <a id="upload-material" href="<?php echo (site_url()); ?>/upload-material">
-            <button class="button button-primary">
-                Upload material
-            </button>
-        </a>
-    </div>
+	</div>
+	<?php
+			//how many thumbnails did we load? might not need this.
+			$num_thumbnails_returned = $thumbnails_count;
 
-    <?php } ?>
+			// pagination
+
+			// if ($thumbnails_count > $thumbnails_to_show){
+
+			$big = 999999999; // need an unlikely integer
+			$translated = __('Page', 'mytextdomain'); // Supply translatable string
+			$paginate_args = array(
+				'base' => str_replace($big, '%#%', esc_url(get_pagenum_link($big))),
+				'format' => '?paged=%#%',
+				'current' => max(1, get_query_var('paged')),
+				'total' => $media_query->max_num_pages,
+				'before_page_number' => '<span class="screen-reader-text">' . $translated . ' </span>'
+			);
+
+			echo ("<div id='pagination'>");
+			echo paginate_links($paginate_args);
+			echo ("</div>");
+			//}
+	?>
+	<div class="button-container">
+		<a id="upload-material" href="<?php echo (site_url()); ?>/upload-material">
+			<button class="button button-primary">
+				Upload material
+			</button>
+		</a>
+	</div>
+
+<?php
+			//if ($thumbnails_count>0)
+		} else {
+?>
+	<p class="empty-message" id="empty-all-media-page">
+		We haven't published any media that match these filters yet.
+	</p>
+<?php
+		}
+?>
 
 </main><!-- #main -->
 
