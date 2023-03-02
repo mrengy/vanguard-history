@@ -104,7 +104,7 @@
 
 			// Creator
 			if (!empty($creator)) {
-				array_push($caption_array, 'Photo by ' . $creator);
+				array_push($caption_array, 'Created by ' . $creator);
 			}
 
 			// Comma between creator and submitter
