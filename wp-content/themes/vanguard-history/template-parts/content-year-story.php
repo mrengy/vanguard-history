@@ -157,7 +157,7 @@
 								} else {
 										echo("<dt class='year-piece-title'>".$show_piece['show_piece_title']."</dt>");
 										echo("<dd class='year-piece-composer'>".$show_piece['show_piece_composer']."</dd>");
-										do_action( 'qm/debug', $show_piece );
+										//do_action( 'qm/debug', $show_piece );
 								}
 							}
 						} //while(have_rows)('show_pieces')): the_row():
