@@ -181,18 +181,11 @@ figure {
 	a {
 		display: block;
 		border: none;
-		&:nth-child(n + 7) {
-			display: none;
-		}
 	}
 
 	img {
 		border: 1px solid $White;
 		border-radius: $border-radius-sm;
-	}
-
-	&.expanded a:nth-child(n + 7) {
-		display: block;
 	}
 }
 
