@@ -8,15 +8,8 @@ blockquote {
 	margin: $spacing-md 0 $spacing-sm;
 }
 
-figure {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: stretch;
-
-	a {
-		border: none;
-	}
+figure a {
+	border: none;
 }
 
 img,
