@@ -164,8 +164,6 @@
 								//do_action( 'qm/debug', $show_piece );
 							}
 						}
-					?>
-					<?php
 					} //while(have_rows)('show_pieces')): the_row():
 					?>
 				</dl>

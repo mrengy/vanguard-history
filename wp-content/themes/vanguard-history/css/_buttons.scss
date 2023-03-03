@@ -4,6 +4,7 @@
 .wp-block-button,
 input[type="submit"] {
 	cursor: pointer;
+	min-width: 15rem;
 
 	&.button-primary,
 	&.submit,
