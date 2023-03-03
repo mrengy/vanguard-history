@@ -35,13 +35,7 @@ jQuery(document).ready(function ($) {
 		const offset = media_container.data("offset") || limit;
 		$(this).hide();
 		show_all_media_button.addClass("loading");
-		console.log({
-			action: "vanguard_history_all_media_for_year_story", // This is our PHP function below
-			year: year,
-			ensemble: ensemble,
-			limit: limit,
-			offset: offset,
-		});
+
 		$.ajax({
 			url: my_ajax_object.ajax_url, // passed in functions.php > wp_localize_script
 			data: {
@@ -52,11 +46,12 @@ jQuery(document).ready(function ($) {
 				offset: offset,
 			},
 			success: function (data) {
+				show_all_media_button.removeClass("loading");
 				const length = data.split("</a>").length - 1;
+
 				if (data) {
 					// This outputs the result of the ajax request (The Callback)
 					media_container.append(data);
-					show_all_media_button.removeClass("loading");
 					media_container.data("offset", offset + limit);
 				}
 
