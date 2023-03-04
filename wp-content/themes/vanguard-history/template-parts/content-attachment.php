@@ -124,10 +124,5 @@
 		<div id="attachment-properties" class="properties-container">
 			<?php echo join($caption_array); ?>
 		</div>
-	</div>
 	</div><!-- .entry-content -->
-
-	<footer class="entry-footer ui container">
-		<?php vanguard_history_entry_footer(); ?>
-	</footer><!-- .entry-footer -->
 </article><!-- #post-<?php the_ID(); ?> -->

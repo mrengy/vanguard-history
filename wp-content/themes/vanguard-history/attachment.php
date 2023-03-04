@@ -77,4 +77,3 @@ get_header();
 <?php 
 show_disclaimer();
 get_vhs_footer(); 
-?>
