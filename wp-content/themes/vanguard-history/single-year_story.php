@@ -98,8 +98,8 @@ get_header();
 					<?php } ?>
 					<div class="button-container">
 						<a href="/upload-material">
-							<button class="button button-primary" id="submit-content">
-								<span class="button-action">Submit</span> content
+							<button class="button button-primary" id="upload-material">
+								<span class="button-action">Upload</span> Material
 							</button>
 						</a>
 					</div>
