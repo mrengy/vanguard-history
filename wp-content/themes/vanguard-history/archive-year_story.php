@@ -74,7 +74,7 @@ get_header();
             <ul id="year-stories-scv-list" class="archive-list">
                 <?php
 					foreach ($scv_year_stories as $scv_year_story) {
-						$this_link = $scv_year_story->{'guid'};
+						$this_link = get_permalink($scv_year_story);
 						$this_year = $scv_year_story->{'year'};
 						$this_show_title = $scv_year_story->{'show_title'};
 					?>

@@ -828,7 +828,7 @@ function show_featured_story($featured_slug)
 		*/
 
 		//define variables to be echoed
-		$link = $featured_story[0]->guid;
+		$link = get_permalink($featured_story[0]);
 		$title = $featured_story[0]->post_title;
 		$excerpt = $featured_story[0]->post_excerpt;
 		$thumbnail = get_the_post_thumbnail($featured_story[0]->ID, 'large', ['id' => 'featured-story-thumbnail']);
