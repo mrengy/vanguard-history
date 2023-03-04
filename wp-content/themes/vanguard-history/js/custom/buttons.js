@@ -23,6 +23,7 @@ jQuery(document).ready(function ($) {
 	//*** end show / hide year story content button
 
 	//*** start show all media button
+	const limit = 6;
 	const media_container = $("#media-container");
 	const year = media_container.data("year");
 	const ensemble = media_container.data("ensemble");
@@ -31,48 +32,47 @@ jQuery(document).ready(function ($) {
 	const media_button_action_default_text = media_button_action.html();
 	const media_button_action_alternate_text = "Less";
 	$("#show-all-media").click(function (e) {
-		const isExpanded = media_container.hasClass("expanded");
-		const hasFetched = media_container.hasClass("fetched");
+		const offset = media_container.data("offset") || limit;
+		$(this).hide();
+		show_all_media_button.addClass("loading");
 
-		if (!hasFetched) {
-			// Media has not been expanded, request the rest of the media
-			$(this).hide();
-			show_all_media_button.addClass("loading");
-			$.ajax({
-				url: my_ajax_object.ajax_url, // passed in functions.php > wp_localize_script
-				data: {
-					action: "vanguard_history_all_media_for_year_story", // This is our PHP function below
-					year: year,
-					ensemble: ensemble,
-				},
-				success: function (data) {
+		$.ajax({
+			url: my_ajax_object.ajax_url, // passed in functions.php > wp_localize_script
+			data: {
+				action: "vanguard_history_all_media_for_year_story", // This is our PHP function below
+				year: year,
+				ensemble: ensemble,
+				limit: limit,
+				offset: offset,
+			},
+			success: function (data) {
+				show_all_media_button.removeClass("loading");
+				const length = data.split("</a>").length - 1;
+
+				if (data) {
 					// This outputs the result of the ajax request (The Callback)
 					media_container.append(data);
-					media_button_action.html(media_button_action_alternate_text);
-					media_container.addClass("expanded fetched");
-					show_all_media_button.removeClass("loading");
-				},
-				error: function (error) {
-					console.error(
-						"Error accessing " + my_ajax_object.ajax_url,
-						error.responseText
-					);
-					show_all_media_button.removeClass("loading");
-					media_button_action.html(media_button_action_default_text);
-				},
-			});
-			$(this).show();
-			return;
-		}
+					media_container.data("offset", offset + limit);
+				}
 
-		if (isExpanded) {
-			// Collapse media section
-			media_button_action.html(media_button_action_default_text);
-			media_container.removeClass("expanded");
-		} else {
-			media_button_action.html(media_button_action_alternate_text);
-			media_container.addClass("expanded");
-		}
+				if (!data || length < limit) {
+					// This is the last page of data, hide the "more" button
+					// Does not handle the edge case where the last page === limit,
+					// but the next click of the "more" button will return an empty
+					// and hide it
+					show_all_media_button.hide();
+				}
+			},
+			error: function (error) {
+				console.error(
+					"Error accessing " + my_ajax_object.ajax_url,
+					error.responseText
+				);
+				show_all_media_button.removeClass("loading");
+				media_button_action.html(media_button_action_default_text);
+			},
+		});
+		$(this).show();
 	});
 	//*** end show all media button
 });

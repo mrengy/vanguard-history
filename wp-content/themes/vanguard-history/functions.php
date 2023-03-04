@@ -617,6 +617,8 @@ function vanguard_history_all_media_for_year_story()
 	if (isset($_REQUEST)) {
 		$this_year = $_REQUEST['year'];
 		$this_ensemble = $_REQUEST['ensemble'];
+		$offset = $_REQUEST['offset'];
+		$limit = $_REQUEST['limit'];
 		/*
 		echo $this_ensemble;
 		echo $this_year;
@@ -645,9 +647,9 @@ function vanguard_history_all_media_for_year_story()
 				),
 			),
 
-			'offset' => 6,
+			'offset' => $offset,
 
-			'posts_per_page' => 99999
+			'posts_per_page' => $limit
 
 			// in the future, might need to change this once we have more attachments - want it to show all wihout pagination (until we build pagination)
 		);
@@ -877,49 +879,56 @@ add_filter('get_the_archive_title', function ($title) {
 // https://stackoverflow.com/a/45597262/370407
 function disable_search($query, $error = true)
 {
-    if (is_search()) {
-        $query->is_search = false;
-        $query->query_vars[s] = false;
-        $query->query[s] = false;
+	if (is_search()) {
+		$query->is_search = false;
+		$query->query_vars[s] = false;
+		$query->query[s] = false;
 
-        // to error
+		// to error
 
-        if ($error == true) $query->is_404 = true;
-    }
+		if ($error == true) $query->is_404 = true;
+	}
 }
-function remove_search_widget() {
+function remove_search_widget()
+{
 	unregister_widget('WP_Widget_Search');
 }
-if(!is_admin()){
+if (!is_admin()) {
 	add_action('parse_query', 'disable_search');
-    add_filter('get_search_form', function(){ return null; });
-	add_action( 'widgets_init', 'remove_search_widget' );
+	add_filter('get_search_form', function () {
+		return null;
+	});
+	add_action('widgets_init', 'remove_search_widget');
 }
 
 // show 404 template while keeping the current URL
-function show_404_in_page(){
+function show_404_in_page()
+{
 	global $wp_query;
 	$wp_query->set_404();
-	status_header( 404 );
-	get_template_part( 404 ); exit();
+	status_header(404);
+	get_template_part(404);
+	exit();
 }
 
 // remove all taxonomies from sitemap
-function remove_tax_from_sitemap( $taxonomies ) {
+function remove_tax_from_sitemap($taxonomies)
+{
 	$all_taxonomies = get_taxonomies();
-	foreach($all_taxonomies as $this_taxonomy){
-		unset( $taxonomies[$this_taxonomy] );
+	foreach ($all_taxonomies as $this_taxonomy) {
+		unset($taxonomies[$this_taxonomy]);
 	}
 	return $taxonomies;
 }
-add_filter( 'wp_sitemaps_taxonomies', 'remove_tax_from_sitemap' );
+add_filter('wp_sitemaps_taxonomies', 'remove_tax_from_sitemap');
 
 // show disclaimer page content
-function show_disclaimer(){
+function show_disclaimer()
+{
 	$disclaimer_page = get_page_by_path('disclaimer');
 	$disclaimer_content = $disclaimer_page->post_content;
 	$disclaimer_content = apply_filters('the_content', $disclaimer_content);
-	if(!empty($disclaimer_content)){
+	if (!empty($disclaimer_content)) {
 		echo <<<END
 			<div class="disclaimer">
 				$disclaimer_content
