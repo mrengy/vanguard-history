@@ -88,7 +88,7 @@
 			}
 
 			// Ensemble
-			if (!empty($ensemble)) {
+			if (!empty($ensemble) && $ensemble != 'Other') {
 				array_push($caption_array, $ensemble);
 			}
 
