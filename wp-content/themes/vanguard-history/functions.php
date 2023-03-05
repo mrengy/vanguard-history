@@ -936,3 +936,17 @@ function show_disclaimer()
 		END;
 	}
 }
+
+// strip html tags out of title
+
+function strip_html_from_title($title_parts){
+	//$stripped_title = strip_tags($title_parts['site']);
+	//$stripped_title = 'chicken';
+	$stripped_tagline = strip_tags(html_entity_decode((get_bloginfo('description','display'))));
+
+	$title_parts['tagline'] = $stripped_tagline;
+	
+	return $title_parts;
+}
+
+add_filter( 'document_title_parts', 'strip_html_from_title');
