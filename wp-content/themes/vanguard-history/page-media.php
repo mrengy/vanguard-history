@@ -146,7 +146,7 @@ get_header();
 	}
 
 	// build the rest of the ensemble options, setting the appropriate one as selected
-	$all_ensembles = array('Vanguard', 'Vanguard Cadets / B-Corps', 'Winter Guard', 'Winter Percussion', 'Alumni Corps', 'Sparks', 'Other');
+	$all_ensembles = array('Vanguard', 'Vanguard Cadets / B-Corps', 'Winterguard', 'Winter Percussion', 'Alumni Corps', 'Sparks', 'Other');
 	foreach ($all_ensembles as $this_ensemble) {
 		// take the human-readable ensemble and convert it to a slug
 		$this_ensemble_slug = strtolower(str_replace(array(' / ', ' '), array('-', '-'), $this_ensemble));
