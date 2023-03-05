@@ -176,7 +176,7 @@
 				echo <<<END
 						<div id="final-score-info">
 							<h2 id=" final-score-heading" class="entry-heading">
-								Final Score / Placement
+								Final Score (Placement)
 							</h2>
 							<div class="year-score-placement">
 								<span id="final-score">$this_final_score</span>

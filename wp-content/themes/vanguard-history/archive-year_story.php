@@ -164,7 +164,7 @@ get_header();
                         <?php if (!empty($this_show_title)) { ?>
                         &mdash;
                         <span class='show-title'>
-                            <?php echo $this_show_title ?>
+                            "<?php echo $this_show_title ?>"
                         </span>
                         <?php } ?>
                     </li>
