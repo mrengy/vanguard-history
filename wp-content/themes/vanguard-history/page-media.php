@@ -122,7 +122,7 @@ get_header();
 	}
 
 	// build the rest of the year options, setting the appropriate one as selected
-	for ($i = 1965; $i <= $current_year; $i++) {
+	for ($i = 1967; $i <= $current_year; $i++) {
 		// this if (!empty) and two identical else statements seems repetitive but avoids a php warning if vhs_year is not set
 		if (!empty($vhs_year)) {
 			if ($vhs_year == $i) {
