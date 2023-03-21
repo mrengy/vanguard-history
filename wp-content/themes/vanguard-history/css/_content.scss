@@ -12,14 +12,12 @@ figure a {
 	border: none;
 }
 
-img,
-iframe {
-	border-radius: $border-radius-md;
-	box-shadow: $box-shadow;
-}
-
 .wp-block-buttons > .wp-block-button {
 	margin-top: 1rem;
+}
+
+ul {
+	margin: $spacing-sm 0;
 }
 
 // Typography
@@ -137,6 +135,12 @@ iframe {
 .content-section {
 	padding: $spacing-md $spacing-md $spacing-lg $spacing-md;
 	font-size: $font-size-sm;
+
+	img,
+	iframe {
+		border-radius: $border-radius-md;
+		box-shadow: $box-shadow;
+	}
 }
 
 .content-primary {
