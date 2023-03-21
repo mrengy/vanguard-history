@@ -1,3 +1,5 @@
+# currently disabled in Github per https://docs.github.com/en/actions/managing-workflow-runs/disabling-and-enabling-a-workflow
+
 name: pull main branch to stage with each push to main (like a merged PR)
 on:
   push:
