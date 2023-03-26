@@ -87,6 +87,11 @@ get_header();
 	$thumbnails = array();
 
 	if ($media_query->have_posts()) : while ($media_query->have_posts()) : $media_query->the_post();
+			// debug
+			echo ('<pre>');
+					print_r($post);
+			echo('</pre>');
+
 			// store thumbnails in array
 			$thumbnails[] = wp_get_attachment_link(get_the_ID(), 'thumbnail', true);
 		endwhile;
