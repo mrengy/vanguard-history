@@ -123,7 +123,7 @@ function vanguard_history_content_width()
 add_action('after_setup_theme', 'vanguard_history_content_width', 0);
 
 /**
- * Register widget area.
+ * Register widget areas.
  *
  * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
  */
@@ -135,6 +135,17 @@ function vanguard_history_widgets_init()
 			'id'            => 'sidebar-1',
 			'description'   => esc_html__('Add widgets here.', 'vanguard-history'),
 			'before_widget' => '<section id="%1$s" class="widget %2$s">',
+			'after_widget'  => '</section>',
+			'before_title'  => '<h2 class="widget-title">',
+			'after_title'   => '</h2>',
+		)
+	);
+	register_sidebar(
+		array(
+			'name'			=> esc_html__('Pre-footer', 'vanguard-history'),
+			'id'			=> 'pre-footer',
+			'description'	=> esc_html__('Shown immediately before footer', 'vanguard-history'),
+			'before_widget' => '<section id="%1$s" class="widget %2$s disclaimer">',
 			'after_widget'  => '</section>',
 			'before_title'  => '<h2 class="widget-title">',
 			'after_title'   => '</h2>',
