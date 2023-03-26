@@ -88,12 +88,22 @@ get_header();
 
 	if ($media_query->have_posts()) : while ($media_query->have_posts()) : $media_query->the_post();
 			// debug
+			$file_type = get_post_mime_type();
+			$this_id = get_the_ID();
 			echo ('<pre>');
-					print_r($post);
+					//print_r($post);
+					//echo($post->post_mime_type);
+					echo($file_type);
 			echo('</pre>');
 
 			// store thumbnails in array
-			$thumbnails[] = wp_get_attachment_link(get_the_ID(), 'thumbnail', true);
+			// treat videos specially
+			if (str_contains($file_type, 'video')){
+				//echo do_shortcode('[videopack gallery="true" gallery_include="'.$this_id.'"][/videopack]');
+				echo $this_id;
+			} else{
+				$thumbnails[] = wp_get_attachment_link(get_the_ID(), 'thumbnail', true);
+			}
 		endwhile;
 
 	endif; // end of media loop
