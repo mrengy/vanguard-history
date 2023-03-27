@@ -90,17 +90,18 @@ get_header();
 			// debug
 			$file_type = get_post_mime_type();
 			$this_id = get_the_ID();
-			echo ('<pre>');
+			//echo ('<pre>');
 					//print_r($post);
 					//echo($post->post_mime_type);
-					echo($file_type);
-			echo('</pre>');
+					//echo($file_type);
+			//echo('</pre>');
 
 			// store thumbnails in array
 			// treat videos specially
 			if (str_contains($file_type, 'video')){
 				//echo do_shortcode('[videopack gallery="true" gallery_include="'.$this_id.'"][/videopack]');
-				echo $this_id;
+				//echo $this_id;
+				echo do_shortcode('[videopack gallery="true"][/videopack]');
 			} else{
 				$thumbnails[] = wp_get_attachment_link(get_the_ID(), 'thumbnail', true);
 			}
