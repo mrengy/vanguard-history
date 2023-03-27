@@ -111,13 +111,15 @@ get_header();
 				//$thumbnails[] = wp_get_attachment_link(get_the_ID(), 'thumbnail', true);
 
 				//trying to get attachments from the video posts
+				/*
 				$this_attachments = get_attached_media($this_id);
 				echo('<pre>Attachments: '); 
 				print_r($this_attachments);
 				echo('</pre>');
-
+				*/
+				
 				//trying to add thumbnail to list of thumbnails, using videopack shortcode
-				$thumbnails[] = do_shortcode('[videopack gallery="true" include="'.$this_id.'"]');
+				$thumbnails[] = get_the_post_thumbnail_url($this_id, 'thumbnail');
 			} else{
 				// for images
 				$thumbnails[] = wp_get_attachment_link(get_the_ID(), 'thumbnail', true);
