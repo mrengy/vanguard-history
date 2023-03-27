@@ -101,7 +101,7 @@ get_header();
 			if (str_contains($file_type, 'video')){
 				//echo do_shortcode('[videopack gallery="true" gallery_include="'.$this_id.'"][/videopack]');
 				//echo $this_id;
-				echo do_shortcode('[videopack gallery="true"][/videopack]');
+				echo do_shortcode('[videopack gallery="true"]'.$this_id.'[/videopack]');
 			} else{
 				$thumbnails[] = wp_get_attachment_link(get_the_ID(), 'thumbnail', true);
 			}
