@@ -97,12 +97,19 @@ get_header();
 			//echo('</pre>');
 
 			// store thumbnails in array
-			// treat videos specially
 			if (str_contains($file_type, 'video')){
+				// treat videos specially
+
 				//echo do_shortcode('[videopack gallery="true" gallery_include="'.$this_id.'"][/videopack]');
 				//echo $this_id;
-				echo do_shortcode('[videopack gallery="true"]'.$this_id.'[/videopack]');
+				//echo do_shortcode('[videopack gallery="true"]'.$this_id.'[/videopack]');
+				//$thumbnails[] = do_shortcode('[videopack gallery="true" ids="'.$this_id.'"][/videopack]');
+				//$thumbnails[] = do_shortcode('[videopack gallery="true"][/videopack]');
+				//$thumbnails[] = do_shortcode('[videopack gallery="true" id="'.$this_id.'"]');
+				//$thumbnails[] = do_shortcode('[videopack gallery="true" id="1021"]');
+				$thumbnails[] = do_shortcode('[videopack gallery="true" include="'.$this_id.'"]');
 			} else{
+				// for images
 				$thumbnails[] = wp_get_attachment_link(get_the_ID(), 'thumbnail', true);
 			}
 		endwhile;
