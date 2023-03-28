@@ -100,17 +100,6 @@ get_header();
 			if (str_contains($file_type, 'video')){
 				// treat videos specially
 
-				//echo do_shortcode('[videopack gallery="true" gallery_include="'.$this_id.'"][/videopack]');
-				//echo $this_id;
-				//echo do_shortcode('[videopack gallery="true"]'.$this_id.'[/videopack]');
-				//$thumbnails[] = do_shortcode('[videopack gallery="true" ids="'.$this_id.'"][/videopack]');
-				//$thumbnails[] = do_shortcode('[videopack gallery="true"][/videopack]');
-				//$thumbnails[] = do_shortcode('[videopack gallery="true" id="'.$this_id.'"]');
-				//$thumbnails[] = do_shortcode('[videopack gallery="true" id="1021"]');
-				//$thumbnails[] = do_shortcode('[videopack gallery="true" include="'.$this_id.'"]');
-				//$thumbnails[] = wp_get_attachment_link(get_the_ID(), 'thumbnail', true);
-
-				//trying to get attachments from the video posts
 				/*
 				$this_attachments = get_attached_media($this_id);
 				echo('<pre>Attachments: '); 
@@ -118,8 +107,14 @@ get_header();
 				echo('</pre>');
 				*/
 				
-				//trying to add thumbnail to list of thumbnails, using videopack shortcode
-				$thumbnails[] = get_the_post_thumbnail_url($this_id, 'thumbnail');
+				$this_thumbnail = get_the_post_thumbnail_url($this_id, 'thumbnail');
+				$this_permalink = get_permalink($this_id);
+				$this_formed_link = "
+					<a href='$this_permalink'>
+					 <img src='$this_thumbnail' />
+					</a>
+				";
+				$thumbnails[] = $this_formed_link;
 			} else{
 				// for images
 				$thumbnails[] = wp_get_attachment_link(get_the_ID(), 'thumbnail', true);
