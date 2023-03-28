@@ -99,22 +99,11 @@ get_header();
 			// store thumbnails in array
 			if (str_contains($file_type, 'video')){
 				// treat videos specially
-
-				/*
-				$this_attachments = get_attached_media($this_id);
-				echo('<pre>Attachments: '); 
-				print_r($this_attachments);
-				echo('</pre>');
-				*/
-				
 				$this_thumbnail = get_the_post_thumbnail_url($this_id, 'thumbnail');
-				$this_permalink = get_permalink($this_id);
-				$this_formed_link = "
-					<a href='$this_permalink'>
-					 <img src='$this_thumbnail' />
-					</a>
-				";
-				$thumbnails[] = $this_formed_link;
+				$this_thumbnail_id = get_post_thumbnail_id($this_id);
+				$this_thumbnail_alt = get_post_meta($this_thumbnail_id, '_wp_attachment_image_alt', TRUE);
+				$this_img_string = "<img class='attachment-thumbnail size-thumbnail video-thumbnail' src='$this_thumbnail' alt='$this_thumbnail_alt' decoding='async' loading='lazy' width='150' height='150'/>";
+				$thumbnails[] = wp_get_attachment_link($this_id, '', true, false, $this_img_string, '');
 			} else{
 				// for images
 				$thumbnails[] = wp_get_attachment_link(get_the_ID(), 'thumbnail', true);
