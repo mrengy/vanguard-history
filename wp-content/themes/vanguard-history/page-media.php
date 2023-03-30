@@ -104,7 +104,7 @@ get_header();
 				$this_thumbnail_alt = get_post_meta($this_thumbnail_id, '_wp_attachment_image_alt', TRUE);
 				$this_img_string = "<img class='attachment-thumbnail size-thumbnail video-thumbnail' src='$this_thumbnail' alt='$this_thumbnail_alt' decoding='async' loading='lazy' width='150' height='150'/>";
 				$thumbnails[] = wp_get_attachment_link($this_id, '', true, false, $this_img_string, '');
-			} else if (str_contains($file_type, 'video')){
+			} else if (str_contains($file_type, 'audio')){
 				// for audio
 
 			} else if (str_contains($file_type, 'image')){
