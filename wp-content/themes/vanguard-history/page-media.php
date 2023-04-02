@@ -106,7 +106,10 @@ get_header();
 				$thumbnails[] = wp_get_attachment_link($this_id, '', true, false, $this_img_string, '');
 			} else if (str_contains($file_type, 'audio')){
 				// for audio
-
+				$site_url = get_site_url();
+				$this_media_alt = get_post_meta($this_id, '_wp_attachment_image_alt', TRUE);
+				$this_img_string = "<img class='attachment-thumbnail size-thumbnail audio-thumbnail' src='$site_url"."/wp-content/plugins/media-library-assistant/images/crystal/audio.png"."' alt='$this_media_alt' decoding='async' loading='lazy' width='150' height='150'/>";
+				$thumbnails[] = wp_get_attachment_link($this_id, '', true, false, $this_img_string, '');
 			} else if (str_contains($file_type, 'image')){
 				// for images
 				$thumbnails[] = wp_get_attachment_link(get_the_ID(), 'thumbnail', true);
