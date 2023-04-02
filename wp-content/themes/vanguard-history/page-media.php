@@ -101,10 +101,10 @@ get_header();
 				// for videos, things are in different places - wp_get_attachment_link doesn't get the thumbnail on its own
 				$this_thumbnail = get_the_post_thumbnail_url($this_id, 'thumbnail');
 				$this_thumbnail_id = get_post_thumbnail_id($this_id);
-				$site_url = get_site_url();
 				$this_thumbnail_alt = get_post_meta($this_thumbnail_id, '_wp_attachment_image_alt', TRUE);
 				// if there is no thumbnail set in the video, use the default image
 				if (empty($this_thumbnail)){
+					$site_url = get_site_url();
 					$this_thumbnail = $site_url."/wp-content/plugins/media-library-assistant/images/crystal/video.png" ;
 				}
 				$this_img_string = "<img class='attachment-thumbnail size-thumbnail video-thumbnail' src='$this_thumbnail' alt='$this_thumbnail_alt' decoding='async' loading='lazy' width='150' height='150'/>";
@@ -121,7 +121,7 @@ get_header();
 			} else {
 				// if there's another file type that is not included above, log it to Query Monitor so that admins will know
 				$log_message = "query included an unhandled filetype. The media item that triggered this has a post ID of ".$this_id.". You might want to edit the code to be able to display them or set the media items as unpublished.";
-				do_action('qm/notice',$log_message);
+				do_action('qm/warning',$log_message);
 			}
 		endwhile;
 
