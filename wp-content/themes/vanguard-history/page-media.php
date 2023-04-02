@@ -85,23 +85,11 @@ get_header();
 	$media_query = new WP_Query($media_query_args);
 
 	$thumbnails = array();
-
-	if ($media_query->have_posts()) : while ($media_query->have_posts()) : $media_query->the_post();
-			// store thumbnails in array
-			$thumbnails[] = wp_get_attachment_link(get_the_ID(), 'thumbnail', true);
-		endwhile;
-
-	endif; // end of media loop
+	
+	vanguard_history_populate_thumbnails($media_query);
 
 	$thumbnails_count = count($thumbnails);
 
-	// Be kind; rewind
-	wp_reset_postdata();
-
-
-	?>
-
-	<?php
 	//get current url, but remove "page/#" from it, if present
 	//https://wordpress.stackexchange.com/a/247739/7313
 	global $wp;
@@ -257,5 +245,5 @@ get_header();
 </main><!-- #main -->
 
 <?php
-show_disclaimer();
+dynamic_sidebar('pre-footer');
 get_vhs_footer();

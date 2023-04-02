@@ -123,7 +123,7 @@ function vanguard_history_content_width()
 add_action('after_setup_theme', 'vanguard_history_content_width', 0);
 
 /**
- * Register widget area.
+ * Register widget areas.
  *
  * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
  */
@@ -135,6 +135,17 @@ function vanguard_history_widgets_init()
 			'id'            => 'sidebar-1',
 			'description'   => esc_html__('Add widgets here.', 'vanguard-history'),
 			'before_widget' => '<section id="%1$s" class="widget %2$s">',
+			'after_widget'  => '</section>',
+			'before_title'  => '<h2 class="widget-title">',
+			'after_title'   => '</h2>',
+		)
+	);
+	register_sidebar(
+		array(
+			'name'			=> esc_html__('Pre-footer', 'vanguard-history'),
+			'id'			=> 'pre-footer',
+			'description'	=> esc_html__('Shown immediately before footer', 'vanguard-history'),
+			'before_widget' => '<section id="%1$s" class="widget %2$s disclaimer">',
 			'after_widget'  => '</section>',
 			'before_title'  => '<h2 class="widget-title">',
 			'after_title'   => '</h2>',
@@ -911,7 +922,7 @@ function show_404_in_page()
 	exit();
 }
 
-// remove all taxonomies from sitemap
+// remove all taxonomies from sitemap. If changing this, make sure to remove submitter email from sitemap separately
 function remove_tax_from_sitemap($taxonomies)
 {
 	$all_taxonomies = get_taxonomies();
@@ -922,23 +933,7 @@ function remove_tax_from_sitemap($taxonomies)
 }
 add_filter('wp_sitemaps_taxonomies', 'remove_tax_from_sitemap');
 
-// show disclaimer page content
-function show_disclaimer()
-{
-	$disclaimer_page = get_page_by_path('disclaimer');
-	$disclaimer_content = $disclaimer_page->post_content;
-	$disclaimer_content = apply_filters('the_content', $disclaimer_content);
-	if (!empty($disclaimer_content)) {
-		echo <<<END
-			<div class="disclaimer">
-				$disclaimer_content
-			</div>
-		END;
-	}
-}
-
 // strip html tags out of title
-
 function strip_html_from_title($title_parts){
 	//$stripped_title = strip_tags($title_parts['site']);
 	//$stripped_title = 'chicken';
@@ -950,3 +945,46 @@ function strip_html_from_title($title_parts){
 }
 
 add_filter( 'document_title_parts', 'strip_html_from_title');
+
+function vanguard_history_populate_thumbnails($media_query){
+	//refer to thumbnails array defined outside of this function
+	global $thumbnails;
+
+	if ($media_query->have_posts()) : while ($media_query->have_posts()) : $media_query->the_post();
+			// basic info
+			$file_type = get_post_mime_type();
+			$this_id = get_the_ID();
+
+			// store thumbnails in array
+			if (str_contains($file_type, 'video')){
+				// for videos, things are in different places - wp_get_attachment_link doesn't get the thumbnail on its own
+				$this_thumbnail = get_the_post_thumbnail_url($this_id, 'thumbnail');
+				$this_thumbnail_id = get_post_thumbnail_id($this_id);
+				$this_thumbnail_alt = get_post_meta($this_thumbnail_id, '_wp_attachment_image_alt', TRUE);
+				// if there is no thumbnail set in the video, use the default image
+				if (empty($this_thumbnail)){
+					$site_url = get_site_url();
+					$this_thumbnail = $site_url."/wp-content/plugins/media-library-assistant/images/crystal/video.png" ;
+				}
+				$this_img_string = "<img class='attachment-thumbnail size-thumbnail video-thumbnail' src='$this_thumbnail' alt='$this_thumbnail_alt' decoding='async' loading='lazy' width='150' height='150'/>";
+				$thumbnails[] = wp_get_attachment_link($this_id, '', true, false, $this_img_string, '');
+			} else if (str_contains($file_type, 'audio')){
+				// for audio
+				$site_url = get_site_url();
+				$this_media_alt = get_post_meta($this_id, '_wp_attachment_image_alt', TRUE);
+				$this_img_string = "<img class='attachment-thumbnail size-thumbnail audio-thumbnail' src='$site_url"."/wp-content/plugins/media-library-assistant/images/crystal/audio.png"."' alt='$this_media_alt' decoding='async' loading='lazy' width='150' height='150'/>";
+				$thumbnails[] = wp_get_attachment_link($this_id, '', true, false, $this_img_string, '');
+			} else if (str_contains($file_type, 'image')){
+				// for images
+				$thumbnails[] = wp_get_attachment_link(get_the_ID(), 'thumbnail', true);
+			} else {
+				// if there's another file type that is not included above, log it to Query Monitor so that admins will know
+				$log_message = "query included an unhandled filetype. The media item that triggered this has a post ID of ".$this_id.". You might want to edit the code to be able to display them or set the media items as unpublished.";
+				do_action('qm/warning',$log_message);
+			}
+		endwhile;
+	endif; // end of media loop
+
+	// Be kind; rewind
+	wp_reset_postdata();
+}

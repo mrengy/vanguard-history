@@ -39,6 +39,6 @@ get_header();
 <?php
 // show disclaimer in footer, unless this is the disclaimer page itself
 if(!is_page('disclaimer')){
-	show_disclaimer();
+	dynamic_sidebar('pre-footer');
 }
 get_vhs_footer();

@@ -65,13 +65,7 @@ get_header();
 
 			$thumbnails = array();
 
-			if ( $media_query->have_posts() ) : while ( $media_query->have_posts() ) : $media_query->the_post();
-					// store thumbnails in array
-					$thumbnails[] = wp_get_attachment_link( get_the_ID(), 'thumbnail', true );
-
-				endwhile;
-
-			endif; // end of media loop
+			vanguard_history_populate_thumbnails($media_query);
 
 			$thumbnails_count = count($thumbnails);
 
@@ -118,5 +112,5 @@ get_header();
 </main><!-- #main -->
 
 <?php
-show_disclaimer();
+dynamic_sidebar('pre-footer');
 get_vhs_footer();

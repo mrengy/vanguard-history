@@ -35,10 +35,22 @@
 			<?php
 			$attachment_id = get_the_ID();
 			// If this attachment is an Image, show the large size
-			if (wp_attachment_is_image($attachment_id)) {
+			if (wp_attachment_is('image', $attachment_id)) {
 				$attachment_image = wp_get_attachment_image($attachment_id, '', '', array('class' => 'post-thumbnail', 'size' => 'large', 'alt' => the_title_attribute(array('post' => $attachment_id, 'echo' => 0))));
 				echo $attachment_image;
 				echo '<div class="wp-caption-text">' . get_the_excerpt() . '</div>';
+			} else if (wp_attachment_is('video', $attachment_id)) {
+				$attachment_video = wp_get_attachment_url($attachment_id);
+				echo do_shortcode('[videopack id='.$attachment_id.']'.$attachment_video.'[/videopack]');
+				//echo $attachment_video;
+				echo '<div class="wp-caption-text">' . get_the_excerpt() . '</div>';
+			} else if (wp_attachment_is('audio', $attachment_id)) {
+				$attachment_audio = wp_get_attachment_url($attachment_id);
+				$attr = array(
+					"src" => $attachment_audio,
+					"preload" => true
+				);
+				echo wp_audio_shortcode($attr);
 			} else {
 				the_content(
 					sprintf(
