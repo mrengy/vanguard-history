@@ -45,7 +45,12 @@
 				//echo $attachment_video;
 				echo '<div class="wp-caption-text">' . get_the_excerpt() . '</div>';
 			} else if (wp_attachment_is('audio', $attachment_id)) {
-
+				$attachment_audio = wp_get_attachment_url($attachment_id);
+				$attr = array(
+					"src" => $attachment_audio,
+					"preload" => true
+				);
+				echo wp_audio_shortcode($attr);
 			} else {
 				the_content(
 					sprintf(
