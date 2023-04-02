@@ -98,10 +98,15 @@ get_header();
 
 			// store thumbnails in array
 			if (str_contains($file_type, 'video')){
-				// for videos things are in different places - wp_get_attachment_link doesn't get the thumbnail on its own
+				// for videos, things are in different places - wp_get_attachment_link doesn't get the thumbnail on its own
 				$this_thumbnail = get_the_post_thumbnail_url($this_id, 'thumbnail');
 				$this_thumbnail_id = get_post_thumbnail_id($this_id);
+				$site_url = get_site_url();
 				$this_thumbnail_alt = get_post_meta($this_thumbnail_id, '_wp_attachment_image_alt', TRUE);
+				// if there is no thumbnail set in the video, use the default image
+				if (empty($this_thumbnail)){
+					$this_thumbnail = $site_url."/wp-content/plugins/media-library-assistant/images/crystal/video.png" ;
+				}
 				$this_img_string = "<img class='attachment-thumbnail size-thumbnail video-thumbnail' src='$this_thumbnail' alt='$this_thumbnail_alt' decoding='async' loading='lazy' width='150' height='150'/>";
 				$thumbnails[] = wp_get_attachment_link($this_id, '', true, false, $this_img_string, '');
 			} else if (str_contains($file_type, 'audio')){
