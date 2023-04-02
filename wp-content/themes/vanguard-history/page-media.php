@@ -87,14 +87,9 @@ get_header();
 	$thumbnails = array();
 
 	if ($media_query->have_posts()) : while ($media_query->have_posts()) : $media_query->the_post();
-			// debug
+			// basic info
 			$file_type = get_post_mime_type();
 			$this_id = get_the_ID();
-			echo ('<pre>');
-					//print_r($post);
-					//echo($post->post_mime_type);
-					echo($file_type);
-			echo('</pre>');
 
 			// store thumbnails in array
 			if (str_contains($file_type, 'video')){
@@ -127,15 +122,11 @@ get_header();
 
 	endif; // end of media loop
 
-	$thumbnails_count = count($thumbnails);
-
 	// Be kind; rewind
 	wp_reset_postdata();
 
+	$thumbnails_count = count($thumbnails);
 
-	?>
-
-	<?php
 	//get current url, but remove "page/#" from it, if present
 	//https://wordpress.stackexchange.com/a/247739/7313
 	global $wp;

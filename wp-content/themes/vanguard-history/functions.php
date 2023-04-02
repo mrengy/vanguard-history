@@ -922,7 +922,7 @@ function show_404_in_page()
 	exit();
 }
 
-// remove all taxonomies from sitemap
+// remove all taxonomies from sitemap. If changing this, make sure to remove submitter email from sitemap separately
 function remove_tax_from_sitemap($taxonomies)
 {
 	$all_taxonomies = get_taxonomies();
@@ -934,7 +934,6 @@ function remove_tax_from_sitemap($taxonomies)
 add_filter('wp_sitemaps_taxonomies', 'remove_tax_from_sitemap');
 
 // strip html tags out of title
-
 function strip_html_from_title($title_parts){
 	//$stripped_title = strip_tags($title_parts['site']);
 	//$stripped_title = 'chicken';
@@ -946,3 +945,7 @@ function strip_html_from_title($title_parts){
 }
 
 add_filter( 'document_title_parts', 'strip_html_from_title');
+
+function vanguard_history_populate_thumbnails($thumbnail){
+	
+}
