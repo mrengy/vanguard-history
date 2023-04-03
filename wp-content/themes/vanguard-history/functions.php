@@ -947,8 +947,8 @@ function strip_html_from_title($title_parts){
 add_filter( 'document_title_parts', 'strip_html_from_title');
 
 function vanguard_history_populate_thumbnails($media_query){
-	//refer to thumbnails array defined outside of this function
-	global $thumbnails;
+	//define thumbnails array
+	$thumbnails = array();
 
 	if ($media_query->have_posts()) : while ($media_query->have_posts()) : $media_query->the_post();
 			// basic info
@@ -988,4 +988,6 @@ function vanguard_history_populate_thumbnails($media_query){
 
 	// Be kind; rewind
 	wp_reset_postdata();
+
+	return $thumbnails;
 }

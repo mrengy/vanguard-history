@@ -83,10 +83,8 @@ get_header();
 	}
 
 	$media_query = new WP_Query($media_query_args);
-
-	$thumbnails = array();
 	
-	vanguard_history_populate_thumbnails($media_query);
+	$thumbnails = vanguard_history_populate_thumbnails($media_query);
 
 	$thumbnails_count = count($thumbnails);
 
