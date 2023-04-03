@@ -41,7 +41,7 @@
 				echo '<div class="wp-caption-text">' . get_the_excerpt() . '</div>';
 			} else if (wp_attachment_is('video', $attachment_id)) {
 				$attachment_video = wp_get_attachment_url($attachment_id);
-				echo do_shortcode('[videopack id='.$attachment_id.']'.$attachment_video.'[/videopack]');
+				echo do_shortcode('[videopack id='.$attachment_id.' caption="&nbsp;"]'.$attachment_video.'[/videopack]');
 				//echo $attachment_video;
 				echo '<div class="wp-caption-text">' . get_the_excerpt() . '</div>';
 			} else if (wp_attachment_is('audio', $attachment_id)) {
