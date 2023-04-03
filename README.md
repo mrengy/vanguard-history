@@ -12,7 +12,7 @@ Uses [WP CLI](https://wp-cli.org/) for faster WordPress administration from the 
 
 We will work on code (which plugins to use, theme code, and mu-plugin code) **locally first**, then push it to Github, review it, and eventually deploy it to the production website. **Github is the source of truth for code**.
 
-**The stage website is the source of truth for content** (database and uploaded files). We can periodically pull database content down from stage to dev and local installs to sync it. If you make database changes locally that the stage site should have, **also make those changes on the stage site**.
+**The production website is the source of truth for content** (database and uploaded files). We can periodically pull database content down from production to dev and local installs to sync it. If you make database changes locally that the production site should have, **also make those changes on the production site**.
 
 # Working locally
 
@@ -39,13 +39,13 @@ npm i
 
 #### Preparation
 
-Ensure you've got a working WordPress account for the stage site, [historyscv-stage.dreamhosters.com](https://historyscv-stage.dreamhosters.com). If you don't have a WordPress account there, ask Mike Eng for one. It will make things easier if you use your same username, email address, and password on the local site you'll create next.
+Ensure you've got a working WordPress account for the production site, [history.scvanguard.org](https://history.scvanguard.org). If you don't have a WordPress account there, ask Mike Eng for one. It will make things easier if you use your same username, email address, and password on the local site you'll create next.
 
 #### Install WordPress locally
 
 This is written using [Local](https://localwp.com/). There are other ways to install and run WordPress locally, but this is a very simple one. If you use a different approach, you can skip ahead.
 
-Install [Local](https://localwp.com/) on your computer. In Local, create a new site. Name it "Vanguard History". It's recommended to use the same username, email address, and password you have from the stage site. In Local, click on "open site". The URL should be http://vanguard-history.local . If it differs, note what it is for the next step.
+Install [Local](https://localwp.com/) on your computer. In Local, create a new site. Name it "Vanguard History". It's recommended to use the same username, email address, and password you have from the production site. In Local, click on "open site". The URL should be http://vanguard-history.local . If it differs, note what it is for the next step.
 
 #### Connect to this Github repository the shared code
 
@@ -94,17 +94,17 @@ If in the command line, you see an error involving `gravityformscli` or `wp gf`,
 
 Activate all the plugins by [running](https://developer.wordpress.org/cli/commands/plugin/activate/) `wp plugin activate --all` in the command line or opening WordPress Admin for your local installation, logging in, and navigating to the `plugins` page.
 
-#### Migrate database and uploads from stage to local
+#### Migrate database and uploads from production to local
 
-##### Option 1: export / import media files along with the database
+##### Option 1: export / import media files along with the database (currently not working)
 
-Get a backup of the stage site from the [All in One WordPress Migration Export page](https://historyscv-stage.dreamhosters.com/wp-admin/admin.php?page=ai1wm_export). Note the following settings:
+Get a backup of the production site from the [All in One WordPress Migration Export page](https://history.scvanguard.org/wp-admin/admin.php?page=ai1wm_export). Note the following settings:
 
-1. Use: "Find _ replace with _ in the database" to change the url from the stage url to your local url.
+1. Use: "Find _ replace with _ in the database" to change the url from the production url to your local url.
    Find:
 
    ```
-   https://historyscv-stage.dreamhosters.com
+   https://history.scvanguard.org
    ```
 
    Replace with: (or whatever your local url is).
@@ -130,34 +130,23 @@ You may need to [update some files in your local WordPress installation](https:/
 
 Select or drag your .wpress file into the indicated area on the import page and follow the prompts. Note that the prompt to save your permalinks structure after import completes is important for getting the import to work. You just need to follow the link to the permalinks settings page and click "save changes" without changing any other settings.
 
-When prompted to log in to WordPress Admin on your local site after importing the migration file, you will need to use your password from the stage site. You might want to change your password on the local site later.
+When prompted to log in to WordPress Admin on your local site after importing the migration file, you will need to use your password from the production site. You might want to change your password on the local site later.
 
 That's it! View your local site to ensure it matches what's on the stage site.
 
 ##### Option 2: export / import database separate from media files
 
-If the file from the All in One WordPress Migration plugin is too large to import, you can exclude media files from the export file and copy in some media files separately. Follow the steps in the above section, with the following changes.
-
-When creating the export, also check the option:
-
-1. "Do not export media library (files)"
-
-After importing the database file in your local WordPress Admin, manually copy in media files. Download and unzip a couple of directories of uploads by month from [this Basecamp thread](https://3.basecamp.com/5067876/buckets/22032865/messages/5561851381#__recording_5586109819) (ask Mike Eng if you need access to Basecamp). Go to your local site folder. Get there from the Local app > under the site "Vanguard History", click "Go to site folder". Place the media files under "vanguard-history" > "app" > "public" > "wp-content" > "uploads". Within "uploads", there are directories organized by year and month. Place the directories and their contents under "uploads" in the appropriate year / month structure.
-
-##### Option 3: import database sql
-
-1. Ask [mrengy](https://github.com/mrengy) to export the stage SQL
+1. Ask [mrengy](https://github.com/mrengy) to export the production SQL
 1. Download the resulting zip and extract it
 1. In Local, go to the Database Tab > Click `Open Adminer`
 1. Select all tables in the list and click `Drop`
 1. On the left side of the window, click `Import`
 1. Select your downloaded SQL file
-1. Run the following:
+1. In the terminal, run [wp search-replace](https://developer.wordpress.org/cli/commands/search-replace/), replacing the production URL with your local URL
 
-```sh
-cd ~/Local Sites/vanguard-history/app/public
-npm run replace-stage-urls
-```
+Note that your WordPress password on your local site will be reset to whatever your WordPress password was on production, so you might want to change it to something different locally.
+
+After importing the database file in your local WordPress Admin, manually copy in media files. Download and unzip a couple of directories of uploads by year from [this Google Drive folder: prod-uploads](https://drive.google.com/drive/u/0/folders/10o_kCclvp2SmluoqI7N5eGpNKQFRUBeL) (ask Mike Eng if you need access to Basecamp). Go to your local site folder. Get there from the Local app > under the site "Vanguard History", click "Go to site folder". Place the media files under "vanguard-history" > "app" > "public" > "wp-content" > "uploads". Within "uploads", there are directories organized by year and month. Place the directories and their contents under "uploads" in the appropriate year / month structure.
 
 ## To make edits to CSS
 
