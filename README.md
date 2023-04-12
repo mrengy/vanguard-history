@@ -142,7 +142,17 @@ That's it! View your local site to ensure it matches what's on the stage site.
 1. Select all tables in the list and click `Drop`
 1. On the left side of the window, click `Import`
 1. Select your downloaded SQL file
-1. In the terminal, run [wp search-replace](https://developer.wordpress.org/cli/commands/search-replace/), replacing the production URL with your local URL
+1. In the terminal, run [wp search-replace](https://developer.wordpress.org/cli/commands/search-replace/), replacing the production URL with your local URL. You can also use the npm scripts:
+
+   ```sh
+   # Stage
+   cd wp-content/themes/vanguard-history
+   npm run replace-urls:stage
+
+   # Production
+   cd wp-content/themes/vanguard-history
+   npm run replace-urls:production
+   ```
 
 Note that your WordPress password on your local site will be reset to whatever your WordPress password was on production, so you might want to change it to something different locally.
 
