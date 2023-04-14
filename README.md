@@ -85,7 +85,10 @@ If you get `Error: Error establishing a database connection`, you'll need to edi
 
 If in the command line, you see an error involving `gravityformscli` or `wp gf`, there was likely a problem with the script that installs the GravityForms plugin. You can try to install it by using one of the two following methods:
 
-1. In the command line, run `wp gf install --key=283af92393f339347c5e7f6aa889e0cc`
+1. In the command line, run:
+   ```sh
+   wp gf install --key=283af92393f339347c5e7f6aa889e0cc
+   ```
 1. Upload a .zip file in the WordPress admin
    1. Download [the .zip file of the GravityForms plugin from Basecamp](https://3.basecamp.com/5067876/buckets/22032865/uploads/4596222685)
    1. [Open the WordPress Admin from Local](https://localwp.com/help-docs/local-features/using-one-click-admin/)

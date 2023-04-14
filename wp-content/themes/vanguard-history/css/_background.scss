@@ -4,10 +4,14 @@
 // 3. Add a new image in the theme img folder (background-n.png)
 @media screen and (min-width: 1280px) {
 	body#background-1 {
-		background-image: url("img/background-1.png"), url("img/distress-1.png");
+		background-image: url("img/distress-2.png"),
+			url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNUDDeqBwACdgErtXLrFQAAAABJRU5ErkJggg==),
+			url("img/background-1.png");
 	}
 
 	body#background-2 {
-		background-image: url("img/background-2.png"), url("img/distress-2.png");
+		background-image: url("img/distress-2.png"),
+			url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNUDDeqBwACdgErtXLrFQAAAABJRU5ErkJggg==),
+			url("img/background-2.png");
 	}
 }
