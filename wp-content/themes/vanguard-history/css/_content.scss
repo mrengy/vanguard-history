@@ -95,6 +95,7 @@ ul {
 
 .entry-content {
 	margin-bottom: $spacing-md;
+	max-width: $max-content-width;
 
 	.media {
 		display: flex;
@@ -228,6 +229,6 @@ ul {
 	}
 }
 
-#back-link{
+#back-link {
 	margin-bottom: $spacing-md;
 }
