@@ -228,6 +228,30 @@ ul {
 	}
 }
 
-#back-link{
+#back-link {
 	margin-bottom: $spacing-md;
+}
+
+.audio-thumbnail-wrapper,
+.video-thumbnail-wrapper {
+	position: relative;
+	&:after {
+		content: "";
+		display: block;
+		background-size: contain;
+		background-repeat: no-repeat;
+		position: absolute;
+		top: 50px;
+		left: 50px;
+		width: 50px;
+		height: 50px;
+	}
+}
+
+.audio-thumbnail-wrapper:after {
+	background-image: url("img/audio.png");
+}
+
+.video-thumbnail-wrapper:after {
+	background-image: url("img/video.png");
 }
