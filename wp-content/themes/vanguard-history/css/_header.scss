@@ -4,7 +4,7 @@
 // 1. Add a class below
 // 2. Update the max index of the body id random number in header.php
 // 3. Add a new image in the theme img folder (background-n.png)
-@media screen and (min-width: 1280px) {
+@media screen and (min-width: $bp--lg) {
 	body#background-1 {
 		background-image: url("img/background-1.png");
 	}
