@@ -241,18 +241,25 @@ ul {
 		display: block;
 		background-size: contain;
 		background-repeat: no-repeat;
+		background-position: center;
 		position: absolute;
-		top: 50px;
-		left: 50px;
-		width: 50px;
-		height: 50px;
 	}
 }
 
 .audio-thumbnail-wrapper:after {
 	background-image: url("img/audio.png");
+	width: 140px;
+	height: 140px;
+	top: 5px;
+	left: 5px;
 }
 
 .video-thumbnail-wrapper:after {
 	background-image: url("img/video.png");
+	background-color: $WhiteTranslucent;
+	border-radius: 50%;
+	top: 40px;
+	left: 40px;
+	width: 70px;
+	height: 70px;
 }
