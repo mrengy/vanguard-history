@@ -85,7 +85,10 @@ If you get `Error: Error establishing a database connection`, you'll need to edi
 
 If in the command line, you see an error involving `gravityformscli` or `wp gf`, there was likely a problem with the script that installs the GravityForms plugin. You can try to install it by using one of the two following methods:
 
-1. In the command line, run `wp gf install --key=283af92393f339347c5e7f6aa889e0cc`
+1. In the command line, run:
+   ```sh
+   wp gf install --key=283af92393f339347c5e7f6aa889e0cc
+   ```
 1. Upload a .zip file in the WordPress admin
    1. Download [the .zip file of the GravityForms plugin from Basecamp](https://3.basecamp.com/5067876/buckets/22032865/uploads/4596222685)
    1. [Open the WordPress Admin from Local](https://localwp.com/help-docs/local-features/using-one-click-admin/)
@@ -142,7 +145,17 @@ That's it! View your local site to ensure it matches what's on the stage site.
 1. Select all tables in the list and click `Drop`
 1. On the left side of the window, click `Import`
 1. Select your downloaded SQL file
-1. In the terminal, run [wp search-replace](https://developer.wordpress.org/cli/commands/search-replace/), replacing the production URL with your local URL
+1. In the terminal, run [wp search-replace](https://developer.wordpress.org/cli/commands/search-replace/), replacing the production URL with your local URL. You can also use the npm scripts:
+
+   ```sh
+   # Stage
+   cd wp-content/themes/vanguard-history
+   npm run replace-urls:stage
+
+   # Production
+   cd wp-content/themes/vanguard-history
+   npm run replace-urls:production
+   ```
 
 Note that your WordPress password on your local site will be reset to whatever your WordPress password was on production, so you might want to change it to something different locally.
 

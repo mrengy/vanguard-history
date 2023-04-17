@@ -1,0 +1,17 @@
+// Note: To add more background images:
+// 1. Add a class below
+// 2. Update the max index of the body id random number in header.php
+// 3. Add a new image in the theme img folder (background-n.png)
+@media screen and (min-width: 1280px) {
+	body#background-1 {
+		background-image: url("img/distress-2.png"),
+			url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNUDDeqBwACdgErtXLrFQAAAABJRU5ErkJggg==),
+			url("img/background-1.png");
+	}
+
+	body#background-2 {
+		background-image: url("img/distress-2.png"),
+			url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNUDDeqBwACdgErtXLrFQAAAABJRU5ErkJggg==),
+			url("img/background-2.png");
+	}
+}
