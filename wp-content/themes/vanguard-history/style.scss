@@ -2,6 +2,7 @@
 
 // base
 @use "css/var" as *;
+@use "css/font" as *;
 @use "css/base" as *;
 @use "css/typography" as *;
 
@@ -10,6 +11,7 @@
 @use "css/grid" as *;
 
 // VHS global styles
+@use "css/background" as *;
 @use "css/buttons" as *;
 @use "css/header" as *;
 @use "css/footer" as *;
