@@ -22,7 +22,7 @@
     <?php wp_head(); ?>
 </head>
 
-<body <?php body_class(); ?> id="background-<?php echo rand(1, 3); ?>">
+<body <?php body_class(); ?> id="background-<?php echo rand(1, 2); ?>">
     <?php wp_body_open(); ?>
     <div id="page" class="site">
         <a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e('Skip to content', 'vanguard-history'); ?></a>
