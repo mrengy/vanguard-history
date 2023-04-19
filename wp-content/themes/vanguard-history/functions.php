@@ -969,15 +969,18 @@ function vanguard_history_populate_thumbnails($media_query)
 					$site_url = get_site_url();
 					$this_thumbnail = $site_url . "/wp-content/plugins/media-library-assistant/images/crystal/video.png";
 				}
-				$this_img_string = "<div class='video-thumbnail-wrapper'><img class='attachment-thumbnail size-thumbnail video-thumbnail' src='$this_thumbnail' alt='$this_thumbnail_alt' decoding='async' loading='lazy' width='150' height='150'/></div>";
-				$thumbnails[] = wp_get_attachment_link($this_id, '', true, false, $this_img_string, '');
+				$this_media_title = get_the_title($this_id);
+				$this_img_string = "<div class='video-thumbnail-wrapper'><img class='attachment-thumbnail size-thumbnail video-thumbnail' src='$this_thumbnail' alt='$this_thumbnail_alt' title='$this_media_title' decoding='async' loading='lazy' width='150' height='150'/></div>";
+				$this_link = get_attachment_link($this_id);
+				$thumbnails[] = "<a href='$this_link' title='$this_media_title'>$this_img_string</a>";
 			} else if (str_contains($file_type, 'audio')) {
 				// for audio
 				$site_url = get_site_url();
 				$this_media_alt = get_post_meta($this_id, '_wp_attachment_image_alt', TRUE);
 				$this_media_title = get_the_title($this_id);
 				$this_img_string = "<div class='audio-thumbnail-wrapper'><img class='attachment-thumbnail size-thumbnail audio-thumbnail' src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+ip1sAAAAASUVORK5CYII=' alt='$this_media_alt' title='$this_media_title' decoding='async' loading='lazy' width='150' height='150'/></div>";
-				$thumbnails[] = wp_get_attachment_link($this_id, '', true, false, $this_img_string, '');
+				$this_link = get_attachment_link($this_id);
+				$thumbnails[] = "<a href='$this_link' title='$this_media_title'>$this_img_string</a>";
 			} else if (str_contains($file_type, 'image')) {
 				// for images
 				$thumbnails[] = wp_get_attachment_link(get_the_ID(), 'thumbnail', true);
