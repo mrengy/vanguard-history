@@ -708,17 +708,18 @@ class Custom_Walker_Comment extends Walker_Comment
 		$tag = ('div' === $args['style']) ? 'div' : 'li';
 
 ?>
-		<<?php echo $tag; ?> id="comment-<?php comment_ID(); ?>" <?php comment_class($this->has_children ? 'parent' : '', $comment); ?>>
-			<article id="div-comment-<?php comment_ID(); ?>" class="comment-body">
-				<footer class="comment-meta">
-					<?php
+<<?php echo $tag; ?> id="comment-<?php comment_ID(); ?>"
+    <?php comment_class($this->has_children ? 'parent' : '', $comment); ?>>
+    <article id="div-comment-<?php comment_ID(); ?>" class="comment-body">
+        <footer class="comment-meta">
+            <?php
 					$comment_author_link = get_comment_author_link($comment);
 					$comment_author_url  = get_comment_author_url($comment);
 					$comment_author      = get_comment_author($comment);
 					$avatar              = get_avatar($comment, $args['avatar_size']);
 					?>
-					<div class="comment-avatar">
-						<?php
+            <div class="comment-avatar">
+                <?php
 						if (0 != $args['avatar_size']) {
 							if (empty($comment_author_url)) {
 								echo $avatar;
@@ -729,10 +730,10 @@ class Custom_Walker_Comment extends Walker_Comment
 							}
 						}
 						?>
-					</div>
-					<div class="comment-author-metadata">
-						<div class="comment-author vcard">
-							<?php
+            </div>
+            <div class="comment-author-metadata">
+                <div class="comment-author vcard">
+                    <?php
 
 							/*
 							 * Using the `check` icon instead of `check_circle`, since we can't add a
@@ -771,38 +772,38 @@ class Custom_Walker_Comment extends Walker_Comment
 								'<span class="fn">' . get_comment_author_link($comment) . ' says:</span>'
 							);
 							?>
-						</div><!-- .comment-author -->
+                </div><!-- .comment-author -->
 
-						<div class="comment-metadata">
-							<a href="<?php echo esc_url(get_comment_link($comment, $args)); ?>">
-								<?php
+                <div class="comment-metadata">
+                    <a href="<?php echo esc_url(get_comment_link($comment, $args)); ?>">
+                        <?php
 								/* translators: 1: comment date, 2: comment time */
 								$comment_timestamp = sprintf(__('%1$s at %2$s', 'custom'), get_comment_date('', $comment), get_comment_time());
 								?>
-								<time datetime="<?php comment_time('c'); ?>" title="<?php echo $comment_timestamp; ?>">
-									<?php echo $comment_timestamp; ?>
-								</time>
-							</a>
-							<?php
+                        <time datetime="<?php comment_time('c'); ?>" title="<?php echo $comment_timestamp; ?>">
+                            <?php echo $comment_timestamp; ?>
+                        </time>
+                    </a>
+                    <?php
 							//$edit_comment_icon = custom_get_icon_svg( 'edit', 16 );
 							//edit_comment_link( __( 'Edit', 'custom' ), '<span class="edit-link-sep">&mdash;</span> <span class="edit-link">' . $edit_comment_icon, '</span>' );
 							?>
-						</div><!-- .comment-metadata -->
+                </div><!-- .comment-metadata -->
 
-					</div><!-- .comment-author-metadata -->
+            </div><!-- .comment-author-metadata -->
 
 
 
-					<?php if ('0' == $comment->comment_approved) : ?>
-						<p class="comment-awaiting-moderation"><?php _e('Your comment is awaiting moderation.', 'custom'); ?></p>
-					<?php endif; ?>
-				</footer><!-- .comment-meta -->
+            <?php if ('0' == $comment->comment_approved) : ?>
+            <p class="comment-awaiting-moderation"><?php _e('Your comment is awaiting moderation.', 'custom'); ?></p>
+            <?php endif; ?>
+        </footer><!-- .comment-meta -->
 
-				<div class="comment-content">
-					<?php comment_text(); ?>
-				</div><!-- .comment-content -->
+        <div class="comment-content">
+            <?php comment_text(); ?>
+        </div><!-- .comment-content -->
 
-				<?php
+        <?php
 				comment_reply_link(
 					array_merge(
 						$args,
@@ -816,8 +817,8 @@ class Custom_Walker_Comment extends Walker_Comment
 					)
 				);
 				?>
-			</article><!-- .comment-body -->
-	<?php
+    </article><!-- .comment-body -->
+    <?php
 	}
 } // end custom walker comment class
 
@@ -934,19 +935,21 @@ function remove_tax_from_sitemap($taxonomies)
 add_filter('wp_sitemaps_taxonomies', 'remove_tax_from_sitemap');
 
 // strip html tags out of title
-function strip_html_from_title($title_parts){
+function strip_html_from_title($title_parts)
+{
 	//$stripped_title = strip_tags($title_parts['site']);
 	//$stripped_title = 'chicken';
-	$stripped_tagline = strip_tags(html_entity_decode((get_bloginfo('description','display'))));
+	$stripped_tagline = strip_tags(html_entity_decode((get_bloginfo('description', 'display'))));
 
 	$title_parts['tagline'] = $stripped_tagline;
-	
+
 	return $title_parts;
 }
 
-add_filter( 'document_title_parts', 'strip_html_from_title');
+add_filter('document_title_parts', 'strip_html_from_title');
 
-function vanguard_history_populate_thumbnails($media_query){
+function vanguard_history_populate_thumbnails($media_query)
+{
 	//define thumbnails array
 	$thumbnails = array();
 
@@ -956,32 +959,35 @@ function vanguard_history_populate_thumbnails($media_query){
 			$this_id = get_the_ID();
 
 			// store thumbnails in array
-			if (str_contains($file_type, 'video')){
+			if (str_contains($file_type, 'video')) {
 				// for videos, things are in different places - wp_get_attachment_link doesn't get the thumbnail on its own
 				$this_thumbnail = get_the_post_thumbnail_url($this_id, 'thumbnail');
 				$this_thumbnail_id = get_post_thumbnail_id($this_id);
 				$this_thumbnail_alt = get_post_meta($this_thumbnail_id, '_wp_attachment_image_alt', TRUE);
 				// if there is no thumbnail set in the video, use the default image
-				if (empty($this_thumbnail)){
+				if (empty($this_thumbnail)) {
 					$site_url = get_site_url();
-					$this_thumbnail = $site_url."/wp-content/plugins/media-library-assistant/images/crystal/video.png" ;
+					$this_thumbnail = $site_url . "/wp-content/plugins/media-library-assistant/images/crystal/video.png";
 				}
-				$this_img_string = "<img class='attachment-thumbnail size-thumbnail video-thumbnail' src='$this_thumbnail' alt='$this_thumbnail_alt' decoding='async' loading='lazy' width='150' height='150'/>";
-				$thumbnails[] = wp_get_attachment_link($this_id, '', true, false, $this_img_string, '');
-			} else if (str_contains($file_type, 'audio')){
+				$this_media_title = get_the_title($this_id);
+				$this_img_string = "<div class='video-thumbnail-wrapper'><img class='attachment-thumbnail size-thumbnail video-thumbnail' src='$this_thumbnail' alt='$this_thumbnail_alt' title='$this_media_title' decoding='async' loading='lazy' width='150' height='150'/></div>";
+				$this_link = get_attachment_link($this_id);
+				$thumbnails[] = "<a href='$this_link' title='$this_media_title'>$this_img_string</a>";
+			} else if (str_contains($file_type, 'audio')) {
 				// for audio
 				$site_url = get_site_url();
 				$this_media_alt = get_post_meta($this_id, '_wp_attachment_image_alt', TRUE);
 				$this_media_title = get_the_title($this_id);
-				$this_img_string = "<img class='attachment-thumbnail size-thumbnail audio-thumbnail' src='$site_url"."/wp-content/plugins/media-library-assistant/images/crystal/audio.png"."' alt='$this_media_alt' title='$this_media_title' decoding='async' loading='lazy' width='150' height='150'/>";
-				$thumbnails[] = wp_get_attachment_link($this_id, '', true, false, $this_img_string, '');
-			} else if (str_contains($file_type, 'image')){
+				$this_img_string = "<div class='audio-thumbnail-wrapper'><img class='attachment-thumbnail size-thumbnail audio-thumbnail' src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+ip1sAAAAASUVORK5CYII=' alt='$this_media_alt' title='$this_media_title' decoding='async' loading='lazy' width='150' height='150'/></div>";
+				$this_link = get_attachment_link($this_id);
+				$thumbnails[] = "<a href='$this_link' title='$this_media_title'>$this_img_string</a>";
+			} else if (str_contains($file_type, 'image')) {
 				// for images
 				$thumbnails[] = wp_get_attachment_link(get_the_ID(), 'thumbnail', true);
 			} else {
 				// if there's another file type that is not included above, log it to Query Monitor so that admins will know
-				$log_message = "query included an unhandled filetype. The media item that triggered this has a post ID of ".$this_id.". You might want to edit the code to be able to display them or set the media items as unpublished.";
-				do_action('qm/warning',$log_message);
+				$log_message = "query included an unhandled filetype. The media item that triggered this has a post ID of " . $this_id . ". You might want to edit the code to be able to display them or set the media items as unpublished.";
+				do_action('qm/warning', $log_message);
 			}
 		endwhile;
 	endif; // end of media loop
