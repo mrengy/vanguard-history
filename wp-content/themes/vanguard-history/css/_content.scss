@@ -255,9 +255,7 @@ ul {
 }
 
 .video-thumbnail-wrapper:after {
-	background-image: url("img/video.png");
-	background-color: $WhiteTranslucent;
-	border-radius: 50%;
+	background-image: url("img/video.png?v=1");
 	top: 40px;
 	left: 40px;
 	width: 70px;
