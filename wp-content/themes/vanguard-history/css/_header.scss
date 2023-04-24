@@ -1,23 +1,5 @@
 @import "./_var.scss";
 
-// Note: To add more background images:
-// 1. Add a class below
-// 2. Update the max index of the body id random number in header.php
-// 3. Add a new image in the theme img folder (background-n.png)
-@media screen and (min-width: $bp--lg) {
-	body#background-1 {
-		background-image: url("img/background-1.png");
-	}
-
-	body#background-2 {
-		background-image: url("img/background-2.png");
-	}
-
-	body#background-3 {
-		background-image: url("img/background-3.png");
-	}
-}
-
 .site-header {
 	background-color: $SCVBlack;
 	padding: 12px;
