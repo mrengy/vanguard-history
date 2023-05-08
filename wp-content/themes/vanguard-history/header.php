@@ -73,6 +73,9 @@
                         )
                     );
                     ?>
+                <div id="search-form">
+                    <?php get_search_form(); ?>
+                </div>
             </nav><!-- #site-navigation -->
         </header><!-- #masthead -->
         <?php } ?>
