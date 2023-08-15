@@ -224,6 +224,7 @@ After deploying to a server, the administrator will [connect to the server using
 
 1. [Mike Eng](https://github.com/mrengy)
 1. Adam Noyce
+1. Christina Mavroudis
 1. [Shekhar Khedekar](https://github.com/shekharkhedekar)
 1. Shannon Stamm McGhee
 
