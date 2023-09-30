@@ -23,7 +23,8 @@
     "wpackagist-plugin/jetpack-boost": "*",
     "wpackagist-plugin/ga-google-analytics": "*",
     "wpackagist-plugin/redirection": "*",
-    "wpackagist-plugin/video-embed-thumbnail-generator": "*"
+    "wpackagist-plugin/video-embed-thumbnail-generator": "*",
+    "wpackagist-plugin/tuxedo-big-file-uploads": "*"
   },
   "require-dev": {
     "wpackagist-plugin/query-monitor": "*"
