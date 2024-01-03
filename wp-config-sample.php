@@ -29,6 +29,7 @@ define( 'DB_USER', 'username_here' );
 define( 'DB_PASSWORD', 'password_here' );
 
 /** Database hostname */
+// for local install use 'localhost:/Users/mikeeng/Library/Application Support/Local/run/_H5__GWJD/mysql/mysqld.sock' or whatever value from the instructions at https://community.localwp.com/t/wp-cli-error-establishing-a-database-connection-amazingly-simple-solution/20794/2
 define( 'DB_HOST', 'localhost' );
 
 /** Database charset to use in creating database tables. */
