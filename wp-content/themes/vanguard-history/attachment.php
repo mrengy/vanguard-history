@@ -14,7 +14,12 @@ get_header();
 <main id="primary" class="site-main content-section content-secondary">
 
 	<?php
-		$previous = $_SERVER['HTTP_REFERER'];
+		if (isset($_SERVER['HTTP_REFERER'])) {
+			$previous = $_SERVER['HTTP_REFERER'];
+		} else {
+			$previous = "No referrer set";
+		}
+
 		$site_url = get_site_url();
 
 		// if the previous page in browser history is within the site, use that previous page. Otherwise, use the media page 
