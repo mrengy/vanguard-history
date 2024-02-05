@@ -22,8 +22,7 @@
     "wpackagist-plugin/jetpack-boost": "*",
     "wpackagist-plugin/ga-google-analytics": "*",
     "wpackagist-plugin/redirection": "*",
-    "wpackagist-plugin/video-embed-thumbnail-generator": "*",
-    "wpackagist-plugin/debug-log-manager": "*"
+    "wpackagist-plugin/video-embed-thumbnail-generator": "*"
   },
   "require-dev": {
     "wpackagist-plugin/query-monitor": "*"
