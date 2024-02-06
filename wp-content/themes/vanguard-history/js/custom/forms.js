@@ -7,7 +7,7 @@ jQuery(document).ready(function($){
   		mutation.addedNodes.forEach(function(added_node) {
         if (added_node.outerText.indexOf('Error: -200') >= 0 ){
           // works but may be brittle if there is additional nesting in the added element
-          $(added_node).append("<p> Unfortunately, this form can't accept individual files over 256 MB, but we would love to receive this file. <strong>Please email us</strong> at <a href=mailto:'history@scvanguard.org'>history@scvanguard.org</a>, and we can arrange another way for you to upload it.</p>");
+          $(added_node).append("<p> We're having a hard time with the filesize here, but we would love to receive this file. <strong>Please email us</strong> at <a href=mailto:'history@scvanguard.org'>history@scvanguard.org</a>, and we can arrange another way for you to upload it.</p>");
         }
   		});
   	});
