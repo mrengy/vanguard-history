@@ -45,7 +45,7 @@ Ensure you've got a working WordPress account for the production site, [history.
 
 This is written using [Local](https://localwp.com/). There are other ways to install and run WordPress locally, but this is a very simple one. If you use a different approach, you can skip ahead.
 
-Install [Local](https://localwp.com/) on your computer. In Local, create a new site. Name it "Vanguard History". It's recommended to use the same username, email address, and password you have from the production site. In Local, click on "open site". The URL should be http://vanguard-history.local . If it differs, note what it is for the next step.
+Install [Local](https://localwp.com/) on your computer. In Local, create a new site. Name it "Vanguard History". It's recommended to use the same WordPress username, email address, and password you have from the production site. In Local, click on "open site". The URL should be http://vanguard-history.local . If it differs, note what it is for the next step.
 
 #### Connect to this Github repository the shared code
 
