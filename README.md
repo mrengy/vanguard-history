@@ -165,6 +165,8 @@ After importing the database file in your local WordPress Admin, manually copy i
 
 You'll need to [install SASS](https://sass-lang.com/install/) if you don't have it already.
 
+Until you run SASS, the CSS will not be compiled and the site won't be styled correctly. Also you'll need to run SASS to capture any changes you make to styling. 
+
 In the command line prompt (here's <a href="#command-line">how to open it</a>), run the following:
 
 ```sh
@@ -186,7 +188,7 @@ To have the latest SASS built when you pull, run:
 git config core.hooksPath .github/hooks
 ```
 
-If the above methods using npm aren't working for you, you can navigate to the theme directory and run the `sass` command (and its variations like `sass --watch .`) instead. See [SASS - Preprocessing](https://sass-lang.com/guide/#preprocessing).
+If the above methods using npm aren't working for you, you can navigate to the theme directory (wp-content/themes/vanguard-history) and run the `sass .` command to build the compiled CSS (and its variations like `sass --watch .`) instead. See [SASS - Preprocessing](https://sass-lang.com/guide/#preprocessing).
 
 ## Changing plugins
 
