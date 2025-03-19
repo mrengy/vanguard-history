@@ -161,7 +161,9 @@ Note that your WordPress password on your local site will be reset to whatever y
 
 After importing the database file in your local WordPress Admin, manually copy in media files. Download and unzip a couple of directories of uploads by year from [this Google Drive folder: prod-uploads](https://drive.google.com/drive/u/0/folders/10o_kCclvp2SmluoqI7N5eGpNKQFRUBeL) (ask Mike Eng if you need access to Basecamp). Go to your local site folder. Get there from the Local app > under the site "Vanguard History", click "Go to site folder". Place the media files under "vanguard-history" > "app" > "public" > "wp-content" > "uploads". Within "uploads", there are directories organized by year and month. Place the directories and their contents under "uploads" in the appropriate year / month structure.
 
-## To make edits to CSS
+## To build CSS and make edits to CSS
+
+You'll need to [install SASS](https://sass-lang.com/install/) if you don't have it already.
 
 In the command line prompt (here's <a href="#command-line">how to open it</a>), run the following:
 
@@ -183,6 +185,8 @@ To have the latest SASS built when you pull, run:
 ```sh
 git config core.hooksPath .github/hooks
 ```
+
+If the above methods using npm aren't working for you, you can navigate to the theme directory and run the `sass` command (and its variations like `sass --watch .`) instead. See [SASS - Preprocessing](https://sass-lang.com/guide/#preprocessing).
 
 ## Changing plugins
 
