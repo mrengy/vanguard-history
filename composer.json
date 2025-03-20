@@ -46,10 +46,10 @@
   },
   "scripts": {
     "post-install-cmd":[
-      "wp plugin activate --all && wp gf install --key=283af92393f339347c5e7f6aa889e0cc && wp plugin activate gravityforms && wp gf install gravityformszapier --activate"
+      "wp plugin activate --all && wp gf install gravityformszapier --key=283af92393f339347c5e7f6aa889e0cc --activate && wp gf install --key=283af92393f339347c5e7f6aa889e0cc && wp plugin activate gravityforms"
     ],
     "post-update-cmd": [
-      "wp plugin activate gravityformscli && wp gf update --key=283af92393f339347c5e7f6aa889e0cc && wp gf install gravityformszapier --activate"
+      "wp plugin activate gravityformscli && wp gf install gravityformszapier --key=283af92393f339347c5e7f6aa889e0cc --activate && wp gf update --key=283af92393f339347c5e7f6aa889e0cc"
     ]
   }
 }
