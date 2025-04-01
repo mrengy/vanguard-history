@@ -28,6 +28,12 @@
   "require-dev": {
     "wpackagist-plugin/query-monitor": "*"
   },
+  "http-basic": {
+      "composer.gravity.io": {
+          "username": "283af92393f339347c5e7f6aa889e0cc",
+          "password": "https://history.scvanguard.org"
+      }
+  },
   "repositories": {
     "gravity": {
       "type": "composer",
