@@ -1,7 +1,6 @@
 {
   "name": "mrengy/vanguard-history",
   "description": "Vanguard Music & Performing Arts History Site",
-
   "require": {
     "wp-cli/wp-cli-bundle": "*",
     "wpackagist-plugin/akismet": "*",
@@ -22,34 +21,40 @@
     "wpackagist-plugin/jetpack-boost": "*",
     "wpackagist-plugin/ga-google-analytics": "*",
     "wpackagist-plugin/redirection": "*",
-    "wpackagist-plugin/video-embed-thumbnail-generator": "*"
+    "wpackagist-plugin/video-embed-thumbnail-generator": "*",
+    "gravity/gravityformszapier": "*",
+    "gravity/gravityformscli": "*"
   },
   "require-dev": {
     "wpackagist-plugin/query-monitor": "*"
   },
-  "repositories":[
-      {
-          "type":"composer",
-          "url":"https://wpackagist.org"
-      }
-  ],
-  "autoload": {
-      "psr-0": {
-          "Acme": "src/"
-      }
+  "repositories": {
+    "gravity": {
+      "type": "composer",
+      "url": "https://composer.gravity.io"
+    },
+    "0": {
+      "type": "composer",
+      "url": "https://wpackagist.org"
+    }
   },
-  "config"      : {
-      "vendor-dir": "content/vendor",
-      "allow-plugins":{
-        "composer/installers": true
-      }
+  "autoload": {
+    "psr-0": {
+      "Acme": "src/"
+    }
+  },
+  "config": {
+    "vendor-dir": "content/vendor",
+    "allow-plugins": {
+      "composer/installers": true
+    }
   },
   "scripts": {
-    "post-install-cmd":[
-      "wp plugin activate --all && wp gf install gravityformszapier --key=283af92393f339347c5e7f6aa889e0cc --activate && wp gf install --key=283af92393f339347c5e7f6aa889e0cc && wp plugin activate gravityforms"
+    "post-install-cmd": [
+      "wp plugin activate --all && wp gf install gravityformszapier --key=283af92393f339347c5e7f6aa889e0cc --activate"
     ],
     "post-update-cmd": [
-      "wp plugin activate gravityformscli && wp gf install gravityformszapier --key=283af92393f339347c5e7f6aa889e0cc --activate && wp gf update --key=283af92393f339347c5e7f6aa889e0cc"
+      "wp plugin activate gravityformscli && wp gf install gravityformszapier --key=283af92393f339347c5e7f6aa889e0cc --activate"
     ]
   }
 }
