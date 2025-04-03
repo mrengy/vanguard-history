@@ -22,8 +22,8 @@
     "wpackagist-plugin/ga-google-analytics": "*",
     "wpackagist-plugin/redirection": "*",
     "wpackagist-plugin/video-embed-thumbnail-generator": "*",
-    "gravity/gravityformszapier": "*",
-    "gravity/gravityformscli": "*"
+    "wpackagist-plugin/gravityformscli": "*",
+    "gravity/gravityformszapier": "*"
   },
   "require-dev": {
     "wpackagist-plugin/query-monitor": "*"
