@@ -57,10 +57,10 @@
   },
   "scripts": {
     "post-install-cmd": [
-      "wp plugin activate --all && wp gf install gravityformszapier --key=283af92393f339347c5e7f6aa889e0cc --activate"
+      "wp plugin activate --all"
     ],
     "post-update-cmd": [
-      "wp plugin activate gravityformscli && wp gf install gravityformszapier --key=283af92393f339347c5e7f6aa889e0cc --activate"
+      "wp plugin activate gravityformscli"
     ]
   }
 }
