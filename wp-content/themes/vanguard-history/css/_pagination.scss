@@ -1,13 +1,13 @@
-@use "_var.scss";
+@import "./_var.scss";
 
 #pagination {
 	display: flex;
 	justify-content: center;
-	gap: var.$spacing-sm;
-	margin-top: var.$spacing-sm;
+	gap: $spacing-sm;
+	margin-top: $spacing-sm;
 	.page-numbers {
-		border: 1px solid var.$White;
-		color: var.$White;
+		border: 1px solid $White;
+		color: $White;
 		border-radius: 50%;
 		width: 32px;
 		height: 32px;
@@ -18,12 +18,12 @@
 		transition: all 0.1s ease-in;
 		&:hover,
 		&:focus {
-			background-color: var.$SCVLightGrayTranslucent;
+			background-color: $SCVLightGrayTranslucent;
 		}
 
 		&.current {
-			background-color: var.$White;
-			color: var.$SCVGreen;
+			background-color: $White;
+			color: $SCVGreen;
 		}
 
 		&.prev,

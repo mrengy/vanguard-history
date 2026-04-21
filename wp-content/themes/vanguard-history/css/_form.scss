@@ -1,4 +1,4 @@
-@use "_var.scss";
+@import "./_var.scss";
 div.gform_wrapper {
 	width: auto;
 	left: 0;
@@ -8,7 +8,7 @@ div.gform_wrapper {
 	.gfield_required span.gfield_required_text,
 	.gfield_error label,
 	.gfield_error legend {
-		color: var.$White;
+		color: $White;
 	}
 
 	&.gravity-theme .gfield .ginput_container input.medium {
@@ -17,7 +17,7 @@ div.gform_wrapper {
 	}
 
 	&.gravity-theme .gform_body div.gfield_description {
-		font-weight: var.$font-weight-bold;
+		font-weight: $font-weight-bold;
 	}
 
 	&.gravity-theme .gform_footer {
