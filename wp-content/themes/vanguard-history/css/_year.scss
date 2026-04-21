@@ -1,7 +1,7 @@
-@import "./_var.scss";
+@use "_var.scss";
 
 .year-section {
-	padding: $spacing-md;
+	padding: var.$spacing-md;
 }
 
 .year-story-video {
@@ -26,35 +26,35 @@
 
 .year-story {
 	margin-bottom: 1rem;
-	max-width: $max-content-width;
+	max-width: var.$max-content-width;
 }
 
 .year-story-list {
 	.entry-heading {
-		margin: 0 0 $spacing-xl;
+		margin: 0 0 var.$spacing-xl;
 	}
 }
 
 .year-show-title {
-	font-size: $font-size-md;
-	margin-bottom: $spacing-lg;
+	font-size: var.$font-size-md;
+	margin-bottom: var.$spacing-lg;
 }
 
 .year-piece-title,
 .year-piece-composer {
-	font-size: $font-size-sm;
+	font-size: var.$font-size-sm;
 }
 
 .year-piece-title {
-	font-weight: $font-weight-normal;
+	font-weight: var.$font-weight-normal;
 }
 
 .year-piece-composer {
-	font-weight: $font-weight-light;
+	font-weight: var.$font-weight-light;
 	margin-left: 0;
 }
 
 .year-score-placement {
-	font-size: $font-size-md;
-	font-weight: $font-weight-light;
+	font-size: var.$font-size-md;
+	font-weight: var.$font-weight-light;
 }
