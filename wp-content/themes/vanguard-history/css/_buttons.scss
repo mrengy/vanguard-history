@@ -1,4 +1,4 @@
-@import "./_var.scss";
+@use "_var.scss";
 
 .button,
 .wp-block-button,
@@ -11,36 +11,36 @@ input[type="submit"] {
 	&.gform_button,
 	&.is-style-outline {
 		text-align: center;
-		padding: $spacing-lg;
+		padding: var.$spacing-lg;
 		text-transform: uppercase;
-		border-radius: $border-radius-lg;
-		font-size: $font-size-md;
-		font-weight: $font-weight-light;
+		border-radius: var.$border-radius-lg;
+		font-size: var.$font-size-md;
+		font-weight: var.$font-weight-light;
 		background-color: transparent;
 		transition: background-color 0.1s ease-in;
 		&:hover,
 		&:focus {
-			background-color: $SCVLightGrayTranslucent;
+			background-color: var.$SCVLightGrayTranslucent;
 		}
 	}
 
 	&.button-primary,
 	&.gform_button {
-		border: 1px solid $White;
-		color: $White;
+		border: 1px solid var.$White;
+		color: var.$White;
 	}
 
 	&.submit {
-		border: 1px solid $SCVGreen;
-		color: $SCVGreen;
+		border: 1px solid var.$SCVGreen;
+		color: var.$SCVGreen;
 	}
 
 	&.button-text {
-		text-shadow: $text-shadow;
-		font-weight: $font-weight-semibold;
+		text-shadow: var.$text-shadow;
+		font-weight: var.$font-weight-semibold;
 		background: transparent;
 		text-align: left;
-		padding: $spacing-md 0;
+		padding: var.$spacing-md 0;
 	}
 
 	&.loading {
@@ -55,7 +55,7 @@ input[type="submit"] {
 .button-container {
 	display: flex;
 	justify-content: center;
-	margin-top: $spacing-lg;
+	margin-top: var.$spacing-lg;
 
 	a {
 		border: none;
