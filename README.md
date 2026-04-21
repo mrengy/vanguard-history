@@ -24,16 +24,7 @@ This may go without saying, but in order to collaborate on the code, you will ne
 
 You will also need [a Github account](https://github.com/join) to contribute code.
 
-To set up the site, you will need to [install Composer on your local machine](https://getcomposer.org/doc/00-intro.md).
-
-For some of the local WordPress site administration tasks like bulk activating plugins and manually installing some like GravityForms, you will need to [install WP CLI](https://wp-cli.org/#installing).
-
-To run any NPM scripts, you'll need run the following:
-
-```sh
-cd ~/Local Sites/vanguard-history/app/public
-npm i
-```
+To run any NPM scripts (which are useful for tasks like [building the CSS](#to-build-css-and-make-edits-to-css)), you'll need to [install NPM](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm). On Mac OS, you can [install via Homebrew](https://formulae.brew.sh/formula/node). 
 
 ### Set up the site on your local machine
 
@@ -47,7 +38,13 @@ This is written using [Local](https://localwp.com/). There are other ways to ins
 
 Install [Local](https://localwp.com/) on your computer. In Local, create a new site. Name it "Vanguard History". It's recommended to use the same WordPress username, email address, and password you have from the production site. In Local, click on "open site". The URL should be http://vanguard-history.local . If it differs, note what it is for the next step.
 
-#### Connect to this Github repository the shared code
+#### Install additional dependencies
+
+Once you have Local (or some other way to run PHP locally), you will need to [install Composer on your local machine](https://getcomposer.org/doc/00-intro.md).
+
+[Local](https://localwp.com/) comes with WP CLI. If you didn't install Local, you will need to [install WP CLI](https://wp-cli.org/#installing) manualy for some of the local WordPress site administration tasks like bulk activating plugins and manually installing some like GravityForms.
+
+#### Connect to this Github repository to get the theme and plugin code
 
 <a name="command-line">In Local, right-click your site and select “Open Site Shell” in the menu that appears.</a>
 
@@ -68,17 +65,6 @@ git fetch origin
 git checkout main
 </pre>
 
-#### Point WP CLI to the right place
-
-Check that [WP CLI](https://wp-cli.org/) is able to connect to your local WordPress installation. From the command line prompt in your local WordPress directory (mentioned above), run:
-
-```sh
-wp plugin update
-```
-
-If you get `Error: Error establishing a database connection`, you'll need to edit your local wp-config.php file in a text editor and change the `DB_HOST` value from `localhost` to another string. In order to find the right string, open the Local app, go to the Vanguard History site, and click the "Database" tab. Copy the entire string listed next to `Socket`. Then in wp-config.php, change the `DB_HOST` value from `localhost` to `localhost:that-string-you-just-copied`. It will be something like `localhost:/Users/your-username/Library/Application Support/Local/run/WvEot0rmv/mysql/mysqld.sock`. If that doesn't work, you can get the string another way, listed at [WP-Cli : Error establishing a database connection - Amazingly simple solution](https://community.localwp.com/t/wp-cli-error-establishing-a-database-connection-amazingly-simple-solution/20794) - _note, we have tested this on Mac OS only, not sure if it differs on other operating systems_.
-<img width="1197" alt="screenshot of where in Local to find the socket-path string needed" src="https://user-images.githubusercontent.com/2223603/204912603-710dc943-08d6-472a-8cd3-057969df9159.png">
-
 #### Install plugins
 
 <a name="composer-update" href="https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies">Run `composer install`</a> in the command line to install the plugins the site uses. Note that the syntax may vary depending on how you installed Composer - you may need to use either `composer install` or `php composer.phar install`.
@@ -96,6 +82,17 @@ If in the command line, you see an error involving `gravityformscli` or `wp gf`,
    1. [upload the gravityforms.zip file from the WordPress admin](https://www.wonderplugin.com/wordpress-tutorials/how-to-manually-install-a-wordpress-plugin-zip-file/).
 
 Activate all the plugins by [running](https://developer.wordpress.org/cli/commands/plugin/activate/) `wp plugin activate --all` in the command line or opening WordPress Admin for your local installation, logging in, and navigating to the `plugins` page.
+
+#### Point WP CLI to the right place
+
+Check that [WP CLI](https://wp-cli.org/) is able to connect to your local WordPress installation. From the command line prompt in your local WordPress directory (mentioned above), run:
+
+```sh
+wp plugin update
+```
+
+If you get `Error: Error establishing a database connection`, you'll need to edit your local wp-config.php file in a text editor and change the `DB_HOST` value from `localhost` to another string. In order to find the right string, open the Local app, go to the Vanguard History site, and click the "Database" tab. Copy the entire string listed next to `Socket`. Then in wp-config.php, change the `DB_HOST` value from `localhost` to `localhost:that-string-you-just-copied`. It will be something like `localhost:/Users/your-username/Library/Application Support/Local/run/WvEot0rmv/mysql/mysqld.sock`. If that doesn't work, you can get the string another way, listed at [WP-Cli : Error establishing a database connection - Amazingly simple solution](https://community.localwp.com/t/wp-cli-error-establishing-a-database-connection-amazingly-simple-solution/20794) - _note, we have tested this on Mac OS only, not sure if it differs on other operating systems_.
+<img width="1197" alt="screenshot of where in Local to find the socket-path string needed" src="https://user-images.githubusercontent.com/2223603/204912603-710dc943-08d6-472a-8cd3-057969df9159.png">
 
 #### Migrate database and uploads from production to local
 
