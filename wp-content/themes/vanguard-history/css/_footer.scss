@@ -1,15 +1,15 @@
-@use "_var.scss";
+@import "./_var.scss";
 
 .disclaimer {
-	background-color: var.$SCVLightGray;
-	padding: var.$spacing-md;
-	padding-bottom: var.$spacing-lg;
+	background-color: $SCVLightGray;
+	padding: $spacing-md;
+	padding-bottom: $spacing-lg;
 	margin-bottom: 0;
 }
 
 .main-footer {
-	background-color: var.$SCVBlack;
-	padding: var.$spacing-md;
+	background-color: $SCVBlack;
+	padding: $spacing-md;
 	display: flex;
 	flex-direction: column;
 	flex-wrap: wrap;
@@ -17,7 +17,7 @@
 	height: 9rem;
 
 	.menu-first-footer-container {
-		padding-bottom: var.$spacing-lg;
+		padding-bottom: $spacing-lg;
 		width: 50%;
 	}
 
@@ -30,23 +30,23 @@
 	}
 
 	.menu-item {
-		margin-bottom: var.$spacing-md;
+		margin-bottom: $spacing-md;
 		list-style: none;
 	}
 
 	.footer-menu,
 	.menu {
-		font-weight: var.$font-weight-bold;
-		font-size: var.$font-size-xs;
-		color: var.$White;
+		font-weight: $font-weight-bold;
+		font-size: $font-size-xs;
+		color: $White;
 	}
 
 	.menu-item {
 		a {
-			color: var.$White;
+			color: $White;
 			border: 0;
 			&:hover {
-				color: var.$SCVRed;
+				color: $SCVRed;
 			}
 		}
 	}
@@ -57,7 +57,7 @@
 		}
 
 		a {
-			font-weight: var.$font-weight-normal;
+			font-weight: $font-weight-normal;
 		}
 	}
 }

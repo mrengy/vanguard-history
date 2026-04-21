@@ -1,15 +1,15 @@
-@use "_var.scss";
+@import "./_var.scss";
 
 .comments-area {
-	padding: var.$spacing-md;
+	padding: $spacing-md;
 }
 
 .comments-title,
 .comment-reply-title {
-	font-size: var.$font-size-lg;
-	color: var.$SCVGreen;
-	text-shadow: var.$text-shadow;
-	font-weight: var.$font-weight-normal;
+	font-size: $font-size-lg;
+	color: $SCVGreen;
+	text-shadow: $text-shadow;
+	font-weight: $font-weight-normal;
 	margin: 0;
 }
 
@@ -19,7 +19,7 @@
 }
 
 .comment-list {
-	margin: 0 0 var.$spacing-md 0;
+	margin: 0 0 $spacing-md 0;
 	padding: 0;
 
 	.children {
@@ -36,7 +36,7 @@
 .comment-content,
 .comment-reply,
 .comment-respond {
-	font-size: var.$font-size-sm;
+	font-size: $font-size-sm;
 }
 
 .comment-meta {
@@ -45,7 +45,7 @@
 }
 
 .comment-author-metadata {
-	padding-left: var.$spacing-md;
+	padding-left: $spacing-md;
 }
 
 $comment-avatar-size: 80px;
@@ -54,7 +54,7 @@ $comment-avatar-size: 80px;
 	img {
 		width: $comment-avatar-size;
 		height: $comment-avatar-size;
-		border-radius: var.$border-radius-md;
+		border-radius: $border-radius-md;
 	}
 
 	a {
@@ -64,36 +64,36 @@ $comment-avatar-size: 80px;
 
 .comment-author {
 	a {
-		font-weight: var.$font-weight-normal;
+		font-weight: $font-weight-normal;
 	}
 }
 
 .comment-content {
-	font-weight: var.$font-weight-light;
+	font-weight: $font-weight-light;
 }
 
 .comment-reply {
 	text-align: right;
 	a {
-		color: var.$SCVRed;
+		color: $SCVRed;
 	}
 }
 
 .comment-body {
-	padding: var.$spacing-md 0;
-	border-bottom: 1px solid var.$SCVGreen;
+	padding: $spacing-md 0;
+	border-bottom: 1px solid $SCVGreen;
 }
 
 .comment-respond {
 	label {
-		font-size: var.$font-size-lg;
-		color: var.$SCVGreen;
+		font-size: $font-size-lg;
+		color: $SCVGreen;
 	}
 	input:not([type="submit"]),
 	textarea {
-		border-radius: var.$border-radius-md;
-		border-color: var.$SCVGreen;
-		box-shadow: var.$box-shadow;
+		border-radius: $border-radius-md;
+		border-color: $SCVGreen;
+		box-shadow: $box-shadow;
 	}
 
 	.form-submit {
