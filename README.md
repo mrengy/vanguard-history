@@ -117,15 +117,17 @@ Get a backup of the production site from the [All in One WordPress Migration Exp
    ```
 
 2. Under "advanced options", check only the following:
-   1. "Do not export spam comments"
-   1. "Do not export post revisions"
-   1. "Do not export themes (files)"
-   1. "Do not export must-use plugins (files)"
-   1. "Do not export plugins (files)"
+   1. "Exclude spam comments"
+   1. "Exclude post revisions"
+   1. "Exclude themes (files)"
+   1. "Exclude must-use plugins (files)"
+   1. "Exclude plugins (files)"
    1. "Do not replace email domain (sql)"
 3. Export to "file"
 
 Download the file to your computer. it should end in ".wpress".
+
+If the file to download is too large to fit on your local machine, cancel and change the "advanced options" in the earlier step: also check "Exclude media library". Then later you'll want to migrate some media files under option 2.
 
 You may need to [update some files in your local WordPress installation](https://help.servmask.com/2018/10/27/how-to-increase-maximum-upload-file-size-in-wordpress/) to allow large uploads.
 
@@ -159,7 +161,7 @@ That's it! View your local site to ensure it matches what's on the stage site.
 
 Note that your WordPress password on your local site will be reset to whatever your WordPress password was on production, so you might want to change it to something different locally.
 
-After importing the database file in your local WordPress Admin, manually copy in media files. Download and unzip a couple of directories of uploads by year from [this Google Drive folder: prod-uploads](https://drive.google.com/drive/u/0/folders/10o_kCclvp2SmluoqI7N5eGpNKQFRUBeL) (ask Mike Eng if you need access to Basecamp). Go to your local site folder. Get there from the Local app > under the site "Vanguard History", click "Go to site folder". Place the media files under "vanguard-history" > "app" > "public" > "wp-content" > "uploads". Within "uploads", there are directories organized by year and month. Place the directories and their contents under "uploads" in the appropriate year / month structure.
+After importing the database file in your local WordPress Admin, manually copy in media files. Download and unzip a couple of directories of uploads by year from [this Google Drive folder: prod-uploads](https://drive.google.com/drive/u/0/folders/10o_kCclvp2SmluoqI7N5eGpNKQFRUBeL) (ask Mike Eng if you need access). Go to your local site folder. Get there from the Local app > under the site "Vanguard History", click "Go to site folder". Place the media files under "vanguard-history" > "app" > "public" > "wp-content" > "uploads". Within "uploads", there are directories organized by year and month. Place the directories and their contents under "uploads" in the appropriate year / month structure.
 
 ## To build CSS and make edits to CSS
 
