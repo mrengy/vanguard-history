@@ -178,6 +178,7 @@ This will check for any `.scss` files in the current directory and compile them 
 If you want to build the `.scss` files once without starting the watcher, run:
 
 ```sh
+cd wp-content/themes/vanguard-history
 npm run sass
 ```
 
