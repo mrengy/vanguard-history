@@ -185,6 +185,16 @@
 						</div>
 					END;
 			}
+			//only show tour map if it exists
+			$tour_map = get_field('tour_map');
+
+			if (!empty(tour_map)) {
+				echo <<<END
+					<div class="tour-map">
+						$tour_map
+					</div>
+				END;
+			}
 			?>
 		</section><!-- show-info-->
 	</div><!-- .entry-content -->
