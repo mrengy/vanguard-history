@@ -174,7 +174,7 @@
 			$this_final_placement = get_field('final_placement');
 			if (!empty($this_final_score)) {
 				echo <<<END
-						<div id="final-score-info">
+						<div id="final-score-info" class="show-info-section">
 							<h2 id=" final-score-heading" class="entry-heading">
 								Final Score (Placement)
 							</h2>
@@ -190,7 +190,7 @@
 
 			if (!empty($tour_map)) {
 				echo <<<END
-					<div id="tour-map-info">
+					<div id="tour-map-info" class="show-info-section">
 						<h2 id="tour-map-heading" class="entry-heading">
 							Tour Map
 						</h2>
