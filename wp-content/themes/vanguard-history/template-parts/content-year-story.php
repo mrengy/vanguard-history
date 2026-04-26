@@ -188,10 +188,15 @@
 			//only show tour map if it exists
 			$tour_map = get_field('tour_map');
 
-			if (!empty(tour_map)) {
+			if (!empty($tour_map)) {
 				echo <<<END
-					<div class="tour-map">
-						$tour_map
+					<div id="tour-map-info">
+						<h2 id="tour-map-heading" class="entry-heading">
+							Tour Map
+						</h2>
+						<div class="tour-map">
+							$tour_map
+						</div>
 					</div>
 				END;
 			}
