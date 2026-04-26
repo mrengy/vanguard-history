@@ -88,14 +88,21 @@ ul {
 	margin: 0 0 var.$spacing-md;
 }
 
+.show-info-section{
+	margin: 0 0 var.$spacing-md;
+}
+
 .authors {
 	font-style: italic;
 	margin-top: var.$spacing-lg;
 }
 
+.reduced-width {
+	max-width: var.$max-content-width;
+}
+
 .entry-content {
 	margin-bottom: var.$spacing-md;
-	max-width: var.$max-content-width;
 
 	.media {
 		display: flex;
