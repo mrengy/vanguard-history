@@ -125,67 +125,71 @@
 	<div class="entry-content year-section">
 		<!--story-->
 		<section id="show-info">
-			<?php
-			$show_piece_counter = 0;
-			if (have_rows('show_pieces')) {
-				$show_pieces = get_field('show_pieces');
-			?>
+			<div class="reduced-width">
 				<?php
-				// only show "repertoire" heading if there are pieces to display. 
-				// https://stackoverflow.com/a/18401706/370407
-				if (!empty($show_pieces['show_piece_1']['show_piece_title'])) {
-					echo <<<END
-						<h2 id="repertoire" class="entry-heading">
-							Repertoire
-						</h2>
-					END;
-				}
+				$show_piece_counter = 0;
+				if (have_rows('show_pieces')) {
+					$show_pieces = get_field('show_pieces');
 				?>
-				<?php
-				$this_show_title = get_field('show_title');
-				if (!empty($this_show_title)) {
-					echo <<<END
-						<div id="show-title" class="year-show-title">
-							"$this_show_title"
-						</div>
-					END;
-				}
-				?>
-				<dl id="show-pieces">
 					<?php
-					while (have_rows('show_pieces')) {
-						the_row();
-						foreach ($show_pieces as $show_piece) {
-							if (empty($show_piece['show_piece_title'])) {
-								continue;
-							} else {
-								echo ("<dt class='year-piece-title'>" . $show_piece['show_piece_title'] . "</dt>");
-								echo ("<dd class='year-piece-composer'>" . $show_piece['show_piece_composer'] . "</dd>");
-								//do_action( 'qm/debug', $show_piece );
-							}
-						}
-					} //while(have_rows)('show_pieces')): the_row():
-					?>
-				</dl>
-			<?php
-			} //have_rows('show_pieces')
-
-			$this_final_score = get_field('final_score');
-			$this_final_placement = get_field('final_placement');
-			if (!empty($this_final_score)) {
-				echo <<<END
-						<div id="final-score-info" class="show-info-section">
-							<h2 id=" final-score-heading" class="entry-heading">
-								Final Score (Placement)
+					// only show "repertoire" heading if there are pieces to display. 
+					// https://stackoverflow.com/a/18401706/370407
+					if (!empty($show_pieces['show_piece_1']['show_piece_title'])) {
+						echo <<<END
+							<h2 id="repertoire" class="entry-heading">
+								Repertoire
 							</h2>
-							<div class="year-score-placement">
-								<span id="final-score">$this_final_score</span>
-								<span id="final-placement">($this_final_placement)</span>
+						END;
+					}
+					?>
+					<?php
+					$this_show_title = get_field('show_title');
+					if (!empty($this_show_title)) {
+						echo <<<END
+							<div id="show-title" class="year-show-title">
+								"$this_show_title"
 							</div>
-						</div>
-					END;
-			}
-			//only show tour map if it exists
+						END;
+					}
+					?>
+					<dl id="show-pieces">
+						<?php
+						while (have_rows('show_pieces')) {
+							the_row();
+							foreach ($show_pieces as $show_piece) {
+								if (empty($show_piece['show_piece_title'])) {
+									continue;
+								} else {
+									echo ("<dt class='year-piece-title'>" . $show_piece['show_piece_title'] . "</dt>");
+									echo ("<dd class='year-piece-composer'>" . $show_piece['show_piece_composer'] . "</dd>");
+									//do_action( 'qm/debug', $show_piece );
+								}
+							}
+						} //while(have_rows)('show_pieces')): the_row():
+						?>
+					</dl>
+				<?php
+				} //have_rows('show_pieces')
+
+				$this_final_score = get_field('final_score');
+				$this_final_placement = get_field('final_placement');
+				if (!empty($this_final_score)) {
+					echo <<<END
+							<div id="final-score-info" class="show-info-section">
+								<h2 id=" final-score-heading" class="entry-heading">
+									Final Score (Placement)
+								</h2>
+								<div class="year-score-placement">
+									<span id="final-score">$this_final_score</span>
+									<span id="final-placement">($this_final_placement)</span>
+								</div>
+							</div>
+						END;
+				}
+				//only show tour map if it exists
+			echo <<<END
+				</div>
+			END;
 			$tour_map = get_field('tour_map');
 
 			if (!empty($tour_map)) {

@@ -97,9 +97,12 @@ ul {
 	margin-top: var.$spacing-lg;
 }
 
+.reduced-width {
+	max-width: var.$max-content-width;
+}
+
 .entry-content {
 	margin-bottom: var.$spacing-md;
-	max-width: var.$max-content-width;
 
 	.media {
 		display: flex;
